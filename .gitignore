@@ -21,3 +21,7 @@ venv/
 # --- local scratch ---------------------------------------------------------
 gifs_preview/
 *.tmp
+
+# derived upload variants: regenerate with FRAMES=40 OUTDIR=gifs/social
+gifs/social/
+article/*.draft.md

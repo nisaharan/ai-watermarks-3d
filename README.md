@@ -181,8 +181,8 @@ Two limits worth stating plainly, both spelled out in Part 10:
    key. `modelled_z` measures bigram survival and runs it through the published
    scheme's arithmetic. GIF 11 wears a `MODELLED` badge for exactly this reason.
 
-**If you take one sentence:** *a watermark answers "did this system touch this text?"
-— never "who wrote it?"*
+**If you take one sentence:** *a watermark answers "did this system touch this
+text?", never "who wrote it?"*
 
 ---
 
@@ -194,3 +194,21 @@ Wikipedia material that carries share-alike.
 
 Third-party attributions, the vendored MIT file, the Wikipedia extracts, and the
 sources cited but deliberately not redistributed, are in [`NOTICE.md`](NOTICE.md).
+
+## Rendering for Medium / LinkedIn
+
+LinkedIn freezes any GIF over **5 MB or 400 frames** to its first frame; Medium's
+documented ceiling is 25 MB, but 5 MB is the safe number for both. Four of the
+full-resolution GIFs sit at or above that line. Re-render the set with fewer
+frames, which shrinks the file without touching the resolution the annotations
+need:
+
+```bash
+FRAMES=40 OUTDIR=gifs/social python3 make_3d_watermark_gifs.py
+FRAMES=40 OUTDIR=gifs/social python3 make_real_text_gifs.py
+FRAMES=40 OUTDIR=gifs/social python3 make_surface_tell_gifs.py
+FRAMES=40 OUTDIR=gifs/social python3 make_removal_gifs.py
+```
+
+Every output then lands under 5 MB. `DPI=80` shrinks them further if you need it,
+at the cost of legibility in the caption bands.

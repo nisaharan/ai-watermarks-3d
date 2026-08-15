@@ -39,7 +39,7 @@ HUMAN, AI = "#F4A259", "#4CC9F0"
 GREEN, RED, VIOLET = "#3DDC97", "#EF476F", "#B39DDB"
 RULE = "#232833"
 
-DPI = 100
+DPI = int(os.environ.get("DPI", 100))   # lower it to shrink files for upload limits
 FRAMES = int(os.environ.get("FRAMES", 60))   # lower it to preview layout fast
 
 plt.rcParams.update({
