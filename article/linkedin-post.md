@@ -1,72 +1,86 @@
-# LinkedIn feed post, 50 words maximum
+# LinkedIn feed post
 
-At this length every word is the hook, since nothing gets truncated. Attach one
-GIF on its own: a GIF inside a multi-image post stops animating, so a single
-moving image beats a moving image plus stills.
+Roughly 290 words, which is the range that reads as a practitioner sharing a
+result rather than a brand publishing content. LinkedIn hides everything past
+about 200 characters behind "see more", so the first two lines carry the click.
 
-Put the link in the first comment. LinkedIn suppresses reach on posts that carry
-an outbound link in the body.
+Attach one GIF on its own. A GIF placed in a multi-image post stops animating,
+so a single moving image beats a moving image plus stills.
 
-**Attach:** `gifs/06_sentence_skyline.gif` for A and B, `gifs/12_convergence.gif` for C.
+Put the link in the first comment. An outbound link in the body costs reach.
 
----
-
-## A. The reversal, 42 words
-
-Leads with the paradox. Strongest scroll-stopper, vaguest about the evidence.
-
-> I tried to hide AI writing from AI detectors.
->
-> It worked. Then it overshot.
->
-> The disguised text scored more human than a real Wikipedia article, on the exact measurements those detectors use.
->
-> Ask what that percentage measures before you trust it.
+**Attach:** `gifs/06_sentence_skyline.gif`
 
 ---
 
-## B. The number, 44 words
+## Main version, 288 words
 
-Leads with the concrete finding. Pairs best with the skyline GIF, since the
-image proves the claim rather than decorating it.
-
-> Wikipedia's paragraphs ran 2, 3, 1, 4, 2 sentences.
+> Spent the weekend trying to strip the watermark out of AI-generated text. Ended up breaking my own detector instead.
 >
-> The chatbot's ran 4, 4, 4, 4, 4.
+> Setup: the Wikipedia intro for the Sydney Opera House against a chatbot's version of the same subject. Same topic, same length, ~350 words each.
 >
-> Nobody writes that way by accident.
+> The strongest signal turned out not to be statistical at all. I counted sentences per paragraph.
 >
-> Then I disguised the machine text. It came out scoring more human than Wikipedia, on the measurements AI detectors use.
+> Wikipedia: 2, 3, 1, 4, 2
+> Chatbot: 4, 4, 4, 4, 4
+>
+> Five paragraphs, four sentences in each. For comparison, GPT-2 perplexity barely separated them: 4.15 vs 3.61 bits per word, where the textbook diagrams promise a cliff.
+>
+> Then I pointed a watermark remover at it.
+>
+> Layer one strips invisible Unicode. It changed 0 characters out of 2,087. Obvious in hindsight, since you cannot scrub a signature out of the bytes when it is encoded in token choice.
+>
+> Layer two is a prompt you plug your own model into. I ran all four modes and tracked bigram survival as a proxy for surviving watermark evidence. Backtranslation through French kept 73% of the original word pairs, which models out to z ≈ 5.8, comfortably above a threshold of 4. Only the modes that effectively rewrote the document from scratch landed under it.
+>
+> The part I did not expect:
+>
+> The heaviest rewrite overshot. Sentence-length CV of 0.73 against Wikipedia's 0.42. Perplexity of 5.18 bits against 4.15. On the exact features public detectors threshold on, laundered machine text scored more human than the human.
+>
+> None of these metrics has a ceiling labelled "person". Which is presumably related to why they misfire on second-language writers.
+>
+> n=1 pair, so directional rather than conclusive. Code and 12 annotated visualisations in the comments.
 
 ---
 
-## C. The confession, 47 words
+## Shorter cut, 176 words
 
-Leads with the failed experiment. Best if your audience knows you build things,
-since the credibility comes from admitting the tool broke.
+Same voice, drops the removal-tool mechanics and keeps the reversal.
 
-> I spent a week building a way to catch AI writing.
+> Spent the weekend trying to strip the watermark out of AI-generated text. Ended up breaking my own detector instead.
 >
-> Then I ran a watermark remover to test it.
+> Setup: Wikipedia's Sydney Opera House intro against a chatbot's version of the same subject, same length, ~350 words each.
 >
-> The remover's automated stage changed zero characters. Its rewrite stage worked so well the output scored more human than the human article.
+> The clearest signal was not statistical. Sentences per paragraph:
 >
-> My own test, broken.
+> Wikipedia: 2, 3, 1, 4, 2
+> Chatbot: 4, 4, 4, 4, 4
+>
+> GPT-2 perplexity barely separated them by comparison, 4.15 against 3.61 bits per word.
+>
+> Then I rewrote the machine text hard enough to evade detection, and checked the result.
+>
+> Sentence-length CV came out at 0.73 against Wikipedia's 0.42. Perplexity at 5.18 against 4.15. On the exact features public detectors threshold on, the laundered text scored more human than the human article.
+>
+> None of these metrics has a ceiling labelled "person". A detector that flags you for being too predictable will clear you for being wildly unpredictable, which is presumably related to why they misfire on second-language writers.
+>
+> n=1 pair, directional rather than conclusive. Code in the comments.
 
 ---
 
-## First comment, all three
+## First comment
 
-> Full write-up, code, and twelve annotated visualisations:
+> Write-up, code, and twelve annotated visualisations:
 > github.com/nisaharan/ai-watermarks-3d
 >
-> One matched pair of texts is one matched pair. Treat the direction of each
-> effect as the finding and the size of it as a single sample.
+> Method notes: surprisal measured with gpt2-large, bigram survival as the proxy
+> for watermark evidence, z modelled from the published green-list scheme rather
+> than measured, since nobody outside the vendor holds the key. Rewrites came
+> from the removal tool's own prompts run against a different model.
 
 ---
 
 ## Stills, if you skip the GIF
 
 `article/stills/skyline.png` and `article/stills/convergence.png` are the final
-frames of GIFs 06 and 12. Two stills form a carousel and both stay sharp, which
-is the trade for losing the motion.
+frames of GIFs 06 and 12. Two stills form a carousel and stay sharp, trading the
+motion for it.
