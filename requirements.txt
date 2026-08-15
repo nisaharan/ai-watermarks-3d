@@ -1,0 +1,12 @@
+# Core — enough to render GIFs 01-04 and 09-12, and to run surface_tells.py
+numpy>=1.24
+matplotlib>=3.7
+pillow>=10.0
+
+# Only needed for per-word surprisal (measure_texts.py, GIFs 05-08, and the
+# GPT-2 columns of analyse_removal.py). Downloads gpt2-large, ~3 GB, on first
+# run. Everything else works without them:
+#   python3 analyse_removal.py --no-surprisal
+#
+# torch>=2.0
+# transformers>=4.40

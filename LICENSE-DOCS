@@ -1,0 +1,19 @@
+Documentation and prose licence
+===============================
+
+AI-Watermarks-3D.md, README.md, NOTICE.md and the text files under example/
+are licensed under the Creative Commons Attribution-ShareAlike 4.0
+International licence (CC BY-SA 4.0).
+
+    https://creativecommons.org/licenses/by-sa/4.0/
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit and license your
+contributions under the same terms.
+
+Share-alike is not a stylistic preference here. AI-Watermarks-3D.md quotes and
+analyses an extract from the English Wikipedia article "Sydney Opera House",
+which is itself CC BY-SA 4.0, and that licence propagates to work derived from
+it. See NOTICE.md for the full attribution.
+
+The Python scripts and the rendered GIFs are MIT instead — see LICENSE.

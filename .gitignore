@@ -1,0 +1,23 @@
+# --- third-party material, kept locally, not republished -------------------
+# Wayne Pan, "How to Remove Claude Watermarks From Content You Own" (12 Aug 2026).
+# Cited by title, author, date and URL in AI-Watermarks-3D.md; the full text is
+# the author's copyright and is not ours to redistribute.
+Watermrk.md
+Convo.docx
+
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# --- editors / os ----------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+.claude/
+
+# --- local scratch ---------------------------------------------------------
+gifs_preview/
+*.tmp

@@ -1,0 +1,607 @@
+{
+ "note": "Layer B rewrites follow the repo's verbatim prompts but were produced by a different rewriter than the repo would invoke; z-scores are modelled from the published scheme, not measured.",
+ "params": {
+  "gamma": 0.5,
+  "p_marked": 0.72,
+  "z_threshold": 4.0
+ },
+ "variants": {
+  "human": {
+   "label": "reference: the Wikipedia article",
+   "chars": 2206,
+   "n_words": 346,
+   "n_sents": 12,
+   "sent_lens": [
+    16,
+    27,
+    43,
+    22,
+    26,
+    39,
+    20,
+    24,
+    34,
+    19,
+    59,
+    17
+   ],
+   "sent_mean": 28.833333333333332,
+   "sent_sd": 12.253117517141868,
+   "sent_cv": 0.4249636133112787,
+   "sent_max": 59,
+   "ttr": 0.5350140056022409,
+   "punct_variety": 5,
+   "paragraph_shape": [
+    2,
+    3,
+    1,
+    4,
+    2
+   ],
+   "tells_total": 1,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 0,
+    "Superficial -ing analysis": 0,
+    "Avoidance of basic copulatives": 0,
+    "Promotional language": 0,
+    "Vague attribution": 1,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 0
+   },
+   "tell_phrases": {
+    "Vague attribution": [
+     "widely regarded"
+    ]
+   },
+   "identical_to_ai": false,
+   "facts_retained": 0.8275862068965517,
+   "facts_lost": [
+    "1959",
+    "Concert",
+    "Drama",
+    "Joan",
+    "Sutherland"
+   ],
+   "divergence_jaccard": 0.8994614003590664,
+   "bigram_survival": 0.18360655737704917,
+   "modelled_z": 1.5264232491354468,
+   "modelled_z_detected": false,
+   "mean_bits": 4.15005352901315,
+   "sd_bits": 4.074628354504871,
+   "median_bits": 2.879939556121826
+  },
+  "ai": {
+   "label": "untouched AI text",
+   "chars": 2086,
+   "n_words": 334,
+   "n_sents": 20,
+   "sent_lens": [
+    16,
+    22,
+    16,
+    14,
+    17,
+    20,
+    10,
+    19,
+    24,
+    16,
+    17,
+    15,
+    15,
+    15,
+    20,
+    11,
+    20,
+    10,
+    22,
+    15
+   ],
+   "sent_mean": 16.7,
+   "sent_sd": 3.809199390948182,
+   "sent_cv": 0.2280957719130648,
+   "sent_max": 24,
+   "ttr": 0.5744047619047619,
+   "punct_variety": 2,
+   "paragraph_shape": [
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "tells_total": 25,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 6,
+    "Superficial -ing analysis": 4,
+    "Avoidance of basic copulatives": 4,
+    "Promotional language": 7,
+    "Vague attribution": 1,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 3
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "stands as",
+     "powerful symbol",
+     "marking a major milestone",
+     "plays a vital role",
+     "remains a testament",
+     "represents a lasting"
+    ],
+    "Superficial -ing analysis": [
+     "facing",
+     "marking",
+     "covering",
+     "which contribute to"
+    ],
+    "Avoidance of basic copulatives": [
+     "serves as",
+     "is home to",
+     "continues to be",
+     "continues to serve"
+    ],
+    "Promotional language": [
+     "a leading",
+     "remarkable",
+     "rich and varied",
+     "ambitious",
+     "Innovative",
+     "outstanding",
+     "every corner of the globe"
+    ],
+    "Vague attribution": [
+     "widely regarded"
+    ],
+    "Section-final summary": [
+     "As a result,",
+     "It remains",
+     "Today,"
+    ]
+   },
+   "identical_to_ai": true,
+   "facts_retained": 1.0,
+   "facts_lost": [],
+   "divergence_jaccard": 0.0,
+   "bigram_survival": 1.0,
+   "modelled_z": 8.065333223122277,
+   "modelled_z_detected": true,
+   "mean_bits": 3.6139778682801946,
+   "sd_bits": 3.2913743736328294,
+   "median_bits": 2.663942337036133
+  },
+  "layerA": {
+   "label": "Layer A \u2014 Unicode strip",
+   "chars": 2086,
+   "n_words": 334,
+   "n_sents": 20,
+   "sent_lens": [
+    16,
+    22,
+    16,
+    14,
+    17,
+    20,
+    10,
+    19,
+    24,
+    16,
+    17,
+    15,
+    15,
+    15,
+    20,
+    11,
+    20,
+    10,
+    22,
+    15
+   ],
+   "sent_mean": 16.7,
+   "sent_sd": 3.809199390948182,
+   "sent_cv": 0.2280957719130648,
+   "sent_max": 24,
+   "ttr": 0.5744047619047619,
+   "punct_variety": 2,
+   "paragraph_shape": [
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "tells_total": 25,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 6,
+    "Superficial -ing analysis": 4,
+    "Avoidance of basic copulatives": 4,
+    "Promotional language": 7,
+    "Vague attribution": 1,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 3
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "stands as",
+     "powerful symbol",
+     "marking a major milestone",
+     "plays a vital role",
+     "remains a testament",
+     "represents a lasting"
+    ],
+    "Superficial -ing analysis": [
+     "facing",
+     "marking",
+     "covering",
+     "which contribute to"
+    ],
+    "Avoidance of basic copulatives": [
+     "serves as",
+     "is home to",
+     "continues to be",
+     "continues to serve"
+    ],
+    "Promotional language": [
+     "a leading",
+     "remarkable",
+     "rich and varied",
+     "ambitious",
+     "Innovative",
+     "outstanding",
+     "every corner of the globe"
+    ],
+    "Vague attribution": [
+     "widely regarded"
+    ],
+    "Section-final summary": [
+     "As a result,",
+     "It remains",
+     "Today,"
+    ]
+   },
+   "identical_to_ai": true,
+   "facts_retained": 1.0,
+   "facts_lost": [],
+   "divergence_jaccard": 0.0,
+   "bigram_survival": 1.0,
+   "modelled_z": 8.065333223122277,
+   "modelled_z_detected": true,
+   "mean_bits": 3.6139778682801946,
+   "sd_bits": 3.2913743736328294,
+   "median_bits": 2.663942337036133
+  },
+  "paraphrase": {
+   "label": "Layer B \u2014 paraphrase",
+   "chars": 2055,
+   "n_words": 335,
+   "n_sents": 20,
+   "sent_lens": [
+    12,
+    22,
+    22,
+    14,
+    15,
+    20,
+    9,
+    18,
+    23,
+    19,
+    17,
+    13,
+    15,
+    16,
+    22,
+    9,
+    19,
+    11,
+    24,
+    15
+   ],
+   "sent_mean": 16.75,
+   "sent_sd": 4.493050188902857,
+   "sent_cv": 0.2682418023225586,
+   "sent_max": 24,
+   "ttr": 0.5934718100890207,
+   "punct_variety": 2,
+   "paragraph_shape": [
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "tells_total": 15,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 5,
+    "Superficial -ing analysis": 2,
+    "Avoidance of basic copulatives": 1,
+    "Promotional language": 6,
+    "Vague attribution": 1,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 0
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "powerful symbol",
+     "marking a major milestone",
+     "plays a vital role",
+     "stands as",
+     "represents a lasting"
+    ],
+    "Superficial -ing analysis": [
+     "marking",
+     "covering"
+    ],
+    "Avoidance of basic copulatives": [
+     "continues to serve"
+    ],
+    "Promotional language": [
+     "a leading",
+     "rich and varied",
+     "ambitious",
+     "innovative",
+     "outstanding",
+     "every corner of the globe"
+    ],
+    "Vague attribution": [
+     "widely regarded"
+    ]
+   },
+   "identical_to_ai": false,
+   "facts_retained": 0.9655172413793104,
+   "facts_lost": [
+    "Danish"
+   ],
+   "divergence_jaccard": 0.6171171171171171,
+   "bigram_survival": 0.5573770491803278,
+   "modelled_z": 4.502116292955079,
+   "modelled_z_detected": true,
+   "mean_bits": 4.382709153692766,
+   "sd_bits": 4.086863196774597,
+   "median_bits": 3.0933597087860107
+  },
+  "humanize": {
+   "label": "Layer B \u2014 humanize",
+   "chars": 1761,
+   "n_words": 288,
+   "n_sents": 19,
+   "sent_lens": [
+    7,
+    50,
+    8,
+    21,
+    6,
+    20,
+    8,
+    8,
+    38,
+    9,
+    9,
+    11,
+    14,
+    20,
+    6,
+    15,
+    11,
+    14,
+    13
+   ],
+   "sent_mean": 15.157894736842104,
+   "sent_sd": 11.056139794106006,
+   "sent_cv": 0.7293981114167157,
+   "sent_max": 50,
+   "ttr": 0.6323024054982818,
+   "punct_variety": 4,
+   "paragraph_shape": [
+    3,
+    5,
+    3,
+    4,
+    4
+   ],
+   "tells_total": 6,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 2,
+    "Superficial -ing analysis": 0,
+    "Avoidance of basic copulatives": 0,
+    "Promotional language": 4,
+    "Vague attribution": 0,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 0
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "is a testament",
+     "lasting symbol"
+    ],
+    "Promotional language": [
+     "rich and varied",
+     "ambitious",
+     "innovative",
+     "outstanding"
+    ]
+   },
+   "identical_to_ai": false,
+   "facts_retained": 0.9655172413793104,
+   "facts_lost": [
+    "1959"
+   ],
+   "divergence_jaccard": 0.7846790890269151,
+   "bigram_survival": 0.34098360655737703,
+   "modelled_z": 2.5593676187490324,
+   "modelled_z_detected": false,
+   "mean_bits": 5.17580661477212,
+   "sd_bits": 4.4020981992703065,
+   "median_bits": 4.500958442687988
+  },
+  "backtranslate": {
+   "label": "Layer B \u2014 backtranslate (French pivot)",
+   "chars": 2106,
+   "n_words": 329,
+   "n_sents": 20,
+   "sent_lens": [
+    15,
+    21,
+    18,
+    14,
+    17,
+    18,
+    10,
+    19,
+    23,
+    16,
+    17,
+    13,
+    14,
+    16,
+    20,
+    11,
+    20,
+    10,
+    22,
+    15
+   ],
+   "sent_mean": 16.45,
+   "sent_sd": 3.694252292413175,
+   "sent_cv": 0.2245746074415304,
+   "sent_max": 23,
+   "ttr": 0.5861027190332326,
+   "punct_variety": 2,
+   "paragraph_shape": [
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "tells_total": 15,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 2,
+    "Superficial -ing analysis": 3,
+    "Avoidance of basic copulatives": 2,
+    "Promotional language": 6,
+    "Vague attribution": 0,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 2
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "powerful symbol",
+     "lasting symbol"
+    ],
+    "Superficial -ing analysis": [
+     "marking",
+     "covering",
+     "which contribute to"
+    ],
+    "Avoidance of basic copulatives": [
+     "continues to be",
+     "continues to serve"
+    ],
+    "Promotional language": [
+     "a leading",
+     "remarkable",
+     "rich and varied",
+     "ambitious",
+     "Innovative",
+     "every corner of the world"
+    ],
+    "Section-final summary": [
+     "It remains",
+     "Today,"
+    ]
+   },
+   "identical_to_ai": false,
+   "facts_retained": 1.0,
+   "facts_lost": [],
+   "divergence_jaccard": 0.421875,
+   "bigram_survival": 0.7278688524590164,
+   "modelled_z": 5.826661768331584,
+   "modelled_z_detected": true,
+   "mean_bits": 3.928611093846329,
+   "sd_bits": 3.5130290415427194,
+   "median_bits": 2.8809732794761658
+  },
+  "structural": {
+   "label": "Layer B \u2014 structural",
+   "chars": 1749,
+   "n_words": 284,
+   "n_sents": 17,
+   "sent_lens": [
+    17,
+    29,
+    9,
+    5,
+    9,
+    30,
+    14,
+    19,
+    18,
+    15,
+    12,
+    11,
+    37,
+    6,
+    14,
+    11,
+    28
+   ],
+   "sent_mean": 16.705882352941178,
+   "sent_sd": 8.909774578797306,
+   "sent_cv": 0.5333315768998387,
+   "sent_max": 37,
+   "ttr": 0.6445993031358885,
+   "punct_variety": 6,
+   "paragraph_shape": [
+    3,
+    4,
+    4,
+    3,
+    3
+   ],
+   "tells_total": 8,
+   "tells_by_cat": {
+    "Undue emphasis on significance": 2,
+    "Superficial -ing analysis": 0,
+    "Avoidance of basic copulatives": 0,
+    "Promotional language": 5,
+    "Vague attribution": 1,
+    "Negative parallelism": 0,
+    "Rule of three": 0,
+    "Section-final summary": 0
+   },
+   "tell_phrases": {
+    "Undue emphasis on significance": [
+     "is a testament",
+     "lasting symbol"
+    ],
+    "Promotional language": [
+     "rich and varied",
+     "ambitious",
+     "innovative",
+     "outstanding",
+     "every corner of the globe"
+    ],
+    "Vague attribution": [
+     "widely regarded"
+    ]
+   },
+   "identical_to_ai": false,
+   "facts_retained": 1.0,
+   "facts_lost": [],
+   "divergence_jaccard": 0.6905829596412556,
+   "bigram_survival": 0.4524590163934426,
+   "modelled_z": 3.3726624075247056,
+   "modelled_z_detected": false,
+   "mean_bits": 4.98423590803901,
+   "sd_bits": 4.233257277433667,
+   "median_bits": 4.120838642120361
+  }
+ }
+}
