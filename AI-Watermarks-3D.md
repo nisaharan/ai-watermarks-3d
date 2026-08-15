@@ -1,29 +1,29 @@
-# AI Watermarks in Text — and How to Render Them in 3D
+# AI Watermarks in Text: and How to Render Them in 3D
 
-**Purpose of this file.** One place that consolidates (a) what an AI text watermark actually is, (b) the measurable signals that separate AI-generated prose from human prose, and (c) a tested visual language plus runnable code for turning those signals into rotating 3D GIFs — one showing what an AI paragraph "looks like," one showing what a human paragraph looks like.
+**Purpose of this file.** One place that consolidates (a) what an AI text watermark actually is, (b) the measurable signals that separate AI-generated prose from human prose, and (c) a tested visual language plus runnable code for turning those signals into rotating 3D GIFs: one showing what an AI paragraph "looks like," one showing what a human paragraph looks like.
 
-**If you are presenting to a non-technical audience, start at [Part 8](#part-8--a-worked-example-for-a-non-technical-audience).** It takes one real Wikipedia article and one AI-written piece on the same topic, measures both with an actual language model, and turns the result into four GIFs built on real numbers. [Part 9](#part-9--the-tier-3-layer-wikipedias-signs-of-ai-writing) adds two more from Wikipedia's *Signs of AI writing*, which need no model at all. Parts 1–7 are the reference material behind them.
+**If you are presenting to a non-technical audience, start at [Part 8](#part-8-a-worked-example-for-a-non-technical-audience).** It takes one real Wikipedia article and one AI-written piece on the same topic, measures both with an actual language model, and turns the result into four GIFs built on real numbers. [Part 9](#part-9-the-tier-3-layer-from-wikipedias-signs-of-ai-writing) adds two more from Wikipedia's *Signs of AI writing*, which need no model at all. Parts 1–7 are the reference material behind them.
 
 ### The twelve GIFs at a glance
 
-Every GIF states its own provenance on the frame — this table is the same information in one place.
+Every GIF states its own provenance on the frame: this table is the same information in one place.
 
 | # | GIF | Data | Tier | The one line |
 |---|---|---|---|---|
 | 01 | Surprisal terrain | simulated | 2 | Human writing surprises the model; machine writing does not |
 | 02 | Burstiness tube | simulated | 2 | Both say the same amount; only one has a pulse |
-| 03 | Green-list lattice | mechanism | 1 | No single word is evidence — the tally is |
+| 03 | Green-list lattice | mechanism | 1 | No single word is evidence: the tally is |
 | 04 | Detection walk | mechanism | 1 | Short text hides; long text cannot |
 | 05 | Word by word | measured | 2 | The human reached for an odd word; the AI for a worn phrase |
 | 06 | Sentence skyline | counted | 2 | A real city versus a picket fence |
 | 07 | Measured terrain | measured | 2 | Word choice alone will not tell you who wrote something |
 | 08 | Scorecard | measured | 2 | Three signals worked, two were weak, one pointed backwards |
-| 09 | Marked up | counted | 3 | 25 lit phrases against 1 — no model required |
+| 09 | Marked up | counted | 3 | 25 lit phrases against 1, no model required |
 | 10 | Tell tally | counted | 3 | Five paragraphs of exactly four sentences |
 | 11 | Removal ladder | modelled | 1 | Layer A does nothing; two of four rewrites are still caught |
-| 12 | Convergence | measured | 2 | No rewrite strength lands on human — they overshoot or fall short |
+| 12 | Convergence | measured | 2 | No rewrite strength lands on human: they overshoot or fall short |
 
-**Simulated** means invented from published typical ranges to teach the shape. **Measured** means GPT-2 on the two real texts. **Counted** means arithmetic anyone can redo by hand. **Mechanism** means the published green-list scheme, not the vendor's. **Modelled** means that scheme's arithmetic applied to a measured quantity — a projection, not an observation.
+**Simulated** means invented from published typical ranges to teach the shape. **Measured** means GPT-2 on the two real texts. **Counted** means arithmetic anyone can redo by hand. **Mechanism** means the published green-list scheme, not the vendor's. **Modelled** means that scheme's arithmetic applied to a measured quantity: a projection, not an observation.
 
 **Sources consolidated here:** `Convo.docx` (Q&A transcript on Claude watermarking, with press citations dated 11–14 Aug 2026) and `Watermrk.md` (Wayne Pan / Haimaker, "How to Remove Claude Watermarks From Content You Own", 12 Aug 2026).
 
@@ -31,32 +31,32 @@ Every GIF states its own provenance on the frame — this table is the same info
 
 ---
 
-## Part 1 — There are two separate marking channels
+## Part 1: There are two separate marking channels
 
 The single most common misconception in the source material is that "the watermark" is one thing. It is two, living in different places, with different removability. **[Confirmed]**
 
-### Channel A — In-text statistical watermark
+### Channel A: In-text statistical watermark
 
 An imperceptible bias woven into the *choice and sequencing of tokens*. It is not a hidden character, not a file tag, and not visible to a reader. Because it *is* the prose, it travels wherever the prose travels: copy-paste, export to PDF, retype into a blank `.txt`, paste into an email. Applies to text and, by the same mechanism, to source code generated as text.
 
-### Channel B — C2PA file provenance
+### Channel B: C2PA file provenance
 
-Cryptographically signed provenance metadata attached to the *file container* for supported formats (`.png`, `.jpg`, `.svg` are cited). It marks the file, not the words. It is standard, inspectable metadata — and therefore trivially destroyed by any operation that rebuilds the container.
+Cryptographically signed provenance metadata attached to the *file container* for supported formats (`.png`, `.jpg`, `.svg` are cited). It marks the file, not the words. It is standard, inspectable metadata, and therefore trivially destroyed by any operation that rebuilds the container.
 
 ### The layer table
 
 | Layer | Where it lives | Survives copy-paste? | Survives metadata strip? | Survives heavy paraphrase? |
 |---|---|---|---|---|
-| In-text statistical watermark | Token choices in the prose itself | **Yes** | **Yes** — unaffected | Degrades; not guaranteed gone |
-| C2PA signed manifest | File container (PNG/JPEG/SVG segments) | No — text leaves the container | **No** — removed | N/A |
-| EXIF / XMP / document properties | File container | No | **No** — removed | N/A |
+| In-text statistical watermark | Token choices in the prose itself | **Yes** | **Yes**: unaffected | Degrades; not guaranteed gone |
+| C2PA signed manifest | File container (PNG/JPEG/SVG segments) | No, text leaves the container | **No**, removed | N/A |
+| EXIF / XMP / document properties | File container | No | **No**: removed | N/A |
 | Invisible Unicode (ZWSP, bidi, tag chars) | Between the characters | Usually yes | Yes, by normalisation | Yes |
 | Soft-bound / remote manifest | External service, referenced by link | N/A | Untouched | Untouched |
 
 Two practical consequences from `Convo.docx`:
 
 - **Scrubbing metadata does nothing to the text watermark.** `exiftool -all=` and screenshotting kill Channel B completely and Channel A not at all. Uploading an image to a social platform strips C2PA as a side effect of recompression.
-- **Only editing the words touches Channel A.** Heavy paraphrasing, routing the text through a different model family, or keeping the sample very short are the listed levers — and none is certified, because the detector is private. **[Inferred]**
+- **Only editing the words touches Channel A.** Heavy paraphrasing, routing the text through a different model family, or keeping the sample very short are the listed levers, and none is certified, because the detector is private. **[Inferred]**
 
 ### What a detection actually proves
 
@@ -69,22 +69,22 @@ Both directions of that asymmetry should appear on any slide that shows a detect
 
 ---
 
-## Part 2 — How the in-text watermark works
+## Part 2: How the in-text watermark works
 
-**[Inferred — this is the published Kirchenbauer et al. (2023) "green list" scheme, not a vendor disclosure.]** Use it as the mental model; do not present it as the vendor's implementation.
+**[Inferred: this is the published Kirchenbauer et al. (2023) "green list" scheme, not a vendor disclosure.]** Use it as the mental model; do not present it as the vendor's implementation.
 
 At each generation step:
 
 1. **Seed.** Hash the previous token(s) with a secret key to seed a PRNG.
 2. **Partition.** Use that seed to split the whole vocabulary into a **green list** (fraction γ, typically 0.5) and a **red list** (the rest). The split is *different at every position* and unrecoverable without the key.
-3. **Bias.** Add a small constant δ to the logits of green tokens before sampling. Green words get gently preferred — never forced, so fluency and meaning survive.
+3. **Bias.** Add a small constant δ to the logits of green tokens before sampling. Green words get gently preferred, never forced, so fluency and meaning survive.
 4. **Repeat.** Next token, new hash, new green list.
 
 **Detection** needs the key but not the model. Re-derive each position's green list, count how many of the text's actual tokens landed green, and compute:
 
 $$z = \frac{|s|_G - \gamma n}{\sqrt{n\gamma(1-\gamma)}}$$
 
-For γ = 0.5 this is `z = 2(|s|_G − n/2) / √n`. Unwatermarked text hits green ~50% of the time by chance, giving z ≈ 0. Watermarked text hits ~70%+, and z grows with **√n** — the longer the passage, the more certain the call.
+For γ = 0.5 this is `z = 2(|s|_G − n/2) / √n`. Unwatermarked text hits green ~50% of the time by chance, giving z ≈ 0. Watermarked text hits ~70%+, and z grows with **√n**: the longer the passage, the more certain the call.
 
 | Tokens read | Green rate 50% (human) | Green rate 72% (watermarked) |
 |---|---|---|
@@ -101,19 +101,19 @@ Three properties fall out of this, and they are exactly what the 3D visuals need
 
 ---
 
-## Part 3 — Signals that separate AI from human text
+## Part 3: Signals that separate AI from human text
 
 Three tiers, in descending order of evidential strength. Public "AI detectors" only have access to Tier 2 and Tier 3.
 
-### Tier 1 — The cryptographic watermark
+### Tier 1: The cryptographic watermark
 
 Decisive when present and when you hold the key. Near-zero false-positive rate by construction, because the z-score has a known null distribution. Unavailable to you, your university, or any third-party tool unless the vendor releases a detector.
 
-### Tier 2 — Statistical heuristics (what detectors actually use)
+### Tier 2: Statistical heuristics (what detectors actually use)
 
-**Perplexity** — how surprised a reference model is by each next token, measured in bits of surprisal. Human writing wanders: idiosyncratic word choice, unusual collocations, abrupt topic turns. Machine writing walks the high-probability path. **Low, flat surprisal is the single strongest heuristic signal.**
+**Perplexity**: how surprised a reference model is by each next token, measured in bits of surprisal. Human writing wanders: idiosyncratic word choice, unusual collocations, abrupt topic turns. Machine writing walks the high-probability path. **Low, flat surprisal is the single strongest heuristic signal.**
 
-**Burstiness** — variance in sentence length and structure across a passage. Humans write a 34-word sentence, then a 4-word one. Then stop. Models converge on a comfortable 18–22 words and stay there. Measured as coefficient of variation, CV = sd/mean.
+**Burstiness**: variance in sentence length and structure across a passage. Humans write a 34-word sentence, then a 4-word one. Then stop. Models converge on a comfortable 18–22 words and stay there. Measured as coefficient of variation, CV = sd/mean.
 
 | Feature | Typical human | Typical AI | Direction |
 |---|---|---|---|
@@ -125,13 +125,13 @@ Decisive when present and when you hold the key. Near-zero false-positive rate b
 | Type–token ratio | higher | lower | AI more repetitive |
 | Punctuation variety | high | low | AI narrower |
 
-**[Illustrative]** — these ranges are order-of-magnitude teaching values, and they are the parameters the GIF generator samples from. They are not measurements from a labelled corpus. If this feeds academic work, measure your own corpus and substitute real numbers; the script is parameterised so that only the constants change.
+**[Illustrative]**: these ranges are order-of-magnitude teaching values, and they are the parameters the GIF generator samples from. They are not measurements from a labelled corpus. If this feeds academic work, measure your own corpus and substitute real numbers; the script is parameterised so that only the constants change.
 
-**Honest accuracy caveat.** Tier 2 detectors have materially non-zero false-positive rates and are known to be biased against non-native English writers, whose prose is genuinely lower-perplexity. A short passage carries too little signal for any confident call. Tier 2 output is a prior, not a verdict — this belongs on the slide, not in a footnote.
+**Honest accuracy caveat.** Tier 2 detectors have materially non-zero false-positive rates and are known to be biased against non-native English writers, whose prose is genuinely lower-perplexity. A short passage carries too little signal for any confident call. Tier 2 output is a prior, not a verdict: this belongs on the slide, not in a footnote.
 
-### Tier 3 — Surface tells
+### Tier 3: Surface tells
 
-Not statistical, just habits — useful to a human reader, easily edited away, and increasingly unreliable as models change:
+Not statistical, just habits: useful to a human reader, easily edited away, and increasingly unreliable as models change:
 
 - Em dash overuse; the "it's not X, it's Y" negative parallelism
 - Rule of three everywhere ("clear, concise, and compelling")
@@ -140,13 +140,13 @@ Not statistical, just habits — useful to a human reader, easily edited away, a
 - Vague attribution ("experts say", "studies show") without a citation
 - Section-final summary sentences that restate the section
 - Suspiciously uniform paragraph lengths and heading rhythm
-- Stray invisible Unicode — worth normalising regardless, since it breaks diffs and search
+- Stray invisible Unicode: worth normalising regardless, since it breaks diffs and search
 
-The definitive public catalogue of this tier is Wikipedia's [**Signs of AI writing**](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by editors who read suspected AI drafts all day. It is far longer than the list above, organised by content, language, style, markup, citations and edit summaries, and it names each pattern with example phrases. [Part 9](#part-9--the-tier-3-layer-wikipedias-signs-of-ai-writing) turns the prose-level half of it into GIFs 09 and 10, measured on the same two real texts as Part 8.
+The definitive public catalogue of this tier is Wikipedia's [**Signs of AI writing**](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by editors who read suspected AI drafts all day. It is far longer than the list above, organised by content, language, style, markup, citations and edit summaries, and it names each pattern with example phrases. [Part 9](#part-9-the-tier-3-layer-from-wikipedias-signs-of-ai-writing) turns the prose-level half of it into GIFs 09 and 10, measured on the same two real texts as Part 8.
 
 ---
 
-## Part 4 — The 3D visual language
+## Part 4: The 3D visual language
 
 Prose is a 1-D sequence. Every visualisation below buys the third dimension by **splitting that sequence across two indices and putting a measurement on the vertical axis**. That is the whole trick, and it is worth stating on the first slide.
 
@@ -161,22 +161,22 @@ Shared design rules: near-black `#0E1117` background; **human = amber `#F4A259`*
 
 ### The context frame
 
-A GIF travels. It gets pulled into a slide, forwarded in a chat, screenshotted — and it arrives without this document. So every GIF in the set carries its own context, drawn by `gif_frame.py` in fixed pixel bands above and below the plot:
+A GIF travels. It gets pulled into a slide, forwarded in a chat, screenshotted, and it arrives without this document. So every GIF in the set carries its own context, drawn by `gif_frame.py` in fixed pixel bands above and below the plot:
 
 | Band | Carries | Why it is there |
 |---|---|---|
 | Top left | The GIF's number | So a viewer can ask about "07" and be understood |
-| Top right | **Provenance badge** — `SIMULATED` / `MEASURED` / `COUNTED` / `MECHANISM` | The one piece of context the original set was missing. GIFs 01–04 are invented to teach the shapes; 05–10 are measurements. Out of context they looked identical, and a viewer would reasonably read all of them as data |
-| Under the title | **How to read this** — the axes in plain English | Nobody should have to infer what the height means |
+| Top right | **Provenance badge**: `SIMULATED` / `MEASURED` / `COUNTED` / `MECHANISM` | The one piece of context the original set was missing. GIFs 01–04 are invented to teach the shapes; 05–10 are measurements. Out of context they looked identical, and a viewer would reasonably read all of them as data |
+| Under the title | **How to read this**: the axes in plain English | Nobody should have to infer what the height means |
 | Bottom, centre | **The takeaway**, one sentence | The line to say out loud |
-| Bottom, italic | **The caveat** | What this particular picture does *not* prove — the honest half, in the frame rather than in a footnote |
+| Bottom, italic | **The caveat** | What this particular picture does *not* prove: the honest half, in the frame rather than in a footnote |
 | Bottom left / right | Colour legend, and the evidence tier | Amber/cyan is learned once; the tier says whether you are looking at a cryptographic proof, a statistic, or a habit |
 
-Five GIFs — 05, 08, 10, 11 and 12 — are deliberately 2-D. When 3-D occludes the comparison or hides the words, the comparison wins.
+Five GIFs (05, 08, 10, 11 and 12) are deliberately 2-D. When 3-D occludes the comparison or hides the words, the comparison wins.
 
 ---
 
-### GIF 1 — Surprisal terrain
+### GIF 1: Surprisal terrain
 
 ![Surprisal terrain](gifs/01_surprisal_terrain.gif)
 
@@ -187,17 +187,17 @@ A paragraph becomes a landscape. Each row is a sentence, each column a token slo
 
 **Takeaway line:** *Human writing surprises the model. Machine writing does not.*
 
-This is the strongest of the four visually, because the contrast survives any viewing angle — which is exactly why it should open the sequence.
+This is the strongest of the four visually, because the contrast survives any viewing angle, which is exactly why it should open the sequence.
 
 ---
 
-### GIF 2 — Burstiness tube
+### GIF 2: Burstiness tube
 
 ![Burstiness tube](gifs/02_burstiness_tube.gif)
 
 Extrude the paragraph along an axis and let the tube's radius be sentence length. Rotating it shows the silhouette of the writing's rhythm.
 
-- **Human:** a lumpy caterpillar — bulges at long sentences, sharp pinches at short ones. Rendered: mean 14.8 words, CV 0.65.
+- **Human:** a lumpy caterpillar: bulges at long sentences, sharp pinches at short ones. Rendered: mean 14.8 words, CV 0.65.
 - **AI:** a machined pipe of near-constant diameter. Rendered: mean 20.1 words, CV 0.14.
 
 **Takeaway line:** *Both say roughly the same amount. Only one has a pulse.*
@@ -206,22 +206,22 @@ Note the deliberate trap here: the **means are similar** (14.8 vs 20.1) while th
 
 ---
 
-### GIF 3 — Green-list lattice
+### GIF 3: Green-list lattice
 
 ![Green-list lattice](gifs/03_green_list_lattice.gif)
 
-726 tokens as a rotating cube of dots, each coloured by whether it landed on that position's secret green list. This is the mechanism visualisation — the only one that shows the actual watermark rather than a heuristic.
+726 tokens as a rotating cube of dots, each coloured by whether it landed on that position's secret green list. This is the mechanism visualisation: the only one that shows the actual watermark rather than a heuristic.
 
 - **Human:** a 50/50 confetti of green and red. z = 0.7. Indistinguishable from coin flips, because that is what it is.
-- **AI:** visibly green-dominant. z = 12.3. Red survives — the bias is soft — but the ratio is unmistakable.
+- **AI:** visibly green-dominant. z = 12.3. Red survives, because the bias is soft, but the ratio is unmistakable.
 
 **Takeaway line:** *No single word is evidence. The tally is overwhelming.*
 
-Equal marker sizes for green and red are load-bearing: an earlier draft drew green larger, which made *both* panels look green and destroyed the comparison. Green/red is also the one colourblind-hostile choice in the set — state the percentages aloud, or swap red for `#B39DDB` violet for a CVD-safe audience.
+Equal marker sizes for green and red are load-bearing: an earlier draft drew green larger, which made *both* panels look green and destroyed the comparison. Green/red is also the one colourblind-hostile choice in the set: state the percentages aloud, or swap red for `#B39DDB` violet for a CVD-safe audience.
 
 ---
 
-### GIF 4 — Detection walk
+### GIF 4: Detection walk
 
 ![Detection walk](gifs/04_detection_walk.gif)
 
@@ -232,17 +232,17 @@ The only animated-over-time panel: both texts are read token by token and their 
 
 **Takeaway line:** *The longer it reads, the more certain it gets. Short text hides; long text cannot.*
 
-This closes the sequence because it answers the question the first three provoke — *how much text do you need?* — and it visually motivates the "keep it short" evasion from `Convo.docx`.
+This closes the sequence because it answers the question the first three provoke (*how much text do you need?*) and it visually motivates the "keep it short" evasion from `Convo.docx`.
 
 ---
 
-### Not built — the embedding cloud
+### Not built: the embedding cloud
 
-The one idea in this visual language that was never built. Sentence embeddings reduced by PCA to three axes: human sentences scatter into a diffuse cloud, AI sentences collapse into a tight ellipsoid — semantic monotony as spatial density. It needs a real embedding model, so it is the natural extension once you move to real text (Part 6). Numbered slots 01–10 are taken; it would be 11.
+The one idea in this visual language that was never built. Sentence embeddings reduced by PCA to three axes: human sentences scatter into a diffuse cloud, AI sentences collapse into a tight ellipsoid: semantic monotony as spatial density. It needs a real embedding model, so it is the natural extension once you move to real text (Part 6). Numbered slots 01–10 are taken; it would be 11.
 
 ---
 
-## Part 5 — Building the GIFs
+## Part 5: Building the GIFs
 
 Dependencies are `numpy`, `matplotlib`, and `Pillow` only. No ffmpeg, no imageio.
 
@@ -257,7 +257,7 @@ FRAMES=3 python3 make_real_text_gifs.py                 # fast layout preview
 
 All three scripts import `gif_frame.py`, which owns the palette, the context frame described above, the panel grid, and `write_gif`. Nothing about the data lives there, so changing the wording on every GIF at once means editing one file.
 
-One note on `write_gif`: every frame is quantised against a **single shared palette**, built from four sampled frames plus a painted strip of the brand colours. Choosing a palette per frame — the obvious implementation, and the original one — let amber and cyan drift between frames on the text-heavy panels, and turned an 11-pixel legend swatch grey.
+One note on `write_gif`: every frame is quantised against a **single shared palette**, built from four sampled frames plus a painted strip of the brand colours. Choosing a palette per frame (the obvious implementation, and the original one) let amber and cyan drift between frames on the text-heavy panels, and turned an 11-pixel legend swatch grey.
 
 Runs in ~11 s for all four. Output is 960×459–480 px, 60 frames, 2.3–5.1 MB each.
 
@@ -274,7 +274,7 @@ Runs in ~11 s for all four. Output is 960×459–480 px, 60 frames, 2.3–5.1 MB
 **Reproducibility:** `SEED = 7` fixes every random draw, so reruns are byte-identical and the numbers quoted in Part 4 stay true.
 
 <details>
-<summary><strong>Full source of <code>make_3d_watermark_gifs.py</code></strong> (click to expand — this file is self-contained)</summary>
+<summary><strong>Full source of <code>make_3d_watermark_gifs.py</code></strong> (click to expand: this file is self-contained)</summary>
 
 ```python
 #!/usr/bin/env python3
@@ -381,7 +381,7 @@ def gif_surprisal_terrain():
                   transform=ax.transAxes, color=MUTED, fontsize=7)
         axes.append(ax)
 
-    fig.suptitle("Surprisal terrain — how surprised a language model is by each next token",
+    fig.suptitle("Surprisal terrain: how surprised a language model is by each next token",
                  color=FG, fontsize=11, y=0.985)
     fig.subplots_adjust(left=0.0, right=1.0, top=0.99, bottom=-0.02, wspace=0.0)
 
@@ -425,7 +425,7 @@ def gif_burstiness_tube():
                   transform=ax.transAxes, color=MUTED, fontsize=7)
         axes.append(ax)
 
-    fig.suptitle("Burstiness tube — radius is sentence length, extruded along the paragraph",
+    fig.suptitle("Burstiness tube: radius is sentence length, extruded along the paragraph",
                  color=FG, fontsize=11, y=0.985)
     fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.01, wspace=0.0)
 
@@ -466,7 +466,7 @@ def gif_token_lattice():
                   transform=ax.transAxes, color=GREEN if z(g) > 4 else MUTED, fontsize=8)
         axes.append(ax)
 
-    fig.suptitle("Green-list lattice — every token is a vote; the watermark is the tally, not any one word",
+    fig.suptitle("Green-list lattice: every token is a vote; the watermark is the tally, not any one word",
                  color=FG, fontsize=11, y=0.985)
     fig.subplots_adjust(left=0.0, right=1.0, top=0.99, bottom=0.0, wspace=0.0)
 
@@ -512,7 +512,7 @@ def gif_detection_walk():
     txt = fig.text(0.10, 0.045, "", color=MUTED, fontsize=8.5, family="monospace")
 
     fig.subplots_adjust(left=0.0, right=1.0, top=1.0, bottom=0.0)
-    fig.text(0.5, 0.955, "Detection walk — the watermark score climbs with every token read",
+    fig.text(0.5, 0.955, "Detection walk: the watermark score climbs with every token read",
              color=FG, fontsize=11, ha="center")
 
     def update(i):
@@ -540,11 +540,11 @@ if __name__ == "__main__":
 
 ---
 
-## Part 6 — Driving the visuals with real text
+## Part 6: Driving the visuals with real text
 
 The GIFs above are **simulated** from the Part 3 parameters. That is right for teaching the shapes, and wrong for anything empirical. To make them measurements:
 
-**Sentence lengths (GIF 2)** — no model needed, stdlib only:
+**Sentence lengths (GIF 2)**, no model needed, stdlib only:
 
 ```python
 import re, statistics
@@ -557,28 +557,28 @@ def rhythm(text):
 
 Feed `rhythm(text)["lengths"]` straight into `hl` / `al` in `gif_burstiness_tube`.
 
-**Surprisal (GIF 1)** — needs a local model with logprob access; a small GPT-2 via `transformers` is enough, and using a *different* model than the one under test avoids circularity:
+**Surprisal (GIF 1)**: needs a local model with logprob access; a small GPT-2 via `transformers` is enough, and using a *different* model than the one under test avoids circularity:
 
 ```python
 # per-token surprisal in bits: -log2 P(token | context)
 # reshape the resulting 1-D array to (n_sentences, n_token_slots) and pass as `human` / `ai`
 ```
 
-**Green-list membership (GIF 3)** — cannot be computed for real vendor output. It requires the secret key. Keep this panel labelled **[Illustrative]**; it explains the mechanism, and no public tool can reproduce it against real Claude text.
+**Green-list membership (GIF 3)**: cannot be computed for real vendor output. It requires the secret key. Keep this panel labelled **[Illustrative]**; it explains the mechanism, and no public tool can reproduce it against real Claude text.
 
-**A defensible study design**, if this is heading toward coursework: collect N human and N AI paragraphs matched on topic and length, compute surprisal and CV for each, report distributions with confidence intervals, and show the overlap honestly. The overlap is the finding — a clean separation would be the suspicious result.
+**A defensible study design**, if this is heading toward coursework: collect N human and N AI paragraphs matched on topic and length, compute surprisal and CV for each, report distributions with confidence intervals, and show the overlap honestly. The overlap is the finding: a clean separation would be the suspicious result.
 
 ---
 
-## Part 7 — What these visuals do and do not claim
+## Part 7: What these visuals do and do not claim
 
 Put a version of this on the final slide:
 
 **They do show:** the mechanism by which a token-level bias becomes a statistically detectable signal; why aggregate evidence beats any single word; why passage length governs detection confidence; the genuine distributional differences in surprisal and rhythm that heuristic detectors exploit.
 
-**They do not show:** the vendor's actual algorithm (unpublished); measurements from real text (Part 4 numbers are simulated — GIFs 05–10 are the measured ones, and the provenance badge on each frame says which you are looking at); that any given paragraph is AI-written — Tier 2/3 signals overlap between classes and are biased against non-native writers; that a mark's presence proves authorship, or its absence proves human origin.
+**They do not show:** the vendor's actual algorithm (unpublished); measurements from real text (Part 4 numbers are simulated; GIFs 05–10 are the measured ones, and the provenance badge on each frame says which you are looking at); that any given paragraph is AI-written, Tier 2/3 signals overlap between classes and are biased against non-native writers; that a mark's presence proves authorship, or its absence proves human origin.
 
-**The framing sentence, if you only get one:** *A watermark answers "did this system touch this text?" — never "who wrote it?"*
+**The framing sentence, if you only get one:** *A watermark answers "did this system touch this text?", never "who wrote it?"*
 
 ---
 
@@ -586,26 +586,26 @@ Put a version of this on the final slide:
 
 From the supplied files:
 
-- Anthropic / Claude Help Center — *How Claude marks AI-generated content* — `support.claude.com/en/articles/16266773`
-- C2PA specification — `c2pa.org`; manifest types — `opensource.contentauthenticity.org/docs/manifest/understanding-manifest/`
+- Anthropic / Claude Help Center, *How Claude marks AI-generated content*, `support.claude.com/en/articles/16266773`
+- C2PA specification, `c2pa.org`; manifest types, `opensource.contentauthenticity.org/docs/manifest/understanding-manifest/`
 - Wayne Pan, *How to Remove Claude Watermarks From Content You Own* (`Watermrk.md`, 12 Aug 2026)
 - `Convo.docx` transcript, citing Forbes, CNET, PhoneArena, Medium, Reddit and Instagram coverage, 11–14 Aug 2026
-- Guillaume Meyer, `watermarks-remover` — `github.com/guillaumemeyer/watermarks-remover`
-- *WaterPark* evaluation, Findings of EMNLP 2025 — `aclanthology.org/2025.findings-emnlp.1148/` — 10 watermarking methods against 12 attacks
-- ICLR 2024 — robustness of watermarks under human paraphrase — `proceedings.iclr.cc/paper_files/paper/2024/hash/d78e9e4316e1714fbb0f20be66f8044c-Abstract-Conference.html`
+- Guillaume Meyer, `watermarks-remover`: `github.com/guillaumemeyer/watermarks-remover`
+- *WaterPark* evaluation, Findings of EMNLP 2025, `aclanthology.org/2025.findings-emnlp.1148/`, 10 watermarking methods against 12 attacks
+- ICLR 2024, robustness of watermarks under human paraphrase, `proceedings.iclr.cc/paper_files/paper/2024/hash/d78e9e4316e1714fbb0f20be66f8044c-Abstract-Conference.html`
 - Sean Goedecke, *Text AI watermarks will always be trivial to remove*, 2 Jul 2026
 
 Underlying Part 9 (added here, not from the source files):
 
-- Wikipedia, *Wikipedia:Signs of AI writing* — `en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing` — the editor-maintained catalogue of Tier 3 surface tells, implemented in `surface_tells.py`
+- Wikipedia, *Wikipedia:Signs of AI writing*, `en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing`, the editor-maintained catalogue of Tier 3 surface tells, implemented in `surface_tells.py`
 
 Underlying Part 10 (already cited above, read properly this time):
 
-- Guillaume Meyer, `watermarks-remover` — `github.com/guillaumemeyer/watermarks-remover` — MIT. `service/scripts/text_unicode.py` is vendored verbatim under `vendor/`; the Layer B prompts in `service/scripts/rewrite_text.py` are quoted in Part 10
+- Guillaume Meyer, `watermarks-remover`, `github.com/guillaumemeyer/watermarks-remover`, MIT. `service/scripts/text_unicode.py` is vendored verbatim under `vendor/`; the Layer B prompts in `service/scripts/rewrite_text.py` are quoted in Part 10
 
 Underlying the Part 2 mechanism (not cited in the source files, added here because Part 2 depends on it):
 
-- Kirchenbauer, Geiping, Wen, Katz, Miers, Goldstein, *A Watermark for Large Language Models*, ICML 2023 — the green-list/red-list scheme and z-score detector reproduced above
+- Kirchenbauer, Geiping, Wen, Katz, Miers, Goldstein, *A Watermark for Large Language Models*, ICML 2023: the green-list/red-list scheme and z-score detector reproduced above
 
 ---
 
@@ -614,7 +614,7 @@ Underlying the Part 2 mechanism (not cited in the source files, added here becau
 | File | What it is |
 |---|---|
 | `AI-Watermarks-3D.md` | This document |
-| `gif_frame.py` | Palette, context frame, panel grid, `write_gif` — shared by all three renderers |
+| `gif_frame.py` | Palette, context frame, panel grid, `write_gif`: shared by all three renderers |
 | `make_3d_watermark_gifs.py` | GIFs 01–04, simulated |
 | `measure_texts.py` | GPT-2 per-word surprisal → `example/profiles.json` |
 | `make_real_text_gifs.py` | GIFs 05–08, measured |
@@ -629,7 +629,7 @@ Underlying the Part 2 mechanism (not cited in the source files, added here becau
 
 ---
 
-## Part 8 — A worked example, for a non-technical audience
+## Part 8: A worked example, for a non-technical audience
 
 Everything above Part 7 uses **simulated** data to teach the shapes. This part uses **real text and real measurements**, and it is the version to present to people who do not want to hear the word "perplexity."
 
@@ -645,7 +645,7 @@ Matching the topic and the length matters. If the two texts were about different
 
 ### How "hard to guess" is measured
 
-We show a real language model (GPT-2) the text one word at a time and ask it, at every step, to predict what comes next before revealing the answer. If it guessed easily, the word scores near **0**. If the word blindsided it, the word scores high — **14** is roughly "one chance in sixteen thousand."
+We show a real language model (GPT-2) the text one word at a time and ask it, at every step, to predict what comes next before revealing the answer. If it guessed easily, the word scores near **0**. If the word blindsided it, the word scores high: **14** is roughly "one chance in sixteen thousand."
 
 The plain-English version for a slide: **we make a machine play a guessing game with the text, and we plot how often it loses.**
 
@@ -653,11 +653,11 @@ Everything below is that one number, arranged in space.
 
 ---
 
-### GIF 5 — Word by word
+### GIF 5: Word by word
 
 ![Word by word](gifs/05_word_by_word.gif)
 
-Both texts open with the *identical* four words: "The Sydney Opera House." Then they part company, and the whole argument is visible in one sentence each. The GIF reveals the words left to right, one at a time, with a running bit total — the same order the model saw them in.
+Both texts open with the *identical* four words: "The Sydney Opera House." Then they part company, and the whole argument is visible in one sentence each. The GIF reveals the words left to right, one at a time, with a running bit total: the same order the model saw them in.
 
 | Wikipedia | | AI | |
 |---|---|---|---|
@@ -670,17 +670,17 @@ Both texts open with the *identical* four words: "The Sydney Opera House." Then 
 | | | recognisable | 5 |
 | **total: 62 bits** | | **total: 54 bits** | |
 
-The human sentence spends 14 bits on **"multi-venue"** — a compound nobody sees coming — and 8 more on "performing." The AI spends 11 on "stands" and then coasts: **"as one of the most"** costs 2 + 3 + 0 + 0 + 1, almost nothing at all. It is a phrase the model has seen a million times.
+The human sentence spends 14 bits on **"multi-venue"**, a compound nobody sees coming, and 8 more on "performing." The AI spends 11 on "stands" and then coasts: **"as one of the most"** costs 2 + 3 + 0 + 0 + 1, almost nothing at all. It is a phrase the model has seen a million times.
 
 **Say this out loud:** *The human reached for an odd word. The AI reached for the nearest well-worn phrase. That is the difference, and you can see it without knowing any statistics.*
 
 ---
 
-### GIF 6 — The sentence skyline
+### GIF 6: The sentence skyline
 
 ![Sentence skyline](gifs/06_sentence_skyline.gif)
 
-This is the clearest result of the whole exercise, and it needs no model at all — only counting words per sentence.
+This is the clearest result of the whole exercise, and it needs no model at all: only counting words per sentence.
 
 ```
 Wikipedia   16  27  43  22  26  39  20  24  34  19  59  17
@@ -696,23 +696,23 @@ Wikipedia lurches: 43, then 22. Then 39. One sentence runs **59 words**. The AI 
 | Unevenness (CV) | **0.42** | **0.23** |
 | Longest sentence | 59 | 24 |
 
-**Say this out loud:** *A human skyline looks like a real city — towers and low-rises jumbled together. The AI builds a picket fence.*
+**Say this out loud:** *A human skyline looks like a real city: towers and low-rises jumbled together. The AI builds a picket fence.*
 
 If you show only one GIF, show this one. It is the biggest real difference, it needs no language model to reproduce, and anyone can verify it by counting.
 
 ---
 
-### GIF 7 — The measured terrain
+### GIF 7: The measured terrain
 
 ![Measured terrain](gifs/07_measured_terrain.gif)
 
-The same landscape as GIF 1 in Part 4 — but built from the real measurements instead of simulated ones. **Compare the two side by side and you learn something uncomfortable:** the real terrains look far more alike than the textbook picture promised.
+The same landscape as GIF 1 in Part 4, but built from the real measurements instead of simulated ones. **Compare the two side by side and you learn something uncomfortable:** the real terrains look far more alike than the textbook picture promised.
 
 | | Simulated (Part 4) | Measured (here) |
 |---|---|---|
 | Human average | 5.5 bits | **4.15 bits** |
 | AI average | 2.1 bits | **3.61 bits** |
-| Gap | 3.4 bits — a cliff | **0.54 bits — a slope** |
+| Gap | 3.4 bits, a cliff | **0.54 bits, a slope** |
 
 The human text is still less predictable, and its peaks still go higher. But the gap is a fraction of what the teaching illustration implies. Two honest caveats belong on this slide:
 
@@ -723,7 +723,7 @@ The human text is still less predictable, and its peaks still go higher. But the
 
 ---
 
-### GIF 8 — The scorecard
+### GIF 8: The scorecard
 
 ![Scorecard](gifs/08_scorecard.gif)
 
@@ -737,11 +737,11 @@ Every measurement, ranked by how well it actually separated the two texts.
 | Punctuation variety | 5 kinds | 2 kinds | leans human |
 | Word unpredictability | 4.15 | 3.61 | weak signal |
 | Unpredictability swing | 4.07 | 3.29 | weak signal |
-| Vocabulary freshness (TTR) | 0.548 | 0.574 | **no signal — and backwards** |
+| Vocabulary freshness (TTR) | 0.548 | 0.574 | **no signal, and backwards** |
 
 That last row is the one to dwell on. The textbook says AI text repeats itself more, so it should score *lower*. It scored **higher**. Wikipedia keeps saying "Sydney," "the building," "the Opera House," and that repetition drags the human score down. **The rule of thumb was simply wrong for this pair.**
 
-This is a single pair of texts, so no row here is a general law — the point of the scorecard is the *shape* of the result, not the exact numbers.
+This is a single pair of texts, so no row here is a general law: the point of the scorecard is the *shape* of the result, not the exact numbers.
 
 **Say this out loud:** *Three signals worked, two were weak, and one pointed the wrong way. That is why "an AI detector said so" is not evidence.*
 
@@ -749,12 +749,12 @@ This is a single pair of texts, so no row here is a general law — the point of
 
 ### The six-slide version
 
-1. **Two texts, same topic.** Show both. Ask the room to guess which is which. Most will guess right — and that intuition is what we are about to measure.
-2. **GIF 5 — word by word.** "multi-venue" versus "as one of the most."
-3. **GIF 6 — the skyline.** The picket fence. This is the moment the room gets it.
-4. **GIF 8 — the scorecard.** What worked, what didn't, what pointed backwards.
-5. **GIF 10 — the tell tally.** Five paragraphs of exactly four sentences — and the one row where Wikipedia trips the same rule.
-6. **The honest ending.** Everything measured here is *style*, not proof. The real watermark (Parts 1–2) is a cryptographic signal only the vendor can read — and it answers "did our system touch this?", never "who wrote this?"
+1. **Two texts, same topic.** Show both. Ask the room to guess which is which. Most will guess right, and that intuition is what we are about to measure.
+2. **GIF 5: word by word.** "multi-venue" versus "as one of the most."
+3. **GIF 6: the skyline.** The picket fence. This is the moment the room gets it.
+4. **GIF 8: the scorecard.** What worked, what didn't, what pointed backwards.
+5. **GIF 10, the tell tally.** Five paragraphs of exactly four sentences, and the one row where Wikipedia trips the same rule.
+6. **The honest ending.** Everything measured here is *style*, not proof. The real watermark (Parts 1–2) is a cryptographic signal only the vendor can read, and it answers "did our system touch this?", never "who wrote this?"
 
 ### Reproducing it
 
@@ -765,27 +765,27 @@ python3 make_real_text_gifs.py          # profiles.json   -> gifs/05..08
 python3 make_surface_tell_gifs.py       # example/*.txt   -> gifs/09..10
 ```
 
-`measure_texts.py` downloads `gpt2-large` (~3 GB) on first run and takes a few seconds on CPU. To swap in your own texts, replace `example/human_wikipedia.txt` and `example/ai_generated.txt` — nothing else changes. Everything downstream needs only numpy/matplotlib/Pillow, so once `profiles.json` exists the GIFs rebuild on any machine; GIFs 09–10 skip the model entirely and read the text files directly.
+`measure_texts.py` downloads `gpt2-large` (~3 GB) on first run and takes a few seconds on CPU. To swap in your own texts, replace `example/human_wikipedia.txt` and `example/ai_generated.txt`, nothing else changes. Everything downstream needs only numpy/matplotlib/Pillow, so once `profiles.json` exists the GIFs rebuild on any machine; GIFs 09–10 skip the model entirely and read the text files directly.
 
-**Two deliberate design departures:** GIF 8 is 2D, because a 3D scorecard was built first and the bars occluded each other so badly that the numbers were unreadable. GIF 5 is 2D for the same reason — in 3D the word labels overlapped, and reading the actual words is the entire point of that panel. When 3D actively hides the comparison, the comparison wins.
+**Two deliberate design departures:** GIF 8 is 2D, because a 3D scorecard was built first and the bars occluded each other so badly that the numbers were unreadable. GIF 5 is 2D for the same reason: in 3D the word labels overlapped, and reading the actual words is the entire point of that panel. When 3D actively hides the comparison, the comparison wins.
 
 ### What this example can and cannot support
 
 **Supports:** that a human and an AI writing on the same topic leave genuinely different measurable fingerprints; that rhythm separates them far better than vocabulary; that the differences are visible without any statistics training.
 
-**Does not support:** any claim about a specific document — this is n = 1 per class. Nothing here detects the cryptographic watermark from Parts 1–2, which needs the vendor's key. And the Wikipedia text is encyclopedic register, not ordinary human prose, so a casual email or a student essay would score differently. For coursework, run the pipeline over 30+ matched pairs and report the distributions and their overlap.
+**Does not support:** any claim about a specific document: this is n = 1 per class. Nothing here detects the cryptographic watermark from Parts 1–2, which needs the vendor's key. And the Wikipedia text is encyclopedic register, not ordinary human prose, so a casual email or a student essay would score differently. For coursework, run the pipeline over 30+ matched pairs and report the distributions and their overlap.
 
 ---
 
-## Part 9 — The Tier 3 layer: Wikipedia's *Signs of AI writing*
+## Part 9: The Tier 3 layer, from Wikipedia's *Signs of AI writing*
 
-Part 8 measured the two texts. This part **reads** them, against the catalogue that Wikipedia's editors maintain at [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — the most complete public list of the surface habits in Tier 3.
+Part 8 measured the two texts. This part **reads** them, against the catalogue that Wikipedia's editors maintain at [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing): the most complete public list of the surface habits in Tier 3.
 
-Why it belongs in the set: it is the only tier a non-technical audience can verify unaided. No model, no key, no statistics — you read the sentence and you either see the habit or you don't. It is also the weakest evidentially, and putting it last makes that ordering explicit.
+Why it belongs in the set: it is the only tier a non-technical audience can verify unaided. No model, no key, no statistics: you read the sentence and you either see the habit or you don't. It is also the weakest evidentially, and putting it last makes that ordering explicit.
 
 ### What the scanner checks
 
-`surface_tells.py` implements eight of the guide's prose-level categories as conservative regexes, each traceable back to a named pattern on that page. The structural, markup, citation and edit-summary sections of the guide are not covered — they are about wikitext, not prose, and none of them applies to a plain `.txt`.
+`surface_tells.py` implements eight of the guide's prose-level categories as conservative regexes, each traceable back to a named pattern on that page. The structural, markup, citation and edit-summary sections of the guide are not covered: they are about wikitext, not prose, and none of them applies to a plain `.txt`.
 
 | Category (the guide's name) | What it means in one line |
 |---|---|
@@ -793,7 +793,7 @@ Why it belongs in the set: it is the only tier a non-technical audience can veri
 | Superficial `-ing` analysis | A clause bolted onto the end that restates rather than adds |
 | Avoidance of basic copulatives | Reaching for "serves as" where "is" would do |
 | Promotional language | Brochure adjectives standing in for facts |
-| Vague attribution | "Widely regarded", "experts say" — by whom? |
+| Vague attribution | "Widely regarded", "experts say": by whom? |
 | Negative parallelism | "Not just X, but Y" and its relatives |
 | Rule of three | Three-item lists used as a default rhythm |
 | Section-final summary | A closing sentence that only restates the paragraph |
@@ -804,7 +804,7 @@ Run it on its own to see the tally and every phrase it matched:
 python3 surface_tells.py
 ```
 
-### GIF 09 — Reading with the guide in hand
+### GIF 09: Reading with the guide in hand
 
 ![Marked up](gifs/09_marked_up.gif)
 
@@ -812,15 +812,15 @@ Both texts in full, side by side, in monospace. A reading cursor descends the pa
 
 **Result: 25 lit phrases in the AI text, 1 in the Wikipedia text.**
 
-The AI paragraph is dense with them: *stands as*, *serves as a leading*, *powerful symbol*, *remarkable*, *is home to*, *which contribute to*, *rich and varied*, *plays a vital role*, *outstanding*, *remains a testament*, *every corner of the globe*, *represents a lasting*. Three of its five paragraphs end on a summary sentence — *As a result…*, *Today…*, *It remains…*
+The AI paragraph is dense with them: *stands as*, *serves as a leading*, *powerful symbol*, *remarkable*, *is home to*, *which contribute to*, *rich and varied*, *plays a vital role*, *outstanding*, *remains a testament*, *every corner of the globe*, *represents a lasting*. Three of its five paragraphs end on a summary sentence: *As a result…*, *Today…*, *It remains…*
 
 **Say this out loud:** *You do not need a model for this one. You need the list, and five minutes.*
 
-### GIF 10 — The tell tally
+### GIF 10: The tell tally
 
 ![Tell tally](gifs/10_tell_tally.gif)
 
-Left: how many times each sign fired in each text. Right: sentences per paragraph — the guide's "outline-like" structure, reduced to something anyone can count.
+Left: how many times each sign fired in each text. Right: sentences per paragraph, the guide's "outline-like" structure, reduced to something anyone can count.
 
 | Sign | Wikipedia | AI |
 |---|---|---|
@@ -836,23 +836,23 @@ Left: how many times each sign fired in each text. Right: sentences per paragrap
 
 Two rows carry the argument, in opposite directions.
 
-**The paragraph shape.** The AI wrote five paragraphs of exactly four sentences each. Wikipedia's run 2, 3, 1, 4, 2 — including a one-sentence paragraph, which no model produces unprompted. This is the same finding as GIF 06 one level up: the metronome shows in the paragraphs as clearly as in the sentences.
+**The paragraph shape.** The AI wrote five paragraphs of exactly four sentences each. Wikipedia's run 2, 3, 1, 4, 2: including a one-sentence paragraph, which no model produces unprompted. This is the same finding as GIF 06 one level up: the metronome shows in the paragraphs as clearly as in the sentences.
 
-**The false positive.** *"Widely regarded as one of the world's most famous and distinctive buildings"* — that is the Wikipedia text, and it fires the vague-attribution rule, correctly. The habit is a genuine habit; it is simply also a thing human encyclopedists do. Every row in this table has a false-positive rate, and a list of habits is a prompt to look closer, never a verdict.
+**The false positive.** *"Widely regarded as one of the world's most famous and distinctive buildings"*: that is the Wikipedia text, and it fires the vague-attribution rule, correctly. The habit is a genuine habit; it is simply also a thing human encyclopedists do. Every row in this table has a false-positive rate, and a list of habits is a prompt to look closer, never a verdict.
 
 **Say this out loud:** *Nobody writes five paragraphs of exactly four sentences by accident. And "widely regarded" is not proof of anything, because Wikipedia said it first.*
 
 ### Where this tier sits
 
-Tier 3 is the easiest to check and the easiest to defeat — every one of these twenty-five phrases can be edited away in an afternoon, which is exactly what the humanising tools do. Its value is not detection. It is that it gives a reader something concrete to point at, and it teaches the shape of the thing before any statistics arrive.
+Tier 3 is the easiest to check and the easiest to defeat: every one of these twenty-five phrases can be edited away in an afternoon, which is exactly what the humanising tools do. Its value is not detection. It is that it gives a reader something concrete to point at, and it teaches the shape of the thing before any statistics arrive.
 
 **The ordering to keep:** Tier 1 is proof you cannot run. Tier 2 is a statistic with a real error rate. Tier 3 is a habit. Present them in that order and the audience ends up with calibrated scepticism rather than a detector they trust too much.
 
 ---
 
-## Part 10 — Running a watermark remover at the text, and measuring what came off
+## Part 10: Running a watermark remover at the text, and measuring what came off
 
-Parts 8 and 9 measured the AI text. This part attacks it, with the tool already cited in the sources: [`guillaumemeyer/watermarks-remover`](https://github.com/guillaumemeyer/watermarks-remover) (MIT). The question is the obvious one — **how much of the modelling actually changes** — and the answer splits cleanly in two, because the tool does.
+Parts 8 and 9 measured the AI text. This part attacks it, with the tool already cited in the sources: [`guillaumemeyer/watermarks-remover`](https://github.com/guillaumemeyer/watermarks-remover) (MIT). The question is the obvious one, **how much of the modelling actually changes**, and the answer splits cleanly in two, because the tool does.
 
 ### What the tool actually is
 
@@ -861,29 +861,29 @@ Parts 8 and 9 measured the AI text. This part attacks it, with the tool already 
 | File | `service/scripts/text_unicode.py` | `service/scripts/rewrite_text.py` |
 | Method | Deterministic character surgery | An LLM rewrite |
 | Targets | Zero-width chars, bidi controls, tag chars (U+E0001–E007F), variation selectors, private-use planes, 16 space homoglyphs, optional Cyrillic/fullwidth confusables | Word choice, clause order, connectors, sentence boundaries |
-| Ships a model? | No — it is pure `str` processing | **No.** The default backend is `print-prompt`: it emits a prompt and you supply the rewriter |
-| Attacks | Channel B-ish carriers — invisible Unicode | Channel A — the in-text statistical watermark |
+| Ships a model? | No: it is pure `str` processing | **No.** The default backend is `print-prompt`: it emits a prompt and you supply the rewriter |
+| Attacks | Channel B-ish carriers: invisible Unicode | Channel A: the in-text statistical watermark |
 
 That second row of "no" is the thing to understand before reading any number below. Layer A is the whole of what the repository *executes* on text. Layer B is a prompt, five of them, selected by `--strength`:
 
-- `paraphrase` — *"substantially different wording at the token level… Change clause order, connectors, and transition words; vary sentence boundaries and length; and replace both content words and function words where meaning allows. Preserve all facts, numbers, names."*
-- `humanize` — *"…so it reads as if a human wrote it from scratch. Vary sentence rhythm and length, replace formulaic AI-style transitions and filler with concrete natural phrasing."*
-- `backtranslate` — *"Translate the text to {lang}, then translate that result back to {original_lang}. Preserve all facts, numbers, and names."* The default pivot is French.
-- `structural` — *"First extract a bullet outline of all claims (no full sentences). Then write a complete document from that outline in natural, varied human prose without omitting any bullet."*
-- `code` — the same idea for comments, docstrings and identifier names. Not applicable to prose, so not run here.
+- `paraphrase`: *"substantially different wording at the token level… Change clause order, connectors, and transition words; vary sentence boundaries and length; and replace both content words and function words where meaning allows. Preserve all facts, numbers, names."*
+- `humanize`: *"…so it reads as if a human wrote it from scratch. Vary sentence rhythm and length, replace formulaic AI-style transitions and filler with concrete natural phrasing."*
+- `backtranslate`: *"Translate the text to {lang}, then translate that result back to {original_lang}. Preserve all facts, numbers, and names."* The default pivot is French.
+- `structural`: *"First extract a bullet outline of all claims (no full sentences). Then write a complete document from that outline in natural, varied human prose without omitting any bullet."*
+- `code`: the same idea for comments, docstrings and identifier names. Not applicable to prose, so not run here.
 
 All four prose strengths were run. Both two-step strengths keep their intermediate artefact in `example/removal/`, so the round trip is auditable: `ai_backtranslate_fr_pivot.txt` is the French, `ai_structural_outline.txt` is the outline.
 
-The repo also carries its own effectiveness metric, `_lexical_divergence` — bigram Jaccard distance between original and rewrite — used to pick the most-diverged candidate when you generate several. Part 10 reports that same number so the comparison is on the tool's own terms.
+The repo also carries its own effectiveness metric, `_lexical_divergence`, bigram Jaccard distance between original and rewrite, used to pick the most-diverged candidate when you generate several. Part 10 reports that same number so the comparison is on the tool's own terms.
 
 ### Method, and its two honest limits
 
-`vendor/watermarks_remover/text_unicode.py` is the upstream file, unmodified, so Layer A here **is** the tool. `analyse_removal.py` runs it, then measures five variants — the human article, the untouched AI text, the Layer A output, and the two Layer B rewrites — against every metric in Parts 8 and 9.
+`vendor/watermarks_remover/text_unicode.py` is the upstream file, unmodified, so Layer A here **is** the tool. `analyse_removal.py` runs it, then measures five variants (the human article, the untouched AI text, the Layer A output, and the four Layer B rewrites) against every metric in Parts 8 and 9.
 
 Two limits, both load-bearing:
 
-1. **The Layer B rewrites are mine, not the tool's.** The repo emits a prompt; I ran the verbatim `paraphrase` and `humanize` prompts and wrote the outputs. So these are *a* result of the tool's method, not *the* result — a different rewriter moves every number. Worse, a rewriter that knows which metrics are about to be computed is a real confound, and I knew. Treat the direction of each effect as the finding and the magnitude as one sample.
-2. **The z-scores are modelled, never measured.** We do not hold the vendor's key, so no detection score in this project is an observation. What `modelled_z` does is measure **bigram survival** — the fraction of the original text's word pairs still present — and feed it through the published scheme's arithmetic. The reasoning: a token only carries green-list evidence while the token *before* it is unchanged, because that preceding token is what seeds the position's green list. Surviving pairs keep the watermarked green rate, destroyed ones fall back to chance:
+1. **The Layer B rewrites are mine, not the tool's.** The repo emits a prompt; I ran the verbatim `paraphrase` and `humanize` prompts and wrote the outputs. So these are *a* result of the tool's method, not *the* result: a different rewriter moves every number. Worse, a rewriter that knows which metrics are about to be computed is a real confound, and I knew. Treat the direction of each effect as the finding and the magnitude as one sample.
+2. **The z-scores are modelled, never measured.** We do not hold the vendor's key, so no detection score in this project is an observation. What `modelled_z` does is measure **bigram survival**, the fraction of the original text's word pairs still present, and feed it through the published scheme's arithmetic. The reasoning: a token only carries green-list evidence while the token *before* it is unchanged, because that preceding token is what seeds the position's green list. Surviving pairs keep the watermarked green rate, destroyed ones fall back to chance:
 
    $$p = 0.72s + 0.5(1-s), \qquad z = \frac{(p - 0.5)\sqrt{n}}{\sqrt{0.25}}$$
 
@@ -903,7 +903,7 @@ Ordered by how much watermark evidence each one leaves behind:
 
 | | words | sents | CV | TTR | tells | paragraphs | divergence | bigrams left | modelled z | facts kept | bits |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| *human article* | 346 | 12 | 0.42 | 0.535 | 1 | 2,3,1,4,2 | — | — | *1.53* | — | 4.15 |
+| *human article* | 346 | 12 | 0.42 | 0.535 | 1 | 2,3,1,4,2 | n/a | n/a | *1.53* | n/a | 4.15 |
 | AI, untouched | 334 | 20 | 0.23 | 0.574 | 25 | 4,4,4,4,4 | 0.000 | 100% | **8.07** | 100% | 3.61 |
 | Layer A | 334 | 20 | 0.23 | 0.574 | 25 | 4,4,4,4,4 | 0.000 | 100% | **8.07** | 100% | 3.61 |
 | Layer B `backtranslate` | 329 | 20 | 0.22 | 0.586 | 15 | 4,4,4,4,4 | 0.422 | 73% | **5.83** | 100% | 3.93 |
@@ -911,17 +911,17 @@ Ordered by how much watermark evidence each one leaves behind:
 | Layer B `structural` | 284 | 17 | 0.53 | 0.645 | 8 | 3,4,4,3,3 | 0.691 | 45% | *3.37* | 100% | 4.98 |
 | Layer B `humanize` | 288 | 19 | 0.73 | 0.632 | 6 | 3,5,3,4,4 | 0.785 | 34% | *2.56* | 97% | 5.18 |
 
-### GIF 11 — The removal ladder
+### GIF 11: The removal ladder
 
 ![Removal ladder](gifs/11_removal_ladder.gif)
 
-**Layer A changed nothing. Not "almost nothing" — nothing.** Input and output were byte-identical: 0 characters removed, 0 replaced, on a 2,087-character text. The tool's own inspector agrees, and says why:
+**Layer A changed nothing. Not "almost nothing", nothing.** Input and output were byte-identical: 0 characters removed, 0 replaced, on a 2,087-character text. The tool's own inspector agrees, and says why:
 
 > `No deterministic Layer A (invisible Unicode/format) carriers detected; statistical and pixel-domain marks are out of scope here.`
 
 The only non-ASCII character in either text is the `ø` in *Jørn Utzon*, which is a Norwegian letter, not a carrier. This is the layer-table from Part 1 confirmed by experiment: **scrubbing characters does not touch a watermark that lives in word choice.** Anyone who runs the deterministic half of a remover and concludes they are clean has tested nothing.
 
-**Two of the four rewrite strengths are still caught.** The spread between them is the real result — they are not interchangeable:
+**Two of the four rewrite strengths are still caught.** The spread between them is the real result: they are not interchangeable:
 
 | Strength | Bigrams left | Modelled z | Verdict |
 |---|---|---|---|
@@ -930,55 +930,55 @@ The only non-ASCII character in either text is the `ø` in *Jørn Utzon*, which 
 | `structural` | 45% | 3.37 | under the line |
 | `humanize` | 34% | 2.56 | under the line |
 
-**`backtranslate` is the weakest attack in the set, and it is the one people reach for first.** Round-tripping through French left **73%** of the original word pairs intact — more than any other strength — because translation works sentence by sentence and hands back something with the same skeleton. z = 5.83, nowhere near evading. It also left the rhythm signature completely untouched: sentence unevenness went from 0.23 to **0.22**, and the paragraph metronome stayed at a perfect 4,4,4,4,4. A round trip changes the words a translator would change and nothing else.
+**`backtranslate` is the weakest attack in the set, and it is the one people reach for first.** Round-tripping through French left **73%** of the original word pairs intact, more than any other strength, because translation works sentence by sentence and hands back something with the same skeleton. z = 5.83, nowhere near evading. It also left the rhythm signature completely untouched: sentence unevenness went from 0.23 to **0.22**, and the paragraph metronome stayed at a perfect 4,4,4,4,4. A round trip changes the words a translator would change and nothing else.
 
 **`paraphrase` halves the evidence and is still caught** at z = 4.50. This is Part 2's "editing is dilution, not deletion" with a number attached: a rewrite that changes 62% of the bigrams still leaves enough aggregate signal to call, because z falls linearly in survival while the evidence is spread across every token.
 
-**`structural` is the best trade in the set.** Outline the claims, then write the document from the outline: 45% survival, z = 3.37 (under the line), **100% of facts kept**, and — uniquely — it lands *closest to the human article* on sentence unevenness (0.53 against Wikipedia's 0.42). Writing from an outline forces the structure to be re-chosen rather than edited, which is exactly the thing paraphrase and backtranslation cannot do.
+**`structural` is the best trade in the set.** Outline the claims, then write the document from the outline: 45% survival, z = 3.37 (under the line), **100% of facts kept**, and, uniquely, it lands *closest to the human article* on sentence unevenness (0.53 against Wikipedia's 0.42). Writing from an outline forces the structure to be re-chosen rather than edited, which is exactly the thing paraphrase and backtranslation cannot do.
 
 **`humanize` goes furthest**, to 34% survival and z = 2.56, but overshoots the style target hardest (CV 0.73) and is the only strength to drop a fact.
 
-**Say this out loud:** *The half of the tool that runs by itself does nothing. Of the half that works, the gentlest option — translate it and translate it back — is barely an attack at all, and the only one that really breaks the mark is the one that makes you write the document again from notes.*
+**Say this out loud:** *The half of the tool that runs by itself does nothing. Of the half that works, the gentlest option, translate it and translate it back, is barely an attack at all, and the only one that really breaks the mark is the one that makes you write the document again from notes.*
 
-### GIF 12 — Convergence, and the overshoot
+### GIF 12: Convergence, and the overshoot
 
 ![Convergence](gifs/12_convergence.gif)
 
-The second question — does it stop *looking* like AI — has a stranger answer.
+The second question (does it stop *looking* like AI?) has a stranger answer.
 
 | Measurement | AI | backtrans. | paraphrase | structural | humanize | human | closest lands |
 |---|---|---|---|---|---|---|---|
 | Sentence unevenness | 0.23 | 0.22 | 0.27 | **0.53** | 0.73 | 0.42 | `structural`, +0.11 past |
 | Wikipedia tells | 25 | 15 | 15 | 8 | **6** | 1 | `humanize`, +5 short |
 | Word unpredictability | 3.61 | **3.93** | 4.38 | 4.98 | 5.18 | 4.15 | `backtranslate`, −0.22 short |
-| Vocabulary freshness | 0.574 | **0.586** | 0.593 | 0.632 | 0.645 | 0.535 | `backtranslate`, +0.051 — further than the AI text |
+| Vocabulary freshness | 0.574 | **0.586** | 0.593 | 0.632 | 0.645 | 0.535 | `backtranslate`, +0.051: further than the AI text |
 
 **No strength lands on human.** Two measures overshoot, one never gets there, and one moves further away with every strength applied. The `humanize` output is *more* uneven in sentence length than a real encyclopedia article, and its words are *harder* for GPT-2 to guess: 5.18 bits against Wikipedia's 4.15. On the Tier 2 heuristics that public detectors actually run, that text now reads as more human than the human.
 
-Note which column keeps winning the "closest" contest: **`backtranslate`, the strength that removes the least.** It sits nearest the human values on two of four measures purely because it barely moved anything — the AI text was already close on those axes. Proximity to human is not evidence of laundering, and laundering is not evidence of proximity. The two questions are independent, which is why GIFs 11 and 12 have to be read together.
+Note which column keeps winning the "closest" contest: **`backtranslate`, the strength that removes the least.** It sits nearest the human values on two of four measures purely because it barely moved anything: the AI text was already close on those axes. Proximity to human is not evidence of laundering, and laundering is not evidence of proximity. The two questions are independent, which is why GIFs 11 and 12 have to be read together.
 
-That is not a success story. It is the failure mode of the whole tier, made concrete: **these metrics have no upper bound at "human."** A detector thresholding on perplexity or burstiness cannot tell "authentic" from "overcooked", and the same overshoot that evades it would flag a florid human writer. Vocabulary freshness repeats the backwards result from GIF 08 for a third time — every variant moves *away* from the human value, because the human text keeps repeating "Sydney" and "the building".
+That is not a success story. It is the failure mode of the whole tier, made concrete: **these metrics have no upper bound at "human."** A detector thresholding on perplexity or burstiness cannot tell "authentic" from "overcooked", and the same overshoot that evades it would flag a florid human writer. Vocabulary freshness repeats the backwards result from GIF 08 for a third time: every variant moves *away* from the human value, because the human text keeps repeating "Sydney" and "the building".
 
-**The one honest signal is the Wikipedia tells**, and only because it has a floor at zero and a named list behind it. 25 → 15 → 8 → 6 is real progress, and the best of them is still six times the human article's one. `paraphrase` and `backtranslate` both stall at 15 and both leave the paragraph metronome at a perfect 4,4,4,4,4 — neither prompt asks for structural change, so neither delivers it. What survives everything is the promotional vocabulary: *rich and varied*, *ambitious*, *innovative*, *outstanding*, *every corner of the globe* are in all four rewrites.
+**The one honest signal is the Wikipedia tells**, and only because it has a floor at zero and a named list behind it. 25 → 15 → 8 → 6 is real progress, and the best of them is still six times the human article's one. `paraphrase` and `backtranslate` both stall at 15 and both leave the paragraph metronome at a perfect 4,4,4,4,4: neither prompt asks for structural change, so neither delivers it. What survives everything is the promotional vocabulary: *rich and varied*, *ambitious*, *innovative*, *outstanding*, *every corner of the globe* are in all four rewrites.
 
-**One caveat on that column, against my own scanner.** Part of `backtranslate`'s 25 → 15 is an artefact. The round trip turned *"widely regarded"* into *"generally considered"* and *"As a result,"* into *"therefore"* — the habit is completely intact, the string no longer matches my regex. A surface-tell scanner counts phrasings, not habits, and translation is very good at changing phrasings while changing nothing else. Read that column as a lower bound on what a human editor would flag.
+**One caveat on that column, against my own scanner.** Part of `backtranslate`'s 25 → 15 is an artefact. The round trip turned *"widely regarded"* into *"generally considered"* and *"As a result,"* into *"therefore"*: the habit is completely intact, the string no longer matches my regex. A surface-tell scanner counts phrasings, not habits, and translation is very good at changing phrasings while changing nothing else. Read that column as a lower bound on what a human editor would flag.
 
 ### What it cost
 
-`backtranslate` and `structural` kept **100%** of the proper nouns and numbers; `paraphrase` and `humanize` kept 97%. The misses are instructive: `humanize` dropped **1959** — the construction start date — by compressing it to "two years after that", and shed 46 words. `structural` shed 50 words and lost nothing, because working from an explicit outline of the claims is a checklist, and a checklist is harder to drop an item from than a paragraph is. The repo says this itself, in the README: rewording *"replaces the original word choices with the rewriting model's,"* which *"flattens tone, voice, and precision."* On a Wikipedia-style factual paragraph, precision is most of the value.
+`backtranslate` and `structural` kept **100%** of the proper nouns and numbers; `paraphrase` and `humanize` kept 97%. The misses are instructive: `humanize` dropped **1959**, the construction start date, by compressing it to "two years after that", and shed 46 words. `structural` shed 50 words and lost nothing, because working from an explicit outline of the claims is a checklist, and a checklist is harder to drop an item from than a paragraph is. The repo says this itself, in the README: rewording *"replaces the original word choices with the rewriting model's,"* which *"flattens tone, voice, and precision."* On a Wikipedia-style factual paragraph, precision is most of the value.
 
 ### The verdict on efficiency
 
 | Question | Answer |
 |---|---|
 | Does the tool remove the statistical watermark? | Not by itself. Its executable half is a no-op on this text; its effective half is a prompt with no model attached. |
-| Does backtranslation evade detection? | **No, and it is the worst of the four** — z = 5.83 at 73% survival. It leaves the rhythm signature exactly as it found it. |
-| Does a paraphrase-strength rewrite evade detection? | **No** — z = 4.50, still above threshold, at 56% survival. |
-| Do `structural` or `humanize` evade detection? | **Yes** on this text — z = 3.37 and 2.56 — but at 45% and 34% survival, which is close to writing it again. |
+| Does backtranslation evade detection? | **No, and it is the worst of the four**: z = 5.83 at 73% survival. It leaves the rhythm signature exactly as it found it. |
+| Does a paraphrase-strength rewrite evade detection? | **No**: z = 4.50, still above threshold, at 56% survival. |
+| Do `structural` or `humanize` evade detection? | **Yes** on this text, z = 3.37 and 2.56, but at 45% and 34% survival, which is close to writing it again. |
 | Which strength is the best trade? | `structural`: under the threshold, 100% of facts kept, and the closest of any variant to the human article's sentence rhythm. |
 | Does the text stop looking like AI? | No strength lands on human. Two Tier 2 measures overshoot, vocabulary freshness moves away, and the Tier 3 count stays six times the human baseline. |
 | What does it cost? | 97–100% of facts kept, one date lost at `humanize`, 14% of the length, and the original voice. |
 
-**The framing sentence for this part:** *A remover cannot remove what it cannot see, and the part of the mark that matters is not in the characters — it is in the words, which means removing it and rewriting it are the same operation.*
+**The framing sentence for this part:** *A remover cannot remove what it cannot see, and the part of the mark that matters is not in the characters: it is in the words, which means removing it and rewriting it are the same operation.*
 
-Which is also why the Part 7 caveat survives intact: none of this tells you who wrote anything. It tells you how much of a text has to be replaced before a specific statistical signal falls below a specific threshold — and at 34% survival, the honest description of what happened is not "the watermark was removed" but "a different text was written."
+Which is also why the Part 7 caveat survives intact: none of this tells you who wrote anything. It tells you how much of a text has to be replaced before a specific statistical signal falls below a specific threshold, and at 34% survival, the honest description of what happened is not "the watermark was removed" but "a different text was written."

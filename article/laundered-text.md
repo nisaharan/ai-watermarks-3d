@@ -1,105 +1,110 @@
 # The laundered text scored more human than the human
 
-I built a way to see AI writing. The final experiment undermined the premise.
+**I spent a week learning to spot machine writing. Then I tried to hide it, and broke my own test.**
 
-The setup was simple. I took the opening of Wikipedia's article on the Sydney Opera House, about 350 words assembled by many hands over many years. Then I asked a language model for an encyclopedia-style overview of the same building at the same length. One subject, one length, one variable: authorship.
+Start with a game.
 
-Both versions open with the same four words. *The Sydney Opera House.* After that they diverge.
+I put two short articles side by side. Both describe the Sydney Opera House. Both run to about 350 words. One was assembled by volunteers on Wikipedia over many years. The other came from a chatbot I asked for an encyclopedia entry.
 
-<!-- GIF 06 -->
+Show them to a room and most people pick correctly. I wanted to know what the room was noticing.
 
-## Counting beats measuring
+## The picket fence
 
-Before touching a neural network, try something you can do on paper. Count the words in each sentence.
+Forget algorithms for a minute. Count the words in each sentence.
 
-Wikipedia lurches. Sixteen words, then twenty-seven, then forty-three. Later one sentence runs to fifty-nine. The machine produced twenty sentences and never left the band between ten and twenty-four.
+Wikipedia jumps around. Sixteen words, then twenty-seven, then forty-three. Somewhere in the middle sits a monster of fifty-nine.
 
-Now count sentences per paragraph. Wikipedia gives you 2, 3, 1, 4, 2. There is a one-sentence paragraph in there, which writers use when a fact deserves to sit alone.
+The bot never went below ten or above twenty-four. Not once, across twenty attempts.
 
-The machine gives you 4, 4, 4, 4, 4.
+<!-- GIF 06_sentence_skyline.gif -->
+*Each tower is one sentence. Height is its word count. Wikipedia on the left, the machine on the right.*
 
-Five consecutive paragraphs of exactly four sentences is not an accident. That row of digits told me more than anything I later computed with GPT-2.
+Now count sentences per paragraph instead. Wikipedia goes 2, 3, 1, 4, 2. That lonely one-sentence paragraph is a very human move, the sort you make when a fact deserves the spotlight to itself.
 
-## What the model actually sees
+The bot went 4, 4, 4, 4, 4.
 
-Perplexity underpins most public detectors. Feed a language model some writing one word at a time, ask it to guess what comes next, and record how badly it loses. Odd choices score high. Predictable ones score near zero.
+Five paragraphs. Four sentences in each. Every single time.
 
-Folk wisdom says people surprise the model and machines do not. Teaching diagrams draw the first as a mountain range and the second as a flat lake.
+Nobody does that by accident. Out of everything I measured that week, including some fairly heavy statistics, that little row of digits was the clearest signal I found.
 
-On my pair, Wikipedia averaged 4.15 bits per word against the generated version's 3.61.
+## What the detectors are really doing
 
-The difference is genuine. It is also 0.54 bits, where the diagram promised 3.4. Plot both surfaces side by side and they look like siblings. Anyone selling detection built on that number alone is overselling.
+Tools that claim to catch AI text mostly watch two things, and both are simpler than the marketing suggests.
 
-<!-- GIF 07 -->
+The first is predictability. Show a computer a passage one word at a time and ask it to guess what comes next. People choose odd words. Machines choose expected ones. Keep score.
 
-A second result deserves attention. Type-token ratio measures how much vocabulary repeats. Theory holds that machines repeat themselves, so they ought to score lower. Wikipedia scored 0.548. The generated piece scored 0.574.
+The second is variety, which is the picket fence again. Machines find a comfortable rhythm and stay in it. People speed up, slow down, and now and then write a sentence that gets away from them.
 
-Backwards. An encyclopedia says *Sydney* and *the building* over and over, while the model kept reaching for fresh synonyms.
+Received wisdom says the predictability gap is enormous. Textbook diagrams draw human writing as a mountain range and machine writing as a still lake.
 
-## Removing something that was never there
+On my two samples that gap was tiny. Genuine, but tiny. About half a unit on a scale where the diagram had promised more than three.
 
-Watermarking is the other half of this story. When a vendor marks generated text, the mark rides in the choices themselves: a secret key nudges each successive pick toward half the dictionary, and detection counts how often the finished prose landed on the favoured half. No single word proves anything. The tally does.
+One result nobody had warned me about: machines are supposed to repeat themselves more than people do. Mine did the reverse. The encyclopedia kept saying *Sydney* and *the building*, while the bot reached for a fresh synonym every chance it got.
 
-Which raises an obvious question. What do the removal tools remove?
+## Then I tried to wipe the fingerprint
 
-I ran one at my sample. The repository I picked splits into two parts. Part one strips invisible Unicode: zero-width spaces, bidirectional controls, tag characters, exotic whitespace. Part two hands the copy to a second generator for rewriting.
+Some AI companies now stamp a hidden signature into whatever their systems write. It does not hide in invisible characters. It hides in the vocabulary itself, spread thinly across the whole passage, so no individual word betrays anything and only the overall pattern does.
 
-Part one changed nothing. Not almost nothing. Input and output were byte-identical across 2,087 characters, and the tool said so itself: *no deterministic carriers detected.* The only unusual glyph in my sample was the ø in Jørn Utzon, a Norwegian letter doing an honest job.
+Naturally, tools exist to strip it out. I picked a popular one and aimed it at my chatbot paragraph.
 
-That result should be obvious in hindsight, yet it is exactly the step people run before declaring themselves clean. Scrubbing characters cannot touch a signal encoded in vocabulary.
+It comes in two parts.
 
-<!-- GIF 11 -->
+Part one scrubs invisible characters. It ran, and it changed absolutely nothing. Not a single character moved. The tool said so itself.
 
-Part two ships no model. It emits a prompt and you supply the rewriter, which means efficacy depends entirely on what you plug in. Four prompts exist for ordinary writing. I ran all of them and measured how many of the original word pairs survived, because a marked term only carries evidence while its predecessor stays put.
+Which makes sense the moment you think about it. You cannot scrub a signature out of the letters when the signature lives in the vocabulary. Scrubbing is nonetheless the exact step most of us run before announcing ourselves clean.
 
-Round-tripping through French preserved 73 percent. Paraphrasing preserved 56. Writing afresh from a bullet outline preserved 45. The most aggressive prompt preserved 34.
+<!-- GIF 11_removal_ladder.gif -->
+*Each row is one thing the removal tool can do. Red bars are still detectable. Green bars slipped under the line.*
 
-Translation, the trick most people reach for first, turned out weakest. Translators work sentence by sentence and hand back the same skeleton wearing different clothes. Variability went from 0.23 to 0.22, marginally tighter than before. Paragraph shape stayed at 4, 4, 4, 4, 4.
+Part two hands your text to a second chatbot for rewriting. It offers four approaches. I tried all four and measured how much of the original wording survived each one.
 
-Two of the four rewrites remain above the detection threshold. Only the two that effectively rebuild the document fall below it, and at that point the honest description is no longer *removal*. Someone wrote a different article.
+Translating into French and back preserved almost three quarters. Rephrasing preserved just over half. Rebuilding from bullet notes preserved a bit under half. The most aggressive rewrite preserved a third.
 
-## The overshoot
+Translation turned out to be the feeblest option, which surprised me, since it is the trick most of us reach for first. Translators work one sentence at a time and hand back the same skeleton in different clothes. The rhythm never shifted at all. Those five paragraphs of four sentences stayed exactly where they were.
 
-Here is where my premise fell apart.
+Two of the four rewrites would still be caught. The two that escaped had chewed through so much of the original that calling the result the same document felt generous.
 
-<!-- GIF 12 -->
+## The part that broke my test
 
-Rewriting improves the style metrics. It improves them past the target.
+Here is where it got strange.
 
-Length variability in the heaviest rewrite reached 0.73, against Wikipedia's 0.42. Unpredictability reached 5.18 bits, against Wikipedia's 4.15. Vocabulary freshness drifted further from the encyclopedia with every prompt I applied.
+<!-- GIF 12_convergence.gif -->
+*Four measurements. The orange mark is where the real Wikipedia article sits. Watch the dots overshoot it.*
 
-Read that again. On the exact heuristics public detectors run, laundered machine prose now looks more human than an article humans wrote.
+Rewriting does make your text look more human. Then it keeps going.
 
-None of these quantities has a ceiling labelled *person*. A detector thresholding on burstiness or perplexity cannot separate authentic from overcooked, and the same overshoot that slips past it would flag any florid writer who happens to enjoy long sentences and rare words. That failure mode already has victims: such tools are documented as biased against people writing in a second language, whose prose is genuinely more predictable.
+The heaviest rewrite came out more uneven in its rhythm than the Wikipedia article. Its word choices were harder to predict than the Wikipedia article. On the very measurements that AI detectors run, it scored as more human than writing by actual humans.
 
-## What survives
+Read that again, because it is the whole point. None of these numbers has a ceiling marked *person*. A tool that flags you for being too predictable will happily clear you for being wildly unpredictable, and it cannot separate an overcooked rewrite from a distinctive writer.
 
-One measurement resisted everything, and it needs no model at all.
+That failure already has casualties. These detectors are documented as scoring people who write in a second language as machine-like, because careful non-native prose genuinely is more predictable.
 
-Wikipedia editors maintain a catalogue called *Signs of AI writing*: inflated significance, promotional adjectives, vague attribution, trailing clauses that restate rather than add. I turned the prose half of that list into a scanner.
+## The one thing that survived
 
-My generated sample tripped it 25 times. The Wikipedia article tripped it once.
+Volunteers at Wikipedia keep a page called *Signs of AI writing*. It contains no statistics whatsoever. It is a catalogue of habits: puffing small facts up into milestones, brochure adjectives, vague gestures at what experts supposedly think, closing lines that only restate what you just read.
 
-Every rewrite reduced the count. The best reached six, still six times the encyclopedia. What clung on through all four attempts was the promotional vocabulary. *Rich and varied. Ambitious. Innovative. Outstanding. Every corner of the globe.* Those phrases survived translation into French and back, survived paraphrase, survived being rebuilt from an outline.
+I turned that page into a simple checker.
 
-<!-- GIF 09 -->
+My chatbot paragraph tripped it twenty-five times. The Wikipedia article tripped it once.
 
-Worth noting against my own tool: part of that improvement was fake. The French round trip converted *widely regarded* into *generally considered* and *as a result* into *therefore*. Identical habit, different string, no longer matched by my regular expression. A scanner counts phrasings, not habits, so treat its verdict as a floor.
+Every rewrite brought the count down. The best reached six, still six times the encyclopedia. What clung on hardest was the marketing vocabulary. *Rich and varied. Ambitious. Innovative. Outstanding. Every corner of the globe.* Those phrases survived a trip through French. They survived rephrasing. They survived being rebuilt from notes.
 
-## What I would tell you to conclude
+I owe my own checker one caveat. Part of that improvement was an illusion. The French round trip converted *widely regarded* into *generally considered*. Identical habit, different words, no longer caught by my pattern. A checker counts phrasings, not habits, so treat its verdict as a floor rather than a score.
 
-Detection scores answer a narrow question. A cryptographic mark, when present and readable, tells you a system processed some text. It never tells you who composed the ideas, because asking a model to proofread three of your own sentences can mark the output.
+## What to take from this
 
-Everything below that tier is style, and style is negotiable. My experiment moved every statistical indicator wherever I wanted within an afternoon, mostly overshooting the target by trying moderately hard.
+If someone accuses you, or your student, on the strength of a percentage from a detector, ask what that percentage measures.
 
-So if your institution plans to discipline anyone on the strength of a percentage from a detector, understand what that percentage rests on. Rhythm of phrasing, and rarity of vocabulary. Quantities a determined student adjusts in a single editing pass, and that an unlucky honest one may fail on the day they write with unusual care.
+It measures sentence rhythm and word rarity. A motivated cheat adjusts both in a single editing pass. An honest writer may fail both on the day they write with unusual care.
 
-The tell that lasted was not statistical. It was a habit list compiled by volunteer editors who read suspected machine drafts all day, and the strongest single signal in my entire investigation was five paragraphs of exactly four sentences.
+The hidden signature is a separate matter, and a narrower one. It answers exactly one question: did this company's system touch this text? It cannot tell you who thought of the ideas, because asking a chatbot to tidy three of your own sentences can stamp the output.
 
-Read the prose. Count the sentences. That still works.
+The most dependable tell I found in a week of work needed no software at all.
+
+Read the thing. Count the sentences in each paragraph. If it runs 4, 4, 4, 4, 4, you already know.
 
 ---
 
-*Code, data, and twelve annotated visualisations: [github.com/nisaharan/ai-watermarks-3d](https://github.com/nisaharan/ai-watermarks-3d)*
+*Code, data and twelve annotated visualisations: [github.com/nisaharan/ai-watermarks-3d](https://github.com/nisaharan/ai-watermarks-3d)*
 
-*One matched pair of texts is one matched pair. Treat the direction of each effect as the finding and the magnitude as a single sample. The rewrites came from prompting a model with the tool's own instructions rather than from the tool's pipeline, and no detection score here is a measurement, because nobody outside the vendor holds the key.*
+*One matched pair of texts is one matched pair. Treat the direction of each effect as the finding and the size of it as a single sample. The rewrites came from prompting a model with the removal tool's own instructions rather than from the tool's own pipeline, and no detection score here is a measurement, because nobody outside the vendor holds the key.*
