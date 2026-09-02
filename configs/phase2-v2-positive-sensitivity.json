@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "development_only_predeclared",
+  "pilot_id": "phase2-v2-positive-sensitivity-v1",
+  "scope": "Development-only watermarked-positive sensitivity screen for the proposed v2 null design; not a confirmatory detection claim and not an attack result",
+  "prompt_manifest": "data/phase2-v2-positive-sensitivity-prompts.json",
+  "watermark_config": "configs/phase2-smoke.json",
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "generation": {
+    "base_seed": 31084029,
+    "batch_size": 5,
+    "prompts_per_scheme_key": 50,
+    "generated_tokens": 512,
+    "paired_prefix_lengths": [
+      128,
+      256,
+      512
+    ],
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive",
+    "total_watermarked_outputs": 1000
+  },
+  "key_schedule": {
+    "seed": "phase2-key-schedule-v1",
+    "conditions_per_scheme": 10,
+    "source_config": "configs/phase2-variance-pilot.json"
+  },
+  "provisional_thresholds": {
+    "artifact": "results/phase2-v2-positive-sensitivity/provisional-thresholds.json",
+    "source_role": "v1_calibration_only",
+    "source_protocol": "configs/phase2-confirmatory-null.json",
+    "source_run": "results/phase2-confirmatory-null/calibration",
+    "source_prompt_manifest": "data/phase2-confirmatory-calibration-prompts.json",
+    "confirmation_scores_used": false,
+    "design_fpr": 0.005,
+    "familywise_confidence": 0.95,
+    "primary_cells": 60,
+    "per_cell_alpha": 0.0008333333333333334,
+    "source_samples_per_cell": 5000,
+    "maximum_strict_exceedances": 10,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "kgw_threshold_policy": "detector-key x model x length",
+    "synthid_threshold_policy": "one shared threshold per model x length, set to the maximum of ten key-specific calibration candidates",
+    "caveat": "The 5,000-sample source makes this a conservative stress test for the proposed 20,000-sample design; thresholds are development-only and cannot be carried into v2 confirmation."
+  },
+  "screen": {
+    "cell_definition": "2 schemes x 10 matched generation/detection keys x 3 prefix lengths",
+    "samples_per_cell": 50,
+    "minimum_detection_rate_per_cell": 0.8,
+    "minimum_detections_per_cell": 40,
+    "global_rule": "pass only if every one of the 60 explicitly named cells has at least 40 strict detections out of 50",
+    "intervals": "one-sided 95% Clopper-Pearson lower bounds reported descriptively without multiplicity adjustment",
+    "pass_consequence": "permits the final v2 protocol and compute-budget decision; does not authorize confirmation or attacks",
+    "failure_consequence": "reassess the 0.5% margin and detector-sensitivity trade-off before any v2 null generation"
+  },
+  "separation": {
+    "fresh_prompts": true,
+    "exclude_pilot_prompts_from_future_v2_splits": true,
+    "v1_confirmation_report_only": true,
+    "no_attacks": true,
+    "no_confirmatory_claim": true
+  }
+}

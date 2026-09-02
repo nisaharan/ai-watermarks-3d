@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "status": "kgw_joint_feasibility_generation_approved",
+  "protocol_id": "phase2-v2-kgw-joint-feasibility-v1",
+  "protocol_config_sha256": "667940c3296addc9ea65170ab8f7165418c826903b34a547d3b53a79c3edbea9",
+  "protocol_freeze_sha256": "d77eb80d7832bee99e348003f73d691a486e1793f900bd94821779e41e582374",
+  "approved_by": "repository owner via Codex user instruction",
+  "approved_at": "2026-09-01T02:21:33Z",
+  "approval_record": "User explicitly approved the KGW joint-feasibility study on 1 September 2026.",
+  "approved_scope": "development_null_stage_a_and_conditional_stage_b_only",
+  "cpu_wall_clock_cap_hours": 24.0,
+  "storage_cap_gb": 0.5,
+  "manual_review_max_pair_ratings": 1300,
+  "confirmation_authorized": false,
+  "attacks_authorized": false,
+  "retuning_after_stage_failure_authorized": false
+}

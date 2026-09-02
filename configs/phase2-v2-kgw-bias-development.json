@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "status": "development_only_predeclared",
+  "experiment_id": "phase2-v2-kgw-bias-development-v1",
+  "scope": "Fresh targeted development experiment for canonical KGW generation bias; not a confirmatory detection claim and not an attack result",
+  "prompt_manifest": "data/phase2-v2-kgw-bias-development-prompts.json",
+  "source_config": "configs/phase2-confirmatory-null-v2-draft.json",
+  "watermark_config": "configs/phase2-smoke.json",
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "prompt_selection": {
+    "seed": "phase2-v2-kgw-bias-development-v1",
+    "count": 50,
+    "max_prompt_tokens": 1024,
+    "exclude_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json"
+    ]
+  },
+  "generation": {
+    "base_seed": 31085029,
+    "batch_size": 5,
+    "prompts_per_condition": 50,
+    "target_key_indices": [3, 5, 7, 8],
+    "bias_candidates_in_selection_order": [2.0, 2.5, 3.0],
+    "generated_tokens": 256,
+    "paired_prefix_lengths": [128, 256],
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive",
+    "paired_randomness": "same batch seed for all biases within each key and prompt block",
+    "total_watermarked_outputs": 600
+  },
+  "key_schedule": {
+    "seed": "phase2-key-schedule-v1",
+    "source_config": "configs/phase2-variance-pilot.json"
+  },
+  "provisional_thresholds": {
+    "artifact": "results/phase2-v2-positive-sensitivity/provisional-thresholds.json",
+    "source_role": "v1_calibration_only",
+    "confirmation_scores_used": false,
+    "design_fpr": 0.005,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "caveat": "Development-only stress thresholds; they cannot be carried into v2 confirmation."
+  },
+  "detection_guardrail": {
+    "samples_per_cell": 50,
+    "minimum_detections_per_cell": 40,
+    "minimum_detection_rate_per_cell": 0.8,
+    "global_rule": "a bias clears detection only if every targeted key x prefix-length cell reaches at least 40 strict detections out of 50"
+  },
+  "quality_guardrails": {
+    "reference_bias": 2.0,
+    "aggregation": "paired key x prefix-length cell means over the same 50 prompts",
+    "conditional_base_model_nll_max_increase_nats_per_token": 0.15,
+    "repeated_4gram_fraction_max_absolute_increase": 0.02,
+    "distinct_2gram_fraction_max_absolute_decrease": 0.02,
+    "global_rule": "a candidate clears quality only if all three tolerances hold in every targeted key x prefix-length cell relative to bias 2.0",
+    "rationale": "Bound fluency loss and obvious local degeneration while keeping tolerances interpretable and fixed before candidate results are inspected."
+  },
+  "selection_rule": {
+    "rule": "select the lowest bias in the fixed candidate order that clears both detection and quality guardrails in every targeted cell",
+    "failure_consequence": "do not change the 1% claim, drop the 128-token condition, freeze v2, or launch null generation; reassess KGW design",
+    "success_consequence": "run a fresh independent all-ten-key KGW validation at 128, 256 and 512 tokens before any final v2 decision"
+  },
+  "separation": {
+    "fresh_prompts": true,
+    "exclude_prompts_from_future_v2_splits": true,
+    "v1_confirmation_scores_used": false,
+    "no_attacks": true,
+    "no_confirmatory_claim": true,
+    "full_v2_null_generation_authorized": false
+  }
+}

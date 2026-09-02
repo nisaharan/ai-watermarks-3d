@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "protocol_id": "phase2-confirmatory-null-v1",
+  "scope": "Confirmatory false-positive calibration for canonical KGW SelfHash and SynthID-Text on a balanced-by-source Dolly task mixture; not an attack result",
+  "source": {
+    "dataset": "databricks/databricks-dolly-15k",
+    "revision": "bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a",
+    "split": "train",
+    "file": "databricks-dolly-15k.jsonl",
+    "file_sha256": "2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec",
+    "license": "CC-BY-SA-3.0",
+    "attribution": "Databricks, Inc. (2023), databricks-dolly-15k"
+  },
+  "watermark_config": "configs/phase2-smoke.json",
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "selection_seed": "phase2-confirmatory-null-v1",
+    "samples_per_split": 5000,
+    "splits": ["calibration", "confirmation"],
+    "max_prompt_tokens": 1024,
+    "deduplicate": "normalized_formatted_prompt",
+    "allocation": "Hamilton proportional allocation over eligible remaining source rows; identical quotas in both splits",
+    "exclusion_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json"
+    ]
+  },
+  "generation": {
+    "calibration_base_seed": 30082029,
+    "confirmation_base_seed": 30083029,
+    "batch_size": 5,
+    "generated_tokens": 512,
+    "paired_prefix_lengths": [128, 256, 512],
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive"
+  },
+  "key_schedule": {
+    "seed": "phase2-key-schedule-v1",
+    "conditions_per_scheme": 10,
+    "source_config": "configs/phase2-variance-pilot.json"
+  },
+  "acceptance": {
+    "target_fpr": 0.01,
+    "familywise_confidence": 0.95,
+    "primary_cells": 60,
+    "cell_definition": "2 schemes x 10 detector keys x 3 generated-token lengths",
+    "multiplicity_control": "Bonferroni",
+    "per_cell_alpha": 0.0008333333333333334,
+    "interval": "exact one-sided Clopper-Pearson upper confidence bound",
+    "maximum_exceedances_per_5000": 28,
+    "minimum_order_statistic_index_one_based": 4972,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "global_gate": "pass only if every one of the 60 confirmation cells has an exact upper bound <= 0.01",
+    "kgw_threshold_policy": "detector-key x model x length",
+    "synthid_threshold_policy": "one shared threshold per model x length, set to the maximum of the ten key-specific calibration candidates; confirmation is still checked separately for every key",
+    "category_analysis": "diagnostic only; no category-specific threshold tuning or confirmatory claim"
+  },
+  "separation": {
+    "thresholds_fit_from": "calibration split only",
+    "confirmation_access": "confirmation generation and evaluation begin only after threshold artifact is frozen and hashed",
+    "one_shot_confirmation": true,
+    "no_post_confirmation_retuning": true
+  }
+}

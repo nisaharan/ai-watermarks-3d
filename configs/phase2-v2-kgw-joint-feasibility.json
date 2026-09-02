@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "status": "preregistered_pending_compute_approval",
+  "protocol_id": "phase2-v2-kgw-joint-feasibility-v1",
+  "decision_source": "docs/research-transformation/phase-2/kgw-feasibility-design-decision.md",
+  "scope": "Final bounded development-only feasibility study of canonical KGW SelfHash green-list ratio and logit bias; not a confirmatory false-positive, detection, or attack claim",
+  "source_config": "configs/phase2-confirmatory-null-v2-draft.json",
+  "watermark_config": "configs/phase2-smoke.json",
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "variant": {
+    "id": "kgw_author_selfhash_v1",
+    "seeding_scheme": "selfhash",
+    "context_width": 4,
+    "never_pool_with": [
+      "kgw_transformers_selfhash_v5_16",
+      "left_hash"
+    ]
+  },
+  "parameter_family": {
+    "greenlist_ratios": [0.25, 0.5, 0.7],
+    "biases": [2.0, 2.5, 3.0, 4.0],
+    "candidate_order": "cartesian_gamma_then_delta",
+    "candidate_count": 12,
+    "no_interpolation_or_added_candidate_after_results": true,
+    "gamma_0_10_excluded": "Canonical SelfHash top-k-40 rejection would retain only about four candidates in expectation and the local gamma-0.25 path has already produced an empty rejection set."
+  },
+  "prompt_manifests": {
+    "development_null": "data/phase2-v2-kgw-joint-null-prompts.json",
+    "stage_a": "data/phase2-v2-kgw-joint-stage-a-prompts.json",
+    "stage_b": "data/phase2-v2-kgw-joint-stage-b-prompts.json"
+  },
+  "prompt_selection": {
+    "seed": "phase2-v2-kgw-joint-feasibility-v1",
+    "max_prompt_tokens": 1024,
+    "roles": {
+      "development_null": 5000,
+      "stage_a": 100,
+      "stage_b": 100
+    },
+    "exclude_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json",
+      "data/phase2-v2-kgw-bias-development-prompts.json",
+      "data/phase2-v2-kgw-bias-development-v2-prompts.json",
+      "data/phase2-v2-kgw-bias-development-v3-prompts.json"
+    ],
+    "cross_role_overlap_allowed": false,
+    "future_v2_split_overlap_allowed": false
+  },
+  "generation": {
+    "batch_size": 5,
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive",
+    "exact_length_generation": true,
+    "runtime_safeguard": "author_selfhash_empty_index_dtype_v1_instrumented",
+    "development_null": {
+      "base_seed": 31088029,
+      "generated_tokens": 512,
+      "paired_prefix_lengths": [128, 256, 512],
+      "outputs": 5000
+    },
+    "stage_a": {
+      "base_seed": 31089029,
+      "target_key_indices": [3, 5, 7, 8],
+      "prompts_per_key_candidate": 100,
+      "generated_tokens": 256,
+      "paired_prefix_lengths": [128, 256],
+      "paired_randomness": "same key-and-prompt-block seed for the unwatermarked control and all 12 candidates",
+      "watermarked_outputs": 4800,
+      "unwatermarked_control_outputs": 400,
+      "total_outputs": 5200
+    },
+    "stage_b": {
+      "base_seed": 31090029,
+      "target_key_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "prompts_per_key": 100,
+      "generated_tokens": 512,
+      "paired_prefix_lengths": [128, 256, 512],
+      "paired_randomness": "same key-and-prompt-block seed for the unwatermarked control and the single frozen Stage-A selection",
+      "selected_candidate_outputs": 1000,
+      "unwatermarked_control_outputs": 1000,
+      "total_outputs": 2000
+    }
+  },
+  "key_schedule": {
+    "seed": "phase2-key-schedule-v1",
+    "source_config": "configs/phase2-variance-pilot.json"
+  },
+  "development_null_thresholds": {
+    "artifact": "results/phase2-v2-kgw-joint-feasibility/development-thresholds.json",
+    "source_role": "fresh_ultrachat_development_null_only",
+    "samples": 5000,
+    "design_fpr": 0.005,
+    "familywise_confidence": 0.95,
+    "primary_cells": 90,
+    "per_cell_alpha": 0.0005555555555555556,
+    "maximum_strict_exceedances": 9,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "policy": "gamma x detector-key x model x length",
+    "fit_before_positive_generation": true,
+    "v1_confirmation_scores_used": false,
+    "gamma_0_25_thresholds_reused_for_other_gamma": false
+  },
+  "detection_guardrail": {
+    "samples_per_cell": 100,
+    "minimum_detections_per_cell": 80,
+    "minimum_detection_rate_per_cell": 0.8,
+    "interval": "one-sided 95% Clopper-Pearson lower bound reported descriptively, not used as the gate",
+    "global_rule": "a candidate passes only if every explicitly named key x prefix-length cell reaches at least 80 strict detections out of 100",
+    "no_averaging_across_keys_or_lengths": true
+  },
+  "automated_quality_guardrails": {
+    "reference": "paired unwatermarked control for the same key and prompt block",
+    "aggregation": "paired key x prefix-length cell means over the same 100 prompts",
+    "conditional_base_model_nll_max_increase_nats_per_token": 0.15,
+    "repeated_4gram_fraction_max_absolute_increase": 0.02,
+    "distinct_2gram_fraction_max_absolute_decrease": 0.02,
+    "decoded_character_count_mean_ratio_min": 0.85,
+    "decoded_character_count_mean_ratio_max": 1.15,
+    "empty_decoded_outputs_allowed": 0,
+    "exact_generated_token_length_required": true,
+    "empty_rejection_noop_max_rate": 0.001,
+    "empty_rejection_noop_denominator": "generated token positions",
+    "global_rule": "every automated guardrail must pass in every explicitly named key x prefix-length cell"
+  },
+  "blinded_task_quality_guardrail": {
+    "applies_to": "every Stage-A candidate that first passes all automated detection and quality guardrails, and the single Stage-B candidate",
+    "sample_pairs_per_candidate": 50,
+    "selection": "lowest frozen SHA-256 rank over eligible key x prompt pairs",
+    "raters": 2,
+    "blinding": "prompt visible; candidate and paired unwatermarked response randomly labelled A/B independently for each pair; parameter identity hidden",
+    "rating_options": [
+      "candidate_better",
+      "tie_or_indistinguishable",
+      "control_better",
+      "candidate_unusable",
+      "control_unusable"
+    ],
+    "pair_adjudication": "candidate_unusable if either rater marks candidate unusable; candidate_worse only if both raters prefer control and neither marks an unusable response; all other non-unusable outcomes are non_worse",
+    "candidate_unusable_pairs_allowed": 0,
+    "candidate_worse_pairs_allowed": 10,
+    "pass_rule": "zero candidate-unusable pairs and at most 10 candidate-worse pairs out of 50",
+    "rater_identifiers_and_randomization_seed_frozen_before_review": true
+  },
+  "stage_a_selection_rule": {
+    "eligibility": "pass every detection, automated quality, and blinded task-quality guardrail",
+    "primary_rank": "smallest worst-cell conditional base-model NLL increase versus paired unwatermarked control",
+    "nll_tie_tolerance_nats_per_token": 0.005,
+    "tie_breakers": [
+      "lower_delta",
+      "gamma_closest_to_0.50",
+      "lower_gamma"
+    ],
+    "maximum_selected_candidates": 1,
+    "selection_artifact": "results/phase2-v2-kgw-joint-feasibility/stage-a-selection.json"
+  },
+  "stop_rules": {
+    "no_stage_a_candidate": "close or prospectively rescope the 128-token canonical KGW claim; no further tuning",
+    "stage_b_failure": "close or prospectively rescope the 128-token canonical KGW claim; no candidate substitution and no further tuning",
+    "stage_b_pass": "permits drafting a new full null calibration-confirmation protocol; does not authorize that run or attacks",
+    "threshold_weakening_allowed": false,
+    "post_result_candidate_addition_allowed": false,
+    "third_tuning_round_allowed": false
+  },
+  "compute_budget": {
+    "basis": "linear planning from completed local CPU runs; uncertainty includes scoring mix and manual review",
+    "development_null_hours": 6.5,
+    "stage_a_generation_and_analysis_hours": 9.7,
+    "stage_b_generation_and_analysis_hours_if_reached": 5.1,
+    "cpu_wall_clock_cap_hours": 24.0,
+    "storage_cap_gb": 0.5,
+    "manual_review_max_pair_ratings": 1300,
+    "approval_required_before_generation": true
+  },
+  "separation": {
+    "fresh_prompts": true,
+    "v1_confirmation_scores_used": false,
+    "v1_artifacts_modified": false,
+    "no_attacks": true,
+    "no_confirmatory_claim": true,
+    "replacement_null_generation_authorized": false,
+    "study_generation_authorized": false,
+    "protocol_freeze_artifact": "results/phase2-v2-kgw-joint-feasibility/protocol-freeze.json",
+    "authorization_artifact": "configs/phase2-v2-kgw-joint-feasibility-authorization.json"
+  }
+}

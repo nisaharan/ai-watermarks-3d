@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "scope": "Phase 2 independent-model replication of the multi-key null-variance finding; not a benchmark result",
+  "prompt_manifest": "data/phase2-variance-replication-prompts.json",
+  "watermark_config": "configs/phase2-replication-watermarks.json",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "device": "cpu"
+  },
+  "generation": {
+    "base_seed": 30082028,
+    "batch_size": 2,
+    "generated_tokens": 512,
+    "paired_prefix_lengths": [128, 256, 512],
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive"
+  },
+  "selection": {
+    "prompts": 104,
+    "paired_design": true,
+    "category_allocation": "13 frozen prompts in each of eight Dolly task categories",
+    "power_rationale": "n=104 exceeds the pilot benchmark n=88 for 80% power at a standardized mean effect of 0.3; this is a replication diagnostic, not FPR threshold estimation"
+  },
+  "key_schedule": {
+    "derivation": "condition 0 is the public fixture; conditions 1-9 are SHA-256-derived before scoring; KGW candidates advance to the next odd prime",
+    "seed": "phase2-key-schedule-v1",
+    "kgw": [15485863, 723417547, 97919819, 61299587, 214893571, 244504453, 1615402669, 100227623, 994556701, 184782517],
+    "synthid": [
+      [654, 400, 836, 123, 340, 443, 597, 160, 57],
+      [1835620992, 1657857915, 1875553196, 1790960842, 205283617, 1892744217, 1622191811, 1306821264, 451966724],
+      [45015969, 656176291, 1882514581, 1421756389, 1819790528, 1478775152, 968353995, 1327690042, 1262046569],
+      [443999223, 1804240806, 1388245637, 93712519, 1293076071, 861196172, 1869638792, 888641493, 77621871],
+      [1717503344, 78786698, 1437920472, 675534301, 630665926, 146402101, 320257067, 1978265535, 1788532544],
+      [14381411, 1849195302, 1915978604, 570946126, 1814875623, 959094806, 316051243, 1217689203, 209644532],
+      [1050522237, 1927387448, 265074905, 1845593476, 778337320, 1735597152, 261978290, 1755126202, 1368939180],
+      [1085900721, 716293511, 206351278, 1360977032, 670857951, 919247626, 182810871, 236245266, 910126430],
+      [779413008, 1659678096, 1360792846, 618462181, 888870064, 342200451, 689468466, 1110292016, 309807942],
+      [1264182111, 1820674417, 1001506179, 795648792, 1476648590, 1713110505, 1374561341, 106203969, 377805048]
+    ]
+  },
+  "variants": {
+    "kgw": "kgw_author_selfhash_v1",
+    "synthid": "synthid_deepmind_hash_v1"
+  },
+  "storage": {
+    "generated_token_ids": true,
+    "compact_score_trace_hashes": true,
+    "full_native_trace_audit_samples_per_length": 1
+  }
+}

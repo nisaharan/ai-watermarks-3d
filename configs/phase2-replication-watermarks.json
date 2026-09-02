@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "device": "cpu"
+  },
+  "generation": {
+    "base_seed": 30082028,
+    "min_new_tokens": 512,
+    "max_new_tokens": 512,
+    "temperature": 0.8,
+    "top_k": 40
+  },
+  "kgw": {
+    "greenlist_ratio": 0.25,
+    "bias": 2.0,
+    "hashing_key": 15485863,
+    "seeding_scheme": "selfhash",
+    "context_width": 4
+  },
+  "synthid": {
+    "ngram_len": 5,
+    "keys": [654, 400, 836, 123, 340, 443, 597, 160, 57],
+    "context_history_size": 1024,
+    "sampling_table_seed": 0,
+    "sampling_table_size": 65536,
+    "skip_first_ngram_calls": false,
+    "debug_mode": false
+  },
+  "variants": {
+    "kgw": "kgw_author_selfhash_v1",
+    "synthid": "synthid_deepmind_hash_v1"
+  },
+  "provenance": {
+    "key_scope": "frozen_ten_key_schedule",
+    "result_scope": "independent_model_replication_only",
+    "model_metadata_source": "Hugging Face Hub API checked 2026-08-30"
+  }
+}

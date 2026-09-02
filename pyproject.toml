@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-watermarks-research"
+version = "0.2.0"
+description = "Reproducible research harness for keyed AI-text watermark robustness"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = []
+
+[project.optional-dependencies]
+ml = [
+  "numpy>=1.26,<3",
+  "safetensors>=0.5,<1",
+  "torch>=2.7,<3",
+  "transformers>=4.52,<6",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "matplotlib>=3.11.1",
+    "nbclient>=0.11.0",
+    "nbformat>=5.11.1",
+    "pandas>=3.0.5",
+    "pytest>=8,<10",
+    "scipy>=1.17.1",
+]
+
+[project.scripts]
+phase2-smoke = "ai_watermarks_phase2.smoke:main"
+phase2-null-calibration = "ai_watermarks_phase2.null_calibration:main"
+phase2-variance-pilot = "ai_watermarks_phase2.variance_pilot:main"
+phase2-confirmatory-null = "ai_watermarks_phase2.confirmatory_null:main"
+phase2-calibration-gate = "ai_watermarks_phase2.calibration_gate:main"
+phase2-resume-status = "ai_watermarks_phase2.resume_status:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_watermarks_phase2"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

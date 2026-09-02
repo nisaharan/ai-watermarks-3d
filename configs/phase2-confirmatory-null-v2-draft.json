@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "status": "draft_not_authorized_for_generation",
+  "protocol_id": "phase2-confirmatory-null-v2-draft",
+  "scope": "Replacement confirmatory false-positive study for canonical KGW SelfHash and SynthID-Text on a fresh UltraChat prompt population; not an attack result",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "config": "default",
+    "split": "train_sft",
+    "license": "MIT",
+    "language": "en",
+    "attribution": "Hugging Face H4 (UltraChat 200k)",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "extraction_rule": "ParquetLens SQL SELECT row_number() OVER () - 1 AS shard_row, prompt_id, prompt FROM data; JSON output"
+  },
+  "watermark_config": "configs/phase2-smoke.json",
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "selection_seed": "phase2-confirmatory-null-v2",
+    "samples_per_split": 20000,
+    "splits": [
+      "calibration",
+      "confirmation"
+    ],
+    "max_prompt_tokens": 1024,
+    "deduplicate": "normalized_raw_prompt",
+    "allocation": "deterministic hash-ranked sample from the eligible aggregate train_sft prompt population; no category claim",
+    "exclusion_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json",
+      "data/phase2-v2-kgw-bias-development-prompts.json",
+      "data/phase2-v2-kgw-bias-development-v2-prompts.json",
+      "data/phase2-v2-kgw-bias-development-v3-prompts.json"
+    ]
+  },
+  "generation": {
+    "calibration_base_seed": 31082029,
+    "confirmation_base_seed": 31083029,
+    "batch_size": 5,
+    "generated_tokens": 512,
+    "paired_prefix_lengths": [
+      128,
+      256,
+      512
+    ],
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive"
+  },
+  "key_schedule": {
+    "seed": "phase2-key-schedule-v1",
+    "conditions_per_scheme": 10,
+    "source_config": "configs/phase2-variance-pilot.json"
+  },
+  "acceptance": {
+    "confirmation_target_fpr": 0.01,
+    "calibration_design_fpr": 0.005,
+    "familywise_confidence": 0.95,
+    "primary_cells": 60,
+    "multiplicity_control": "Bonferroni",
+    "per_cell_alpha": 0.0008333333333333334,
+    "interval": "exact one-sided Clopper-Pearson upper confidence bound",
+    "maximum_calibration_exceedances_per_20000": 69,
+    "maximum_confirmation_exceedances_per_20000": 156,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "global_gate": "pass only if every one of the 60 confirmation cells has an exact upper bound <= 0.01",
+    "kgw_threshold_policy": "detector-key x model x length",
+    "synthid_threshold_policy": "one shared threshold per model x length, set to the maximum of ten key-specific calibration candidates; confirmation is still checked separately for every key",
+    "category_analysis": "not confirmatory; the source has no frozen Dolly-style category strata"
+  },
+  "separation": {
+    "thresholds_fit_from": "fresh calibration split only",
+    "confirmation_access": "confirmation generation and evaluation begin only after the threshold artifact is frozen and hashed",
+    "one_shot_confirmation": true,
+    "no_post_confirmation_retuning": true,
+    "prior_confirmation_use": "report-only; prohibited for threshold or protocol tuning"
+  },
+  "authorization": {
+    "source_audit": "authorized",
+    "manifest_freeze": "pending",
+    "development_positive_sensitivity_check": "failed_5_of_60_cells",
+    "development_kgw_bias_check": "failed_no_candidate_passed_detection_and_quality",
+    "compute_budget_approval": "pending",
+    "null_generation": "prohibited_until_all_pending_items_are_resolved",
+    "attack_generation": "prohibited"
+  },
+  "development_result": {
+    "pilot_id": "phase2-v2-positive-sensitivity-v1",
+    "analysis": "results/phase2-v2-positive-sensitivity/analysis.json",
+    "status": "sensitivity_screen_failed",
+    "failed_cells": 5,
+    "failure_concentration": "canonical KGW: four cells at 128 tokens and one at 256 tokens",
+    "margin_frontier": "no tested 0.5%-0.8% design FPR met both the all-cell 80% positive screen and at least 95% conservative family pass power",
+    "next_priority": "formal KGW feasibility/design decision; bias-only tuning is closed",
+    "kgw_bias_experiment": {
+      "aborted_attempt": {
+        "config": "configs/phase2-v2-kgw-bias-development.json",
+        "prompt_manifest": "data/phase2-v2-kgw-bias-development-prompts.json",
+        "status": "stopped_after_95_outputs_on_empty_index_dtype_error",
+        "results_used": false
+      },
+      "completed_bracket_config": "configs/phase2-v2-kgw-bias-development-v2.json",
+      "completed_bracket_prompt_manifest": "data/phase2-v2-kgw-bias-development-v2-prompts.json",
+      "completed_result": {
+        "analysis": "results/phase2-v2-kgw-bias-development-v2/analysis.json",
+        "status": "no_candidate_passed_both_detection_and_quality",
+        "bias_2_5": "all detection cells passed; two quality cells failed"
+      },
+      "final_bracket_config": "configs/phase2-v2-kgw-bias-development-v3.json",
+      "final_bracket_prompt_manifest": "data/phase2-v2-kgw-bias-development-v3-prompts.json",
+      "final_bracket_result": {
+        "analysis": "results/phase2-v2-kgw-bias-development-v3/analysis.json",
+        "status": "no_candidate_passed_both_detection_and_quality",
+        "bias_2_3": "all detection cells passed; four quality cells failed",
+        "bias_2_4": "all detection cells passed; four quality cells failed",
+        "bias_2_45": "one detection cell and three quality cells failed"
+      },
+      "status": "completed_no_bias_selected_bias_only_tuning_closed"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "kgw": {
+    "repository": "https://github.com/jwkirchenbauer/lm-watermarking",
+    "commit": "82922516930c02f8aa322765defdb5863d07a00e",
+    "commit_date": "2025-09-17T04:30:05Z",
+    "files": {
+      "extended_watermark_processor.py": {
+        "url": "https://raw.githubusercontent.com/jwkirchenbauer/lm-watermarking/82922516930c02f8aa322765defdb5863d07a00e/extended_watermark_processor.py",
+        "sha256": "a07b845b5f483c4e12123f6b51dcb2f327b5c01e6a30899febd4fc71fd6b30bc"
+      },
+      "alternative_prf_schemes.py": {
+        "url": "https://raw.githubusercontent.com/jwkirchenbauer/lm-watermarking/82922516930c02f8aa322765defdb5863d07a00e/alternative_prf_schemes.py",
+        "sha256": "f330a63b6994821e5dd2ae454d5dc5a473cb6fa912b2a2ffbe92253ad7355554"
+      }
+    }
+  },
+  "synthid": {
+    "repository": "https://github.com/google-deepmind/synthid-text",
+    "commit": "addb4a158143c7c6851a1308f78b89fceed59683",
+    "commit_date": "2025-06-13T13:23:45Z",
+    "files": {
+      "logits_processing.py": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/synthid-text/addb4a158143c7c6851a1308f78b89fceed59683/src/synthid_text/logits_processing.py",
+        "sha256": "88bd1c20e2fea72356980548fc4cfa82c2ca1a2059ecb2deb1e3efa38be76294"
+      },
+      "hashing_function.py": {
+        "url": "https://raw.githubusercontent.com/google-deepmind/synthid-text/addb4a158143c7c6851a1308f78b89fceed59683/src/synthid_text/hashing_function.py",
+        "sha256": "6900000b03d6275347396d495d1118c64a16537a64c05fdec0868b623d1a34ab"
+      }
+    }
+  }
+}

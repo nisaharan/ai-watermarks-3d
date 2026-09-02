@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "generation": {
+    "base_seed": 26082026,
+    "min_new_tokens": 48,
+    "max_new_tokens": 48,
+    "temperature": 0.8,
+    "top_k": 40
+  },
+  "kgw": {
+    "greenlist_ratio": 0.25,
+    "bias": 2.0,
+    "hashing_key": 15485863,
+    "seeding_scheme": "selfhash",
+    "context_width": 4
+  },
+  "synthid": {
+    "ngram_len": 5,
+    "keys": [
+      654,
+      400,
+      836,
+      123,
+      340,
+      443,
+      597,
+      160,
+      57
+    ],
+    "context_history_size": 1024,
+    "sampling_table_seed": 0,
+    "sampling_table_size": 65536,
+    "skip_first_ngram_calls": false,
+    "debug_mode": false
+  },
+  "variants": {
+    "kgw": "kgw_author_selfhash_v1",
+    "synthid": "synthid_deepmind_hash_v1"
+  },
+  "attacks": {
+    "interval": 8,
+    "replacement_token": 0
+  },
+  "provenance": {
+    "key_scope": "public_test_fixture",
+    "result_scope": "validation_only",
+    "source": "Phase 2 protocol v1"
+  }
+}

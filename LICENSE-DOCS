@@ -1,0 +1,15 @@
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+Copyright (c) 2026 Nisaharan Genhatharan
+
+The prose in this repository, the manuscript, the figures, and the derived
+result tables are licensed under CC BY-SA 4.0:
+
+    https://creativecommons.org/licenses/by-sa/4.0/
+
+Share-alike applies because parts of this work are derived from CC BY-SA
+material. The prompt manifests and the per-text statistics are derived from
+databricks-dolly-15k, which is CC BY-SA 3.0. See NOTICE.md for the full
+attribution list.
+
+Source code is licensed separately under the MIT License. See LICENSE.

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scope": "Phase 2 development null-calibration pilot; not a benchmark or publication threshold",
+  "source": {
+    "dataset": "databricks/databricks-dolly-15k",
+    "revision": "bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a",
+    "split": "train",
+    "file": "databricks-dolly-15k.jsonl",
+    "file_sha256": "2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec",
+    "license": "CC-BY-SA-3.0",
+    "attribution": "Databricks, Inc. (2023), databricks-dolly-15k"
+  },
+  "selection": {
+    "selection_seed": "phase2-null-calibration-v1",
+    "target_samples": 500,
+    "max_prompt_tokens": 1024,
+    "deduplicate": "normalized_formatted_prompt",
+    "category_allocation": {
+      "open_qa": 63,
+      "general_qa": 63,
+      "classification": 63,
+      "closed_qa": 63,
+      "brainstorming": 62,
+      "information_extraction": 62,
+      "summarization": 62,
+      "creative_writing": 62
+    }
+  },
+  "generation": {
+    "base_seed": 30082026,
+    "batch_size": 10,
+    "min_new_tokens": 48,
+    "max_new_tokens": 48,
+    "temperature": 0.8,
+    "top_k": 40,
+    "decoder_policy": "transformers_top_k_tie_inclusive"
+  },
+  "watermark_config": "configs/phase2-smoke.json",
+  "variants": {
+    "kgw": "kgw_author_selfhash_v1",
+    "synthid": "synthid_deepmind_hash_v1"
+  },
+  "analysis": {
+    "development_fpr_targets": [0.05, 0.01],
+    "claim_status": "pilot_only",
+    "omit_fpr_target": 0.001,
+    "confirmatory_null_samples_per_configuration": 5000,
+    "samples_required_if_0_1_percent_is_primary": 50000,
+    "binomial_interval": "wilson_95_percent"
+  }
+}

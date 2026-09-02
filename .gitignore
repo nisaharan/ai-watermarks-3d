@@ -1,0 +1,97 @@
+# --- third-party material, kept locally, not republished -------------------
+# Wayne Pan, "How to Remove Claude Watermarks From Content You Own" (12 Aug 2026).
+# Cited by title, author, date and URL in AI-Watermarks-3D.md; the full text is
+# the author's copyright and is not ours to redistribute.
+Watermrk.md
+Convo.docx
+
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# --- editors / os ----------------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+.claude/
+
+# --- local scratch ---------------------------------------------------------
+gifs_preview/
+*.tmp
+
+# derived upload variants: regenerate with FRAMES=40 OUTDIR=gifs/social
+gifs/social/
+article/*.draft.md
+
+article/*.html
+
+# Phase 2 model caches and generated experiment output.
+#
+# Raw generation output stays local. The per-batch files hold generated
+# continuations that have not been reviewed for memorised personal, copyrighted
+# or unsafe content, and the per-run blobs and uncompressed score files run to
+# hundreds of megabytes. What is tracked is the reported package: the aggregate
+# artifacts every table and figure in the paper is built from, plus the two
+# gzipped score files, so a clone can regenerate all of them.
+#
+# Development runs that support no claim in the paper (smoke, null-calibration,
+# positive-sensitivity, the v2 bias brackets and the abandoned joint study) are
+# retained locally for audit and are not part of the release.
+.cache/
+results/**
+!results/**/
+
+!results/phase2-reference/crosscheck.json
+!results/phase2-reference/generation-parity.json
+
+!results/phase2-nominal-fpr/nominal-fpr-cells.csv
+!results/phase2-nominal-fpr/nominal-fpr-summary.json
+!results/phase2-nominal-fpr/mechanism-key-green-rate.csv
+!results/phase2-nominal-fpr/mechanism-summary.json
+!results/phase2-nominal-fpr/repetition-length.json
+!results/phase2-nominal-fpr/null-texts.csv
+!results/phase2-nominal-fpr/null-scores.csv.gz
+
+!results/phase2-human-null/human-vs-model-cells.csv
+!results/phase2-human-null/human-vs-model-summary.json
+!results/phase2-human-null/human-texts.csv
+!results/phase2-human-null/human-scores.csv.gz
+!results/phase2-human-null/run.json
+
+!results/phase2-confirmatory-null/thresholds.json
+!results/phase2-confirmatory-null/confirmation-gate.json
+!results/phase2-confirmatory-null/failure-diagnosis.json
+!results/phase2-confirmatory-null/heldout-summary.json
+
+!results/phase2-variance-pilot/analysis.json
+!results/phase2-variance-pilot/scores.csv
+!results/phase2-variance-replication/analysis.json
+!results/phase2-variance-replication/scores.csv
+
+# Prompt manifests for the abandoned joint study: superseded, no claim rests on
+# them, and the null manifest alone is 6 MB.
+data/phase2-v2-kgw-joint-*.json
+
+# --- kept locally, outside the published release ---------------------------
+# The project began as twelve 3D visualisations of watermark and style metrics.
+# That work is exploratory, is superseded by the measured study in this
+# repository, and makes no claim the paper relies on, so it is not published.
+gifs/
+archive/
+AI-Watermarks-3D.md
+
+# Third-party reference material that is cited, not ours to redistribute.
+docs/references/
+
+# Working notes and session scaffolding, not research artifacts.
+RESEARCH_STATUS.md
+AGENTS.md
+docs/research-transformation/phase-2/NEXT-SESSION.md
+docs/research-transformation/phase-2/v1-publication-plan.md
+docs/research-transformation/v2-ideas.md
+
+# Legacy dependency list for the unpublished visualisation scripts.
+requirements.txt
