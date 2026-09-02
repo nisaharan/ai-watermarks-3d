@@ -103,7 +103,7 @@ def table_a1(diag: dict) -> dict:
     for scheme, title in (("kgw", "Canonical KGW SelfHash (thresholds indexed by key and length)"),
                           ("synthid", "Canonical SynthID-Text (one shared threshold per length)")):
         d = df[df.scheme == scheme]
-        lines += [r"\begin{table}[H]", r"\centering", r"\footnotesize",
+        lines += [r"\begin{table*}[t]", r"\centering", r"\footnotesize",
                   rf"\caption{{{title}. Held-out false-positive rate of the once-fitted "
                   r"threshold on the 5,000-output confirmation split, with exact two-sided 95\% "
                   r"Clopper--Pearson intervals. Calib.\ and Conf.\ are strict exceedance counts on "
@@ -117,7 +117,7 @@ def table_a1(diag: dict) -> dict:
             lines.append(f"{r.key_id} & {r.length} & {r.threshold:.4f} & {r.calibration_exceedances} & "
                          f"{r.confirmation_exceedances} & {pct_ci(r.heldout_fpr, r.ci_lo, r.ci_hi)} & "
                          f"{r.exact_upper_bound*100:.2f} & {'yes' if r.passed else 'no'}" + r" \\")
-        lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
+        lines += [r"\bottomrule", r"\end{tabular}", r"\end{table*}", ""]
     write(os.path.join(TABLES, "tableA1-calibrated-cells.tex"), lines)
 
     # Markdown twin

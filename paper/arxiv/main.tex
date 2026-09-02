@@ -1,8 +1,10 @@
-\documentclass[11pt]{article}
+\documentclass[conference]{IEEEtran}
 
-\usepackage[a4paper,margin=1in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+% STIX Two is a Times-compatible scientific serif with a matching math font, and
+% it is the same family the figures are drawn in, so figure text and body text
+% are one typeface. It is in TeX Live, so this builds anywhere.
+\usepackage{stix2}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -10,9 +12,7 @@
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{amsmath}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
@@ -31,15 +31,17 @@
 \newcommand{\synthid}{\textsc{SynthID-Text}}
 \newcommand{\fpr}{\mathrm{FPR}}
 \newcommand{\variant}[1]{\texttt{#1}}
-\renewcommand{\arraystretch}{1.14}
+\renewcommand{\arraystretch}{1.15}
 \setlength{\emergencystretch}{2em}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
-\title{\bfseries When Nominal False-Positive Rates Fail:\\
-Key- and Length-Dependent Null Behavior of Canonical LLM Text Watermarks}
-\author{Nisaharan Genhatharan\\
-UNSW Sydney}
-\date{2 September 2026}
+\title{When Nominal False-Positive Rates Fail:\\
+Key- and Length-Dependent Null Behavior of\\
+Canonical LLM Text Watermarks}
+
+\author{\IEEEauthorblockN{Nisaharan Genhatharan}
+\IEEEauthorblockA{\textit{UNSW Sydney}\\
+Sydney, Australia}}
 
 \begin{document}
 \maketitle
@@ -69,8 +71,10 @@ validation margin. SynthID-Text's naive-independence reference stays near 1\%
 throughout. All rates are reported with exact 95\% intervals.
 \end{abstract}
 
-\noindent\textbf{Keywords:} language-model watermarking; false-positive control;
-empirical calibration; KGW SelfHash; SynthID-Text; detector keys
+\begin{IEEEkeywords}
+language-model watermarking, false-positive control, empirical calibration,
+KGW SelfHash, SynthID-Text, detector keys
+\end{IEEEkeywords}
 
 \section{Introduction}
 
@@ -280,7 +284,7 @@ keys stay conservative, so no single length policy repairs the threshold. The
 500-output pilot value of 47.0\% for key 07 at 512 tokens reproduces as 48.4\% at
 $n=10{,}000$.
 
-\begin{table}[t]
+\begin{table*}[t]
   \centering
   \caption{Empirical false-positive rate (\%) of canonical KGW SelfHash at the
   nominal one-sided 1\% threshold ($z>2.326$) on 10,000 unwatermarked
@@ -289,9 +293,9 @@ $n=10{,}000$.
   \label{tab:nominal}
   \small
   \input{tables/table1-nominal-fpr}
-\end{table}
+\end{table*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig1-nominal-fpr-by-key.pdf}
   \caption{Canonical KGW SelfHash false-positive rate by frozen detector key and
@@ -300,14 +304,14 @@ $n=10{,}000$.
   shaded light to dark. Keys are categorical and are paired within texts, so the
   points are not independent across keys.}
   \label{fig:nominal}
-\end{figure}
+\end{figure*}
 
 Which key inflates is model-specific (Figure~\ref{fig:threeruns}). On Qwen2.5-0.5B
 the worst keys are 04 and 05 at 41.3\% each, while key 07, the worst key on
 SmolLM2, gives 5.8\%. The ten keys are the same bit strings in both runs; the
 model's output distribution decides which of them fail.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig2-nominal-fpr-three-runs.pdf}
   \caption{The same ten keys at 512 tokens in three null runs: the primary
@@ -315,7 +319,7 @@ model's output distribution decides which of them fail.
   replication ($n=104$). The two SmolLM2 runs agree; the Qwen run inflates
   different keys.}
   \label{fig:threeruns}
-\end{figure}
+\end{figure*}
 
 SynthID-Text's naive-independence reference behaves differently: per-cell rates
 range from 0.74\% to 1.58\%, 11 of 30 cells sit above 1\% by point estimate, and
@@ -331,7 +335,7 @@ approximately normal but shifted and widened relative to the assumed $N(0,1)$:
 mean $z$ runs from $-1.96$ (key 03) to $+2.24$ (key 07), and the standard
 deviation from 1.26 to 1.58.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig3-z-distributions.pdf}
   \caption{Null distribution of the KGW $z$ statistic at 512 tokens for each of the
@@ -341,7 +345,7 @@ deviation from 1.26 to 1.58.
   is that cell's false-positive rate. Under the assumed null every panel would
   show the same 1\%.}
   \label{fig:zdist}
-\end{figure}
+\end{figure*}
 
 The shift has a simple source (Figure~\ref{fig:mechanism}). Each key induces its
 own null green-token rate $p_k$ on this model's text, stable across lengths and
@@ -355,7 +359,7 @@ second, smaller effect is over-dispersion: the standard deviation of $z$ rises f
 mean and standard deviation reproduces every cell's rate within 1.5 percentage
 points.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig4-key-green-rate-mechanism.pdf}
   \caption{(a) Null green-token rate $p_k$ for each key at 512 tokens, drawn from
@@ -364,7 +368,7 @@ points.
   all 30 key-by-length cells against the value predicted from $p_k$ alone, with
   the identity line.}
   \label{fig:mechanism}
-\end{figure}
+\end{figure*}
 
 The failure is thus the standard $z$-test's i.i.d.\ Bernoulli($\gamma$) null being
 wrong for real text, with the sign and size of the error set by which frequent
@@ -379,7 +383,7 @@ gives 63\% in the least repetitive quartile and 32\% in the most repetitive.
 SelfHash already skips repeated contexts, which is why eligible positions average
 363 of 512.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig5-z-vs-repetition.pdf}
   \caption{(a) Mean null $z$ per key against prefix length on a log scale; the
@@ -388,7 +392,7 @@ SelfHash already skips repeated contexts, which is why eligible positions averag
   07 at 512 tokens against the output's repeated-4-gram fraction, $n=10{,}000$,
   with the median per decile; more repetition goes with lower $z$, not higher.}
   \label{fig:repetition}
-\end{figure}
+\end{figure*}
 
 \subsection{Human-Written Text Reproduces the Key Ranking}
 \label{sec:c3}
@@ -405,7 +409,7 @@ against 19.1\%, 33.0\%, and 48.4\% on model output, and 19 of 30 human cells lie
 above 1\% by point estimate. Human text is also far less repetitive (median
 repeated-4-gram fraction 0.016), and the inflation persists.
 
-\begin{table}[t]
+\begin{table*}[t]
   \centering
   \caption{Empirical false-positive rate (\%) at the nominal $z>2.326$ threshold
   on human-written Dolly passages (Human) and on unwatermarked SmolLM2 output
@@ -415,9 +419,9 @@ repeated-4-gram fraction 0.016), and the inflation persists.
   \label{tab:human}
   \small
   \input{tables/table2-human-null}
-\end{table}
+\end{table*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig6-human-vs-model-null.pdf}
   \caption{(a) False-positive rate at the nominal threshold and 512 tokens for the
@@ -428,7 +432,7 @@ repeated-4-gram fraction 0.016), and the inflation persists.
   both axes; the diagonal is equality and the rules mark $\gamma=0.25$. Colour is
   the same side-of-$\gamma$ encoding as Figure~\ref{fig:mechanism}a.}
   \label{fig:human}
-\end{figure}
+\end{figure*}
 
 The key-specific bias is therefore a property of each key's green list against
 ordinary English token statistics, not of SmolLM2's output distribution. The model
@@ -470,7 +474,7 @@ rate compatible with 95\% whole-family pass probability rises from about 0.30\% 
 5,000 observations to 0.74\% at 50,000 (Figure~\ref{fig:margin}b). These are
 planning scenarios, not replacement thresholds.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
   \includegraphics[width=\textwidth]{../figures/fig7-design-margin.pdf}
   \caption{(a) Mean strict exceedances across the 30 key-by-length cells of each
@@ -481,7 +485,7 @@ planning scenarios, not replacement thresholds.
   with at least 95\% probability that all 60 cells pass, by fresh sample size.
   These are design scenarios, not replacement thresholds.}
   \label{fig:margin}
-\end{figure}
+\end{figure*}
 
 \section{Discussion}
 
@@ -600,20 +604,29 @@ artifacts used in this study.
 \bibliographystyle{plainnat}
 \bibliography{references}
 
-\clearpage
-\appendix
+\appendices
 \section{Calibrated Per-Cell Held-Out False-Positive Rates}
 \label{app:a1}
+
+Table~\ref{tab:a1-kgw} lists the 30 canonical KGW cells and
+Table~\ref{tab:a1-synthid} the 30 SynthID-Text cells. Each row gives the
+threshold fitted on the calibration split, the strict exceedance count on both
+splits, and the held-out rate on the confirmation split with its exact interval.
+No cell's held-out point estimate exceeds 1\%.
 
 \input{tables/tableA1-calibrated-cells}
 
 \section{Data Sources and Evidential Role}
 
-\begin{table}[H]
+Table~\ref{tab:sources} lists every corpus the paper uses and what each one is
+for. All scoring is detector-only on stored token ids.
+
+\begin{table*}[t]
 \centering
 \small
 \caption{Every corpus used in this paper and the role it plays. All scoring is
 detector-only on stored token ids.}
+\label{tab:sources}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.16\textwidth}Y}
 \toprule
 Corpus & Size & Role \\
@@ -625,7 +638,7 @@ Human-written Dolly passages & 5,000 & Human-text null (Section~\ref{sec:c3}); d
 Development detection-rate screens & 2,400 & Out of scope; support no claim here. \\
 \bottomrule
 \end{tabularx}
-\end{table}
+\end{table*}
 
 \section{Interpretation Checklist}
 

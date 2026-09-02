@@ -10,13 +10,14 @@ What changes for print, and why:
 
 * Light surface. Screen work can afford a dark ground; a paper is read on white
   and often on paper.
-* Computer Modern. The manuscript is set in Latin Modern, so figure text uses
-  matplotlib's bundled ``cmr10`` and the ``cm`` math fontset. Figure labels and
-  body text are then the same typeface, and Greek and maths are written as
-  mathtext (``$\\gamma$``) so they render exactly as they do in the text.
-* Vector PDF with Type 42 fonts, authored at the document's text width so the
-  figure is included at scale 1.0 and its type is the size it claims to be.
-  Dense scatter layers are rasterised individually with ``rasterized=True``;
+* A serif that matches the class. The manuscript is set in IEEEtran, whose body
+  face is Times, so figure text uses STIX Two Text, the open Times companion
+  designed for scientific publishing, with the matching ``stix`` math fontset.
+  Greek and maths are written as mathtext (``$\\gamma$``) so they render the way
+  they do in the text.
+* Vector PDF with Type 42 fonts, authored at the exact width the figure will
+  occupy so it is included at scale 1.0 and its type is the size it claims to
+  be. Dense scatter layers are rasterised individually with ``rasterized=True``;
   the axes and all text stay vector.
 
 Colour follows the job the data does, not taste:
@@ -42,9 +43,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 # --- geometry -------------------------------------------------------------
-# a4paper with 1in margins: 210mm - 2in. Figures are authored at this width and
-# included with width=\textwidth, so no scaling happens at compile time.
-TEXTWIDTH = 6.27
+# Measured from the IEEEtran conference class, not guessed. Full-width figures
+# live in figure* and are included with width=\textwidth; a single-column
+# figure would use COLUMNWIDTH. Authoring at the final width means no scaling
+# happens at compile time, so 8pt in the figure is 8pt on the page.
+TEXTWIDTH = 7.14
+COLUMNWIDTH = 3.49
 
 # --- palette --------------------------------------------------------------
 INK = "#0b0b0b"      # primary text
@@ -73,16 +77,16 @@ plt.rcParams.update({
     "pdf.fonttype": 42,          # embed TrueType, not Type 3: arXiv prefers it
     "ps.fonttype": 42,
     "font.family": "serif",
-    "font.serif": ["cmr10", "DejaVu Serif"],
-    "mathtext.fontset": "cm",
-    "axes.unicode_minus": False,  # cmr10 has no U+2212
+    "font.serif": ["STIX Two Text", "STIXGeneral", "DejaVu Serif"],
+    "mathtext.fontset": "stix",
     "axes.formatter.use_mathtext": True,
-    "font.size": 8.5,
-    "axes.labelsize": 8.5,
-    "axes.titlesize": 9,
-    "xtick.labelsize": 8,
-    "ytick.labelsize": 8,
-    "legend.fontsize": 8,
+    # IEEE captions are 8pt, so nothing inside a figure should exceed that.
+    "font.size": 7.6,
+    "axes.labelsize": 7.6,
+    "axes.titlesize": 8,
+    "xtick.labelsize": 7.2,
+    "ytick.labelsize": 7.2,
+    "legend.fontsize": 7.2,
     "axes.labelcolor": MUTED,
     "text.color": INK,
     "xtick.color": MUTED,

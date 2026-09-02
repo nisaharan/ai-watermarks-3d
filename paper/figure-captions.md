@@ -1,10 +1,14 @@
 # Figure inventory (generated figures, v1 manuscript)
 
 Captions live with the figures in `arxiv/main.tex`; this file records where each
-one comes from so a stale figure can be traced to the script that owns it. All
-figures are vector PDF authored at the document text width (6.27 in) and included
-at `width=\textwidth`, so they are placed at scale 1.0 and their type is the size
-it claims to be. Shared style: `../validation/figstyle.py`.
+one comes from so a stale figure can be traced to the script that owns it.
+
+The manuscript is two-column IEEEtran. Every figure is a wide multi-panel, so
+each one spans both columns in a `figure*` float. They are vector PDF authored
+at the class's measured full text width (7.14 in) and included at
+`width=\textwidth`, so they are placed at scale 1.0 and their type is the size
+it claims to be. A single-column figure would be authored at `COLUMNWIDTH`
+(3.49 in) instead. Shared style: `../validation/figstyle.py`.
 
 | Figure | File | Built by |
 |---|---|---|
@@ -29,7 +33,7 @@ whose numbers come from a report artifact,
 * Every series also carries a marker or line style, so the figures survive
   greyscale printing and colour-vision deficiency. This was checked by rendering
   each figure to greyscale.
-* Text is Computer Modern, the same family as the manuscript body, with Greek
-  and maths written as mathtext so they match the surrounding text.
+* Text is STIX Two, the same family as the manuscript body, with Greek and
+  maths written as mathtext so they match the surrounding text.
 * Fonts embed as Type 42, not Type 3.
 * Dense layers are rasterised individually; axes and all text stay vector.

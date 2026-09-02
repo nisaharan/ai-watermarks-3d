@@ -229,8 +229,8 @@ def fig_mechanism(m: pd.DataFrame, r: float, gamma: float, out: str):
         ax.scatter(xi, p, s=22, color=c, zorder=3, edgecolor="white", linewidth=0.5,
                    marker="o" if c == fs.POS else "s")
     ax.axhline(gamma, color=fs.INK, linewidth=0.9, zorder=1)
-    ax.text(-0.35, gamma + 0.0018, "assumed $\\gamma = 0.25$", ha="left",
-            va="bottom", fontsize=7.5, color=fs.INK)
+    ax.text(1.6, gamma + 0.0018, "assumed $\\gamma = 0.25$", ha="left",
+            va="bottom", fontsize=7.2, color=fs.INK)
     ax.set_xticks(x)
     ax.set_xticklabels([kk.replace("kgw-", "") for kk in keys])
     ax.set_xlim(-0.6, len(keys) - 0.4)
@@ -280,7 +280,7 @@ def fig_repetition(growth: dict, q: pd.DataFrame, res: dict, out: str):
         ax.plot(LENGTHS, ys, marker="o", markersize=3, linewidth=1.3 if strong else 0.9,
                 color=col, zorder=3 if strong else 2)
         ends[key] = (ys[-1], col)
-    for key, y in _declutter(ends, 0.13):
+    for key, y in _declutter(ends, 0.17):
         ax.text(LENGTHS[-1] * 1.06, y, key.replace("kgw-", ""), fontsize=7,
                 va="center", color=ends[key][1])
     ax.axhline(0, color=fs.INK, linewidth=0.9)
@@ -291,7 +291,7 @@ def fig_repetition(growth: dict, q: pd.DataFrame, res: dict, out: str):
     ax.set_xticks(list(LENGTHS))
     ax.set_xticklabels([str(L) for L in LENGTHS])
     ax.minorticks_off()
-    ax.set_xlim(120, 690)
+    ax.set_xlim(120, 740)
     ax.set_xlabel("Prefix length $T$ (tokens, log scale)")
     ax.set_ylabel("Mean null $z$")
     fs.title(ax, "(a)  Offsets grow as $\\sqrt{T}$")

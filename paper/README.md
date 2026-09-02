@@ -3,6 +3,9 @@
 The manuscript and everything generated for it. All of it is built from stored
 detector scores by fixed scripts; no step regenerates text.
 
+The manuscript is set two-column in the IEEEtran conference class, with STIX
+Two for both body text and figures.
+
 ## Contents
 
 1. `arxiv/main.tex` and `arxiv/references.bib`: the manuscript.
