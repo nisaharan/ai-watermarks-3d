@@ -1,0 +1,261 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Phase 1: Establishing a Defensible AI-Text Watermark Thesis",
+    "description": "A source-backed technical decision report for the AI Watermarks research transformation.",
+    "generatedAt": "2026-08-26T00:00:00+10:00",
+    "sources": [
+      {
+        "id": "phase1-review",
+        "label": "Phase 1 source register and novelty review",
+        "path": "source-register.md",
+        "query": {
+          "engine": "ANSI SQL",
+          "language": "sql",
+          "sql": "SELECT * FROM (VALUES (1, 'N-gram/context survival mechanism', 3, 'Direct', 'Kirchenbauer et al., ICLR 2024', 'Use as prior motivation, not novelty'), (2, 'Detection versus attacked length', 3, 'Direct', 'Kirchenbauer et al. 2024; benchmarks', 'Retain as mandatory control'), (3, 'Broad cross-scheme attack benchmark', 3, 'Direct', 'MarkMyWords; WaterBench; WaterPark', 'Do not position as primary contribution'), (4, 'Exact scheme-native effective-context metric', 2, 'Partial', 'KGW context logic; SynthID masking', 'Develop and validate exactly'), (5, 'Incremental prediction beyond distance metrics', 2, 'Partial/open', 'Robustness studies with multiple metrics', 'Core confirmatory contribution'), (6, 'Transfer across watermark families', 2, 'Partial', 'Existing watermark taxonomies', 'Test heterogeneity; do not assume a universal law'), (7, 'Context destruction per unit attack cost', 2, 'Partial', 'Quality/robustness benchmark frontiers', 'Secondary, multi-dimensional analysis'), (8, 'Generic detector subgroup fairness', 3, 'Direct', 'Liang 2023; Al Ali 2026; Stowe 2026', 'Replication and audit only')) AS novelty_overlap(rank, component, overlap_score, overlap_label, closest_prior_art, decision) ORDER BY rank",
+          "description": "Targeted synthesis of peer-reviewed primary papers, official proceedings, official repositories, and official framework documentation available by 26 August 2026.",
+          "filters": [
+            "Primary or official sources preferred",
+            "Text-generation watermarks and relevant generic detector baselines",
+            "Targeted review; not a systematic meta-analysis"
+          ],
+          "metric_definitions": [
+            "Prior-art overlap score is an author-coded ordinal assessment: 0=open, 1=adjacent, 2=partial, 3=direct.",
+            "The overlap score is a positioning aid, not a measured effect size or bibliometric statistic."
+          ]
+        }
+      }
+    ],
+    "charts": [
+      {
+        "id": "prior-art-overlap",
+        "title": "Prior-art overlap by proposed contribution",
+        "subtitle": "The broad mechanism and benchmark claims are occupied; the exact predictive test remains a candidate contribution.",
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "question": "Which parts of the proposed contribution are already established in the reviewed literature?",
+        "rationale": "An ordinal comparison makes the required repositioning visible without aggregating incompatible experimental performance results.",
+        "comparisonContext": {
+          "baseline": "Targeted primary-source review",
+          "grain": "Proposed contribution component",
+          "unit": "Author-coded overlap score, 0 to 3"
+        },
+        "dataset": "novelty_overlap",
+        "sourceId": "phase1-review",
+        "encodings": {
+          "x": {
+            "field": "component",
+            "type": "nominal",
+            "label": "Contribution component"
+          },
+          "y": {
+            "field": "overlap_score",
+            "type": "quantitative",
+            "aggregate": "none",
+            "format": "number",
+            "label": "Prior-art overlap",
+            "unit": "0–3"
+          },
+          "tooltip": [
+            {"field": "overlap_label", "type": "text", "label": "Assessment"},
+            {"field": "closest_prior_art", "type": "text", "label": "Closest prior art"},
+            {"field": "decision", "type": "text", "label": "Decision"}
+          ]
+        },
+        "xAxisTitle": "Contribution component",
+        "yAxisTitle": "Prior-art overlap (0 open, 3 direct)",
+        "valueFormat": "number",
+        "layout": "full",
+        "maxRows": 8,
+        "surface": {
+          "surface": "card",
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "novelty-decisions",
+        "title": "Contribution decisions",
+        "subtitle": "Approved positioning after the targeted review",
+        "dataset": "novelty_overlap",
+        "sourceId": "phase1-review",
+        "defaultSort": {
+          "field": "rank",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {"field": "rank", "label": "Order", "format": "number"},
+          {"field": "component", "label": "Proposed component", "type": "text"},
+          {"field": "overlap_label", "label": "Overlap", "type": "text"},
+          {"field": "closest_prior_art", "label": "Closest prior art", "type": "text"},
+          {"field": "decision", "label": "Phase 1 decision", "type": "text"}
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Phase 1: Establishing a Defensible AI-Text Watermark Thesis"
+      },
+      {
+        "id": "technical-summary",
+        "type": "markdown",
+        "body": "## Technical summary\n\n**Decision: conditional go, with repositioning.** The project should not claim discovery of context or n-gram survival: that mechanism is explicit in prior reliability work. It should instead test whether exact, scheme-native survival of eligible seed contexts adds calibrated, held-out explanatory power beyond attacked length and conventional text-distance measures. Phase 2 is limited to two open keyed schemes until their native scores, null behavior, repeated-context logic, and per-position context traces pass validation."
+      },
+      {
+        "id": "key-findings",
+        "type": "markdown",
+        "body": "## Key findings\n\n1. The motivating phenomenon is prior art: paraphrases can recycle watermark-bearing n-grams.\n2. Broad multi-scheme robustness benchmarking is already served by MarkMyWords, WaterBench, MarkLLM, and WaterPark.\n3. The remaining candidate contribution is a preregistered predictive and calibration test using the exact context semantics of each native scheme.\n4. KGW SelfHash/minhash and SynthID-Text form the minimum credible pair because both are open and context-conditioned but use different sampling and scoring designs.\n5. Generic AI-text detectors answer a different question and remain secondary comparators."
+      },
+      {
+        "id": "overlap-chart",
+        "type": "chart",
+        "chartId": "prior-art-overlap"
+      },
+      {
+        "id": "scope-definitions",
+        "type": "markdown",
+        "body": "## Scope, evidence, and metric definitions\n\nThe review covers targeted primary sources and official implementations available by 26 August 2026. It is not a systematic review or meta-analysis. Effective seed-context survival counts attacked positions whose aligned token identity and exact scheme-native context survive and remain eligible under native masking rules. The chart's 0–3 overlap scale is an author-coded positioning aid, not a performance metric. No empirical watermark result is claimed by this report."
+      },
+      {
+        "id": "novelty-table",
+        "type": "table",
+        "tableId": "novelty-decisions"
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "body": "## Methodology\n\nThe review traced foundational watermark mechanisms, robustness and attack papers, benchmark/toolkit work, generic detector baselines, and fairness evidence. Candidate novelty was decomposed into claims and compared with the closest inspected prior art. The protocol then converted the surviving contribution into falsifiable hypotheses, held-out attack × model evaluation, empirical false-positive calibration, prompt-clustered uncertainty, and explicit stop/reposition gates. Comparison tables are used instead of pooled performance charts because published studies differ materially in schemes, strengths, lengths, attacks, quality constraints, and operating points."
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## Limitations, uncertainty, and robustness\n\nAbsence of an identical formulation in this targeted review does not prove global novelty. The proposed predictor may reduce to attacked length or ordinary n-gram overlap, may be valid only for KGW-like schemes, or may fail under repeated-context masking and alignment ambiguity. Current fairness evidence is heterogeneous across languages and detectors, so subgroup performance must be measured rather than generalized. A venue-specific citation refresh is required before submission."
+      },
+      {
+        "id": "next-steps",
+        "type": "markdown",
+        "body": "## Recommended next steps\n\nBuild a tiny Phase 2 validation harness before any corpus-scale generation: one small open causal model, ten prompts, KGW and SynthID-Text, matched unwatermarked controls, and deterministic substitution/deletion/insertion/truncation attacks. Export per-token native state and verify exact alignment. Stop expansion unless fixed-seed reproducibility, empirical null calibration, repeated-context behavior, and synthetic-edit recovery all pass."
+      },
+      {
+        "id": "further-questions",
+        "type": "markdown",
+        "body": "## Further questions\n\n- Can one formal exposure abstraction cover both KGW and SynthID-Text without erasing scheme-specific meaning?\n- Does the predictor transport to an edit-aligned or context-free watermark?\n- Which quality measure is reliable enough to define matched attack frontiers?\n- What null-sample size is feasible for stable 0.1% FPR estimation?\n- Does generic-detector error correlation add any actionable provenance information?"
+      },
+      {
+        "id": "source-notes",
+        "type": "markdown",
+        "body": "## Sources and reproducibility\n\nThe canonical source inventory is maintained in `source-register.md`; the full contribution comparison is in `novelty-matrix.md`; the frozen minimum implementation choices are in `implementation-shortlist.md`; and the preregistration-ready design is in `research-protocol-v1.md`. The machine-readable source of this report is `artifact.json`."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-26T00:00:00+10:00",
+    "status": "ready",
+    "datasets": {
+      "novelty_overlap": [
+        {
+          "rank": 1,
+          "component": "N-gram/context survival mechanism",
+          "overlap_score": 3,
+          "overlap_label": "Direct",
+          "status": "withdraw_as_novelty",
+          "closest_prior_art": "Kirchenbauer et al., ICLR 2024",
+          "decision": "Use as prior motivation, not novelty"
+        },
+        {
+          "rank": 2,
+          "component": "Detection versus attacked length",
+          "overlap_score": 3,
+          "overlap_label": "Direct",
+          "status": "control_only",
+          "closest_prior_art": "Kirchenbauer et al. 2024; benchmarks",
+          "decision": "Retain as mandatory control"
+        },
+        {
+          "rank": 3,
+          "component": "Broad cross-scheme attack benchmark",
+          "overlap_score": 3,
+          "overlap_label": "Direct",
+          "status": "not_primary",
+          "closest_prior_art": "MarkMyWords; WaterBench; WaterPark",
+          "decision": "Do not position as primary contribution"
+        },
+        {
+          "rank": 4,
+          "component": "Exact scheme-native effective-context metric",
+          "overlap_score": 2,
+          "overlap_label": "Partial",
+          "status": "candidate",
+          "closest_prior_art": "KGW context logic; SynthID masking",
+          "decision": "Develop and validate exactly"
+        },
+        {
+          "rank": 5,
+          "component": "Incremental prediction beyond distance metrics",
+          "overlap_score": 2,
+          "overlap_label": "Partial/open",
+          "status": "core_candidate",
+          "closest_prior_art": "Robustness studies with multiple metrics",
+          "decision": "Core confirmatory contribution"
+        },
+        {
+          "rank": 6,
+          "component": "Transfer across watermark families",
+          "overlap_score": 2,
+          "overlap_label": "Partial",
+          "status": "boundary_test",
+          "closest_prior_art": "Existing watermark taxonomies",
+          "decision": "Test heterogeneity; do not assume a universal law"
+        },
+        {
+          "rank": 7,
+          "component": "Context destruction per unit attack cost",
+          "overlap_score": 2,
+          "overlap_label": "Partial",
+          "status": "secondary",
+          "closest_prior_art": "Quality/robustness benchmark frontiers",
+          "decision": "Secondary, multi-dimensional analysis"
+        },
+        {
+          "rank": 8,
+          "component": "Generic detector subgroup fairness",
+          "overlap_score": 3,
+          "overlap_label": "Direct",
+          "status": "replication",
+          "closest_prior_art": "Liang 2023; Al Ali 2026; Stowe 2026",
+          "decision": "Replication and audit only"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "phase1-review",
+      "label": "Phase 1 source register and novelty review",
+      "path": "source-register.md",
+      "query": {
+        "engine": "ANSI SQL",
+        "language": "sql",
+        "sql": "SELECT * FROM (VALUES (1, 'N-gram/context survival mechanism', 3, 'Direct', 'Kirchenbauer et al., ICLR 2024', 'Use as prior motivation, not novelty'), (2, 'Detection versus attacked length', 3, 'Direct', 'Kirchenbauer et al. 2024; benchmarks', 'Retain as mandatory control'), (3, 'Broad cross-scheme attack benchmark', 3, 'Direct', 'MarkMyWords; WaterBench; WaterPark', 'Do not position as primary contribution'), (4, 'Exact scheme-native effective-context metric', 2, 'Partial', 'KGW context logic; SynthID masking', 'Develop and validate exactly'), (5, 'Incremental prediction beyond distance metrics', 2, 'Partial/open', 'Robustness studies with multiple metrics', 'Core confirmatory contribution'), (6, 'Transfer across watermark families', 2, 'Partial', 'Existing watermark taxonomies', 'Test heterogeneity; do not assume a universal law'), (7, 'Context destruction per unit attack cost', 2, 'Partial', 'Quality/robustness benchmark frontiers', 'Secondary, multi-dimensional analysis'), (8, 'Generic detector subgroup fairness', 3, 'Direct', 'Liang 2023; Al Ali 2026; Stowe 2026', 'Replication and audit only')) AS novelty_overlap(rank, component, overlap_score, overlap_label, closest_prior_art, decision) ORDER BY rank",
+        "description": "Targeted synthesis of peer-reviewed primary papers, official proceedings, official repositories, and official framework documentation available by 26 August 2026.",
+        "filters": [
+          "Primary or official sources preferred",
+          "Text-generation watermarks and relevant generic detector baselines",
+          "Targeted review; not a systematic meta-analysis"
+        ],
+        "metric_definitions": [
+          "Prior-art overlap score is an author-coded ordinal assessment: 0=open, 1=adjacent, 2=partial, 3=direct.",
+          "The overlap score is a positioning aid, not a measured effect size or bibliometric statistic."
+        ]
+      }
+    }
+  ]
+}
