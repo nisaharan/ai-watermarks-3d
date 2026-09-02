@@ -1,0 +1,13 @@
+[
+  {"id": "explanation-01", "register": "explanation", "prompt": "Explain why coastal cities often experience milder temperatures than inland cities."},
+  {"id": "explanation-02", "register": "explanation", "prompt": "Explain how a public library benefits a local community."},
+  {"id": "factual-01", "register": "factual", "prompt": "Describe the water cycle accurately for a secondary-school student."},
+  {"id": "factual-02", "register": "factual", "prompt": "Summarize the main function of mitochondria and why cells need them."},
+  {"id": "professional-01", "register": "professional", "prompt": "Draft a concise project update explaining that testing is complete and deployment is scheduled for Friday."},
+  {"id": "professional-02", "register": "professional", "prompt": "Write a short risk note about relying on a single supplier for a critical component."},
+  {"id": "academic-01", "register": "academic", "prompt": "Write a short abstract for a hypothetical study comparing two methods of urban heat measurement."},
+  {"id": "academic-02", "register": "academic", "prompt": "Explain the difference between correlation and causation in formal academic prose."},
+  {"id": "narrative-01", "register": "narrative", "prompt": "Write a brief scene in which a train arrives at an empty rural station during a storm."},
+  {"id": "instruction-01", "register": "instruction", "prompt": "Give clear numbered instructions for preparing a small garden bed for planting herbs."}
+]
+

@@ -1,0 +1,4885 @@
+{
+  "schema_version": 1,
+  "scope": "Phase 2 variance-pilot validation and analysis",
+  "source": "results/phase2-variance-replication/run.json",
+  "validation": {
+    "passed": true,
+    "checks": {
+      "status_complete": true,
+      "record_count": true,
+      "category_allocation": true,
+      "generated_lengths": true,
+      "prefix_shape": true,
+      "expected_score_rows": true,
+      "unique_score_cells": true,
+      "finite_positive_scores": true,
+      "compact_formula_reconstruction": true,
+      "native_trace_audits": true
+    }
+  },
+  "cell_summaries": [
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.703642491671216,
+      "sample_variance": 1.0508828583311298,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 6.99989577220983,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.2812937284069355,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.6336286754210434,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.3112305784943932,
+        "classification": 0.9059178632945855,
+        "closed_qa": 0.2308344371022645,
+        "creative_writing": 0.5220200342452725,
+        "general_qa": 0.45018316618262466,
+        "information_extraction": 0.28187356662365975,
+        "open_qa": 0.8106152476395688,
+        "summarization": 1.1164650397873586
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.7168405337581283,
+      "sample_variance": 1.1947126909701404,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 6.688172805604045,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.3851391759997758,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.909571869813232,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.0015875475113587,
+        "classification": 0.8393196007827286,
+        "closed_qa": 0.23004866247874758,
+        "creative_writing": 0.5549534584615186,
+        "general_qa": 0.53231224665568,
+        "information_extraction": 0.5826754373375758,
+        "open_qa": 0.5978920054739313,
+        "summarization": 1.3959353113634867
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.9192008230130571,
+      "sample_variance": 1.2344056368145364,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 8.437195766392112,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.713803504109654,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.404588205713006,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.8333880236175306,
+        "classification": 0.9702363955497403,
+        "closed_qa": 0.5850945454912028,
+        "creative_writing": 0.606569154240249,
+        "general_qa": 1.3632704645325748,
+        "information_extraction": 0.8963967004899545,
+        "open_qa": 0.6655463353585862,
+        "summarization": 1.4331049648246188
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 128,
+      "samples": 104,
+      "mean": -0.2237881759802437,
+      "sample_variance": 1.168582787478726,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -2.1111741695514814,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.4171324789199906,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.0139513400278566,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.2513680345407644,
+        "classification": -0.2807141942462603,
+        "closed_qa": 0.2248041228831717,
+        "creative_writing": -0.2760186995835837,
+        "general_qa": -0.14295242674257894,
+        "information_extraction": -0.6034824606906185,
+        "open_qa": -0.1471855920207141,
+        "summarization": -0.31338812290060114
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 256,
+      "samples": 104,
+      "mean": -0.2088882905624483,
+      "sample_variance": 1.0214637407312679,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -2.107750922459865,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6002645283972774,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 1.868397465987655,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.11099902325389309,
+        "classification": -0.4398654079076787,
+        "closed_qa": 0.23265782460583184,
+        "creative_writing": -0.44528551135627226,
+        "general_qa": -0.2739835629964316,
+        "information_extraction": -0.388148466158345,
+        "open_qa": 0.020557900857679164,
+        "summarization": -0.2660400782904765
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 512,
+      "samples": 104,
+      "mean": -0.19832294669902298,
+      "sample_variance": 1.8186861446458746,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -1.4997219819843837,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.008048322256247,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.4029951194324393,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.48788926476718,
+        "classification": -0.3477292472071462,
+        "closed_qa": 0.4392812834082421,
+        "creative_writing": -0.5689001186560646,
+        "general_qa": -0.2872836264266619,
+        "information_extraction": -0.5849073412128031,
+        "open_qa": 0.29402704526808915,
+        "summarization": -0.04318230399865927
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.2975424373092264,
+      "sample_variance": 1.4608282774489119,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 2.510533392975362,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.4886840673530206,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.0467468990165014,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.019027303753612997,
+        "classification": -0.4470339926879412,
+        "closed_qa": 0.29996382821983836,
+        "creative_writing": 0.6011129639601018,
+        "general_qa": 0.2701510801067149,
+        "information_extraction": 0.14713715996477847,
+        "open_qa": 0.6905744749049394,
+        "summarization": 0.7994066802517668
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.34792378738131285,
+      "sample_variance": 1.4860880986238305,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 2.9105731177055776,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.8323527714997336,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.0506364874765732,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.15739130291620607,
+        "classification": -0.6218352944947735,
+        "closed_qa": 0.44898718563474627,
+        "creative_writing": 0.6055910678417225,
+        "general_qa": 0.031032500177980434,
+        "information_extraction": 0.5806996805651538,
+        "open_qa": 0.7130302095431296,
+        "summarization": 0.8684936468663376
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.5194966689501921,
+      "sample_variance": 1.7658462185677675,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 3.9867866651628043,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.693553438401216,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.4358227615493333,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.07495829562425842,
+        "classification": -0.14398699159789455,
+        "closed_qa": 0.3949789884376249,
+        "creative_writing": 1.0025579631432202,
+        "general_qa": 0.43987158817463057,
+        "information_extraction": 0.777409300224436,
+        "open_qa": 0.8272742145699185,
+        "summarization": 0.7829099930253426
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.3216593686995205,
+      "sample_variance": 0.9639283083219844,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 3.34110794843659,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.0139513400278566,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.7874925905782666,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.07481600921849639,
+        "classification": 0.9772002735530099,
+        "closed_qa": 0.330404481799112,
+        "creative_writing": 0.473007476714662,
+        "general_qa": 0.055512809485984096,
+        "information_extraction": 0.3216838055051612,
+        "open_qa": 0.18614887042387493,
+        "summarization": 0.15450122289586393
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.16352795641732643,
+      "sample_variance": 0.9914884184116248,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 1.6748073429948973,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.9314273702593594,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.265546605523918,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.26446158928459673,
+        "classification": 0.7822376666882176,
+        "closed_qa": -0.13144979893867267,
+        "creative_writing": 0.07386661948506117,
+        "general_qa": -0.1214447358455472,
+        "information_extraction": 0.2368551364376519,
+        "open_qa": 0.10275898609628441,
+        "summarization": 0.10093818813101933
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 512,
+      "samples": 104,
+      "mean": -0.03842037947993714,
+      "sample_variance": 1.3547799327614352,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -0.3366231209404461,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.8802535827258873,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.869022920265156,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.4178029236210041,
+        "classification": 0.3115578700602286,
+        "closed_qa": -0.13962125048020965,
+        "creative_writing": -0.009145119249812298,
+        "general_qa": -0.07692449531589482,
+        "information_extraction": 0.12074852730175333,
+        "open_qa": 0.10116143670052945,
+        "summarization": -0.19733708123508775
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 128,
+      "samples": 104,
+      "mean": 1.1376438249732845,
+      "sample_variance": 1.3605991169866198,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 9.946216106002835,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.318245423137361,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.003203845127179,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.36999587076009,
+        "classification": 0.5001066154692378,
+        "closed_qa": 1.0190275508412248,
+        "creative_writing": 1.2248323836956685,
+        "general_qa": 1.4007699803633478,
+        "information_extraction": 1.3882408747985717,
+        "open_qa": 1.06470129152482,
+        "summarization": 1.1334760323333148
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 256,
+      "samples": 104,
+      "mean": 1.4198584288334049,
+      "sample_variance": 1.52702865562288,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 11.717585202745468,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.3295158863539402,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.287483371536522,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.9762048989351757,
+        "classification": 0.5804609313600709,
+        "closed_qa": 1.0732395105342039,
+        "creative_writing": 1.2100346552570436,
+        "general_qa": 1.6713193438038252,
+        "information_extraction": 1.4993830265696095,
+        "open_qa": 1.6020527880470716,
+        "summarization": 1.7461722761602374
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 512,
+      "samples": 104,
+      "mean": 2.0802869837642515,
+      "sample_variance": 1.471624942077094,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 17.488048595157423,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.84995251754509,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.736113304257957,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 2.2785188053255188,
+        "classification": 1.1815007466888472,
+        "closed_qa": 1.5536911855343722,
+        "creative_writing": 2.070419135676867,
+        "general_qa": 2.267072032620183,
+        "information_extraction": 2.321060126593977,
+        "open_qa": 2.3490035762338697,
+        "summarization": 2.621030261440379
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 128,
+      "samples": 104,
+      "mean": 1.3216942486007808,
+      "sample_variance": 1.2171315827276088,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 12.217403119291246,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.0467468990165014,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.720458024169137,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.5534397696831235,
+        "classification": 1.4380763130632315,
+        "closed_qa": 1.1271274288445348,
+        "creative_writing": 1.5438448356930967,
+        "general_qa": 1.5284236239161468,
+        "information_extraction": 1.1468509890316765,
+        "open_qa": 1.3486600798557546,
+        "summarization": 0.8871309487186821
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 256,
+      "samples": 104,
+      "mean": 1.6359998772761855,
+      "sample_variance": 1.574906393962371,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 13.294516987975129,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.3891084044173665,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.319426351411735,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 2.48663491722403,
+        "classification": 1.5244183031784249,
+        "closed_qa": 0.962706635200374,
+        "creative_writing": 2.2840976558462005,
+        "general_qa": 1.6809542522228453,
+        "information_extraction": 1.603243114057033,
+        "open_qa": 1.6599804901006103,
+        "summarization": 0.8859636503799672
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 512,
+      "samples": 104,
+      "mean": 2.1460713389023613,
+      "sample_variance": 1.9709327367669207,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 15.58923926272451,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 4.34739724729507,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 5.174298004652831,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 2.9323197757539767,
+        "classification": 1.8876580931293319,
+        "closed_qa": 1.3932171983294106,
+        "creative_writing": 2.9524203096442125,
+        "general_qa": 2.507832486119082,
+        "information_extraction": 2.0675824533050884,
+        "open_qa": 1.851811839115577,
+        "summarization": 1.5757285558222127
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.6349918388796988,
+      "sample_variance": 1.5815516934682232,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 5.149239801646305,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.508674409613032,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.216691570992364,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.3828703665033251,
+        "classification": 0.2760400862347292,
+        "closed_qa": 0.8187573945757168,
+        "creative_writing": 1.304537833143264,
+        "general_qa": 0.8014199331823529,
+        "information_extraction": 0.7946126006472233,
+        "open_qa": -0.22103029943421298,
+        "summarization": 0.9227267961851916
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.8654759440123919,
+      "sample_variance": 1.6150829870427212,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 6.945031975047457,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.7730406938511902,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.5934723427711073,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.0472006371817666,
+        "classification": 0.34256787116875065,
+        "closed_qa": 1.09483463143571,
+        "creative_writing": 1.533369023708509,
+        "general_qa": 0.9616668942980537,
+        "information_extraction": 0.6995436460523211,
+        "open_qa": 0.16364615692629053,
+        "summarization": 1.0809786913277337
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 512,
+      "samples": 104,
+      "mean": 1.0999074020902415,
+      "sample_variance": 1.9534957464204232,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 8.025397631344427,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 3.4029951194324393,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 4.18366230748017,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 1.3158943630557807,
+        "classification": 0.6361122668896356,
+        "closed_qa": 1.3287482558667385,
+        "creative_writing": 1.7983572384611999,
+        "general_qa": 1.282369594502479,
+        "information_extraction": 0.637804832929144,
+        "open_qa": 0.46232360193126804,
+        "summarization": 1.337649063085687
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.10538231736413527,
+      "sample_variance": 1.1731811762940407,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 0.9922060506265774,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.9261430632928083,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.2812937284069355,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.6327024901514224,
+        "classification": 0.06864392154019766,
+        "closed_qa": 0.4227294422467942,
+        "creative_writing": -0.10139372859357762,
+        "general_qa": -0.12173368525379838,
+        "information_extraction": 0.3760226882985421,
+        "open_qa": 0.25188332876841846,
+        "summarization": 0.5796090620579282
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.19702464266050937,
+      "sample_variance": 1.138370414081604,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 1.8831955451391498,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.7856592668435587,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3050494597834974,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.2734577352710492,
+        "classification": 0.18048446637903387,
+        "closed_qa": 0.5802534908622723,
+        "creative_writing": -0.05256196344414285,
+        "general_qa": -0.24156343318687962,
+        "information_extraction": 0.4665009319212805,
+        "open_qa": 0.023658310046060765,
+        "summarization": 0.3459676034354008
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.2601162742347643,
+      "sample_variance": 1.2473822750346275,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": 2.375113729608288,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 2.3955664755415866,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.747034989226176,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.24160589307662164,
+        "classification": 0.39784252479866505,
+        "closed_qa": 0.47920803534640827,
+        "creative_writing": -0.010759220266482301,
+        "general_qa": 0.006718576712358603,
+        "information_extraction": 0.4385045791350504,
+        "open_qa": 0.2052235225993964,
+        "summarization": 0.3225862824760964
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 128,
+      "samples": 104,
+      "mean": -0.45221723472846403,
+      "sample_variance": 1.0765720034386534,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -4.444697806756202,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.39427400463467,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.0739033894608507,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.07633494455317183,
+        "classification": -0.5322227451640974,
+        "closed_qa": -0.8639069356796198,
+        "creative_writing": -0.11625801985736774,
+        "general_qa": -0.511180812324289,
+        "information_extraction": -0.7805510505719132,
+        "open_qa": -0.24663274433108148,
+        "summarization": -0.49065062534617154
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 256,
+      "samples": 104,
+      "mean": -0.45672153047658076,
+      "sample_variance": 1.3094637600530525,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -4.0702530757163595,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.4269353798659745,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.0626611516977107,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.027110323424628678,
+        "classification": -0.49248113759965345,
+        "closed_qa": -0.7363511265097618,
+        "creative_writing": -0.25049038502719784,
+        "general_qa": -0.4580549889228227,
+        "information_extraction": -0.6856333909543563,
+        "open_qa": -0.28075156249481303,
+        "summarization": -0.7228993288794123
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 512,
+      "samples": 104,
+      "mean": -0.6897011498443258,
+      "sample_variance": 1.4570914657203786,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -5.826855020417828,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.3430382733756339,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 1.9662093940990362,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": -0.29115806826461177,
+        "classification": -0.43799531163482314,
+        "closed_qa": -0.7945961670279543,
+        "creative_writing": -1.0036618274761966,
+        "general_qa": -0.666462234164939,
+        "information_extraction": -0.6073782473110695,
+        "open_qa": -0.46363612715357405,
+        "summarization": -1.252721215721438
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 128,
+      "samples": 104,
+      "mean": -0.3418756307211377,
+      "sample_variance": 1.0753719459041033,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -3.362060028042393,
+      "eligible_minimum": 99,
+      "eligible_median": 124.0,
+      "eligible_maximum": 125,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.2719029063014613,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.4886840673530206,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 0,
+        "empirical_rate": 0.0,
+        "wilson_95_percent": [
+          0.0,
+          0.03562135437245191
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.11376281733876141,
+        "classification": -0.04414046443748224,
+        "closed_qa": -0.8720662612757378,
+        "creative_writing": -0.4353946484637517,
+        "general_qa": -0.16749151201381737,
+        "information_extraction": -0.6493777413757774,
+        "open_qa": -0.34310465006243757,
+        "summarization": -0.3371925854788585
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 256,
+      "samples": 104,
+      "mean": -0.2737600036333905,
+      "sample_variance": 1.428249439593,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -2.3360634604371726,
+      "eligible_minimum": 129,
+      "eligible_median": 248.5,
+      "eligible_maximum": 253,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.1638287479252927,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 3.8264127146647686,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.14125819192456796,
+        "classification": 0.03160539716185726,
+        "closed_qa": -0.8438634279851477,
+        "creative_writing": -0.3461637872316514,
+        "general_qa": -0.15862950728550895,
+        "information_extraction": -0.7049239613958124,
+        "open_qa": -0.12163622861422513,
+        "summarization": -0.18772670564120364
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 512,
+      "samples": 104,
+      "mean": -0.32293762532827625,
+      "sample_variance": 1.618547331194626,
+      "reference_mean": 0.0,
+      "mean_deviation_standard_errors": -2.5886457067636304,
+      "eligible_minimum": 129,
+      "eligible_median": 485.5,
+      "eligible_maximum": 509,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.762817881041723,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.6104205134769054,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.011939736501092608,
+        "classification": 0.04400150546740768,
+        "closed_qa": -0.8970111845332955,
+        "creative_writing": -0.23477581621757704,
+        "general_qa": -0.005008189871387106,
+        "information_extraction": -1.1473692415537182,
+        "open_qa": -0.22616546493387515,
+        "summarization": -0.12911234748485745
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.4982625429870291,
+      "sample_variance": 0.00022343154053042276,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.1853824635868486,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5197132616487455,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5519713261648745,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49859771878075304,
+        "classification": 0.4872990156075747,
+        "closed_qa": 0.49851181582818954,
+        "creative_writing": 0.49251156872778934,
+        "general_qa": 0.5041211562160888,
+        "information_extraction": 0.5034902905401425,
+        "open_qa": 0.5022795559151623,
+        "summarization": 0.49928922228053285
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.4985313618718521,
+      "sample_variance": 0.00010013672810960744,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.4967000394445513,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.516016016016016,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5226155358898722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4975333031330367,
+        "classification": 0.49174195274942767,
+        "closed_qa": 0.49980422932391977,
+        "creative_writing": 0.4960989281032005,
+        "general_qa": 0.503384447732098,
+        "information_extraction": 0.5023209117399144,
+        "open_qa": 0.5005005803528814,
+        "summarization": 0.4968665418403386
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.4988990076145567,
+      "sample_variance": 5.700647119200293e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.48709565916211,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5105820105820106,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5186666666666667,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4997640453210678,
+        "classification": 0.49535146579749245,
+        "closed_qa": 0.50001377563272,
+        "creative_writing": 0.4992284588290218,
+        "general_qa": 0.5015632882556492,
+        "information_extraction": 0.49905002871675685,
+        "open_qa": 0.4995893857904459,
+        "summarization": 0.49663161257329946
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.5019872136693363,
+      "sample_variance": 0.0002509423588594659,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 1.2793054424921921,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5300546448087432,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5394265232974911,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5062275557722298,
+        "classification": 0.5057395374869946,
+        "closed_qa": 0.4988814001171899,
+        "creative_writing": 0.5042639974976202,
+        "general_qa": 0.4946580877801286,
+        "information_extraction": 0.5073713935171132,
+        "open_qa": 0.4969431448970908,
+        "summarization": 0.5018125922863235
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.5011843378881836,
+      "sample_variance": 0.0001648304855817553,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.9407484764706284,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5235920852359208,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5276653171390013,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5007010835521248,
+        "classification": 0.5025077638650756,
+        "closed_qa": 0.4980995304949097,
+        "creative_writing": 0.5060776310142509,
+        "general_qa": 0.49675276566041393,
+        "information_extraction": 0.5079614621692081,
+        "open_qa": 0.4939293445979172,
+        "summarization": 0.5034451217515692
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.5003062884655222,
+      "sample_variance": 7.555499971379217e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.3593483934554399,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5148995148995149,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.520292747837658,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49906345258409096,
+        "classification": 0.5029333986929447,
+        "closed_qa": 0.4987479237232036,
+        "creative_writing": 0.5044368329218846,
+        "general_qa": 0.4974619013573112,
+        "information_extraction": 0.5026012706925583,
+        "open_qa": 0.49789851930068707,
+        "summarization": 0.49930700845149695
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.4983879189158413,
+      "sample_variance": 0.00025016877509731375,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.0394102629902577,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5241935483870968,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5349462365591398,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5065327498428798,
+        "classification": 0.4958760209872629,
+        "closed_qa": 0.49599795175225964,
+        "creative_writing": 0.4984628585097091,
+        "general_qa": 0.49865746517928683,
+        "information_extraction": 0.49948450896569985,
+        "open_qa": 0.49612825593400073,
+        "summarization": 0.49596354015563154
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.499167593416045,
+      "sample_variance": 0.00010380214831412558,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.8331995089821229,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5142118863049095,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5170068027210885,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5043694415306642,
+        "classification": 0.4950136255786448,
+        "closed_qa": 0.4966678681752122,
+        "creative_writing": 0.49766703760235986,
+        "general_qa": 0.501517336323933,
+        "information_extraction": 0.500874170117837,
+        "open_qa": 0.49817147265997047,
+        "summarization": 0.4990597953397385
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.4990143257940207,
+      "sample_variance": 6.499893804094415e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.2468003937580487,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5117370892018779,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5162359178263751,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5033209003161992,
+        "classification": 0.4986214444260961,
+        "closed_qa": 0.49778574445106377,
+        "creative_writing": 0.49797680656890064,
+        "general_qa": 0.4993633737777735,
+        "information_extraction": 0.5002768858304479,
+        "open_qa": 0.4957846273753591,
+        "summarization": 0.49898482360632535
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.500007479420182,
+      "sample_variance": 0.0002103473442737648,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.005259156383029503,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5257452574525745,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5331541218637993,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.501985929129688,
+        "classification": 0.5008714503954047,
+        "closed_qa": 0.5057740336552301,
+        "creative_writing": 0.4992731291688472,
+        "general_qa": 0.4971558010105986,
+        "information_extraction": 0.4938030802247073,
+        "open_qa": 0.5009433620359373,
+        "summarization": 0.5002530497410426
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.49955640032600596,
+      "sample_variance": 0.0001118747513060892,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.42770255683627667,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5173453996983409,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5245683930942895,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5006025867549708,
+        "classification": 0.49986064175481953,
+        "closed_qa": 0.49838190290112383,
+        "creative_writing": 0.49803011091600174,
+        "general_qa": 0.501879793133613,
+        "information_extraction": 0.49872214635898876,
+        "open_qa": 0.49805758079571477,
+        "summarization": 0.500916439992815
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.49949274760786605,
+      "sample_variance": 5.104807176643414e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.7240208989626282,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5150300601202404,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.518140589569161,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4993060188391975,
+        "classification": 0.499172430262095,
+        "closed_qa": 0.4982866101662226,
+        "creative_writing": 0.4990290916983792,
+        "general_qa": 0.5016365496022765,
+        "information_extraction": 0.4986983250263653,
+        "open_qa": 0.4990317892347886,
+        "summarization": 0.5007811660336037
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.4974115453616983,
+      "sample_variance": 0.0003316367028938705,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.4495257468145044,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5289256198347108,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5333333333333333,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4957915015675339,
+        "classification": 0.5039916176275019,
+        "closed_qa": 0.49760526213989975,
+        "creative_writing": 0.5009911661202584,
+        "general_qa": 0.5002501205612637,
+        "information_extraction": 0.4894280104992038,
+        "open_qa": 0.49471297497189776,
+        "summarization": 0.4965217094060272
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.4997390178892288,
+      "sample_variance": 0.00015083373598469158,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.2167096071535618,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5196989818503762,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5252525252525253,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49638155739040263,
+        "classification": 0.503956973355831,
+        "closed_qa": 0.5020456641671625,
+        "creative_writing": 0.5035120953478387,
+        "general_qa": 0.5003093153625789,
+        "information_extraction": 0.49706715776870464,
+        "open_qa": 0.4959145315809652,
+        "summarization": 0.4987248481403472
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.49952835904433723,
+      "sample_variance": 6.770204750555981e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.5845575562030315,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5115511551155115,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5164652925846955,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4985761399013622,
+        "classification": 0.500132365542608,
+        "closed_qa": 0.5004546540724898,
+        "creative_writing": 0.5030878721702662,
+        "general_qa": 0.5005766951062568,
+        "information_extraction": 0.4988494424950959,
+        "open_qa": 0.4967535083389863,
+        "summarization": 0.49779619472763276
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.4987041940285202,
+      "sample_variance": 0.00027367215190523544,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.7988060456014306,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.525089605734767,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5376344086021505,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5003670433866862,
+        "classification": 0.4937156242456606,
+        "closed_qa": 0.4995776760817398,
+        "creative_writing": 0.49934488488900214,
+        "general_qa": 0.505744115513248,
+        "information_extraction": 0.49924027108294666,
+        "open_qa": 0.4956157284175982,
+        "summarization": 0.49602820861127955
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.4998308615595224,
+      "sample_variance": 9.958448101004396e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.17284752265558445,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.514367816091954,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5258964143426295,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5001406549501858,
+        "classification": 0.49843998051570915,
+        "closed_qa": 0.5002534261818705,
+        "creative_writing": 0.4977971372566486,
+        "general_qa": 0.5081150835272852,
+        "information_extraction": 0.4992180123243817,
+        "open_qa": 0.49776249289825525,
+        "summarization": 0.49692010482184334
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.4997865951009625,
+      "sample_variance": 5.967223914750359e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.2817311625842499,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5115487478725991,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5150594786130094,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4981540646678927,
+        "classification": 0.4978436679333834,
+        "closed_qa": 0.50162104090637,
+        "creative_writing": 0.49949350888356475,
+        "general_qa": 0.5031899545260079,
+        "information_extraction": 0.5000298852505243,
+        "open_qa": 0.49708759882757714,
+        "summarization": 0.5008730398123802
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.5022382207018204,
+      "sample_variance": 0.00022343489669629933,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 1.527017718149965,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5268817204301075,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5331541218637993,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5065509302026954,
+        "classification": 0.5012044869521607,
+        "closed_qa": 0.4997476349482634,
+        "creative_writing": 0.49970193147741454,
+        "general_qa": 0.5093745597239324,
+        "information_extraction": 0.5038945639523651,
+        "open_qa": 0.4997245645150154,
+        "summarization": 0.49770709384271694
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.5014748477793798,
+      "sample_variance": 9.330159365093025e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 1.5571101561114247,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5163398692810458,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5223550243470563,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.500472902911105,
+        "classification": 0.5000252883513459,
+        "closed_qa": 0.5013715013340776,
+        "creative_writing": 0.49859412519689716,
+        "general_qa": 0.5062658836543724,
+        "information_extraction": 0.5027381589400365,
+        "open_qa": 0.5018737605745683,
+        "summarization": 0.5004571612726358
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.500161238936832,
+      "sample_variance": 5.4963774603634485e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.22179324781253335,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.512259774685222,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5149105367793241,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49813350257267125,
+        "classification": 0.5016565318716979,
+        "closed_qa": 0.4981705498033066,
+        "creative_writing": 0.49860932682673076,
+        "general_qa": 0.5045612700104642,
+        "information_extraction": 0.5006749912467728,
+        "open_qa": 0.49869598096068707,
+        "summarization": 0.5007877582023246
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.49858403949047414,
+      "sample_variance": 0.00020040508069083332,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.020031179413452,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5206093189964157,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5295698924731183,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4973634278010031,
+        "classification": 0.49330817189870046,
+        "closed_qa": 0.4986273811303986,
+        "creative_writing": 0.4992393894636417,
+        "general_qa": 0.49281241329862724,
+        "information_extraction": 0.49948055915239675,
+        "open_qa": 0.5039538092395541,
+        "summarization": 0.5038871639394709
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.49958019113029895,
+      "sample_variance": 0.00010972244254303124,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.4087149713020643,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5170250896057348,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5216421240517626,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4982788194245323,
+        "classification": 0.4970422975185239,
+        "closed_qa": 0.4990852963670609,
+        "creative_writing": 0.500008465217338,
+        "general_qa": 0.4979578861608748,
+        "information_extraction": 0.5003062768549804,
+        "open_qa": 0.5016373814590442,
+        "summarization": 0.5023251060400371
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.49904594698181864,
+      "sample_variance": 7.158710789351539e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.1499309704818719,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.512962962962963,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5160390516039052,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49964764417890856,
+        "classification": 0.49637840809051653,
+        "closed_qa": 0.49661663681157964,
+        "creative_writing": 0.5003833774360475,
+        "general_qa": 0.49794474579456105,
+        "information_extraction": 0.4998229361250318,
+        "open_qa": 0.4997212221330197,
+        "summarization": 0.5018526052848844
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.49872643710779996,
+      "sample_variance": 0.00021196818806946336,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -0.8920757268235748,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5224014336917563,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5282331511839709,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49618024698703195,
+        "classification": 0.5035576497831239,
+        "closed_qa": 0.5004759610746914,
+        "creative_writing": 0.4932305302242123,
+        "general_qa": 0.49718623326012396,
+        "information_extraction": 0.4975050740870553,
+        "open_qa": 0.49753211376885526,
+        "summarization": 0.504143687677306
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.49798981280840143,
+      "sample_variance": 0.00011043562286794195,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.9507363586256503,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5148467432950191,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5200179937022043,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.4963395073266714,
+        "classification": 0.5004100627602275,
+        "closed_qa": 0.4971793220641085,
+        "creative_writing": 0.497037271639224,
+        "general_qa": 0.4982273364075383,
+        "information_extraction": 0.4966394125246054,
+        "open_qa": 0.4987846852084328,
+        "summarization": 0.4993009045364033
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.498749638758503,
+      "sample_variance": 6.663132153755286e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": -1.5621148436169954,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5128712871287129,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5164481251437774,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49637835061173696,
+        "classification": 0.4990799151413283,
+        "closed_qa": 0.502187238086911,
+        "creative_writing": 0.49804116543016363,
+        "general_qa": 0.5006276295798364,
+        "information_extraction": 0.4973861561223536,
+        "open_qa": 0.49681071747282446,
+        "summarization": 0.4994859376228691
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 128,
+      "samples": 104,
+      "mean": 0.5010727634315184,
+      "sample_variance": 0.00022610783234974202,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.7275499701078588,
+      "eligible_minimum": 98,
+      "eligible_median": 123.0,
+      "eligible_maximum": 124,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5261437908496732,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.53584229390681,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.49968691197849247,
+        "classification": 0.5078805054220846,
+        "closed_qa": 0.49480799022116734,
+        "creative_writing": 0.501613956846457,
+        "general_qa": 0.5050040296663384,
+        "information_extraction": 0.5027654719913968,
+        "open_qa": 0.4996201636886264,
+        "summarization": 0.4972030776375844
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 256,
+      "samples": 104,
+      "mean": 0.501225924609277,
+      "sample_variance": 0.00011677806815380272,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 1.1569105716142152,
+      "eligible_minimum": 129,
+      "eligible_median": 247.5,
+      "eligible_maximum": 252,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5203588681849551,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5248888888888888,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5033443484936566,
+        "classification": 0.5045705843545265,
+        "closed_qa": 0.4978461533591648,
+        "creative_writing": 0.49948561527151436,
+        "general_qa": 0.4993957644416787,
+        "information_extraction": 0.504087182480344,
+        "open_qa": 0.49881445726828677,
+        "summarization": 0.5022632912050438
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 512,
+      "samples": 104,
+      "mean": 0.50053894725963,
+      "sample_variance": 6.75139304852517e-05,
+      "reference_mean": 0.5,
+      "mean_deviation_standard_errors": 0.6689077712869023,
+      "eligible_minimum": 129,
+      "eligible_median": 485.0,
+      "eligible_maximum": 508,
+      "tail_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 0.5152722443559097,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "tail_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 0.5167336010709505,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      },
+      "category_means": {
+        "brainstorming": 0.5015810534043518,
+        "classification": 0.5045981028217978,
+        "closed_qa": 0.5009399479255913,
+        "creative_writing": 0.4990997138761661,
+        "general_qa": 0.49836682693213674,
+        "information_extraction": 0.5020361527982111,
+        "open_qa": 0.4986321929294206,
+        "summarization": 0.499057587389364
+      }
+    }
+  ],
+  "key_effects": [
+    {
+      "scheme": "kgw",
+      "length": 128,
+      "keys": 10,
+      "mean_across_key_means": 0.3504675486068017,
+      "between_key_standard_deviation": 0.6042188465567055,
+      "minimum_key_mean": -0.45221723472846403,
+      "maximum_key_mean": 1.3216942486007808,
+      "key_mean_range": 1.7739114833292449,
+      "keys_beyond_three_standard_errors": 7
+    },
+    {
+      "scheme": "kgw",
+      "length": 256,
+      "keys": 10,
+      "mean_across_key_means": 0.4407281345666839,
+      "between_key_standard_deviation": 0.7092072341698048,
+      "minimum_key_mean": -0.45672153047658076,
+      "maximum_key_mean": 1.6359998772761855,
+      "key_mean_range": 2.0927214077527663,
+      "keys_beyond_three_standard_errors": 5
+    },
+    {
+      "scheme": "kgw",
+      "length": 512,
+      "keys": 10,
+      "mean_across_key_means": 0.5775697389603305,
+      "between_key_standard_deviation": 0.9781158933218395,
+      "minimum_key_mean": -0.6897011498443258,
+      "maximum_key_mean": 2.1460713389023613,
+      "key_mean_range": 2.835772488746687,
+      "keys_beyond_three_standard_errors": 6
+    },
+    {
+      "scheme": "synthid",
+      "length": 128,
+      "keys": 10,
+      "mean_across_key_means": 0.499538235511422,
+      "between_key_standard_deviation": 0.001686579128139603,
+      "minimum_key_mean": 0.4974115453616983,
+      "maximum_key_mean": 0.5022382207018204,
+      "key_mean_range": 0.004826675340122155,
+      "keys_beyond_three_standard_errors": 0
+    },
+    {
+      "scheme": "synthid",
+      "length": 256,
+      "keys": 10,
+      "mean_across_key_means": 0.4998280349278195,
+      "between_key_standard_deviation": 0.0011616747652814085,
+      "minimum_key_mean": 0.49798981280840143,
+      "maximum_key_mean": 0.5014748477793798,
+      "key_mean_range": 0.0034850349709783512,
+      "keys_beyond_three_standard_errors": 0
+    },
+    {
+      "scheme": "synthid",
+      "length": 512,
+      "keys": 10,
+      "mean_across_key_means": 0.49955230955640484,
+      "between_key_standard_deviation": 0.000631458412007451,
+      "minimum_key_mean": 0.498749638758503,
+      "maximum_key_mean": 0.50053894725963,
+      "key_mean_range": 0.0017893085011270182,
+      "keys_beyond_three_standard_errors": 0
+    }
+  ],
+  "theoretical_kgw_tails": [
+    {
+      "key_id": "kgw-00",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 20,
+        "empirical_rate": 0.19230769230769232,
+        "wilson_95_percent": [
+          0.12808145190298775,
+          0.2784547661723673
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-00",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 20,
+        "empirical_rate": 0.19230769230769232,
+        "wilson_95_percent": [
+          0.12808145190298775,
+          0.2784547661723673
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 6,
+        "empirical_rate": 0.057692307692307696,
+        "wilson_95_percent": [
+          0.026706545635334457,
+          0.12018926784798839
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-00",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 26,
+        "empirical_rate": 0.25,
+        "wilson_95_percent": [
+          0.176696403553832,
+          0.341114273632394
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 11,
+        "empirical_rate": 0.10576923076923077,
+        "wilson_95_percent": [
+          0.06009334538596818,
+          0.17953118402308044
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-01",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 3,
+        "empirical_rate": 0.028846153846153848,
+        "wilson_95_percent": [
+          0.009858182902777006,
+          0.08140040102511037
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-01",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 0,
+        "empirical_rate": 0.0,
+        "wilson_95_percent": [
+          0.0,
+          0.03562135437245191
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-01",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 9,
+        "empirical_rate": 0.08653846153846154,
+        "wilson_95_percent": [
+          0.0461959485638481,
+          0.15633709447491023
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 5,
+        "empirical_rate": 0.04807692307692308,
+        "wilson_95_percent": [
+          0.020708042325852223,
+          0.10764202797232547
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-02",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 12,
+        "empirical_rate": 0.11538461538461539,
+        "wilson_95_percent": [
+          0.06724977629813572,
+          0.19092049629605806
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 6,
+        "empirical_rate": 0.057692307692307696,
+        "wilson_95_percent": [
+          0.026706545635334457,
+          0.12018926784798839
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-02",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 16,
+        "empirical_rate": 0.15384615384615385,
+        "wilson_95_percent": [
+          0.09697301114953089,
+          0.23538023418524356
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 6,
+        "empirical_rate": 0.057692307692307696,
+        "wilson_95_percent": [
+          0.026706545635334457,
+          0.12018926784798839
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-02",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 19,
+        "empirical_rate": 0.18269230769230768,
+        "wilson_95_percent": [
+          0.12019423299439573,
+          0.26779624189581414
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 10,
+        "empirical_rate": 0.09615384615384616,
+        "wilson_95_percent": [
+          0.05306996868128023,
+          0.16800881754262323
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-03",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 8,
+        "empirical_rate": 0.07692307692307693,
+        "wilson_95_percent": [
+          0.03949175369105489,
+          0.14449554616255827
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-03",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 7,
+        "empirical_rate": 0.0673076923076923,
+        "wilson_95_percent": [
+          0.03298368902967008,
+          0.1324578676387979
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-03",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 9,
+        "empirical_rate": 0.08653846153846154,
+        "wilson_95_percent": [
+          0.0461959485638481,
+          0.15633709447491023
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 2,
+        "empirical_rate": 0.019230769230769232,
+        "wilson_95_percent": [
+          0.0052897115850640206,
+          0.0674231291576782
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-04",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 30,
+        "empirical_rate": 0.28846153846153844,
+        "wilson_95_percent": [
+          0.21015909303902086,
+          0.3818345568877857
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 13,
+        "empirical_rate": 0.125,
+        "wilson_95_percent": [
+          0.07452602523780914,
+          0.2021899905415298
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-04",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 45,
+        "empirical_rate": 0.4326923076923077,
+        "wilson_95_percent": [
+          0.34155001052392997,
+          0.5286297871800539
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 26,
+        "empirical_rate": 0.25,
+        "wilson_95_percent": [
+          0.176696403553832,
+          0.341114273632394
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-04",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 61,
+        "empirical_rate": 0.5865384615384616,
+        "wilson_95_percent": [
+          0.4904608112857476,
+          0.6764508773805589
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 43,
+        "empirical_rate": 0.41346153846153844,
+        "wilson_95_percent": [
+          0.32354912261944113,
+          0.5095391887142524
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-05",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 38,
+        "empirical_rate": 0.36538461538461536,
+        "wilson_95_percent": [
+          0.27916975949738676,
+          0.46118983591058105
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 16,
+        "empirical_rate": 0.15384615384615385,
+        "wilson_95_percent": [
+          0.09697301114953089,
+          0.23538023418524356
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-05",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 56,
+        "empirical_rate": 0.5384615384615384,
+        "wilson_95_percent": [
+          0.44299302025822307,
+          0.6311899524823574
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 31,
+        "empirical_rate": 0.2980769230769231,
+        "wilson_95_percent": [
+          0.21864009635527715,
+          0.39189929675667456
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-05",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 68,
+        "empirical_rate": 0.6538461538461539,
+        "wilson_95_percent": [
+          0.5584089429877084,
+          0.7383229479746141
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 43,
+        "empirical_rate": 0.41346153846153844,
+        "wilson_95_percent": [
+          0.32354912261944113,
+          0.5095391887142524
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-06",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 21,
+        "empirical_rate": 0.20192307692307693,
+        "wilson_95_percent": [
+          0.13603525270294686,
+          0.2890467085575533
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 9,
+        "empirical_rate": 0.08653846153846154,
+        "wilson_95_percent": [
+          0.0461959485638481,
+          0.15633709447491023
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-06",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 29,
+        "empirical_rate": 0.27884615384615385,
+        "wilson_95_percent": [
+          0.2017228201174867,
+          0.37172508662417475
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 11,
+        "empirical_rate": 0.10576923076923077,
+        "wilson_95_percent": [
+          0.06009334538596818,
+          0.17953118402308044
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-06",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 31,
+        "empirical_rate": 0.2980769230769231,
+        "wilson_95_percent": [
+          0.21864009635527715,
+          0.39189929675667456
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 17,
+        "empirical_rate": 0.16346153846153846,
+        "wilson_95_percent": [
+          0.10463536095349271,
+          0.24626362756642686
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-07",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 10,
+        "empirical_rate": 0.09615384615384616,
+        "wilson_95_percent": [
+          0.05306996868128023,
+          0.16800881754262323
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-07",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 6,
+        "empirical_rate": 0.057692307692307696,
+        "wilson_95_percent": [
+          0.026706545635334457,
+          0.12018926784798839
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-07",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 10,
+        "empirical_rate": 0.09615384615384616,
+        "wilson_95_percent": [
+          0.05306996868128023,
+          0.16800881754262323
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 6,
+        "empirical_rate": 0.057692307692307696,
+        "wilson_95_percent": [
+          0.026706545635334457,
+          0.12018926784798839
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-08",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 0,
+        "empirical_rate": 0.0,
+        "wilson_95_percent": [
+          0.0,
+          0.03562135437245191
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-08",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 3,
+        "empirical_rate": 0.028846153846153848,
+        "wilson_95_percent": [
+          0.009858182902777006,
+          0.08140040102511037
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-08",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 4,
+        "empirical_rate": 0.038461538461538464,
+        "wilson_95_percent": [
+          0.015056813343976884,
+          0.09474751376905566
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 1,
+        "empirical_rate": 0.009615384615384616,
+        "wilson_95_percent": [
+          0.0016993728496512567,
+          0.05246772470794581
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-09",
+      "length": 128,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 3,
+        "empirical_rate": 0.028846153846153848,
+        "wilson_95_percent": [
+          0.009858182902777006,
+          0.08140040102511037
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 2,
+        "empirical_rate": 0.019230769230769232,
+        "wilson_95_percent": [
+          0.0052897115850640206,
+          0.0674231291576782
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-09",
+      "length": 256,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 2,
+        "empirical_rate": 0.019230769230769232,
+        "wilson_95_percent": [
+          0.0052897115850640206,
+          0.0674231291576782
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 2,
+        "empirical_rate": 0.019230769230769232,
+        "wilson_95_percent": [
+          0.0052897115850640206,
+          0.0674231291576782
+        ]
+      }
+    },
+    {
+      "key_id": "kgw-09",
+      "length": 512,
+      "samples": 104,
+      "one_sided_5_percent": {
+        "target_fpr": 0.05,
+        "cutoff": 1.6448536269514722,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 8,
+        "empirical_rate": 0.07692307692307693,
+        "wilson_95_percent": [
+          0.03949175369105489,
+          0.14449554616255827
+        ]
+      },
+      "one_sided_1_percent": {
+        "target_fpr": 0.01,
+        "cutoff": 2.3263478740408408,
+        "decision_rule": "score_strictly_greater_than_cutoff",
+        "exceedances": 2,
+        "empirical_rate": 0.019230769230769232,
+        "wilson_95_percent": [
+          0.0052897115850640206,
+          0.0674231291576782
+        ]
+      }
+    }
+  ],
+  "pooled_threshold_key_distortion": [
+    {
+      "scheme": "kgw",
+      "length": 128,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 2.4270695636233146,
+      "pooled_exceedances": 49,
+      "pooled_empirical_rate": 0.047115384615384615,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.14423076923076922,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 6,
+          "empirical_rate": 0.057692307692307696,
+          "wilson_95_percent": [
+            0.026706545635334457,
+            0.12018926784798839
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 11,
+          "empirical_rate": 0.10576923076923077,
+          "wilson_95_percent": [
+            0.06009334538596818,
+            0.17953118402308044
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 15,
+          "empirical_rate": 0.14423076923076922,
+          "wilson_95_percent": [
+            0.08939607699457373,
+            0.22441142515505547
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 6,
+          "empirical_rate": 0.057692307692307696,
+          "wilson_95_percent": [
+            0.026706545635334457,
+            0.12018926784798839
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "kgw",
+      "length": 128,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 3.383764840919798,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.038461538461538464,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "kgw",
+      "length": 256,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 2.7262349574524394,
+      "pooled_exceedances": 52,
+      "pooled_empirical_rate": 0.05,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.19230769230769232,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 6,
+          "empirical_rate": 0.057692307692307696,
+          "wilson_95_percent": [
+            0.026706545635334457,
+            0.12018926784798839
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 13,
+          "empirical_rate": 0.125,
+          "wilson_95_percent": [
+            0.07452602523780914,
+            0.2021899905415298
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 20,
+          "empirical_rate": 0.19230769230769232,
+          "wilson_95_percent": [
+            0.12808145190298775,
+            0.2784547661723673
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "kgw",
+      "length": 256,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 3.5934723427711073,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.028846153846153848,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "kgw",
+      "length": 512,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 3.347545459894549,
+      "pooled_exceedances": 52,
+      "pooled_empirical_rate": 0.05,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.21153846153846154,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 16,
+          "empirical_rate": 0.15384615384615385,
+          "wilson_95_percent": [
+            0.09697301114953089,
+            0.23538023418524356
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 22,
+          "empirical_rate": 0.21153846153846154,
+          "wilson_95_percent": [
+            0.1440522470328251,
+            0.29957545741282027
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 8,
+          "empirical_rate": 0.07692307692307693,
+          "wilson_95_percent": [
+            0.03949175369105489,
+            0.14449554616255827
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "kgw",
+      "length": 512,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 4.34739724729507,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.04807692307692308,
+      "key_rates": [
+        {
+          "key_id": "kgw-00",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-01",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-02",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-03",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-04",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "kgw-05",
+          "exceedances": 5,
+          "empirical_rate": 0.04807692307692308,
+          "wilson_95_percent": [
+            0.020708042325852223,
+            0.10764202797232547
+          ]
+        },
+        {
+          "key_id": "kgw-06",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "kgw-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "kgw-09",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 128,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.525089605734767,
+      "pooled_exceedances": 51,
+      "pooled_empirical_rate": 0.04903846153846154,
+      "minimum_key_rate": 0.019230769230769232,
+      "maximum_key_rate": 0.0673076923076923,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 6,
+          "empirical_rate": 0.057692307692307696,
+          "wilson_95_percent": [
+            0.026706545635334457,
+            0.12018926784798839
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 5,
+          "empirical_rate": 0.04807692307692308,
+          "wilson_95_percent": [
+            0.020708042325852223,
+            0.10764202797232547
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 128,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.5376344086021505,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.028846153846153848,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 256,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.5176571920757967,
+      "pooled_exceedances": 52,
+      "pooled_empirical_rate": 0.05,
+      "minimum_key_rate": 0.009615384615384616,
+      "maximum_key_rate": 0.10576923076923077,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 11,
+          "empirical_rate": 0.10576923076923077,
+          "wilson_95_percent": [
+            0.06009334538596818,
+            0.17953118402308044
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 7,
+          "empirical_rate": 0.0673076923076923,
+          "wilson_95_percent": [
+            0.03298368902967008,
+            0.1324578676387979
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 5,
+          "empirical_rate": 0.04807692307692308,
+          "wilson_95_percent": [
+            0.020708042325852223,
+            0.10764202797232547
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 10,
+          "empirical_rate": 0.09615384615384616,
+          "wilson_95_percent": [
+            0.05306996868128023,
+            0.16800881754262323
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 256,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.5253370525337052,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.038461538461538464,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 512,
+      "target_fpr": 0.05,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.5129669283844873,
+      "pooled_exceedances": 52,
+      "pooled_empirical_rate": 0.05,
+      "minimum_key_rate": 0.028846153846153848,
+      "maximum_key_rate": 0.08653846153846154,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 3,
+          "empirical_rate": 0.028846153846153848,
+          "wilson_95_percent": [
+            0.009858182902777006,
+            0.08140040102511037
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 9,
+          "empirical_rate": 0.08653846153846154,
+          "wilson_95_percent": [
+            0.0461959485638481,
+            0.15633709447491023
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 5,
+          "empirical_rate": 0.04807692307692308,
+          "wilson_95_percent": [
+            0.020708042325852223,
+            0.10764202797232547
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 6,
+          "empirical_rate": 0.057692307692307696,
+          "wilson_95_percent": [
+            0.026706545635334457,
+            0.12018926784798839
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 5,
+          "empirical_rate": 0.04807692307692308,
+          "wilson_95_percent": [
+            0.020708042325852223,
+            0.10764202797232547
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 4,
+          "empirical_rate": 0.038461538461538464,
+          "wilson_95_percent": [
+            0.015056813343976884,
+            0.09474751376905566
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 8,
+          "empirical_rate": 0.07692307692307693,
+          "wilson_95_percent": [
+            0.03949175369105489,
+            0.14449554616255827
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "synthid",
+      "length": 512,
+      "target_fpr": 0.01,
+      "pooled_samples": 1040,
+      "pooled_cutoff": 0.5176571920757967,
+      "pooled_exceedances": 10,
+      "pooled_empirical_rate": 0.009615384615384616,
+      "minimum_key_rate": 0.0,
+      "maximum_key_rate": 0.019230769230769232,
+      "key_rates": [
+        {
+          "key_id": "synthid-00",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-01",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-02",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-03",
+          "exceedances": 2,
+          "empirical_rate": 0.019230769230769232,
+          "wilson_95_percent": [
+            0.0052897115850640206,
+            0.0674231291576782
+          ]
+        },
+        {
+          "key_id": "synthid-04",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-05",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-06",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-07",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        },
+        {
+          "key_id": "synthid-08",
+          "exceedances": 0,
+          "empirical_rate": 0.0,
+          "wilson_95_percent": [
+            0.0,
+            0.03562135437245191
+          ]
+        },
+        {
+          "key_id": "synthid-09",
+          "exceedances": 1,
+          "empirical_rate": 0.009615384615384616,
+          "wilson_95_percent": [
+            0.0016993728496512567,
+            0.05246772470794581
+          ]
+        }
+      ]
+    }
+  ],
+  "precision_plan": {
+    "false_positive_precision": [
+      {
+        "target_fpr": 0.01,
+        "relative_half_width_goal": 0.3,
+        "formula_sample_size": 4226,
+        "recommended_rounded_sample_size": 5000,
+        "expected_exceedances": 50.0,
+        "wilson_interval_at_expected_count": [
+          0.007593772813946567,
+          0.013158575092209418
+        ]
+      },
+      {
+        "target_fpr": 0.001,
+        "relative_half_width_goal": 0.3,
+        "formula_sample_size": 42641,
+        "recommended_rounded_sample_size": 43000,
+        "expected_exceedances": 43.0,
+        "wilson_interval_at_expected_count": [
+          0.0007425386232067332,
+          0.001346610991641602
+        ]
+      }
+    ],
+    "mean_effect_power_scenarios": [
+      {
+        "standardized_mean_effect": 0.1,
+        "samples_for_80_percent_power_two_sided_5_percent_alpha": 785
+      },
+      {
+        "standardized_mean_effect": 0.2,
+        "samples_for_80_percent_power_two_sided_5_percent_alpha": 197
+      },
+      {
+        "standardized_mean_effect": 0.3,
+        "samples_for_80_percent_power_two_sided_5_percent_alpha": 88
+      },
+      {
+        "standardized_mean_effect": 0.5,
+        "samples_for_80_percent_power_two_sided_5_percent_alpha": 32
+      }
+    ],
+    "positive_outcome_caveat": "Attack-condition power remains provisional until repeated watermarked positive and attack variances are measured."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "cells": 60,
+  "passed": 42,
+  "heldout_fpr_range": [
+    0.0016,
+    0.0096
+  ],
+  "heldout_fpr_range_kgw": [
+    0.0024,
+    0.0096
+  ],
+  "heldout_fpr_range_synthid": [
+    0.0016,
+    0.0066
+  ],
+  "cells_ci_upper_above_1pct_two_sided": 3,
+  "cells_point_above_1pct": 0,
+  "max_ci_upper": 0.012708273873810934,
+  "kgw_calibration_cells_at_boundary_28": 28,
+  "mean_calibration_exceedances_kgw": 27.9,
+  "mean_confirmation_exceedances_kgw": 27.7,
+  "worst_cell": {
+    "scheme": "kgw",
+    "key_id": "kgw-03",
+    "length": 512,
+    "heldout_fpr": 0.0096,
+    "ci_lo": 0.007086525962298778,
+    "ci_hi": 0.012708273873810934
+  },
+  "kgw07_512_threshold": 6.396731643659333,
+  "kgw03_512_threshold": 1.4927035850663304,
+  "kgw_threshold_range_512": [
+    1.4927035850663304,
+    6.396731643659333
+  ]
+}

@@ -1,0 +1,575 @@
+{
+  "schema_version": 1,
+  "status": "kgw_bias_development_prompt_manifest_frozen",
+  "experiment_id": "phase2-v2-kgw-bias-development-v2",
+  "scope": "Fresh development-only UltraChat prompts; not calibration or confirmation data",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "config": "default",
+    "split": "train_sft",
+    "license": "MIT",
+    "language": "en",
+    "attribution": "Hugging Face H4 (UltraChat 200k)",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "extraction_rule": "ParquetLens SQL SELECT row_number() OVER () - 1 AS shard_row, prompt_id, prompt FROM data; JSON output"
+  },
+  "model_tokenizer": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "seed": "phase2-v2-kgw-bias-development-v2",
+    "count": 50,
+    "max_prompt_tokens": 1024,
+    "exclude_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json",
+      "data/phase2-v2-kgw-bias-development-prompts.json"
+    ],
+    "method": "lowest SHA-256 ranks after frozen exclusions, normalized deduplication, and tokenizer-length filtering",
+    "exclusion_manifest_sha256": {
+      "data/phase2-null-calibration-prompts.json": "fa8f52bb0203548d22ad5f761b2a18470cb04e88eee634b077918a47b055b60a",
+      "data/phase2-variance-replication-prompts.json": "15caa4969e8ae3081d7a88dbef9145f85140c179a3b6c53bbf4d7b7b4beace59",
+      "data/phase2-smoke-prompts.json": "981bacff4ed9ac6196f8bfb6a6da27308cc81191a1c417850c523f6621be8d4f",
+      "data/phase2-confirmatory-calibration-prompts.json": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+      "data/phase2-confirmatory-confirmation-prompts.json": "d053da15c9897ea2e9232471aeee86aca21fdb5e093398019f53148143725b32",
+      "data/phase2-v2-positive-sensitivity-prompts.json": "964c30c583a076587ac539a89ece384cac8c43e4b3c8ebea36b64be7db40fdb6",
+      "data/phase2-v2-kgw-bias-development-prompts.json": "bdf5680ac20ff3a368bc100d29353d2c6233dc7e0140776a587945c248e48201"
+    },
+    "generator_sha256": "43d8b71c9ed2acd52f14e6e8a295e03ab87385a85fed1a7bd4353ab7f0458ca3"
+  },
+  "records": [
+    {
+      "source_shard": 2,
+      "source_row": 28512,
+      "source_prompt_id": "9087c1df9598e1f2053986dace895ff3133ee25a2e92fe21b469b9552f6b635d",
+      "prompt": "Write a story about a person who is a ghost that is haunting their old house.",
+      "prompt_sha256": "9087c1df9598e1f2053986dace895ff3133ee25a2e92fe21b469b9552f6b635d",
+      "prompt_tokens": 17,
+      "selection_rank": "0000a9cec6e8f6c2c2934382a402f7db313eda0462c63a596e19acc2f5733f25",
+      "id": "kgw-bias-development-000"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 18780,
+      "source_prompt_id": "bd27b4c477071aec156440d6f80b7e30b54a38f81a9d02ba3a9e94e09986744b",
+      "prompt": "Please provide recommendations on how to maintain a healthy and active lifestyle while traveling, including tips for exercise, nutrition, and self-care. The list should be practical, easy to follow, and applicable to various types of travel, such as long-haul flights, road trips, or vacations. Please consider including suggestions for healthy snacks and meals, exercises that can be done in small spaces, ways to stay hydrated, and ways to prioritize rest and recovery while on the go. You may also want to include advice on how to incorporate movement into daily activities and make healthy choices when dining out.",
+      "prompt_sha256": "bd27b4c477071aec156440d6f80b7e30b54a38f81a9d02ba3a9e94e09986744b",
+      "prompt_tokens": 117,
+      "selection_rank": "0000c8547695cd3e363aadf9687df3c57a7c09bff097764ce1ca617f36fd955f",
+      "id": "kgw-bias-development-001"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 12722,
+      "source_prompt_id": "ba310d4b7182b9e00d3d609d9b885b371159c411e1b25a0b6afa5d21ee9cec7f",
+      "prompt": "Create a fantasy world and write about a young hero on a quest to save their kingdom.",
+      "prompt_sha256": "ba310d4b7182b9e00d3d609d9b885b371159c411e1b25a0b6afa5d21ee9cec7f",
+      "prompt_tokens": 18,
+      "selection_rank": "0000cbb49828e4a3d21bfbe5d7822628b1f50f5600b5c806200c8c2d64aa1244",
+      "id": "kgw-bias-development-002"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 56173,
+      "source_prompt_id": "b16427af65b793bd21d741401befd47978a1a53a4bd17bd633306f71be447989",
+      "prompt": "Write a 2000-word fictional story about a 30-year-old chef named Marco who, despite facing personal and professional struggles, decides to compete in a high-stakes cooking competition with a grand prize of $100,000. The story should revolve around his journey through the competition, including the challenges he faces, the relationships he builds with fellow competitors, and the dishes he creates to impress the judges. The story should be written in third-person limited point of view and feature descriptive language that highlights the tastes, smells, and presentation of the dishes. You may also include flashbacks to Marco's past experiences in the kitchen to expand his character development. The story should have a clear beginning, middle, and end, with a satisfying conclusion that wraps up all loose ends.",
+      "prompt_sha256": "b16427af65b793bd21d741401befd47978a1a53a4bd17bd633306f71be447989",
+      "prompt_tokens": 165,
+      "selection_rank": "000282d07b8ac8e3aeed422f9e71705fad2c3f8d605237161c5f4e0a3ba7bf62",
+      "id": "kgw-bias-development-003"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 16267,
+      "source_prompt_id": "949f426d7c4bffb9ef4be2e50021a4ffbff250794c2198ae3f01d201bcbe5d2a",
+      "prompt": "How does dry-hopping affect the composition of carbohydrates in beer, and what impact does this have on the alcohol content of the final product?\nGenerate according to: News Sep 20, 2018 | Original Story from the American Chemical Society.\nThe forgotten art of \u201cdry-hopping\u201d beer to enhance flavor is back in vogue. But this practice sometimes has undesirable side effects, such as an unexpectedly high alcohol content and high pressures that could cause beer bottles to break. Now, research published in ACS\u2019 Journal of Agricultural and Food Chemistry explains the biochemical basis of these unintended consequences, which could help brewers create \u201choppy\u201d beverages without the quality-control and safety issues.\nDuring beer production, grain is mashed and steeped in hot water to convert starch into sugars. The liquid extract is then boiled with hop flowers to impart bitter flavor and a pleasant aroma and to limit bacterial contamination. Yeast is then added to ferment the sugars into alcohol. In dry-hopping, hops are added during or after the fermentation stage, meaning the resulting beer is less bitter. Although hops were previously thought to be inert ingredients, recent evidence suggests they contain biologically active compounds that restart the fermentation process and alter the final composition of beer. Thomas Shellhammer and Kaylyn Kirkpatrick wanted to identify the source of these changes.\nThe researchers dry-hopped a commercial beer and showed this boosted its carbon dioxide (CO2) and alcohol content, while lowering its carbohydrate content. They found that the activity of starch-degrading enzymes associated with hops \u2014 including amyloglucosidase, \u03b1-amylase, \u03b2-amylase and dextrinase \u2014 altered the composition of carbohydrates in the beer, shifting the balance to more fermentable sugars and thus increasing the alcohol content. The scientists also found that the amount of hops used, the duration and temperature of the process, and whether yeast was present affected the results. They say that brewers could use their findings to better control beer quality and safety when producing this trendy beverage.\nEvidence of Dextrin Hydrolyzing Enzymes in Cascade Hops (Humulus lupulus). Kaylyn R. Kirkpatrick and Thomas H. Shellhammer. J. Agric. Food Chem., 2018, 66 (34), pp 9121\u20139126, DOI: 10.1021/acs.jafc.8b03563.",
+      "prompt_sha256": "949f426d7c4bffb9ef4be2e50021a4ffbff250794c2198ae3f01d201bcbe5d2a",
+      "prompt_tokens": 512,
+      "selection_rank": "0002c10253b5beb996bc374dbd253ca2de1e403acfd6327c114308e7d7232974",
+      "id": "kgw-bias-development-004"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 17940,
+      "source_prompt_id": "83c734a852006c92ab45d6f928db0e1b8a5344ff52f1d31c216a057950ef23de",
+      "prompt": "Please share a high-intensity interval training (HIIT) workout routine that incorporates breathwork and meditation to help relieve symptoms of anxiety.",
+      "prompt_sha256": "83c734a852006c92ab45d6f928db0e1b8a5344ff52f1d31c216a057950ef23de",
+      "prompt_tokens": 28,
+      "selection_rank": "0002e04633cfd10f1eb4475db82ea5e2d7c7564adb932b366ca45e1ae4b40cff",
+      "id": "kgw-bias-development-005"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 68521,
+      "source_prompt_id": "bf189b4216cc6191a11de1cbcee73b2b5a2ea52404e306b00e898f1a9bcfe101",
+      "prompt": "Is it necessary to live or work in a certain location to maintain membership in Altra Federal Credit Union? Answer according to: It\u2019s easier than ever to join Altra Federal Credit Union!\nIf you and/or your immediate family/household members attend or work for a qualifying school or school district, you are eligible to join Altra. Once you become a member, you\u2019re always a member, no matter where you live or work!",
+      "prompt_sha256": "bf189b4216cc6191a11de1cbcee73b2b5a2ea52404e306b00e898f1a9bcfe101",
+      "prompt_tokens": 92,
+      "selection_rank": "000300897d4ec0d023a5f427294bc67920dc05326cfb90c53395c22a4f25aaf5",
+      "id": "kgw-bias-development-006"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 32831,
+      "source_prompt_id": "83e927d7752e8037c291abbc4b0d210158bc8bb8b64b2f5e819509c122f90614",
+      "prompt": "How have traditional gyms and fitness centers had to adapt to the proliferation of at-home workout programs and fitness apps?",
+      "prompt_sha256": "83e927d7752e8037c291abbc4b0d210158bc8bb8b64b2f5e819509c122f90614",
+      "prompt_tokens": 24,
+      "selection_rank": "000304535f60b9b81451d68770a629fbc66f5d2dddf56e4b273af41228fad5b3",
+      "id": "kgw-bias-development-007"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 51955,
+      "source_prompt_id": "ee306c41f540aa569d48840571d0ba24c7041c4f53ba1693f10ca867d8b13b86",
+      "prompt": "Using Elixir, write a web service that generates unique and random passwords. The service should allow users to select the length of the password and the type of characters to include (e.g. uppercase letters, lowercase letters, numbers, symbols). The generated password should be displayed on the webpage and should not be stored on the server. The service should also include error handling to ensure that the user input is valid.",
+      "prompt_sha256": "ee306c41f540aa569d48840571d0ba24c7041c4f53ba1693f10ca867d8b13b86",
+      "prompt_tokens": 85,
+      "selection_rank": "00038bda07077424ea1850c3173140a4d99dd61b9e91eacc43f7efb8d85b5d1d",
+      "id": "kgw-bias-development-008"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 58666,
+      "source_prompt_id": "579efc4adfa48b37e829bc36cb476b13150a8e6dfbd5349ccc2a3d0f24e42d29",
+      "prompt": "Create a chocolate breakfast smoothie with bananas and cocoa powder.",
+      "prompt_sha256": "579efc4adfa48b37e829bc36cb476b13150a8e6dfbd5349ccc2a3d0f24e42d29",
+      "prompt_tokens": 11,
+      "selection_rank": "000452d56ec356c51183e98a8fb86edf1eae6d630e38b52fc366ec4fc36d876d",
+      "id": "kgw-bias-development-009"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 52296,
+      "source_prompt_id": "c1e283f9a74d7aecdb786b84175004e2dc7ed9bc77a03dc0c12cadc21ae3507c",
+      "prompt": "What is the relationship between art and philosophy?",
+      "prompt_sha256": "c1e283f9a74d7aecdb786b84175004e2dc7ed9bc77a03dc0c12cadc21ae3507c",
+      "prompt_tokens": 9,
+      "selection_rank": "000532b487bb612f2013acaf23e286626690a78e5e544e85e7e3bc5b3c6b0097",
+      "id": "kgw-bias-development-010"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 20028,
+      "source_prompt_id": "4809a84bd8f0c7a679b0edf070cff56f8bc955e6fe3cf60ecd561b54a25dc5ed",
+      "prompt": "How does the cuisine in Saint-\u00c9tienne differ from that of other French cities, and what dishes are recommended?",
+      "prompt_sha256": "4809a84bd8f0c7a679b0edf070cff56f8bc955e6fe3cf60ecd561b54a25dc5ed",
+      "prompt_tokens": 24,
+      "selection_rank": "000535e6960a8200419ba028209603d91171be7831f5f1b0a860778a35316d27",
+      "id": "kgw-bias-development-011"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 9463,
+      "source_prompt_id": "a2112392c179f18dce656ff35bd70fceeeada1eea750b4134a901665779c3ba2",
+      "prompt": "Write step-by-step instructions for creating an origami crane using one square sheet of origami paper, including instructions for all folds and creases needed for a successful completion of the crane.",
+      "prompt_sha256": "a2112392c179f18dce656ff35bd70fceeeada1eea750b4134a901665779c3ba2",
+      "prompt_tokens": 37,
+      "selection_rank": "000617161fe842e26a30632c17c36acadf863905a06ff114784d3e841aa96ed5",
+      "id": "kgw-bias-development-012"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 22219,
+      "source_prompt_id": "90716192857571c39803771dbdc25bb143adf58727d272fb7841175c2c25b093",
+      "prompt": "What sizes are StarLite Gumballs\u00ae available in, and how do they differ?\nGenerate according to: Same popular design as the original StarLite\u00ae, StarLite Gumballs\u00ae come in a clear lens, with ten different temple colors in each box.\nAvailable in standard StarLite size, or 10% smaller in StarLite SM size.\nTemple colors in each box include Blueberry, Cherry Red, Cotton Candy, Orange, Lemon Yellow, Lime Green, Grape, Vanilla, Mocha Brown and Black Licorice.",
+      "prompt_sha256": "90716192857571c39803771dbdc25bb143adf58727d272fb7841175c2c25b093",
+      "prompt_tokens": 121,
+      "selection_rank": "00064ee79ed3dbeb20fbe84e466b9c82773229727a207c87a7d5e9713c600d90",
+      "id": "kgw-bias-development-013"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 26125,
+      "source_prompt_id": "79b249e578348e6df4280c7a503b394a1185f01abc2a19cb0ebab11d35d07b5b",
+      "prompt": "Describe a specific location in nature that you find calming or peaceful. Include details such as its geographic location, the environment around it, and any sounds or sensations you experience while there. Write in a descriptive and engaging style to really capture the essence of the place and convey its significance to you.",
+      "prompt_sha256": "79b249e578348e6df4280c7a503b394a1185f01abc2a19cb0ebab11d35d07b5b",
+      "prompt_tokens": 58,
+      "selection_rank": "00068be10785419edee03b59e041b1c5adbfa6b56fa519fd82ebe16142c47095",
+      "id": "kgw-bias-development-014"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 30717,
+      "source_prompt_id": "c38b40c6fc1a4caedc52332565a6045b62d41fd0023ce434d9f011157ade3353",
+      "prompt": "Using at least 500 words, write a poignant and emotionally charged short story that centers around a high school teacher who transforms the life of a struggling student through the power of their words, actions, and mentorship. In your story, explore the nuanced relationship between the teacher and student, capturing their growth and development as they learn from each other. Incorporate themes of perseverance, empathy, and education, and ensure that your story is carefully crafted with well-researched characters, a gripping plot, and stunning prose that evokes a powerful emotional response from your readers.",
+      "prompt_sha256": "c38b40c6fc1a4caedc52332565a6045b62d41fd0023ce434d9f011157ade3353",
+      "prompt_tokens": 112,
+      "selection_rank": "00069a251c5fd288ed89c22038cdb5192dab9b211a519d5ce85ccfa053860844",
+      "id": "kgw-bias-development-015"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 38996,
+      "source_prompt_id": "b018907c7ee24ff05df7ba6b0b5d1845a4687a91310599fb8e2714c96ea23c8e",
+      "prompt": "Write a recipe for a healthy smoothie with fruit and vegetables.",
+      "prompt_sha256": "b018907c7ee24ff05df7ba6b0b5d1845a4687a91310599fb8e2714c96ea23c8e",
+      "prompt_tokens": 12,
+      "selection_rank": "0006de52594c75c759be778bfc57344fed342e76564596df840e7e0cbe3c17f4",
+      "id": "kgw-bias-development-016"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 19681,
+      "source_prompt_id": "f393891ad6a5fabc5d499ba9884ac19b435078b00792442f4381d5d886597cba",
+      "prompt": "Can you please provide more details on IN THE WILD Vacation Bible School event?\nGenerate according to: Join Us for IN THE WILD!\nVBS is FREE! This annual summertime kickoff event is sponsored in full by First Baptist Church Oneonta. Children do not have to pay to participate.\nIf you are interested in helping with our Vacation Bible School on a volunteer basis, please complete the Volunteer Registration. Someone will be in touch with you to discuss your possible participation.\nAnd a Happy Ending & Celebration!\nStay tuned for information on Family Night at Vacation Bible School!",
+      "prompt_sha256": "f393891ad6a5fabc5d499ba9884ac19b435078b00792442f4381d5d886597cba",
+      "prompt_tokens": 124,
+      "selection_rank": "0007751b482131a10728dd6f73c72e95eed6d373f6b30fbc7c11a9e419555b7f",
+      "id": "kgw-bias-development-017"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 936,
+      "source_prompt_id": "d5059e1a9ff0b553c08a1c188a13c09a8831e92bd5d0b32d6fc42d49fa43bfc3",
+      "prompt": "How long has National Fire Prevention Week been observed and why was it established?\nGenerate according to: The National Fire Protection Association and many fire departments across the country are participating in the week's events.\nFire safety events are scheduled from coast to coast for the 91st National Fire Prevention Week, taking place Oct. 6-12. The National Fire Prevention Association also is taking part and is providing week-related materials on its website.\nAccording to NFPA, U.S. fire departments responded to 370,000 home fires in 2011 alone, and home fires kill an average of seven people in the United States every day.\nThe New York City Fire Department is holding educational events in all five boroughs during the week. The Los Angeles Fire Department held its free Valley Disaster Preparedness Fair on Saturday, Oct. 5, in conjunction with several communities and neighborhood councils.\nThe week's activities are focused on home fires, mainly on cooking fires, because cooking is the leading cause of home fires and the leading cause of fire-related home injuries. \"Often when firefighters are called to a fire that started in the kitchen, the residents tell us that they only left the kitchen for a few minutes,\" California State Fire Marshal Tonya Hoover said. \"Sadly, that's all it takes for a fire to start. We hope that Fire Prevention Week will enable us to reach folks in the community before they've suffered a damaging lesson and remember 'Fire is Everyone's Fight.'\"\nNew York City Fire Commissioner Salvatore J. Cassano said FDNY's fire safety education efforts \"continue to be a major factor in reducing the number of civilian fire deaths in New York City, including, in 2012, the fewest civilian fire fatalities ever recorded.The FDNY's Fire Safety Education Unit has reached more than 600,000 New Yorkers with their critical messages of fire safety and fire prevention, working year-round and especially during National Fire Prevention Week.\"\nThe week has been observed since 1922. It is held during the second week of October to commemorate the Great Chicago Fire of Oct. 8, 1871, and to inform the public about the importance of fire safety and fire prevention.",
+      "prompt_sha256": "d5059e1a9ff0b553c08a1c188a13c09a8831e92bd5d0b32d6fc42d49fa43bfc3",
+      "prompt_tokens": 468,
+      "selection_rank": "000794b806f38e532b489acb017e3ec5424dee36b9f11e81a5b92cf2e13bd783",
+      "id": "kgw-bias-development-018"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 54203,
+      "source_prompt_id": "616a7c5bb6a2f11a3ef4e338aba3b6ec574c673bad9b102a5f2cbdbc9b63c7d9",
+      "prompt": "Explain how specific art movements, such as Art Deco, Pop Art, and Surrealism, have impacted the aesthetics and techniques of fashion design over time. Provide concrete examples of how designers have incorporated these artistic influences into their collections, and analyze the ways in which these movements have shaped trends and styles in the fashion industry. Additionally, consider the cultural and social contexts in which these art movements emerged, and explore how these factors may have influenced their impact on fashion design.",
+      "prompt_sha256": "616a7c5bb6a2f11a3ef4e338aba3b6ec574c673bad9b102a5f2cbdbc9b63c7d9",
+      "prompt_tokens": 93,
+      "selection_rank": "0007a59dbdf3550e9131e528936b5b616ec13d7fda8eadcc18e9a5fcad43510e",
+      "id": "kgw-bias-development-019"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 26490,
+      "source_prompt_id": "1c678e1a2e19a4e94e6fc4e48418c08d5adceedb0abf29563751c7cde64a4a90",
+      "prompt": "Write an acoustic folk song that explores the beauty and mysteries of the night sky, highlighting features such as constellations, shooting stars, and the moon. Use descriptive language and vivid imagery to evoke a sense of wonder and awe in your audience. Consider incorporating metaphors or symbolism to convey deeper emotional or philosophical meanings. Aim for a slow or moderate tempo with a simple chord progression and catchy melody to make the song easy to sing along to.",
+      "prompt_sha256": "1c678e1a2e19a4e94e6fc4e48418c08d5adceedb0abf29563751c7cde64a4a90",
+      "prompt_tokens": 85,
+      "selection_rank": "0008aa2596e8fb3cdc900b0923bda7111caabbcfb18dd879b3d94bc8ded88d4c",
+      "id": "kgw-bias-development-020"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 1963,
+      "source_prompt_id": "d15b5ca2634836ed36a1912b1d2cd5d2f6fc6bd94a8a402491bf82c4ee6eea3e",
+      "prompt": "Every attempt to think of a new idea led me back to this episode, so I'm posting it. A different interpretation of the Nativity Story. Also, a sackful of podsafe music. -\"O Come O Come Emmanuel with What Child is This\"\n-\"Angels from the Realms of Glory\"\n-\"Silent Night with It Came Upon the Midnight Clear\"\n-\"Lo, How a Rose E'er Blooming with Lully Lullay\"\nYou can call my NEW voicemail at 989-372-1489. Based on the passage above, Can you please paraphrase the greeting message at the end of the text material?",
+      "prompt_sha256": "d15b5ca2634836ed36a1912b1d2cd5d2f6fc6bd94a8a402491bf82c4ee6eea3e",
+      "prompt_tokens": 148,
+      "selection_rank": "00094c7e83daa87be094a0775e36a4d7031a31fdf26cfe55e14b341722152745",
+      "id": "kgw-bias-development-021"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 26217,
+      "source_prompt_id": "5f667530f13c8ffd291b9ca9c3c24715c06e9f9d73d2c5b733c4a33635e4bffc",
+      "prompt": "The report includes forecast and analysis for the Artificial Sports Turf market on a global and regional level. The research gives important data of 2015, 2016 and 2017 along with a projection from 2018 to 2026 based on revenue. The study covers drivers and limitations of the Artificial Sports Turf market along with the impact they have on the trade over the forecast period. Additionally, the report covers the study of possibilities available in the Artificial Sports Turf market on a global level.\nThe report aims to present a study of Global Artificial Sports Turf Market along with accurate segmentation of market by type, solution, application and five major geographical regions. Global Artificial Sports Turf market is supposed to witness a high increase during the forecast years due to expanding risk of data theft and firm government regulation.\nThe report also tracks the major market functions including product launches, technological advancements, mergers & benefits, and the innovative market tactics opted by key market players. Along with strategically examining the key micro markets, the paper also focuses on industry-specific drivers, restraints, possibilities and challenges in the Artificial Sports Turf market.\nThe research methodology for Research Corridor\u2019s Artificial Sports Turf market report utilizes a key of top-down and bottom-up research arrangements. Our initial focus on continuous market tracking, accurate fact-checking, data-triangulation, and multiple layers of quality control assures high-quality data that can be leveraged for actionable study insights. How does the report analyze the impact of drivers and limitations on the Artificial Sports Turf market over the forecast period?",
+      "prompt_sha256": "5f667530f13c8ffd291b9ca9c3c24715c06e9f9d73d2c5b733c4a33635e4bffc",
+      "prompt_tokens": 330,
+      "selection_rank": "000984a8bf8cb77b0cb67ee1ed9a48765dca49d44a669ee5add915bad8d3c268",
+      "id": "kgw-bias-development-022"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 64425,
+      "source_prompt_id": "dc8744dc28804e6bc89df46a9d7a35ab07a4335aaae84ad6c33411d6d7adf251",
+      "prompt": "- How email sequencing works",
+      "prompt_sha256": "dc8744dc28804e6bc89df46a9d7a35ab07a4335aaae84ad6c33411d6d7adf251",
+      "prompt_tokens": 5,
+      "selection_rank": "0009c29fc90d1eec57f26a2f4b46d79c61724ee3486f49ea65589e1600b5c93a",
+      "id": "kgw-bias-development-023"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 42105,
+      "source_prompt_id": "5d5cc581ed6d50942d65d6f22df0ddd7a7896fcc42928dbee4ed88c311601336",
+      "prompt": "Write a heartwarming short story, in first person point of view, about a five-year-old boy named Timmy who is determined to learn how to ride a bike for the first time, despite the fear and doubts that hold him back, and the challenges he faces along the way. Make sure to use descriptive language to depict the scenery, characters' feelings and actions, and to convey the sense of achievement and joy when Timmy finally succeeds.",
+      "prompt_sha256": "5d5cc581ed6d50942d65d6f22df0ddd7a7896fcc42928dbee4ed88c311601336",
+      "prompt_tokens": 89,
+      "selection_rank": "000a414a455f608d1427255854a72565c06d89cc0325a131a7bf8bd8ca492a31",
+      "id": "kgw-bias-development-024"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 7329,
+      "source_prompt_id": "d041f7aac3980eb76f3ecb781b0e81d10172497247403a55353549ec9472727c",
+      "prompt": "Create a step-by-step guide for knitting your first scarf that is easy to follow and includes detailed instructions, diagrams, and photos for each knitting technique used. Additionally, include tips for choosing the right yarn, needles, and pattern for beginners, as well as troubleshooting common mistakes and how to fix them.",
+      "prompt_sha256": "d041f7aac3980eb76f3ecb781b0e81d10172497247403a55353549ec9472727c",
+      "prompt_tokens": 63,
+      "selection_rank": "000a807ac5dcb7c616d762080a7db17d3bd67bb3c24ee387f5e6d948192e0679",
+      "id": "kgw-bias-development-025"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 68219,
+      "source_prompt_id": "6ecaf05bdb2bc6f4094cd77d6d53748aae86e31d4974e24a6e963af6fe6838f2",
+      "prompt": "What steps can be taken to help maintain the resilience of coral reefs in the Gulf of Aqaba against local and global stresses, according to the research discussed in the material? Answer according to: Are sheltered from the stress.\nCorals in the Gulf of Aqaba (Photo Credit: EPFL/Itamar Grinberg).\nThis is a nonet, inspired by recent research which has found that excess nutrients from human activities may compromise the resilience of coral reefs to climate change.\nOver the last 30 years, 50% of the world\u2019s coral reefs have suffered significant damage due to global warming and ocean acidification. However, unlike in other parts of the world coral reefs in the Gulf of Aqaba (a semi-enclosed water body located at the northern end of the Red Sea) have previously been shown to be resilient to climate change and ocean acidification.\nUnfortunately, this new research has demonstrated that local disturbances, such as a rise in nutrient concentrations from sewage and fish farms negatively affect these coral reefs and reduce their resilience. With the addition of excess nutrients, researchers found that the entire microbial community on the coral surface changed, and that as it did their resistance to any thermal stress brought about by warming events became much lower. Whilst it is difficult for this community to reduce the global carbon emissions that damage corals, removing local disturbance can help to ensure that these corals maintain their resilience against global stresses.",
+      "prompt_sha256": "6ecaf05bdb2bc6f4094cd77d6d53748aae86e31d4974e24a6e963af6fe6838f2",
+      "prompt_tokens": 290,
+      "selection_rank": "000a88e39ba71e239254c247a280ad3ccc8b3ddb95a93a7720d1f9450272c832",
+      "id": "kgw-bias-development-026"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 61729,
+      "source_prompt_id": "e0cdb7b8ad7ee049a1b9b5329f2d2fa4c45da9b5bd735fd00a2e5ac3222f02f5",
+      "prompt": "Given the text: The little pulse in the swell is dropping fast. There isn\u2019t going to be much left over for the weekend. Small conditions are expected.\nLight onshore winds for the Gold Coast and NE NSW. It\u2019ll be offshore in Newcastle on Saturday morning with a southerly switch around midday.\nHow would you summarize the current ocean conditions as described in the text material?",
+      "prompt_sha256": "e0cdb7b8ad7ee049a1b9b5329f2d2fa4c45da9b5bd735fd00a2e5ac3222f02f5",
+      "prompt_tokens": 81,
+      "selection_rank": "000b17f12ec11eb044d62cb928bd31e606dba4616ca6f048010f4df2402b520f",
+      "id": "kgw-bias-development-027"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 43868,
+      "source_prompt_id": "71bf4a5556d56aac9ba5c694e7f9a87bb39c9861001ca5cbaddc215e6c5119bc",
+      "prompt": "Create a comprehensive curriculum plan for the online learning platform using Drupal, ensuring that the content is organized, engaging and relevant for the targeted learners. Implement social networking features that will allow learners to interact with each other, share their progress, and discuss the course material. Incorporate multimedia elements such as videos and interactive quizzes to facilitate learning in a fun and interactive way. Keep the site design user-friendly and intuitive, making it easy for learners to navigate and access course resources.",
+      "prompt_sha256": "71bf4a5556d56aac9ba5c694e7f9a87bb39c9861001ca5cbaddc215e6c5119bc",
+      "prompt_tokens": 95,
+      "selection_rank": "000b65fe010ef43b2b95107e89e4a07250daa262c1ce2c0db044aa5601f953c0",
+      "id": "kgw-bias-development-028"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 11509,
+      "source_prompt_id": "07346cb76cf1ee532dd1043239bbf24f5035e6367c42346b14b8311cac46ca2d",
+      "prompt": "With a maximum word count of 2000, write a science fiction story about a relatable protagonist who discovers that their world is being targeted by a ruthless race of aliens. Develop the protagonist's character arc in a way that shows their growth and transformation as they navigate the challenges of leading a team to save their world. Feel free to incorporate themes such as sacrifice, love, hope, or betrayal. Be creative with the setting, the alien species, and the technology used. Keep the reader engaged with vivid descriptions, dialogue, and action scenes. End the story with a satisfying resolution that leaves the reader pondering the impact of the protagonist's actions.",
+      "prompt_sha256": "07346cb76cf1ee532dd1043239bbf24f5035e6367c42346b14b8311cac46ca2d",
+      "prompt_tokens": 130,
+      "selection_rank": "000b8ca78291ecaf23c822c6a3c68e6d4efdb9110b04ab50fe6d1ae2733d057d",
+      "id": "kgw-bias-development-029"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 6346,
+      "source_prompt_id": "f05db1c48d8620b8d4154198a445009047122d498e9cbbcb3dc589223298f3cb",
+      "prompt": "5. The product should be presented in a visually appealing manner, with attention to detail in the design and layout.",
+      "prompt_sha256": "f05db1c48d8620b8d4154198a445009047122d498e9cbbcb3dc589223298f3cb",
+      "prompt_tokens": 23,
+      "selection_rank": "000bc5c38e9b00767dcb174f17094e8c3a8ca249070861897172e3b8964a62a3",
+      "id": "kgw-bias-development-030"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 35275,
+      "source_prompt_id": "0eab29a773e4ebad23d0d662d62dd9e68cd610370431973f90df6d6b4b6c2801",
+      "prompt": "Given the text: The engine issue and composite material shortage are hampering development of China\u2019s fighter jets like J-20 stealth fighter. At present the most advanced companies in producing carbon fiber are Japan\u2019s Mitsubishi, Toray and Toho, and the high performance carbon fiber technologies have been monopolized by the West.\nDu Shanyi, board chairman of China\u2019s Composite Materials Society suggested that advantageous forces should be focused onto development of T-800 carbon fiber, and high performance carbon fiber material units should be deployed properly, to prevent low-level manufacturers rush forward together.\nJapanese homemade stealth fighter Mitsubishi ATD-X Shinshin is to use a lot of carbon fiber composite materials, which are lighter and tougher, which can improve cruise performance and stealth effect.\nBesides, MiG-29K uses 15% composite materials, F-22 uses 25% and F-35 uses 35%.\nJ-20 stealth fighter jet of China must use high trust engines and carbon fiber materials to achieve supercruise in the future.\nAt present, the most important supporting part T-800 carbon fiber field is still incomplete in China, and high performance carbon fiber still needs to be imported, and China hasn\u2019t mastered core technologies for carbon fiber.\nBut according to a recent report from 163, a Chinese company located in Jiangsu province plans to launch a new facility this year, to product thousands tons of T-800 carbon fiber annually.\nIt is reported that T-800 material is embargoed by Japan, America and Europe toward China, and is widely used in fields like aerospace, aviation, high-speed rail, etc. Japanese media once reported that Japanese police arrested personnel who exported high-level aviation materials to China.\nIt is speculated that if the 1,000 tons of T-800 carbon fiber is all used for J-20 stealth fighters, it can satisfy as many as 200 J-20 fighters and other fighters.\nAmerican Ministry of Defense once emphasized that only composite materials have the potential to improve performance of fighters by 20-25%.\nTherefore, even if J-20 jet doesn\u2019t have top-ranking engine, it may achieve supercruise and supermaneuver by lighter and tougher body.\nCan you provide a summary of the article on China's development of fighter jets and the use of composite materials?",
+      "prompt_sha256": "0eab29a773e4ebad23d0d662d62dd9e68cd610370431973f90df6d6b4b6c2801",
+      "prompt_tokens": 517,
+      "selection_rank": "000c316a63312e69a0f832c3d0f3d7e290d9fa004ad0041df6fb83da4245337a",
+      "id": "kgw-bias-development-031"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 6599,
+      "source_prompt_id": "b4dff18c7fc938b68e0d61d7f897905246ec5615f043b7a5a0016e54a983a713",
+      "prompt": "In what ways can the personal recounting and intimate depiction of mental health struggles through memoir writing serve as a powerful tool in reducing the shame and stigma surrounding these experiences? How might the style, structure, and content of memoirs contribute to the normalization and celebration of mental health advocacy and advocacy for those living with mental illness?",
+      "prompt_sha256": "b4dff18c7fc938b68e0d61d7f897905246ec5615f043b7a5a0016e54a983a713",
+      "prompt_tokens": 63,
+      "selection_rank": "000c7da027a6e28e7f285577b5537fce6ef27fbc61dc4f1abce90195f0f9ea2b",
+      "id": "kgw-bias-development-032"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 42280,
+      "source_prompt_id": "e6b53b5688434028092520edac5394351a198a58806b1945cc12a36167c33672",
+      "prompt": "Create a comprehensive proposal for a new recycling program that includes:",
+      "prompt_sha256": "e6b53b5688434028092520edac5394351a198a58806b1945cc12a36167c33672",
+      "prompt_tokens": 12,
+      "selection_rank": "000c86c3ba9f936f7e946a8175a5bfc6ff788941a084341e683739ccd691012a",
+      "id": "kgw-bias-development-033"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 18236,
+      "source_prompt_id": "172bc5643eacb7ab05a0587645d79a2fca34ed0efcca776e60d6df72a66af953",
+      "prompt": "What is the State Chiropractic Association's partnership with Army OneSource, and what resources do they provide to chiropractors? Answer according to: PICATINNY ARSENAL, N.J. - In recent years, past and current installation and garrison commanders-as well as command sergeants major-have signed important Army documents known as the Army Community Covenant and Army Family Covenant.\nThe Army Community Covenant was designed to develop and foster effective state and community partnerships with the Army to improve the quality of life for Soldiers and their Families, both at their current duty stations and as they transfer from state to state.\nThe Army Family Covenant is a commitment by Army leadership to support Soldiers and their families.\nWhen Brig. Gen. Jonathan Maddux received an invitation from the Association of New Jersey Chiropractors (AJNC) to attend their Army Community Covenant signing, he was eager to participate.\n\"I am honored to be here with you today as members of the Association of New Jersey Chiropractors sign our community covenant and pledge their support to our military members,\" Maddux said while addressing the audience April 16 in Long Branch, N.J.\nThrough a partnership with Army OneSource, the State Chiropractic Association provides chiropractors with resources to help them properly treat the invisible wounds of war.\nChiropractors are able to register for courses on post-traumatic stress disorder, traumatic brain injury,and issues related to women returning from combat, all at no cost to the practitioner.\nThe courses assist a chiropractor who may see a veteran or family member on an unrelated issue to develop a better understanding of the culture in which service members and their families live and work.\nThe courses also provide best practices for identifying and assessing health disorders that result from the trauma of war.\nAlong with Maddux, about a dozen military dignitaries with ties to the state signed the covenant, including retired Brig.Gen. Rebecca Halstead, a supporter of the Foundation for Chiropractic Progress.\nStaff members from Army OneSource and the AJNC also signed the covenant.",
+      "prompt_sha256": "172bc5643eacb7ab05a0587645d79a2fca34ed0efcca776e60d6df72a66af953",
+      "prompt_tokens": 424,
+      "selection_rank": "000cdb2bc92f42fc539e70ed7c317c15d5c346d079db8e5a802de2b1d0ca4c85",
+      "id": "kgw-bias-development-034"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 672,
+      "source_prompt_id": "80c1d4babdc7baa05e066e207735d73894fd19a7506825e26f12f719361561ff",
+      "prompt": "This (Mid-Senior) Computer Vision Researcher vacancy is based in Oxford, UK with my client who develops 3D capture and imaging tech for a wide range of clients deploying new 3D applications, from industrial to medical. What can you expect? Primary responsibilities will be in the research and design of new computer vision algorithms in C/C++. Can you paraphrase the text material to describe the aim of the client's work, as well as the industries they cater to?",
+      "prompt_sha256": "80c1d4babdc7baa05e066e207735d73894fd19a7506825e26f12f719361561ff",
+      "prompt_tokens": 98,
+      "selection_rank": "000d2cc544b4efe7cde24f646cfc4d0bb95aee092b9875a0c86025c6a2c6d72b",
+      "id": "kgw-bias-development-035"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 35916,
+      "source_prompt_id": "14dd77b828c444378a8f83a7231bec20f6edecabd3be55d2ef5506d66f2653be",
+      "prompt": "Summarize the features of the Nixon Kensington watch in a few sentences. Answer according to: Nixon Kensington watch. The cool thing about sporting some of grandpa's hand-me-downs is you'll get that perfectly relaxed tomboy look with the authenticity factor of having avoided mall store ubiquity. Classic, but never stuffy, The Kensington is an update on those heirloom styles. Imported. 3 hand quartz movement with engraved and printed indices and custom molded hands. 37mm, 50 meter/5ATM solid stainless steel case. 16mm steel bracelet band with a stainless steel locking clasp. Imported.",
+      "prompt_sha256": "14dd77b828c444378a8f83a7231bec20f6edecabd3be55d2ef5506d66f2653be",
+      "prompt_tokens": 138,
+      "selection_rank": "000d3b24048a8cb0d5bdb23c47f9161246fbcbfa3ca13965bc4da882efc93b08",
+      "id": "kgw-bias-development-036"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 27191,
+      "source_prompt_id": "76580e848e10b261e17cd61440ed47102e71f03ef8629559bdf65ad2f66b677a",
+      "prompt": "Please write a comprehensive guide that includes step-by-step instructions on how to choose a heated car seat cushion that comes with a washable mesh cover. Make sure to cover important factors such as size, heating settings, safety features, and durability, and provide clear examples and suggestions for different budgets and personal preferences. Additionally, include information on how to properly care for the cushion and its cover so that they last as long as possible. Your guide should be easy to follow and structured in a way that is both informative and engaging for readers.",
+      "prompt_sha256": "76580e848e10b261e17cd61440ed47102e71f03ef8629559bdf65ad2f66b677a",
+      "prompt_tokens": 108,
+      "selection_rank": "000d3c9ef1f5b8e1856432464ae7a3043468553c1f287351824460b9ffe766e0",
+      "id": "kgw-bias-development-037"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 14440,
+      "source_prompt_id": "fe87dd8aa46db111c1e3e40540e8afefddbd4999ff9febd03212c9114dd5a1fc",
+      "prompt": "ASHDOWN, Ark.\u2014 One lane of Highway 32 bridge across Millwood Dam will be closed for routine bridge inspection from 8:30 a.m. till 2 p.m. today.\nOfficials at the Army Corps of Engineers regret requests the public's cooperation until the work is complete. The closure is being coordinated with emergency services and law enforcement agencies. Corps officials ask travelers to plan alternate routes and allow extra time to reach their destinations.\nFor more information call the Millwood Tri-Lakes Project Office at 870-898-3343. Based on the passage above, Could you paraphrase the message in simpler language for easy understanding?",
+      "prompt_sha256": "fe87dd8aa46db111c1e3e40540e8afefddbd4999ff9febd03212c9114dd5a1fc",
+      "prompt_tokens": 142,
+      "selection_rank": "000d741131f4357e2fd41590dffd0fd363c99ef7837f97fb34530b069dd72f1f",
+      "id": "kgw-bias-development-038"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 52676,
+      "source_prompt_id": "f139e4c6f8b325c81ef3930a0aa0b5f197213b79977a6c001694d26aeca125a5",
+      "prompt": "In what ways have Mexican-Americans influenced American cuisine?",
+      "prompt_sha256": "f139e4c6f8b325c81ef3930a0aa0b5f197213b79977a6c001694d26aeca125a5",
+      "prompt_tokens": 11,
+      "selection_rank": "000d8046f9dc0412764cabe7dc14b015102feb4737d630dd720c70bb2d05f181",
+      "id": "kgw-bias-development-039"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 27168,
+      "source_prompt_id": "fcf5af46a973eff73ece7d33f19a0eedc6ecce8f7c66b4129786b2bf52e119d4",
+      "prompt": "How can I book an authentic Javanese puppet show experience in Yogyakarta?",
+      "prompt_sha256": "fcf5af46a973eff73ece7d33f19a0eedc6ecce8f7c66b4129786b2bf52e119d4",
+      "prompt_tokens": 18,
+      "selection_rank": "000d9b42a7f4b29e47f09ca71e7c805784b777ad4278d05ba03409953b70d36a",
+      "id": "kgw-bias-development-040"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 27598,
+      "source_prompt_id": "95afab7bde9a045ff071356400c6b74e8024f818038889fb6af8e58acdbc3437",
+      "prompt": "Create a clear and concise call to action that encourages the viewer to take action and interact with the product or service. Use action-oriented language such as \"start your free trial today\" or \"book your appointment now\" to prompt immediate engagement. Consider using contrasting colors or bold typography to make the call to action stand out on the page.",
+      "prompt_sha256": "95afab7bde9a045ff071356400c6b74e8024f818038889fb6af8e58acdbc3437",
+      "prompt_tokens": 68,
+      "selection_rank": "000db0f7531d92e0f9462ce0d01a6e6b0b68079272a6ca21d4ee621d3588d4d1",
+      "id": "kgw-bias-development-041"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 57993,
+      "source_prompt_id": "44a715f65ce1f379ecd38ff42f0d394ea89edb5cd9c3483134ac4d2e7dc8bedd",
+      "prompt": "What is the most breathtaking viewpoint or viewpoint hike to do in the Yorkshire Dales?",
+      "prompt_sha256": "44a715f65ce1f379ecd38ff42f0d394ea89edb5cd9c3483134ac4d2e7dc8bedd",
+      "prompt_tokens": 17,
+      "selection_rank": "000dcbdb87cb6931e7b12daa94313cdec28d455fe37d90834a3e847a6687bd89",
+      "id": "kgw-bias-development-042"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 6194,
+      "source_prompt_id": "d7d26ba865b2114a55580871e9d000ad8febc6b24040f8b3969d5e790ce632d4",
+      "prompt": "Write a 3-page short story in third person point of view about a group of five friends who decide to start a nonprofit organization aimed at helping underprivileged children in their community. The story should include descriptions of each friend's personalities and motivations for joining the organization, as well as the challenges they face in getting it off the ground. Use descriptive language and dialogue to bring each character to life, and include details about fundraising events, volunteer work, and the impact their organization has on the community. End the story with a reflection on the group's accomplishments and the bonds they've formed through their shared goals.",
+      "prompt_sha256": "d7d26ba865b2114a55580871e9d000ad8febc6b24040f8b3969d5e790ce632d4",
+      "prompt_tokens": 122,
+      "selection_rank": "000de147fa41c1b35d1a67746547b69d3f2c7975e6b036b5fac9b27e3d7f7420",
+      "id": "kgw-bias-development-043"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 5920,
+      "source_prompt_id": "209571aefc07ab9077a14211d6a16b3634c469a58d4b651e02a1df75bd2ca288",
+      "prompt": "Read the passage below and answer the question or follow the instruction: Can you summarize the purpose of the author's message and their intention in posting it on BigThink.com? Passage: Testing Testing Testing. Dear BigThink.com-ers, please do not hate me for this entry. I am typing this to try to understand what is the benefit of leaving a response rather than leaving a comment. They seem redundant at this point in the website, probably because no comments or responses have been placed. So here I am, placing a response/creating an idea in order to further understand the functionality of the webpage and provide further constructive criticism.",
+      "prompt_sha256": "209571aefc07ab9077a14211d6a16b3634c469a58d4b651e02a1df75bd2ca288",
+      "prompt_tokens": 128,
+      "selection_rank": "000ead8d1f4c4400d3debc52769be07a9f33a45b35e8f8d012fea17151c13531",
+      "id": "kgw-bias-development-044"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 30597,
+      "source_prompt_id": "eb4ebc0531da79b716946de0e91bc26c4a9a76aa376dbd2baaac67a746acd013",
+      "prompt": "Write a 5-page persuasive essay in APA format discussing the significance of providing accessible and high-quality mental health care in both the justice and legal systems. Use data and genuine examples to support the claim. Also, include at least three opposing views and explain why each opposition is outdated or invalid. Finish with a clear statement that reinforces the significance of prioritizing mental health care in the justice and legal systems.",
+      "prompt_sha256": "eb4ebc0531da79b716946de0e91bc26c4a9a76aa376dbd2baaac67a746acd013",
+      "prompt_tokens": 81,
+      "selection_rank": "000f0c59a527281a51805692939b3d961c6951e1c235c36010a891dba50421c6",
+      "id": "kgw-bias-development-045"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 41119,
+      "source_prompt_id": "92b6eb0b2aa45f6c3a599dea1ce5aaad4a9e19052ceae0e58ad0732c224ce3cf",
+      "prompt": "Explain the significance of conversion optimization in web design and provide examples of successful conversion optimization strategies and their impact on website performance. Additionally, describe the key elements of effective conversion optimization techniques and how they can be integrated into web design to drive higher conversion rates and increased business growth.",
+      "prompt_sha256": "92b6eb0b2aa45f6c3a599dea1ce5aaad4a9e19052ceae0e58ad0732c224ce3cf",
+      "prompt_tokens": 54,
+      "selection_rank": "000f1974d76ece44827ef479c5e633cb2bfe953743204bfec5ce41fcbe2cb05a",
+      "id": "kgw-bias-development-046"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 14278,
+      "source_prompt_id": "744d1e2b51d6ebd9d312d85428e681f18495a0982144070d6b76741522b09aba",
+      "prompt": "Create a step-by-step video tutorial that walks beginners through the process of making a DIY flower bouquet, including choosing the right flowers, preparing them for arrangement, selecting complementary foliage, and assembling the bouquet into a beautiful and cohesive final product. The tutorial should also include tips and tricks for creating unique and visually striking arrangements, as well as suggestions for different occasions or styles of bouquets. The video should be easy to follow and engaging, with clear visuals and informative commentary.",
+      "prompt_sha256": "744d1e2b51d6ebd9d312d85428e681f18495a0982144070d6b76741522b09aba",
+      "prompt_tokens": 98,
+      "selection_rank": "000f4e8916f5f7ed7e29df71949de7eaad6e18c5a65513293517d39f4529d435",
+      "id": "kgw-bias-development-047"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 8558,
+      "source_prompt_id": "ea0bf2e5341a14a6cf7c97243eecaba97a577eb8a585306b1eb075fd44efa700",
+      "prompt": "Treat yourself to an elegant Mediterranean lunch-for-one with our Tuscan-inspired sandwich.\nMix oil, mustard, Worcestershire sauce, garlic and rosemary in a small bowl until well combined; set aside.\nBroil or grill pork for 3 minutes per side or until cooked through. Meanwhile, broil or grill eggplant for 2 minutes per side and broil or grill pita for 1 minute per side.\nSpread both sides of pork and eggplant with mustard sauce and layer in pita; top with olives, pepper and lettuce. Can you provide me with a recipe for a Tuscan-inspired sandwich?",
+      "prompt_sha256": "ea0bf2e5341a14a6cf7c97243eecaba97a577eb8a585306b1eb075fd44efa700",
+      "prompt_tokens": 129,
+      "selection_rank": "000f4ed3e0a7c14d1f0bccb20d45e725e8f667db0cb2ec9a689f1bc96aafc312",
+      "id": "kgw-bias-development-048"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 29118,
+      "source_prompt_id": "8f28c5dc25773d0e161f93369aa07dd65f49016bc34d779dbed2691ef978b957",
+      "prompt": "Write a suspenseful story in the third person point of view about a high school student who discovers she has the power of telepathy and must navigate the dangers of knowing everyone's secrets and her sudden ability to control minds. Use descriptive language to evoke the emotions and sensations experienced by the protagonist and establish a clear plot with a satisfying conclusion.",
+      "prompt_sha256": "8f28c5dc25773d0e161f93369aa07dd65f49016bc34d779dbed2691ef978b957",
+      "prompt_tokens": 67,
+      "selection_rank": "000f73d2623780b428308297d6eb921cac50f70b1a2e48bb6c2bc31323e82f14",
+      "id": "kgw-bias-development-049"
+    }
+  ]
+}

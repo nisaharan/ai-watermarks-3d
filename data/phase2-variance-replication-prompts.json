@@ -1,0 +1,971 @@
+{
+  "schema_version": 1,
+  "scope": "Phase 2 independent-model null replication; not a publication threshold",
+  "source": {
+    "dataset": "databricks/databricks-dolly-15k",
+    "revision": "bdd27f4d94b9c1f951818a7da7fd7aeea5dbff1a",
+    "split": "train",
+    "file": "databricks-dolly-15k.jsonl",
+    "file_sha256": "2df9083338b4abd6bceb5635764dab5d833b393b55759dffb0959b6fcbf794ec",
+    "license": "CC-BY-SA-3.0",
+    "attribution": "Databricks, Inc. (2023), databricks-dolly-15k"
+  },
+  "parent_manifest": "data/phase2-null-calibration-prompts.json",
+  "selection": {
+    "rule": "first 13 frozen null-pilot records within each category",
+    "target_samples": 104,
+    "category_allocation": {
+      "brainstorming": 13,
+      "classification": 13,
+      "closed_qa": 13,
+      "creative_writing": 13,
+      "general_qa": 13,
+      "information_extraction": 13,
+      "open_qa": 13,
+      "summarization": 13
+    }
+  },
+  "model_tokenizer": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "record_count": 104,
+  "records": [
+    {
+      "source_row": 649,
+      "category": "classification",
+      "prompt": "Tell me whether the following animals are part of the cat family: ocelot, lion, jackal, caracal, leopard, fox, tiger, lynx.",
+      "prompt_tokens": 35,
+      "prompt_sha256": "0fd8ca45b3dc13cd47864f64ccb66dfff92db9d7bfd6707175f4460b0288ecaf",
+      "id": "replication-0000",
+      "source_prompt_id": "null-0000"
+    },
+    {
+      "source_row": 3911,
+      "category": "closed_qa",
+      "prompt": "Given a reference text about Jos\u00e9 Francisco Miguel Ant\u00f3nio de Mendon\u00e7a, tell me when he was appointed patriarch and when he died.\n\nReference context:\nJos\u00e9 Francisco Miguel Ant\u00f3nio de Mendon\u00e7a, or rather, Mendo\u00e7a (Lisbon, October 2, 1725 - Lisbon, February 11, 1808), was the fifth Patriarch of Lisbon under the name of D. Jos\u00e9 II.\n\nBiography\nHe was the son of Nuno Manuel de Mendo\u00e7a, 4th Count of Vale de Reis, and his wife, D. Leonor Maria Ant\u00f3nia de Noronha. He was the younger brother of the 5th Count and 1st Count of Azambuja, and of D. Jo\u00e3o Rafael de Mendon\u00e7a, Bishop of Porto.\n\nHe graduated in canon law, having been canon of the Patriarchal See of Lisbon, Monsignor and still principal of the same church.\n\nJos\u00e9 Mendonca succeeded D. Francisco de Lemos as rector of the University of Coimbra from 1780 to 1785. During his tenure he attempted introduce a number of reforms.\n\nIn 1786, he was appointed Patriarch of Lisbon. By 1792 he was still trying to get permission from the Real Mesa Cens\u00f3ria (Royal Censorial Court) to publish two pastoral letters. A law passed on April 5, 1768 reaffirmed the right of \"temporal sovereignty\" over the prohibition of \"pernicious books and papers\" in the interest of political defense. As the Mesa had jurisdiction over all printed materials, this included pastoral letters.\n\nPope Pius VI made him a cardinal in 1788. He died in 1808 and his body is buried in the Convent of Grace.",
+      "prompt_tokens": 411,
+      "prompt_sha256": "429c422d62e86a185b2160132e8b5f985754eddf99c61311643c7464aaa60913",
+      "id": "replication-0001",
+      "source_prompt_id": "null-0001"
+    },
+    {
+      "source_row": 7488,
+      "category": "classification",
+      "prompt": "Which is a species of fish? Finger or Fingerfish",
+      "prompt_tokens": 11,
+      "prompt_sha256": "7fe08c180b8941e7162bfe92e65e75b83002599f9d2754d20df7eb63863405e8",
+      "id": "replication-0002",
+      "source_prompt_id": "null-0002"
+    },
+    {
+      "source_row": 8018,
+      "category": "closed_qa",
+      "prompt": "What is the stone age?\n\nReference context:\nThe Stone Age was a broad prehistoric period during which stone was widely used to make stone tools with an edge, a point, or a percussion surface. The period lasted for roughly 3.4 million years, and ended between 4,000 BC and 2,000 BC, with the advent of metalworking. Though some simple metalworking of malleable metals, particularly the use of gold and copper for purposes of ornamentation, was known in the Stone Age, it is the melting and smelting of copper that marks the end of the Stone Age. In Western Asia, this occurred by about 3,000 BC, when bronze became widespread. The term Bronze Age is used to describe the period that followed the Stone Age, as well as to describe cultures that had developed techniques and technologies for working copper alloys (bronze: originally copper and arsenic, later copper and tin) into tools, supplanting stone in many uses.\n\nStone Age artifacts that have been discovered include tools used by modern humans, by their predecessor species in the genus Homo, and possibly by the earlier partly contemporaneous genera Australopithecus and Paranthropus. Bone tools have been discovered that were used during this period as well but these are rarely preserved in the archaeological record. The Stone Age is further subdivided by the types of stone tools in use.",
+      "prompt_tokens": 287,
+      "prompt_sha256": "55bfcea1f6271de25cbb9d5f79c319595588838c3ff30e58dcadfb4f474b9c1c",
+      "id": "replication-0003",
+      "source_prompt_id": "null-0003"
+    },
+    {
+      "source_row": 4384,
+      "category": "closed_qa",
+      "prompt": "How many books did Dr Seuss write?\n\nReference context:\nTheodor Seuss Geisel (/su\u02d0s \u02c8\u0261a\u026az\u0259l, z\u0254\u026as -/ (listen); March 2, 1904 \u2013 September 24, 1991) was an American children's author and cartoonist. He is known for his work writing and illustrating more than 60 books under the pen name Dr. Seuss (/su\u02d0s, zu\u02d0s/). His work includes many of the most popular children's books of all time, selling over 600 million copies and being translated into more than 20 languages by the time of his death.",
+      "prompt_tokens": 151,
+      "prompt_sha256": "234d4bc7c1ece6b9ef2a4194cc76bff5929989f30708c8dbb9693d17bc439981",
+      "id": "replication-0004",
+      "source_prompt_id": "null-0004"
+    },
+    {
+      "source_row": 8624,
+      "category": "brainstorming",
+      "prompt": "Does Twitter ever break their own rules?",
+      "prompt_tokens": 8,
+      "prompt_sha256": "bb61a0b73e8004164076745e3f7f45f932f46e50a5b377d21442f287c28d2690",
+      "id": "replication-0005",
+      "source_prompt_id": "null-0005"
+    },
+    {
+      "source_row": 2019,
+      "category": "closed_qa",
+      "prompt": "Given the passage below, tell me how many Grammy Awards, Emmy Awards, and Billboard Music Awards Taylor Swift has won and how many simultaneous entries she had on the Billboard Global 200 when she had the most simultaneous entries for an artist.\n\nReference context:\nSwift has won 12 Grammy Awards (including three for Album of the Year\u2014tying for the most by an artist), an Emmy Award, 40 American Music Awards (the most won by an artist),29 Billboard Music Awards (the most won by a woman), 92 Guinness World Records, 14 MTV Video Music Awards (including three Video of the Year wins\u2014the most by an act), 12 Country Music Association Awards (including the Pinnacle Award), eight Academy of Country Music Awards, and two Brit Awards. As a songwriter, she has been honored by the Nashville Songwriters Association, the Songwriters Hall of Fame, and the National Music Publishers' Association and was the youngest person on Rolling Stone's list of the 100 Greatest Songwriters of All Time in 2015. At the 64th BMI Awards in 2016, Swift was the first woman to be honored with an award named after its recipient. In 2023, Swift became the first act to be named the global best-selling artist of the year by the International Federation of the Phonographic Industry (IFPI) thrice.\n\nFrom available data, Swift has amassed over 50 million album sales, 150 million single sales, and 114 million units globally, including 78 billion streams. The International Federation of the Phonographic Industry (IFPI) ranked her as the Global Recording Artist of the Year for a record three times (2014, 2019 and 2022). Swift has the most number-one albums in the United Kingdom and Ireland for a female artist this millennium and earned the highest income for an artist on Chinese digital music platforms\u2014RMB 159,000,000. Swift is the most streamed female act on Spotify, and the only artist to have received more than 200 million streams in one day (228 million streams on October 21, 2022).The most entries and the most simultaneous entries for an artist on the Billboard Global 200, with 94 and 31 songs, respectively, are among her feats. Her Reputation Stadium Tour (2018) is the highest-grossing North American tour ever, and she was the world's highest-grossing female touring act of the 2010s. Beginning with Fearless, all of her studio albums opened with over a million global units.",
+      "prompt_tokens": 597,
+      "prompt_sha256": "7a2cd932c41a8d0c94864f77ff2353f3235ff6ac7f7425b866658d81a31e72ed",
+      "id": "replication-0006",
+      "source_prompt_id": "null-0006"
+    },
+    {
+      "source_row": 7419,
+      "category": "information_extraction",
+      "prompt": "Based on the following passage in which months of the year are storms most common in the North Indian basin?\n\nReference context:\nSummer is traditionally associated with hot or warm weather. In Mediterranean climates, it is also associated with dry weather, while in other places (particularly in Eastern Asia because of the monsoon) it is associated with rainy weather. The wet season is the main period of vegetation growth within the savanna climate regime. Where the wet season is associated with a seasonal shift in the prevailing winds, it is known as a monsoon.\nIn the northern Atlantic Ocean, a distinct tropical cyclone season occurs from 1 June to 30 November. The statistical peak of the Atlantic hurricane season is 10 September. The Northeast Pacific Ocean has a broader period of activity, but in a similar timeframe to the Atlantic. The Northwest Pacific sees tropical cyclones year-round, with a minimum in February and March and a peak in early September. In the North Indian basin, storms are most common from April to December, with peaks in May and November. In the Southern Hemisphere, the tropical cyclone season runs from the start of November until the end of April with peaks in mid-February to early March.\nThunderstorm season in the United States and Canada runs in the spring through summer but sometimes can run as late as October or even November in the fall. These storms can produce hail, strong winds and tornadoes, usually during the afternoon and evening.",
+      "prompt_tokens": 291,
+      "prompt_sha256": "4321dbf26aa406751343765867836ed958af132696a2c366d526ba0385cfa7ed",
+      "id": "replication-0007",
+      "source_prompt_id": "null-0007"
+    },
+    {
+      "source_row": 3685,
+      "category": "classification",
+      "prompt": "Which is a species of fish? Golden Retriever or Goldfish",
+      "prompt_tokens": 14,
+      "prompt_sha256": "620734cfc9c332ef53aa58bdfa309934fd3cc57d3e0a492587f2d81f09d67b61",
+      "id": "replication-0008",
+      "source_prompt_id": "null-0008"
+    },
+    {
+      "source_row": 7770,
+      "category": "general_qa",
+      "prompt": "What's the difference between Spiders and insects?",
+      "prompt_tokens": 10,
+      "prompt_sha256": "be75679c4b2e062f66f5a199dc4361df9c6e0630e7b4017cd76129759bf0e791",
+      "id": "replication-0009",
+      "source_prompt_id": "null-0009"
+    },
+    {
+      "source_row": 4124,
+      "category": "information_extraction",
+      "prompt": "From the passage provided, extract the sobriquets Tagore was known by. Separate them with a comma.\n\nReference context:\nRabindranath Tagore FRAS (/r\u0259\u02c8b\u026andr\u0259n\u0251\u02d0t t\u00e6\u02c8\u0261\u0254\u02d0r/ (listen); pronounced [r\u0254\u02c8bind\u027e\u0254nat\u02b0 \u02c8\u0288\u02b0aku\u027e]; 7 May 1861 \u2013 7 August 1941) was a Bengali polymath who worked as a poet, writer, playwright, composer, philosopher, social reformer and painter. He reshaped Bengali literature and music as well as Indian art with Contextual Modernism in the late 19th and early 20th centuries. Author of the \"profoundly sensitive, fresh and beautiful\" poetry of Gitanjali, he became in 1913 the first non-European and the first lyricist to win the Nobel Prize in Literature. Tagore's poetic songs were viewed as spiritual and mercurial; however, his \"elegant prose and magical poetry\" remain largely unknown outside Bengal. He was a fellow of the Royal Asiatic Society. Referred to as \"the Bard of Bengal\", Tagore was known by sobriquets: Gurudeb, Kobiguru, Biswokobi.",
+      "prompt_tokens": 286,
+      "prompt_sha256": "d83265a3f2e7e22a5e9c4a72adf6049d69c64e75fc77871535233a3aa9b82d2a",
+      "id": "replication-0010",
+      "source_prompt_id": "null-0010"
+    },
+    {
+      "source_row": 7325,
+      "category": "general_qa",
+      "prompt": "What architecture does GPT use?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "b988dfae591d0c18cf687a478d5fc7af8cad6c2437bdf99c6efa677fbe81fffc",
+      "id": "replication-0011",
+      "source_prompt_id": "null-0011"
+    },
+    {
+      "source_row": 13296,
+      "category": "general_qa",
+      "prompt": "What do you do when the engine in your single engine airplane fails in flight?",
+      "prompt_tokens": 16,
+      "prompt_sha256": "9a96193c9a9893c28782b0ca930184cf92349114658a36b803468698a94598f1",
+      "id": "replication-0012",
+      "source_prompt_id": "null-0012"
+    },
+    {
+      "source_row": 11736,
+      "category": "general_qa",
+      "prompt": "Why should one travel the world?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "eb313a570a425d023cc4edb40fe626617fbb8c88ef3254c826ed8c9ebb5db7c4",
+      "id": "replication-0013",
+      "source_prompt_id": "null-0013"
+    },
+    {
+      "source_row": 3565,
+      "category": "open_qa",
+      "prompt": "Why do people need sleep?",
+      "prompt_tokens": 6,
+      "prompt_sha256": "16986f051798793761c1a3d9f61082a88f2dd15ce74375e1ff043d353f1b352d",
+      "id": "replication-0014",
+      "source_prompt_id": "null-0014"
+    },
+    {
+      "source_row": 12364,
+      "category": "summarization",
+      "prompt": "What is the Kentucky Derby Trophy\n\nReference context:\nThe Kentucky Derby Trophy is a set of four trophies that are awarded to the winning connections of America's most famous race: the grade one $3,000,000 Kentucky Derby. The owner receives a gold trophy while the trainer, the jockey and the breeder win a silver half size replica of the main gold trophy. The trophy itself has been run for since the 50th running of the Kentucky Derby in 1924. Churchill Downs Race Course of Louisville, Kentucky has annually presented a gold trophy to the winning owner of the famed \"Run for the Roses.\"",
+      "prompt_tokens": 138,
+      "prompt_sha256": "0085d061e7a2656eeb748cb0b7dc5c45c72efb5c0340e823c7b91cb3890b6bb9",
+      "id": "replication-0015",
+      "source_prompt_id": "null-0015"
+    },
+    {
+      "source_row": 5844,
+      "category": "information_extraction",
+      "prompt": "Extract from this article the most common Android security threats and simple descriptions of each threat, in a bullet pointed list.\n\nReference context:\nResearch from security company Trend Micro lists premium service abuse as the most common type of Android malware, where text messages are sent from infected phones to premium-rate telephone numbers without the consent or even knowledge of the user. Other malware displays unwanted and intrusive advertisements on the device, or sends personal information to unauthorised third parties. Security threats on Android are reportedly growing exponentially; however, Google engineers have argued that the malware and virus threat on Android is being exaggerated by security companies for commercial reasons, and have accused the security industry of playing on fears to sell virus protection software to users. Google maintains that dangerous malware is actually extremely rare, and a survey conducted by F-Secure showed that only 0.5% of Android malware reported had come from the Google Play store.\n\nIn 2021, journalists and researchers reported the discovery of spyware, called Pegasus, developed and distributed by a private company which can and has been used to infect both iOS and Android smartphones often \u2013 partly via use of 0-day exploits \u2013 without the need for any user-interaction or significant clues to the user and then be used to exfiltrate data, track user locations, capture film through its camera, and activate the microphone at any time. Analysis of data traffic by popular smartphones running variants of Android found substantial by-default data collection and sharing with no opt-out by this pre-installed software. Both of these issues are not addressed or cannot be addressed by security patches.",
+      "prompt_tokens": 330,
+      "prompt_sha256": "2b23e008e8bf330b2accb1cb140d6684211d5b181a9087eb3b26a56da369bc47",
+      "id": "replication-0016",
+      "source_prompt_id": "null-0016"
+    },
+    {
+      "source_row": 7842,
+      "category": "closed_qa",
+      "prompt": "What was the hit single on Nek's 1996 Album Lei, gli amici e tutto il resto?\n\nReference context:\nLei, gli amici e tutto il resto (She, friends and everything else), is the fourth studio album by Italian singer-songwriter Nek. It was released in 1996, as his first studio album with Warner Music Group. It was re-released on 1 March 1997, after the success of the single \"Laura non c'\u00e8\", which had not been included in the album.\n\nSince 1999 there have been reported sales of over 2 million copies all over the world.",
+      "prompt_tokens": 152,
+      "prompt_sha256": "4464e55ad202a4c2dd2d91019d4bd3ff4de0e5ff08ee415a0d6afd7f427bc33c",
+      "id": "replication-0017",
+      "source_prompt_id": "null-0017"
+    },
+    {
+      "source_row": 3682,
+      "category": "general_qa",
+      "prompt": "Is voluntary childlessness rising? If yes, then what are the major drivers? What could be its impact?",
+      "prompt_tokens": 22,
+      "prompt_sha256": "f1c69ee16f914c6aba8b9334e47b6e8d2ed4f5c7b8d81ffb875bec5a60f4164b",
+      "id": "replication-0018",
+      "source_prompt_id": "null-0018"
+    },
+    {
+      "source_row": 9417,
+      "category": "closed_qa",
+      "prompt": "Where did David Houseman go to college?\n\nReference context:\nHousman received his BA in 1966 and MA in 1971 from Brandeis University. As one of the first postdocs in the lab of Harvey Lodish at MIT, Housman showed that all mammalian proteins begin with a methionine residue transferred from a specific met-initiator tRNA. Between 1973 and 1975 he taught at the University of Toronto and was on the staff of the Ontario Cancer Institute. He joined the MIT faculty in 1975. In his lab at MIT, he mentored Jim Gusella and Daniel Haber.",
+      "prompt_tokens": 142,
+      "prompt_sha256": "40f9d169b78f48d49c95985ac0fc240cc99025e12b501f7a57f16b333470fa9b",
+      "id": "replication-0019",
+      "source_prompt_id": "null-0019"
+    },
+    {
+      "source_row": 920,
+      "category": "brainstorming",
+      "prompt": "What are some questions I can ask my mom to get to know her better?",
+      "prompt_tokens": 16,
+      "prompt_sha256": "8a3cb79d0684df5c401c1b90218280472851e245e3cab65180e2cd0b433b3e51",
+      "id": "replication-0020",
+      "source_prompt_id": "null-0020"
+    },
+    {
+      "source_row": 6329,
+      "category": "closed_qa",
+      "prompt": "Given this paragraph about battles during India Independence day, what was the date when India win the Independence\n\nReference context:\nAugust 15, 1947",
+      "prompt_tokens": 35,
+      "prompt_sha256": "9eedca2682c659b907fc855ade75140af1be97ecc5cafb9469d21db9ee891dc1",
+      "id": "replication-0021",
+      "source_prompt_id": "null-0021"
+    },
+    {
+      "source_row": 370,
+      "category": "information_extraction",
+      "prompt": "What is WestWorld?\n\nReference context:\nWestworld is an American dystopian science fiction western television series created by Jonathan Nolan and Lisa Joy that first aired on October 2, 2016, on HBO. It was based upon the 1973 film of the same name written and directed by Michael Crichton and loosely upon its 1976 sequel, Futureworld.",
+      "prompt_tokens": 86,
+      "prompt_sha256": "b6c35bae76ba948ff461e1c73c746701d0b6e3615a33e289f087efb0f91a2038",
+      "id": "replication-0022",
+      "source_prompt_id": "null-0022"
+    },
+    {
+      "source_row": 5926,
+      "category": "creative_writing",
+      "prompt": "Write a shopping list for me and group the ingredients by type. I want to make stir-fried teriyaki tofu for dinner and I want enough ingredients to make a sauce, because I don't want to buy a bottle of sauce. This meal will serve four people.",
+      "prompt_tokens": 55,
+      "prompt_sha256": "bb831e8c6f821be6181485c670f8946b068558749ad06eead882d69eae0311f3",
+      "id": "replication-0023",
+      "source_prompt_id": "null-0023"
+    },
+    {
+      "source_row": 3125,
+      "category": "summarization",
+      "prompt": "According to the text below, what is a block?\n\nReference context:\nBlock (data storage)\n\nIn computing (specifically data transmission and data storage), a block, sometimes called a physical record, is a sequence of bytes or bits, usually containing some whole number of records, having a maximum length; a block size. Data thus structured are said to be blocked. The process of putting data into blocks is called blocking, while deblocking is the process of extracting data from blocks. Blocked data is normally stored in a data buffer, and read or written a whole block at a time. Blocking reduces the overhead and speeds up the handling of the data stream. For some devices, such as magnetic tape and CKD disk devices, blocking reduces the amount of external storage required for the data. Blocking is almost universally employed when storing data to 9-track magnetic tape, NAND flash memory, and rotating media such as floppy disks, hard disks, and optical discs.\n\nMost file systems are based on a block device, which is a level of abstraction for the hardware responsible for storing and retrieving specified blocks of data, though the block size in file systems may be a multiple of the physical block size. This leads to space inefficiency due to internal fragmentation, since file lengths are often not integer multiples of block size, and thus the last block of a file may remain partially empty. This will create slack space. Some newer file systems, such as Btrfs and FreeBSD UFS2, attempt to solve this through techniques called block suballocation and tail merging. Other file systems such as ZFS support variable block sizes.\n\nBlock storage is normally abstracted by a file system or database management system (DBMS) for use by applications and end users. The physical or logical volumes accessed via block I/O may be devices internal to a server, directly attached via SCSI or Fibre Channel, or distant devices accessed via a storage area network (SAN) using a protocol such as iSCSI, or AoE. DBMSes often use their own block I/O for improved performance and recoverability as compared to layering the DBMS on top of a file system.",
+      "prompt_tokens": 449,
+      "prompt_sha256": "f27886c2795456177c6acfbdade8493b03ecc5e3781f4c45ac759251dc1805dd",
+      "id": "replication-0024",
+      "source_prompt_id": "null-0024"
+    },
+    {
+      "source_row": 4247,
+      "category": "brainstorming",
+      "prompt": "Give me a list of the most agreed upon supplements that are effective for maintaining general health",
+      "prompt_tokens": 17,
+      "prompt_sha256": "66bf85e5ed149890452a9fc1a68cb58d3809b3e1f067958be201666044dfb17a",
+      "id": "replication-0025",
+      "source_prompt_id": "null-0025"
+    },
+    {
+      "source_row": 59,
+      "category": "summarization",
+      "prompt": "Without quoting directly from the text give me a summary of the history of the Key Lime Pie.\n\nReference context:\nKey lime pie is probably derived from the \"Magic Lemon Cream Pie\" published in a promotional brochure by Borden, a producer of condensed milk, in 1931. The recipe is attributed to Borden's fictional spokesperson, Jane Ellison, and includes condensed milk, lemon juice and rind, and egg yolks. It is covered with meringue, baked, and served cold. According to the pastry chef Stella Parks, users of the recipe altered it with local ingredients; she describes it as \"a stunning reminder of how deeply America's traditions are shaped by advertising\".\n\nA \"Tropical Lime Chiffon Pie\", using condensed milk and egg yolks, is documented in a 1933 Miami newspaper article. An \"icebox lime pie\", was mentioned as a specialty of the Florida Keys in 1935.[full citation needed] and a recipe under the name \"Key Lime Pie\" was published in 1940.[full citation needed]\n\nNo earlier solid sources are known, despite appeals to the public. A 1927 Key West Women's Club cookbook does not mention the recipe. A 1926 restaurant menu includes \"lime pie\", but it is unclear what it was. Various accounts claim that it was known earlier, but none were recorded before 1933. A widely-reported story claims that William Curry's cook Aunt Sally invented it in the late 19th century. But there is no evidence for this, and the oldest version of this story dates to only 1895, in promotional materials for a Bed and Breakfast in Curry's former house.\n\nIt was in the 1950s that Key lime pie was promoted as Florida's \"most famous treat\" and in 1987 as \"the greatest of all regional American desserts.\"",
+      "prompt_tokens": 411,
+      "prompt_sha256": "93d8f78ec42254bd051e14ca08156841e4e511c33c2c4cdbb1ade20d6ec168ec",
+      "id": "replication-0026",
+      "source_prompt_id": "null-0026"
+    },
+    {
+      "source_row": 2231,
+      "category": "open_qa",
+      "prompt": "What is an acoholic?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "5698e2f14d120f82d02caa89a1eb8dc0306a038a54b9039db8f0fa4d1e7fb030",
+      "id": "replication-0027",
+      "source_prompt_id": "null-0027"
+    },
+    {
+      "source_row": 3294,
+      "category": "general_qa",
+      "prompt": "Why we have to work?",
+      "prompt_tokens": 6,
+      "prompt_sha256": "8c5e912d9aea09f8f3cdbbd68cfb9495abacd23a5a742f2b0f0322112f67f5e8",
+      "id": "replication-0028",
+      "source_prompt_id": "null-0028"
+    },
+    {
+      "source_row": 5491,
+      "category": "general_qa",
+      "prompt": "What's the difference between a wolf and a dog?",
+      "prompt_tokens": 11,
+      "prompt_sha256": "aed4044a6b53b46e2266cdefefbabe3dcc59ca939450a3f0a174c0f688671f71",
+      "id": "replication-0029",
+      "source_prompt_id": "null-0029"
+    },
+    {
+      "source_row": 4694,
+      "category": "brainstorming",
+      "prompt": "How can I become more active and do more exercise?",
+      "prompt_tokens": 11,
+      "prompt_sha256": "bea7f9212d496df09ddd4c3fed84003e7578772507ee24a2263205e8ce7c8431",
+      "id": "replication-0030",
+      "source_prompt_id": "null-0030"
+    },
+    {
+      "source_row": 7964,
+      "category": "general_qa",
+      "prompt": "Why is the Great Salt Lake salty?",
+      "prompt_tokens": 8,
+      "prompt_sha256": "fb9768f3919e6295c0e48f195671de84d4e275d15f3958c8b74e1b675fa0270d",
+      "id": "replication-0031",
+      "source_prompt_id": "null-0031"
+    },
+    {
+      "source_row": 8904,
+      "category": "closed_qa",
+      "prompt": "Who brews Shiner Bock beer?\n\nReference context:\nSpoetzl Brewery (originally Shiner Brewing Association) is a brewery located in Shiner, Texas, United States. It produces a diverse line of Shiner beers, including their flagship Shiner Bock, a dark lager that is now distributed throughout the US. The brewery is owned by the Gambrinus Company, a family-owned company based in San Antonio, which also owns Trumer Brewery in Berkeley, California.",
+      "prompt_tokens": 108,
+      "prompt_sha256": "2a6dfec720adf716417472357756657e4460070e7b82ac8dae6831de87ae60fd",
+      "id": "replication-0032",
+      "source_prompt_id": "null-0032"
+    },
+    {
+      "source_row": 8694,
+      "category": "information_extraction",
+      "prompt": "What were all the earlier names for the city presently known as Chennai?\n\nReference context:\nChennai (/\u02c8t\u0283\u025bna\u026a/ (listen), Tamil: [\u02c8t\u0361\u0255en\u02d0a\u026a\u032f]), formerly known as Madras,[A] is the capital city of Tamil Nadu, the southernmost Indian state. It is the state's primate city both in area and population and is located on the Coromandel Coast of the Bay of Bengal. According to the 2011 Indian census, Chennai is the sixth-most populous city in India and forms the fourth-most populous urban agglomeration. The Greater Chennai Corporation is the civic body responsible for the city; it is the oldest city corporation of India, established in 1688\u2014the second oldest in the world after London.\n\nHistorically, Chennai and surroundings were part of the Chola, Pandya, Pallava and Vijayanagara kingdoms for many centuries. The coastal land, which then contained the fishing village Madrasapattinam, was purchased by the British East India Company from the Nayak ruler Damarla Chennapa Nayaka, in the 17th century. The British garrison established the Madras city and port, and built Fort St. George\u2014the first British fortress in India\u2014which the French won over briefly in 1746, before becoming the winter capital of the Madras Presidency, a colonial province of the British Raj in the Indian subcontinent. After India gained its independence in 1947, Madras continued as the capital city of the Madras State and present-day Tamil Nadu. The city was officially renamed as Chennai in 1996.\n\nThe city is coterminous with Chennai district, which together with the adjoining suburbs constitutes the Chennai Metropolitan Area,[note 1] the 36th-largest urban area in the world by population and one of the largest metropolitan economies of India. As the traditional and de facto gateway of South India, Chennai is among the most-visited Indian cities by foreigners. It was ranked the 43rd most-visited city in the world in 2015 and 36th in 2019. The Quality of Living Survey rates it as India's safest city. Chennai attracts 45 percent of health tourists visiting India, and 30 to 40 percent of domestic health tourists. As such, it is termed \"India's health capital\". Chennai has the fifth-largest urban economy, and had the third-largest expatriate population in India.",
+      "prompt_tokens": 548,
+      "prompt_sha256": "150adeb0ab730a8723414313b36be8cf01cd29c0bb7115778b4c6aa670d398f4",
+      "id": "replication-0033",
+      "source_prompt_id": "null-0033"
+    },
+    {
+      "source_row": 13637,
+      "category": "general_qa",
+      "prompt": "Fix spelling, grammar and factual mistakes in the text below: Finland prime minister, Sana Marrin, has lost her battle to stay in power after her centre-left Social Democratic party (SDP) was narrowly beat into third place in a cliffhanger election by its conservative and far-right rivals. With 99.4% of votes counted on sunday, the right-wing National Coalition party was on course to secure 20.7% of the vote, with the populist, nation-first Finns party predicted to score 20.1%. Marin\u2019s SDP was forecast to collect 19.9%. Marin congratulated the election winners during her concesion speech, but hailed an improvement in both her party\u2019s vote share and its projected number of MPs. \u201cIt\u2019s a really good achievement, even though I didn\u2019t finish first today,\u201d she told supporters in Helsinki. \u201cDemocrcy has spoken, the Finnish people have casted their vote and the celebration of democracy is always a wonderful thing,\u201d she added. \u201cWe have good reason to be hapy about this result.\u201d",
+      "prompt_tokens": 234,
+      "prompt_sha256": "eb4cff57ec2fd37f598ebff878cdeffd275e6389368631734baa8b01110b8061",
+      "id": "replication-0034",
+      "source_prompt_id": "null-0034"
+    },
+    {
+      "source_row": 4322,
+      "category": "general_qa",
+      "prompt": "What is a data pipeline?",
+      "prompt_tokens": 6,
+      "prompt_sha256": "10adee5914d63382959fd342f78d38659ba3354988703a3abc369c0eacb6e16b",
+      "id": "replication-0035",
+      "source_prompt_id": "null-0035"
+    },
+    {
+      "source_row": 13867,
+      "category": "general_qa",
+      "prompt": "What is the most famous landmark in Cologne?",
+      "prompt_tokens": 9,
+      "prompt_sha256": "da21f2c133159b665a48c781b414508c77a2c3a21c603d9f57f902c882a0b88e",
+      "id": "replication-0036",
+      "source_prompt_id": "null-0036"
+    },
+    {
+      "source_row": 7390,
+      "category": "closed_qa",
+      "prompt": "What kind of animal is the Iolaus crawshayi\n\nReference context:\nIolaus crawshayi, the Crawshay's sapphire, is a butterfly in the family Lycaenidae. It is found in Ethiopia, Somalia, Kenya, Uganda, the Democratic Republic of the Congo and Tanzania. The habitat consists of moist savanna.\n\nThe larvae feed on the young leaves of Erianthemum dregei and Phragmanthera usuiensis. They are dull dirty whitish green or brown.",
+      "prompt_tokens": 110,
+      "prompt_sha256": "5db94e8c0e1f96ac371b9040c2a878d9539f84f0897371d2c2c9cf8792505665",
+      "id": "replication-0037",
+      "source_prompt_id": "null-0037"
+    },
+    {
+      "source_row": 11592,
+      "category": "information_extraction",
+      "prompt": "Many important hominid fossils have been found in Tanzania, such as 6-million-year-old Pliocene hominid fossils. The genus Australopithecus ranged across Africa between 4 and 2 million years ago, and the oldest remains of the genus Homo are found near Lake Olduvai. Following the rise of Homo erectus 1.8 million years ago, humanity spread all over the Old World, and later in the New World and Australia under the species Homo sapiens. H. sapiens also overtook Africa and absorbed the older species of humanity. Later in the Stone and Bronze Age, prehistoric migrations into Tanzania included Southern Cushitic speakers who moved south from present-day Ethiopia; Eastern Cushitic people who moved into Tanzania from north of Lake Turkana about 2,000 and 4,000 years ago; and the Southern Nilotes, including the Datoog, who originated from the present-day South Sudan\u2013Ethiopia border region between 2,900 and 2,400 years ago.: page 18 These movements took place at about the same time as the settlement of the Mashariki Bantu from West Africa in the Lake Victoria and Lake Tanganyika areas. They subsequently migrated across the rest of Tanzania between 2,300 and 1,700 years ago.\n\nReference context:\nIn what country have many of the most important hominid fossils been found?",
+      "prompt_tokens": 301,
+      "prompt_sha256": "33c23a21d3f2cd7821069779546f4669a652b07a4b7ebd810f8af52d4d845307",
+      "id": "replication-0038",
+      "source_prompt_id": "null-0038"
+    },
+    {
+      "source_row": 11983,
+      "category": "classification",
+      "prompt": "Classify each car as a Ford or Tesla: Model Y, F150, Focus, Fiesta, Model X",
+      "prompt_tokens": 26,
+      "prompt_sha256": "491f50a4baa679fc8dcfbd4f111615d12dd4fdb45773f0e913b31f2100a8fa16",
+      "id": "replication-0039",
+      "source_prompt_id": "null-0039"
+    },
+    {
+      "source_row": 8634,
+      "category": "open_qa",
+      "prompt": "Assume the email format is {first_initial}{last_name}@somecompany.com What would the email addresses be for the following people? Jon Doe Richard Smith Tom Jenkins Nick Parsons",
+      "prompt_tokens": 40,
+      "prompt_sha256": "f6589f6d864246aa8943e364976d48db13b0afc0de1093da1292c83ff32ced33",
+      "id": "replication-0040",
+      "source_prompt_id": "null-0040"
+    },
+    {
+      "source_row": 5356,
+      "category": "closed_qa",
+      "prompt": "here is some text about Grand-Lahou Department, What year did Grand-Lahou become part of Lagunes District?\n\nReference context:\nGrand-Lahou Department was created in 1988 as a first-level subdivision via a split-off from Abidjan Department.\n\nIn 1997, regions were introduced as new first-level subdivisions of Ivory Coast; as a result, all departments were converted into second-level subdivisions. Grand-Lahou Department was included in Lagunes Region.\n\nIn 2011, districts were introduced as new first-level subdivisions of Ivory Coast. At the same time, regions were reorganised and became second-level subdivisions and all departments were converted into third-level subdivisions. At this time, Grand-Lahou Department became part of Grands-Ponts Region in Lagunes District.",
+      "prompt_tokens": 192,
+      "prompt_sha256": "0a9147ca7a0c7aa5cfe8a1a4f615fb65a3541a5e86fd4ca3eb1d97159c6870ba",
+      "id": "replication-0041",
+      "source_prompt_id": "null-0041"
+    },
+    {
+      "source_row": 5334,
+      "category": "classification",
+      "prompt": "Identify which instrument is string or percussion: Pahu, Morin khuur",
+      "prompt_tokens": 16,
+      "prompt_sha256": "d83c2b509dce1f0502c2423daf8ae10d53c09e61e6c5861086716ac8ca49be72",
+      "id": "replication-0042",
+      "source_prompt_id": "null-0042"
+    },
+    {
+      "source_row": 5184,
+      "category": "creative_writing",
+      "prompt": "Why Bali is a perfect destination for a family holiday?",
+      "prompt_tokens": 11,
+      "prompt_sha256": "69deb3869e207f7bca788e24a84a2606fc089010b0696b6a4f1574a96f7b290d",
+      "id": "replication-0043",
+      "source_prompt_id": "null-0043"
+    },
+    {
+      "source_row": 9342,
+      "category": "closed_qa",
+      "prompt": "given this article about Enrico Silvestrin, what year did he get evicted from Celebrity Big Brother?\n\nReference context:\nEnrico Silvestrin (born 30 May 1972) is an Italian actor, television and radio presenter and musician.\n\nLife and career\nBorn in Rome, after a supporting role in Michele Placido's Close Friends, in 1994 Silvestrin started working as a VJ on MTV Europe, and later on MTV Italy. In 2000, he refused the Gabriele Muccino's offer of starring in The Last Kiss preferring a role in the Italia 1 sitcom Via Zanardi 33, which eventually turned to be a flop.\n\nIn 2005 Silvestrin left MTV as to focus on his acting career. He then appeared in a number of films and TV-series, getting a personal success with the role of Alessandro Berti in the Canale 5 crime series Distretto di Polizia. In 2007 he presented the Festivalbar. In 2018 he competed in Grande Fratello VIP, the Italian adaptation of Celebrity Big Brother. He was the third contestant to be evicted on day 22.\n\nSilvestrin is also active as a musician. He has been part of the musical groups Agony in Cage, Tempus Fugit, Ilor and Silv3man. He is nephew on his mother's side of actor and playwright Peppino De Filippo.",
+      "prompt_tokens": 341,
+      "prompt_sha256": "fd2fff7f135fc03a2b645796424ad53425b997deabb209db62fce374b77f3628",
+      "id": "replication-0044",
+      "source_prompt_id": "null-0044"
+    },
+    {
+      "source_row": 175,
+      "category": "creative_writing",
+      "prompt": "What is more important in society, freedom or safety?",
+      "prompt_tokens": 11,
+      "prompt_sha256": "2d05ea2db24100d4bc8d20c01cb631612cdfd799656a9fde0732a5fab14a3f07",
+      "id": "replication-0045",
+      "source_prompt_id": "null-0045"
+    },
+    {
+      "source_row": 206,
+      "category": "general_qa",
+      "prompt": "Why are we like aquariums?",
+      "prompt_tokens": 6,
+      "prompt_sha256": "5d1c805683a009678da0e3b537e14f72f7a292cf9b45d8389c14bb69a381cb86",
+      "id": "replication-0046",
+      "source_prompt_id": "null-0046"
+    },
+    {
+      "source_row": 9885,
+      "category": "information_extraction",
+      "prompt": "Find all of the Amsterdam museums mentioned in the text and put them in a numbered list.\n\nReference context:\nAmsterdam's main attractions include its historic canals; the Rijksmuseum, the state museum with a vast collection of Dutch Golden Age art; the Van Gogh Museum; the Dam Square, where the Royal Palace of Amsterdam and former city hall (stadhuis) are located; the Amsterdam Museum; Stedelijk Museum, with modern art; Hermitage Amsterdam, the Concertgebouw concert hall; the Anne Frank House; the Het Scheepvaartmuseum, the Heineken Experience, the Natura Artis Magistra; Hortus Botanicus, NEMO, the red-light district and many cannabis coffee shops. The city is also well known for its nightlife and festival activity; with several of its nightclubs (Melkweg, Paradiso) among the world's most famous. Primarily known for its artistic heritage, elaborate canal system and narrow canal houses with gabled fa\u00e7ades; well-preserved legacies of the city's 17th-century Golden Age, and the establishment of the Van Gogh Museum, displaying the work of the famous Dutch modern artist, have attracted millions of visitors to Amsterdam annually.",
+      "prompt_tokens": 260,
+      "prompt_sha256": "cf980a1f8bc881914db1ee54eb18b2681a9f2e03a0d16b6a3bb8e3a30257d509",
+      "id": "replication-0047",
+      "source_prompt_id": "null-0047"
+    },
+    {
+      "source_row": 12075,
+      "category": "information_extraction",
+      "prompt": "Based on the passage provided, who is allowed to drive the beach strand route that connects Bald Head Island and Fort Fisher?\n\nReference context:\nBald Head Island, historically Smith Island, is a village located on the east side of the Cape Fear River in Brunswick County, North Carolina, United States. Compared to the nearby city of Wilmington to the north, the village of Bald Head Island is small and somewhat remote. It is accessible by ferry from the nearby town of Southport and by four-wheel drive vehicle along the beach strand from Fort Fisher to the north. Only government officials are allowed to drive the beach strand route. There are few cars on the island; instead, residents drive modified electric golf carts. Bald Head Island is nationally recognized for its sea turtle nesting activity.\n\nThe population of the village was 158 at the 2010 census. The village is part of the Wilmington metropolitan area.\n\nThe village is revered for its picturesque nature and is a popular location for vacationing. It was the primary filming location for the film Weekend at Bernie's in 1989 as well as a major location in The Butcher's Wife in 1991. \"Old Baldy\", its out-of-service lighthouse built in 1817, is the oldest still standing in the state.",
+      "prompt_tokens": 279,
+      "prompt_sha256": "14a3de38fedaf04bbc0bf98ad8183fbab2ff877287c0fdd5ca3ba3ebe7019ec1",
+      "id": "replication-0048",
+      "source_prompt_id": "null-0048"
+    },
+    {
+      "source_row": 12691,
+      "category": "classification",
+      "prompt": "Classify each of the following cloud-based service as either AWS, Azure, or GCP: Redshift, Big Query, Lambda, Purview, Looker.",
+      "prompt_tokens": 35,
+      "prompt_sha256": "01f90ba31b7a17c78aa2c9490bb9d1e93077272d46a769163c4e4b904d9113e4",
+      "id": "replication-0049",
+      "source_prompt_id": "null-0049"
+    },
+    {
+      "source_row": 13980,
+      "category": "brainstorming",
+      "prompt": "Suggest some ranged weapons for role playing games.",
+      "prompt_tokens": 9,
+      "prompt_sha256": "315148ea26d61a0bd0ae36e6bdf0d493e350a2b4254381f0d729ca77b5957a81",
+      "id": "replication-0050",
+      "source_prompt_id": "null-0050"
+    },
+    {
+      "source_row": 6156,
+      "category": "classification",
+      "prompt": "Colonies or provinces? How did the Spanish Empire treat its overseas territories?",
+      "prompt_tokens": 15,
+      "prompt_sha256": "16e5175a983e542225dcfefab3cbf0efba8c9d2e4ee0e8356b4d64e7ebf60fc3",
+      "id": "replication-0051",
+      "source_prompt_id": "null-0051"
+    },
+    {
+      "source_row": 14334,
+      "category": "open_qa",
+      "prompt": "What is at the center of our solar system?",
+      "prompt_tokens": 10,
+      "prompt_sha256": "b2d00982a2e3dbf5df4b77053ecd8fa90d7e499da4ed4b1b22ce7a5a89b019ce",
+      "id": "replication-0052",
+      "source_prompt_id": "null-0052"
+    },
+    {
+      "source_row": 12418,
+      "category": "brainstorming",
+      "prompt": "Provide 5 factors to consider when deciding where to live",
+      "prompt_tokens": 11,
+      "prompt_sha256": "e102c42d6b3c02e28cf52d677935e519247e2112111df9350097b24c512cc5e6",
+      "id": "replication-0053",
+      "source_prompt_id": "null-0053"
+    },
+    {
+      "source_row": 6352,
+      "category": "brainstorming",
+      "prompt": "What are some necessary equipment for camping?",
+      "prompt_tokens": 8,
+      "prompt_sha256": "fb5eb5b4dcc5f61042b1abfb69db496ea2c0147da4d8df2fefb77df57fae9077",
+      "id": "replication-0054",
+      "source_prompt_id": "null-0054"
+    },
+    {
+      "source_row": 7141,
+      "category": "general_qa",
+      "prompt": "What is a triathlon?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "3501a7746cdee1e947eef429760369c7c39e122b2f9375bfefe653ba20c97f65",
+      "id": "replication-0055",
+      "source_prompt_id": "null-0055"
+    },
+    {
+      "source_row": 12728,
+      "category": "creative_writing",
+      "prompt": "Which do you prefer, cakes or pies? Describe why you believe this way.",
+      "prompt_tokens": 16,
+      "prompt_sha256": "f86ac9410debffc9ba0227b5ea350458e536b27b9f5c6a8d1a295d3e5ceea833",
+      "id": "replication-0056",
+      "source_prompt_id": "null-0056"
+    },
+    {
+      "source_row": 3862,
+      "category": "open_qa",
+      "prompt": "What is self advocacy?",
+      "prompt_tokens": 5,
+      "prompt_sha256": "d59b5c3320895ff51611f17bda70d37cddeae9d7f9c5b8ed7e172c14a47e9a98",
+      "id": "replication-0057",
+      "source_prompt_id": "null-0057"
+    },
+    {
+      "source_row": 822,
+      "category": "information_extraction",
+      "prompt": "How often is The Australian Chess Championship held?\n\nReference context:\nThe Australian Chess Championship is a tournament organised by the Australian Chess Federation and held every two years. The tournament is largely restricted to Australian chess players, although it is common to allow a small number of strong overseas players to compete. The highest-scoring eligible player (frequently the tournament winner) holds the title of Australian Chess Champion until the next tournament is held. The tournament format is normally a restricted Swiss system, and in case of a tie for first place, a playoff match or tournament is conducted.",
+      "prompt_tokens": 119,
+      "prompt_sha256": "f051da8e3d76657845950a3ccb5d0ec1992bfb27472efef645b92af4ba6a0012",
+      "id": "replication-0058",
+      "source_prompt_id": "null-0058"
+    },
+    {
+      "source_row": 2814,
+      "category": "summarization",
+      "prompt": "What is the process by which utilities rates are set in the US\n\nReference context:\nUtility ratemaking is the formal regulatory process in the United States by which public utilities set the prices (more commonly known as \"rates\") they will charge consumers. Ratemaking, typically carried out through \"rate cases\" before a public utilities commission, serves as one of the primary instruments of government regulation of public utilities.",
+      "prompt_tokens": 83,
+      "prompt_sha256": "ef93cf778378bd6b8117837728899db7413c55af774e961cd4a370758b7eb570",
+      "id": "replication-0059",
+      "source_prompt_id": "null-0059"
+    },
+    {
+      "source_row": 2531,
+      "category": "classification",
+      "prompt": "Tell me which of the following are science fiction TV shows: Lost, The X-Files, The Mandalorian, Millennium, Game of Thrones.",
+      "prompt_tokens": 31,
+      "prompt_sha256": "5f093ad745076181ba79412e380bfc00b343bc163a8887d38f1483529f97dee8",
+      "id": "replication-0060",
+      "source_prompt_id": "null-0060"
+    },
+    {
+      "source_row": 12596,
+      "category": "brainstorming",
+      "prompt": "Help me come up with a cost efficient shopping plan for my family of four.",
+      "prompt_tokens": 16,
+      "prompt_sha256": "55fc4e3d9eac61ca678b70b99b2af627d24fe24f4806d64017132dda874ad8ad",
+      "id": "replication-0061",
+      "source_prompt_id": "null-0062"
+    },
+    {
+      "source_row": 4813,
+      "category": "information_extraction",
+      "prompt": "What is the project management approach that have a serious of distinct steps?\n\nReference context:\nThere are five phases to a project lifecycle; known as process groups. Each process group represents a series of inter-related processes to manage the work through a series of distinct steps to be completed. This type of project approach is often referred to as \"traditional\" or \"waterfall\". The five process groups are:\n\nTypical development phases of an engineering project\nInitiating\nPlanning\nExecuting\nMonitoring and Controlling\nClosing\n\nSome industries may use variations of these project stages and rename them to better suit the organization. For example, when working on a brick-and-mortar design and construction, projects will typically progress through stages like pre-planning, conceptual design, schematic design, design development, construction drawings (or contract documents), and construction administration.\n\nWhile the phased approach works well for small, well-defined projects, it often results in challenge or failure on larger projects, or those that are more complex or have more ambiguities, issues, and risks",
+      "prompt_tokens": 219,
+      "prompt_sha256": "bffa2eb50eb797014ebb318c5348665656e30c96e6e8fb865855662beda322ca",
+      "id": "replication-0062",
+      "source_prompt_id": "null-0063"
+    },
+    {
+      "source_row": 12585,
+      "category": "summarization",
+      "prompt": "Why is the sport commonly known as \"Ultimate Frisbee\" legally recognized only as \"Ultimate\"?\n\nReference context:\nUltimate, originally known as ultimate frisbee, is a non-contact team sport played with a disc flung by hand. Ultimate was developed in 1968 by AJ Gator in Maplewood, New Jersey. Although ultimate resembles many traditional sports in its athletic requirements, it is unlike most sports due to its focus on self-officiating, even at the highest levels of competition. The term \"frisbee\" is a registered trademark of the Wham-O toy company, and thus the sport is not formally called \"ultimate Frisbee\", though this name is still in common casual use. Points are scored by passing the disc to a teammate in the opposing end zone. Other basic rules are that players must not take steps while holding the disc, and interceptions, incomplete passes, and passes out of bounds are turnovers. Rain, wind, or occasionally other adversities can make for a testing match with rapid turnovers, heightening the pressure of play.",
+      "prompt_tokens": 229,
+      "prompt_sha256": "a6201c32aa45e50e2bc71b7f2205d6dd2361775b4f2527bec183d95ace051db9",
+      "id": "replication-0063",
+      "source_prompt_id": "null-0064"
+    },
+    {
+      "source_row": 5476,
+      "category": "summarization",
+      "prompt": "What is the Carolina Hall\n\nReference context:\nCarolina Hall, formerly known as Saunders Hall, is a building on the University of North Carolina at Chapel Hill campus in Chapel Hill, North Carolina, in the United States. Carolina Hall was built in 1922 and named for William L. Saunders, an alumnus and a colonel in the Confederate States Army during the American Civil War. The name was changed to \"Carolina Hall\" in 2015.",
+      "prompt_tokens": 101,
+      "prompt_sha256": "9127d0e4089cd33a6f3bfdee642ec2ef9d74702e72f0cf69fd301cea6f23c3ec",
+      "id": "replication-0064",
+      "source_prompt_id": "null-0065"
+    },
+    {
+      "source_row": 3075,
+      "category": "information_extraction",
+      "prompt": "Extract all of the names of people mentioned in this paragraph and list them using bullets in the format {Name}\n\nReference context:\nThe Wildfoods festival was started in 1990 by Hokitika local Claire Bryant, a producer of gorse-flower and rose-petal wine, who wanted to celebrate the flavours and produce of the West Coast. The first festival in March 1990 coincided with Hokitika's 125th anniversary and was run by Heritage Hokitika. It took place in a newly-developed heritage area on Gibson Quay in downtown Hokitika. The first Wildfoods had 30 stalls, and attracted 1800 people. Alison Holst was the celebrity judge.",
+      "prompt_tokens": 154,
+      "prompt_sha256": "d720d02aeb6c054e630d4ff582e02d1d9f4dc7d0d77f2d7826d8c3d8c8b3823d",
+      "id": "replication-0065",
+      "source_prompt_id": "null-0067"
+    },
+    {
+      "source_row": 4231,
+      "category": "creative_writing",
+      "prompt": "Imagine you are the CEO of Tiktok and have to give an argument in front of the Senate on why the US should not ban Tiktok.",
+      "prompt_tokens": 29,
+      "prompt_sha256": "7583c50b88149fd38feb84718aff4d835a01882d83556d64ffbf65c58d684a7e",
+      "id": "replication-0066",
+      "source_prompt_id": "null-0068"
+    },
+    {
+      "source_row": 569,
+      "category": "classification",
+      "prompt": "Classify the eight planets of Earth's solar system as rocky or gaseous, according to their primary composition.",
+      "prompt_tokens": 21,
+      "prompt_sha256": "342d8e0ad7e6a73a13fb28ad1d639e4802641af9917fd4e700435f566e02e7ff",
+      "id": "replication-0067",
+      "source_prompt_id": "null-0069"
+    },
+    {
+      "source_row": 3428,
+      "category": "summarization",
+      "prompt": "Without quoting directly from the text give me a summary of what a restricted Boltzmann machine is?\n\nReference context:\nA restricted Boltzmann machine (RBM) is a generative stochastic artificial neural network that can learn a probability distribution over its set of inputs.\n\nRBMs were initially invented under the name Harmonium by Paul Smolensky in 1986, and rose to prominence after Geoffrey Hinton and collaborators invented fast learning algorithms for them in the mid-2000. RBMs have found applications in dimensionality reduction, classification, collaborative filtering, feature learning, topic modelling and even many body quantum mechanics. They can be trained in either supervised or unsupervised ways, depending on the task.\n\nAs their name implies, RBMs are a variant of Boltzmann machines, with the restriction that their neurons must form a bipartite graph: a pair of nodes from each of the two groups of units (commonly referred to as the \"visible\" and \"hidden\" units respectively) may have a symmetric connection between them; and there are no connections between nodes within a group. By contrast, \"unrestricted\" Boltzmann machines may have connections between hidden units. This restriction allows for more efficient training algorithms than are available for the general class of Boltzmann machines, in particular the gradient-based contrastive divergence algorithm.\n\nRestricted Boltzmann machines can also be used in deep learning networks. In particular, deep belief networks can be formed by \"stacking\" RBMs and optionally fine-tuning the resulting deep network with gradient descent and backpropagation.",
+      "prompt_tokens": 333,
+      "prompt_sha256": "e46d6e9c8b3ce16133b73b2af49b26822d4849db6e196c5f72a814e53ea40a49",
+      "id": "replication-0068",
+      "source_prompt_id": "null-0070"
+    },
+    {
+      "source_row": 3085,
+      "category": "classification",
+      "prompt": "What types of bikes are there?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "a02df7862c2b2783f08d35caefc0de84a616cb1b2f256a96fb6184e77e09fc35",
+      "id": "replication-0069",
+      "source_prompt_id": "null-0072"
+    },
+    {
+      "source_row": 11732,
+      "category": "closed_qa",
+      "prompt": "How many Spitfire fighter aircraft remain airworthy\n\nReference context:\nThe Supermarine Spitfire is a British single-seat fighter aircraft used by the Royal Air Force and other Allied countries before, during, and after World War II. Many variants of the Spitfire were built, from the Mk 1 to the Rolls-Royce Griffon-engined Mk 24 using several wing configurations and guns. It was the only British fighter produced continuously throughout the war. The Spitfire remains popular among enthusiasts; around 70 remain airworthy, and many more are static exhibits in aviation museums throughout the world.",
+      "prompt_tokens": 130,
+      "prompt_sha256": "ce010c91ad0fde97dfafdbd5747bb058cf2ca3f03b6f024a668eee3024d10f28",
+      "id": "replication-0070",
+      "source_prompt_id": "null-0073"
+    },
+    {
+      "source_row": 5853,
+      "category": "open_qa",
+      "prompt": "What are the most common sorting algorithms?",
+      "prompt_tokens": 8,
+      "prompt_sha256": "d3154d8afdbff6ae8e7311022b045384beb3a9deab3098f79e81a94e2d1d313f",
+      "id": "replication-0071",
+      "source_prompt_id": "null-0075"
+    },
+    {
+      "source_row": 10002,
+      "category": "brainstorming",
+      "prompt": "Give me a bullet point list of reasons to wear sunscreen",
+      "prompt_tokens": 11,
+      "prompt_sha256": "8b9241a34eb72f5bd0d5a188fa9080b5f6011a56db0baa3ff6db2738f8376eb4",
+      "id": "replication-0072",
+      "source_prompt_id": "null-0076"
+    },
+    {
+      "source_row": 8584,
+      "category": "brainstorming",
+      "prompt": "What are the different ways to work with Subject Matter Experts to build a presentation?",
+      "prompt_tokens": 16,
+      "prompt_sha256": "fd755ab0268cd8db071022dcee340064709b410b3635c79d8e826e7a23df5799",
+      "id": "replication-0073",
+      "source_prompt_id": "null-0077"
+    },
+    {
+      "source_row": 11288,
+      "category": "brainstorming",
+      "prompt": "Give me a list of the last five european golden boots winner.",
+      "prompt_tokens": 14,
+      "prompt_sha256": "ca33dc33174b40fc3f69e6ce163b48641620bef9aa0f1b16f2480d0a8e7e0ce0",
+      "id": "replication-0074",
+      "source_prompt_id": "null-0078"
+    },
+    {
+      "source_row": 14524,
+      "category": "open_qa",
+      "prompt": "Why is the 1980 gold medal match in hockey called the 'Miracle on Ice'?",
+      "prompt_tokens": 22,
+      "prompt_sha256": "6b0003a53116d64a202e30a8ddad537150b172799c864aafcad59d9060f86f72",
+      "id": "replication-0075",
+      "source_prompt_id": "null-0079"
+    },
+    {
+      "source_row": 4041,
+      "category": "summarization",
+      "prompt": "What is the history of the national commission for aerospace research and development\n\nReference context:\nThe National Commission for Aerospace Research and Development (CONIDA) (Spanish: Comisi\u00f3n Nacional de Investigaci\u00f3n y Desarrollo Aeroespacial) is a national space agency tasked with government space activities in Peru.\n\nHistory\nCONIDA was founded on 11 June 1974 following Decree Law 20643, designated to be an entity subordinate to then the Ministry of Aeronautics, which was later merged into the Ministry of Defense.\n\nPeru joined the Asia-Pacific Space Cooperation Organization on 28 October 2005.",
+      "prompt_tokens": 139,
+      "prompt_sha256": "302800561aa98bdf92d52e7318b64d6e709f7fd839be995ba5ce009ea30a9456",
+      "id": "replication-0076",
+      "source_prompt_id": "null-0080"
+    },
+    {
+      "source_row": 9456,
+      "category": "classification",
+      "prompt": "Tell me whether these are European countries or Asian countries: Spain, France, Norway, the Czech Republic, Denmark, Portugal, Brazil, South Africa, Canada, China, Japan, Malaysia, Singapore, Sri Lanka, The Philippines",
+      "prompt_tokens": 45,
+      "prompt_sha256": "26f8c34f004b3a86c59c694e12bc8063a5b0ce8c67a6628c9804e913b58834ae",
+      "id": "replication-0077",
+      "source_prompt_id": "null-0082"
+    },
+    {
+      "source_row": 3761,
+      "category": "information_extraction",
+      "prompt": "what is the Bieh State\n\nReference context:\nBieh State (previously named Eastern Bieh State) was a state in South Sudan that existed between 2 October 2015 and 22 February 2020. It was located in the Greater Upper Nile region and it bordered Fangak to the west, Central Upper Nile to the north, Latjoor and Akobo to the east, and Jonglei to the south.\n\nHistory\nOn 2 October 2015, President Salva Kiir issued a decree establishing 28 states in place of the 10 constitutionally established states. The decree established the new states largely along ethnic lines. A number of opposition parties and civil society groups challenged the constitutionality of the decree. Kiir later resolved to take it to parliament for approval as a constitutional amendment. In November the South Sudanese parliament empowered President Kiir to create new states.",
+      "prompt_tokens": 198,
+      "prompt_sha256": "420ad182bf69f7248d9ace15d2442eb9bfe408bf1158ad3ca8830aea52a4affe",
+      "id": "replication-0078",
+      "source_prompt_id": "null-0083"
+    },
+    {
+      "source_row": 4470,
+      "category": "creative_writing",
+      "prompt": "write a short essay on day spent in central park",
+      "prompt_tokens": 10,
+      "prompt_sha256": "138ddafe0853ca9b5345b7850b87ddbdb6e71217fdc867afebce9c7aed4bd461",
+      "id": "replication-0079",
+      "source_prompt_id": "null-0084"
+    },
+    {
+      "source_row": 11209,
+      "category": "open_qa",
+      "prompt": "What is the benefit of cinnamon",
+      "prompt_tokens": 6,
+      "prompt_sha256": "557566741ae4df23ac204f7b77b2a5fdd2cf2dd511acbf78d100d0b5a5460fd6",
+      "id": "replication-0080",
+      "source_prompt_id": "null-0085"
+    },
+    {
+      "source_row": 9353,
+      "category": "brainstorming",
+      "prompt": "List reputable Universities in San Diego",
+      "prompt_tokens": 6,
+      "prompt_sha256": "67845f7ba6048205bc14f1933922a876557d1eb3aa25eb9f2071571b8c1cc2ba",
+      "id": "replication-0081",
+      "source_prompt_id": "null-0086"
+    },
+    {
+      "source_row": 12708,
+      "category": "open_qa",
+      "prompt": "In the series A Song of Ice and Fire, who is the founder of House Qoherys?",
+      "prompt_tokens": 21,
+      "prompt_sha256": "1ddd37125e13ffde3ee42e2d4a63a35023dcf6dc22a284a26b0e02dd1f3c383b",
+      "id": "replication-0082",
+      "source_prompt_id": "null-0087"
+    },
+    {
+      "source_row": 4145,
+      "category": "classification",
+      "prompt": "Identify which instrument is string or percussion: Stomp box, Gunjac",
+      "prompt_tokens": 14,
+      "prompt_sha256": "5bed63a69dc4972f06bc5e76520290c6dbf11df791f46d8efb86f66b1ff5fc30",
+      "id": "replication-0083",
+      "source_prompt_id": "null-0088"
+    },
+    {
+      "source_row": 5620,
+      "category": "brainstorming",
+      "prompt": "what are the benefits of swimming?",
+      "prompt_tokens": 7,
+      "prompt_sha256": "273f16d9553a85bcd69ad550149474892441a40360359b454665c1ec03a4a099",
+      "id": "replication-0084",
+      "source_prompt_id": "null-0089"
+    },
+    {
+      "source_row": 6968,
+      "category": "classification",
+      "prompt": "Categorize each of the following foods based on the five taste sensations (sweet, salty, sour, bitter, and umami).",
+      "prompt_tokens": 27,
+      "prompt_sha256": "44f8d5efadaade0ad1ad64b07b3a3230bf0285eeff93d3fa6699567e88e7086a",
+      "id": "replication-0085",
+      "source_prompt_id": "null-0090"
+    },
+    {
+      "source_row": 4259,
+      "category": "information_extraction",
+      "prompt": "Extract the total number of employees in 2021 at Westpac Bank in Australia?\n\nReference context:\nType\tPublic\nTraded as\t\nASX: WBC\nNZX: WBC\nS&P/ASX 200 component\nIndustry\tBanking\nFinancial services\nPredecessor\tBank of New South Wales\nCommercial Bank of Australia\nFounded\t8 April 1817 (as the Bank of New South Wales)\n4 May 1982 (as Westpac Banking Corporation)\nHeadquarters\tWestpac Place\nSydney, New South Wales, Australia\nArea served\tWorldwide\nKey people\tJohn McFarlane (Chairman)\nPeter King (CEO)\nProducts\tFinance and insurance, consumer banking, corporate banking, investment banking, investment management, global wealth management, private equity, mortgages, credit cards\nOperating income\tIncrease A$21.22 billion (2021)\nNet income\tIncrease A$5.46 billion (2021)\nTotal assets\tIncrease A$935.88 billion (2021)\nTotal equity\tIncrease A$72.09 billion (2021)\nNumber of employees\t40,143 (2021)\nSubsidiaries\tSt George Bank\nBankSA\nBank of Melbourne\nWestpac New Zealand\nWebsite\t\nwestpac.com.au\nwestpac.co.nz",
+      "prompt_tokens": 330,
+      "prompt_sha256": "6d3ac0b931a6f1fc3b6b445c86b53ee799551256a5ad7a0cfcbd322e7d23f9f9",
+      "id": "replication-0086",
+      "source_prompt_id": "null-0091"
+    },
+    {
+      "source_row": 10960,
+      "category": "summarization",
+      "prompt": "Using the information in the paragraph, give me a short bulleted list of Arsenal football club's main achievements\n\nReference context:\nArsenal Football Club is an English professional football club based in Islington, London. Arsenal plays in the Premier League, the top flight of English football. The club has won 13 league titles (including one unbeaten title), a record 14 FA Cups, two League Cups, 16 FA Community Shields, one European Cup Winners' Cup, and one Inter-Cities Fairs Cup. In terms of trophies won, it is the third-most successful club in English football.\n\nArsenal was the first club from the South of England to join the Football League in 1893, and they reached the First Division in 1904. Relegated only once, in 1913, they continue the longest streak in the top division, and have won the second-most top-flight matches in English football history. In the 1930s, Arsenal won five League Championships and two FA Cups, and another FA Cup and two Championships after the war. In 1970\u201371, they won their first League and FA Cup Double. Between 1989 and 2005, they won five League titles and five FA Cups, including two more Doubles. They completed the 20th century with the highest average league position. Between 1998 and 2017, Arsenal qualified for the UEFA Champions League for nineteen consecutive seasons.\n\nHerbert Chapman, who changed the fortunes of Arsenal forever, won the club its first silverware, and his legacy led the club to dominate the 1930s decade; Chapman, however, died of pneumonia in 1934, aged 55. He helped introduce the WM formation, floodlights, and shirt numbers; he also added the white sleeves and brighter red to the club's jersey. Ars\u00e8ne Wenger is the longest-serving manager and won the most trophies. He won a record seven FA Cups, and his title-winning team set an English record for the longest top-flight unbeaten league run at 49 games between 2003 and 2004, receiving the nickname The Invincibles.\n\nIn 1886, munitions workers at the Royal Arsenal in Woolwich founded the club as Dial Square. In 1913 the club crossed the city to Arsenal Stadium in Highbury, becoming close neighbours of Tottenham Hotspur, and creating the North London derby. In 2006, they moved to the nearby Emirates Stadium. With an annual revenue of \u00a3340.3m in the 2019\u201320 season, Arsenal was estimated to be worth US$2.68 billion by Forbes, making it the world's eighth most valuable club, while it is one of the most followed on social media. The motto of the club has long been Victoria Concordia Crescit, Latin for \"Victory Through Harmony\".",
+      "prompt_tokens": 679,
+      "prompt_sha256": "fe49080cdcaf656a5de0b872372b36db6b972f53c12dcdc8bc85cc80e4b206d3",
+      "id": "replication-0087",
+      "source_prompt_id": "null-0092"
+    },
+    {
+      "source_row": 9487,
+      "category": "summarization",
+      "prompt": "How does the J programming language improve upon the syntax of APL?\n\nReference context:\nThe J programming language, developed in the early 1990s by Kenneth E. Iverson and Roger Hui, is an array programming language based primarily on APL (also by Iverson).\n\nTo avoid repeating the APL special-character problem, J uses only the basic ASCII character set, resorting to the use of the dot and colon as inflections to form short words similar to digraphs. Most such primary (or primitive) J words serve as mathematical symbols, with the dot or colon extending the meaning of the basic characters available. Also, many characters which in other languages often must be paired (such as [] {} \"\" `` or <>) are treated by J as stand-alone words or, when inflected, as single-character roots of multi-character words.",
+      "prompt_tokens": 184,
+      "prompt_sha256": "d53d2a83b3dc98427ec5ae24ba47295db09ec91aa6544e1abd7328ddbfda4f5c",
+      "id": "replication-0088",
+      "source_prompt_id": "null-0093"
+    },
+    {
+      "source_row": 678,
+      "category": "open_qa",
+      "prompt": "What is the fastest way to travel between the United States and Croatia?",
+      "prompt_tokens": 14,
+      "prompt_sha256": "42a2978df29c9e9585a788c85ce728c5cfde3312a297f124eecc16fde4e523ea",
+      "id": "replication-0089",
+      "source_prompt_id": "null-0094"
+    },
+    {
+      "source_row": 11956,
+      "category": "open_qa",
+      "prompt": "What is the difference between algebra and calculus?",
+      "prompt_tokens": 9,
+      "prompt_sha256": "b02bf2e0661a25250d713648628e554aac64e337b5435ff0421dfb9c9d4ffe5e",
+      "id": "replication-0090",
+      "source_prompt_id": "null-0096"
+    },
+    {
+      "source_row": 12608,
+      "category": "summarization",
+      "prompt": "What is a data warehouse and how are they used?\n\nReference context:\nIn computing, a data warehouse (DW or DWH), also known as an enterprise data warehouse (EDW), is a system used for reporting and data analysis and is considered a core component of business intelligence. DWs are central repositories of integrated data from one or more disparate sources. They store current and historical data in one single place that are used for creating analytical reports for workers throughout the enterprise. This is beneficial for companies as it enables them to interrogate and draw insights from their data and make decisions.\n\nThe data stored in the warehouse is uploaded from the operational systems (such as marketing or sales). The data may pass through an operational data store and may require data cleansing for additional operations to ensure data quality before it is used in the DW for reporting.\n\nExtract, transform, load (ETL) and extract, load, transform (ELT) are the two main approaches used to build a data warehouse system.",
+      "prompt_tokens": 206,
+      "prompt_sha256": "f891954e523d4ac63b66273308939fcb065d91909e81720a6d1e13eb37a24dd6",
+      "id": "replication-0091",
+      "source_prompt_id": "null-0103"
+    },
+    {
+      "source_row": 9543,
+      "category": "open_qa",
+      "prompt": "In the series A Song of Ice and Fire, who is the founder of House Corbray?",
+      "prompt_tokens": 19,
+      "prompt_sha256": "7afa94162236459be17ca1cba9e32e2d60735eda9ae0dcdf669392807bb83cde",
+      "id": "replication-0092",
+      "source_prompt_id": "null-0104"
+    },
+    {
+      "source_row": 9706,
+      "category": "open_qa",
+      "prompt": "What is a GPU?",
+      "prompt_tokens": 5,
+      "prompt_sha256": "acd9022e7715bfe63326b49cf4f74d34fa8440670d0148a67be84f7b553bbb3f",
+      "id": "replication-0093",
+      "source_prompt_id": "null-0105"
+    },
+    {
+      "source_row": 12799,
+      "category": "creative_writing",
+      "prompt": "Describe the benefits of living in a small town.",
+      "prompt_tokens": 10,
+      "prompt_sha256": "e2869069ef2c62ddfa95aef77e14d2183f696929b59e3bf4b1da6436c786c76e",
+      "id": "replication-0094",
+      "source_prompt_id": "null-0106"
+    },
+    {
+      "source_row": 9672,
+      "category": "summarization",
+      "prompt": "What are some of the benefits of first-mover advantage?\n\nReference context:\nIn marketing strategy, first-mover advantage (FMA) is the competitive advantage gained by the initial (\"first-moving\") significant occupant of a market segment. First-mover advantage enables a company or firm to establish strong brand recognition, customer loyalty, and early purchase of resources before other competitors enter the market segment.\n\nFirst movers in a specific industry are almost always followed by competitors that attempt to capitalize on the first movers' success. These followers are also aiming to gain market share; however, most of the time the first-movers will already have an established market share, with a loyal customer base that allows them to maintain their market share.",
+      "prompt_tokens": 155,
+      "prompt_sha256": "82eabd0f68ca3ad8491c171b247369ddcd3325659234db9345b61b7704d28355",
+      "id": "replication-0095",
+      "source_prompt_id": "null-0108"
+    },
+    {
+      "source_row": 6020,
+      "category": "creative_writing",
+      "prompt": "why are lot of the women more structured and methodical in work, compared to men",
+      "prompt_tokens": 17,
+      "prompt_sha256": "6dbf52752f2fa7329521e57b8d90d5c181071a8dd100985908d9e68f23a84aaf",
+      "id": "replication-0096",
+      "source_prompt_id": "null-0110"
+    },
+    {
+      "source_row": 7168,
+      "category": "creative_writing",
+      "prompt": "Write the introduction to a story about a rocket ship on its way to a distant galaxy",
+      "prompt_tokens": 17,
+      "prompt_sha256": "0bd946370338425b18c8b4cebfa331e9189999110b63e4063f9a8a34f04d9ef2",
+      "id": "replication-0097",
+      "source_prompt_id": "null-0112"
+    },
+    {
+      "source_row": 7111,
+      "category": "summarization",
+      "prompt": "Based on this excerpt, what are the main topological elements of Seattle, Washington?\n\nReference context:\nSeattle is located between the saltwater Puget Sound (an arm of the Pacific Ocean) to the west and Lake Washington to the east. The city's chief harbor, Elliott Bay, is part of Puget Sound, which makes the city an oceanic port. To the west, beyond Puget Sound, are the Kitsap Peninsula and Olympic Mountains on the Olympic Peninsula; to the east, beyond Lake Washington and the Eastside suburbs, are Lake Sammamish and the Cascade Range. Lake Washington's waters flow to Puget Sound through the Lake Washington Ship Canal (consisting of two man-made canals, Lake Union, and the Hiram M. Chittenden Locks at Salmon Bay, ending in Shilshole Bay on Puget Sound).[citation needed]\n\nThe sea, rivers, forests, lakes, and fields surrounding Seattle were once rich enough to support one of the world's few sedentary hunter-gatherer societies. The surrounding area lends itself well to sailing, skiing, bicycling, camping, and hiking year-round.\n\nThe city itself is hilly, though not uniformly so. Like Rome, the city is said to lie on seven hills; the lists vary but typically include Capitol Hill, First Hill, West Seattle, Beacon Hill, Queen Anne, Magnolia, and the former Denny Hill. The Wallingford, Delridge, Mount Baker, Seward Park, Washington Park, Broadmoor, Madrona, Phinney Ridge, Sunset Hill, Blue Ridge, Broadview, Laurelhurst, Hawthorne Hills, Maple Leaf, and Crown Hill neighborhoods are all located on hills as well. Many of the hilliest areas are near the city center, with Capitol Hill, First Hill, and Beacon Hill collectively constituting something of a ridge along an isthmus between Elliott Bay and Lake Washington. The break in the ridge between First Hill and Beacon Hill is man-made, the result of two of the many regrading projects that reshaped the topography of the city center. The topography of the city center was also changed by the construction of a seawall and the artificial Harbor Island (completed 1909) at the mouth of the city's industrial Duwamish Waterway, the terminus of the Green River. The highest point within city limits is at High Point in West Seattle, which is roughly located near 35th Ave SW and SW Myrtle St. Other notable hills include Crown Hill, View Ridge/Wedgwood/Bryant, Maple Leaf, Phinney Ridge, Mt. Baker Ridge, and Highlands/Carkeek/Bitterlake.[citation needed]\n\nNorth of the city center, Lake Washington Ship Canal connects Puget Sound to Lake Washington. It incorporates four natural bodies of water: Lake Union, Salmon Bay, Portage Bay, and Union Bay.[citation needed]\n\nDue to its location in the Pacific Ring of Fire, Seattle is in a major earthquake zone. On February 28, 2001, the magnitude 6.8 Nisqually earthquake did significant architectural damage, especially in the Pioneer Square area (built on reclaimed land, as are the Industrial District and part of the city center), and caused one fatality. Other strong quakes occurred on January 26, 1700 (estimated at 9 magnitude), December 14, 1872 (7.3 or 7.4), April 13, 1949 (7.1), and April 29, 1965 (6.5). The 1965 quake caused three deaths in Seattle directly and one more by heart failure. Although the Seattle Fault passes just south of the city center, neither it nor the Cascadia subduction zone has caused an earthquake since the city's founding. The Cascadia subduction zone poses the threat of an earthquake of magnitude 9.0 or greater, capable of seriously damaging the city and collapsing many buildings, especially in zones built on fill.\n\nAccording to the United States Census Bureau, the city has a total area of 142.5 square miles (369 km2), 83.9 square miles (217 km2) of which is land and 58.7 square miles (152 km2), water (41.16% of the total area).[citation needed]",
+      "prompt_tokens": 932,
+      "prompt_sha256": "2f7ec9dc8aec9feffc6e5a4a7ed00af1e847866abae3a7cdea93ea5b42c16a86",
+      "id": "replication-0098",
+      "source_prompt_id": "null-0113"
+    },
+    {
+      "source_row": 8725,
+      "category": "closed_qa",
+      "prompt": "How important is pilot communication with a non-towered controlled airport?\n\nReference context:\nAn airfield traffic pattern is a standard path followed by aircraft when taking off or landing while maintaining visual contact with the airfield.\n\nAt an airport, the pattern (or circuit) is a standard path for coordinating air traffic. It differs from \"straight-in approaches\" and \"direct climb-outs\" in that aircraft using a traffic pattern remain close to the airport. Patterns are usually employed at small general aviation (GA) airfields and military airbases. Many large controlled airports avoid the system unless there is GA activity as well as commercial flights. However, some kind of a pattern may be used at airports in some cases such as when an aircraft is required to go around, but this kind of pattern at controlled airports may be very different in form, shape, and purpose to the standard traffic pattern as used at GA airports.\n\nThe use of a pattern at airfields is for aviation safety. By using a consistent flight pattern, pilots will know from where to expect other air traffic and be able to see and avoid it. Pilots flying under visual flight rules (VFR) may not be separated by air traffic control, so this consistent predictable pattern is a vital way to keep things orderly. At tower-controlled airports, air traffic control (ATC) may provide traffic advisories for VFR flights on a work-load permitting basis.",
+      "prompt_tokens": 294,
+      "prompt_sha256": "fb63a8be612ee0595e1d1387eafaf97e5dc359e42330641c16efef225cd4cae5",
+      "id": "replication-0099",
+      "source_prompt_id": "null-0114"
+    },
+    {
+      "source_row": 11710,
+      "category": "creative_writing",
+      "prompt": "Write a review of your stay in a AirBnB in Rome that had a great location but poor amenities that is overall a neutral review",
+      "prompt_tokens": 28,
+      "prompt_sha256": "0483fb1af3cb14dbbb31eaacc3b4e6c4e1c5873b78f4db27cbe707fd278b0f31",
+      "id": "replication-0100",
+      "source_prompt_id": "null-0122"
+    },
+    {
+      "source_row": 1839,
+      "category": "creative_writing",
+      "prompt": "What can be done about NRA and why gun control is such an issue?",
+      "prompt_tokens": 16,
+      "prompt_sha256": "d60d778b29339ccfceffb1a201dc1ddcb9eebb5a2157c71271d91b3c75813b53",
+      "id": "replication-0101",
+      "source_prompt_id": "null-0129"
+    },
+    {
+      "source_row": 4821,
+      "category": "creative_writing",
+      "prompt": "List some steps I'll need to take in order to buy a car",
+      "prompt_tokens": 14,
+      "prompt_sha256": "d26952f3fbd552a03c7741850644b79cfbc36c8f2751835e4f6b58c1feb6c58e",
+      "id": "replication-0102",
+      "source_prompt_id": "null-0146"
+    },
+    {
+      "source_row": 994,
+      "category": "creative_writing",
+      "prompt": "Write a brief about your recent vacation",
+      "prompt_tokens": 7,
+      "prompt_sha256": "35fbf6e20f7d262b8b990476fa6b9fa4d7c39ff262873bb728b46eeca772c529",
+      "id": "replication-0103",
+      "source_prompt_id": "null-0149"
+    }
+  ]
+}

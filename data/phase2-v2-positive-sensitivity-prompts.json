@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "status": "positive_sensitivity_prompt_manifest_frozen",
+  "pilot_id": "phase2-v2-positive-sensitivity-v1",
+  "scope": "Fresh development-only UltraChat prompts; not calibration or confirmation data",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "config": "default",
+    "split": "train_sft",
+    "license": "MIT",
+    "language": "en",
+    "attribution": "Hugging Face H4 (UltraChat 200k)",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "extraction_rule": "ParquetLens SQL SELECT row_number() OVER () - 1 AS shard_row, prompt_id, prompt FROM data; JSON output"
+  },
+  "model_tokenizer": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "seed": "phase2-v2-positive-sensitivity-v1",
+    "method": "lowest SHA-256 ranks after frozen exclusions, normalized deduplication, and tokenizer-length filtering",
+    "prompt_count": 50,
+    "max_prompt_tokens": 1024,
+    "exclusion_manifest_sha256": {
+      "data/phase2-null-calibration-prompts.json": "fa8f52bb0203548d22ad5f761b2a18470cb04e88eee634b077918a47b055b60a",
+      "data/phase2-variance-replication-prompts.json": "15caa4969e8ae3081d7a88dbef9145f85140c179a3b6c53bbf4d7b7b4beace59",
+      "data/phase2-smoke-prompts.json": "981bacff4ed9ac6196f8bfb6a6da27308cc81191a1c417850c523f6621be8d4f",
+      "data/phase2-confirmatory-calibration-prompts.json": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+      "data/phase2-confirmatory-confirmation-prompts.json": "d053da15c9897ea2e9232471aeee86aca21fdb5e093398019f53148143725b32"
+    },
+    "generator_sha256": "13de2947670764b29a4fb0baf359fc7eeea03b13f39bdae03e79b5a3f7a17db2"
+  },
+  "records": [
+    {
+      "source_shard": 0,
+      "source_row": 1228,
+      "source_prompt_id": "3ce9b1cb0128fc96ac6d0109029257f6ec78abf1eccc49760ac3aff4322cd898",
+      "prompt": "Develop a 10-question online survey with multiple choice, Likert scale, and open-ended questions to assess the general public's opinions on climate change and their support for environmental conservation efforts. Include questions about personal behaviors and beliefs related to sustainability, as well as perceptions of government and corporate responsibility. Use clear and concise language in the survey and provide the option for participants to remain anonymous. Once the survey is complete, analyze and report on the results in a clear and visually appealing format.",
+      "prompt_sha256": "3ce9b1cb0128fc96ac6d0109029257f6ec78abf1eccc49760ac3aff4322cd898",
+      "prompt_tokens": 99,
+      "selection_rank": "00001598c50d57daa8b0cf915780290b550cf4d079001956020251c756681f40",
+      "id": "positive-sensitivity-000"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 66463,
+      "source_prompt_id": "a71c585772b332ab718acbec2996578cabdbed679794267570ac611028348b47",
+      "prompt": "Present a case study on the use of big data analytics in the sports industry.",
+      "prompt_sha256": "a71c585772b332ab718acbec2996578cabdbed679794267570ac611028348b47",
+      "prompt_tokens": 16,
+      "selection_rank": "00003b12cf24339d590919417ef35e3601f59a7a923de048244269577fcb8e0b",
+      "id": "positive-sensitivity-001"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 7135,
+      "source_prompt_id": "ea48a0f1ac68ad75538b15054d34fe15707a2f08a0751eff0dd0d7108e4465e6",
+      "prompt": "What are the different types of meditation and which one is best for someone new to the practice?",
+      "prompt_sha256": "ea48a0f1ac68ad75538b15054d34fe15707a2f08a0751eff0dd0d7108e4465e6",
+      "prompt_tokens": 19,
+      "selection_rank": "000049735b2b733a41169c1d503aa7cdde2369c8f8a0ea57056734a83770d771",
+      "id": "positive-sensitivity-002"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 7064,
+      "source_prompt_id": "348bb8c62abd0cd4a2854124c75f3216d218359fb6ee19085bc86ea7c8a0e841",
+      "prompt": "Here is some of the talks I have given, that I made as webpages with reveal.js.\nIn the rush to add the word quantum to everything from batteries to banking, Quantum machine learning has entered the fray. A perfect combination of buzzwords that will get all of the funding\u2026.right? In this talk I want to look at quantum algorithms and what actually constitutes programming a quantum computer. With this context, we can look at what machine learning tasks are being explored for possible speedups with quantum computing.\nAs more aspects of modern society depend on digital communication, we increasingly rely on infrastructure that ensures the privacy and security of this communication. Classically, this has been provided by cryptographic protocols such as public-key encryption, in which secrets called keys are exchanged between different parties to enable secure communication. The rapid development of quantum algorithms which violate the assumptions of these protocols, however, poses a security challenge to modern cryptography. Quantum resources can also be used to strengthen cryptographic security, particularly the security of key exchange protocols. This approach, QKD, can be implemented by encoding in quantum systems such as single photons sent through free-space or a fiber. Fiber based QKD devices are already commercially available, but are fundamentally limited to distributing keys over a few hundred kilometers. To address this distance limitation, research QKD systems are being developed to exchange keys through free-space to satellites. This work considers practical challenges to building and testing both types of QKD devices. Firstly, we consider modeling and mission analysis for airborne demonstrations of QKD to stratospheric balloons and aircraft to simulate a satellite. Based on the mission parameters available for both platforms, we found aircraft platforms were more promising for testing prototype QKD satellite systems. We developed a mission planning tool to help design the flight geometries for testing the device. Next, we developed three new components for a QKD satellite prototype. The requirements for electro-optical devices in orbit are very different from lab environments, mandating new approaches to designing QKD devices. We developed a quad single photon detector package to meet the requirements for free-space links to low earth orbit. Moreover, we designed and built optical systems for analyzing the polarization of photons and an adaptive optics unit to increase the efficiency of collecting the encoded photons. All three devices were tested in conditions that simulated the time and loss of a satellite pass. Finally, we demonstrated a laser damage attack on a live commercial QKD system. Our attack injected additional optical power into the sender device to modify security-critical components. Specifically, our attack damaged the PIN diodes which monitor the encoded photon number, reducing their sensitivity or completely blinding them. Our damage could compromise the entire key, and was performed during system operation while raising no alarms. In summary, this work shows the trade-offs of testing QKD payloads on different airborne platforms, develops components for a satellite QKD payload, and demonstrates a security vulnerability in a commercial QKD system that can fully compromise the key. These results help address practical challenges to building QKD devices, improving the security of modern cryptography.\nHow is quantum computing posing a security challenge to conventional cryptography, and what are the proposed solutions to overcome it?",
+      "prompt_sha256": "348bb8c62abd0cd4a2854124c75f3216d218359fb6ee19085bc86ea7c8a0e841",
+      "prompt_tokens": 636,
+      "selection_rank": "0000fe9864f1b001e6a34d4876bacf970010dd08956fb012b916fee69699dcf8",
+      "id": "positive-sensitivity-003"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 5425,
+      "source_prompt_id": "8ffda529609b9c607ad8b07c4577a895e5bd8c6e9910ff65c29d85f0dcd4f59f",
+      "prompt": "Please draft a comprehensive investment agreement for a tech startup that includes details such as the investor's rights and obligations, the startup's equity and valuation, exit strategies, and any additional clauses deemed necessary for the protection of both parties. The agreement should be written in a clear and concise manner with legal jargon explained in layman's terms to ensure understanding by all parties involved. The style should be formal and professional. Please use industry-standard templates as a guide but ensure that the agreement is tailored to the specific needs and goals of the startup.",
+      "prompt_sha256": "8ffda529609b9c607ad8b07c4577a895e5bd8c6e9910ff65c29d85f0dcd4f59f",
+      "prompt_tokens": 107,
+      "selection_rank": "0001654eefaf14b39595db4a82aebd74be1fc28498602a9ab27eb3b0f1882dfc",
+      "id": "positive-sensitivity-004"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 49416,
+      "source_prompt_id": "9fb044e45b4b670aa824739393169004e96b3c77c0189be50f7a65e03e2f15a1",
+      "prompt": "Can you give some advice on how to navigate the shopping and dining scene in Amsterdam as a tourist?",
+      "prompt_sha256": "9fb044e45b4b670aa824739393169004e96b3c77c0189be50f7a65e03e2f15a1",
+      "prompt_tokens": 20,
+      "selection_rank": "00028c1b3394a31b764f130a1190fa585b02b5cd861fcb1c6384716997ed66c9",
+      "id": "positive-sensitivity-005"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 52917,
+      "source_prompt_id": "806eae4b444d81e738dbefedd1ccc53db4b9a461586ed7547ba7e55830399481",
+      "prompt": "5. Grease a 9x13 inch baking dish with cooking spray. Spread the cooked sausage on the bottom of the dish, followed by the saut\u00e9ed vegetables. Pour the egg mixture over the top, making sure everything is evenly coated.",
+      "prompt_sha256": "806eae4b444d81e738dbefedd1ccc53db4b9a461586ed7547ba7e55830399481",
+      "prompt_tokens": 50,
+      "selection_rank": "00028c2f4435e5c742b7965f3abb1f29113d7efe19ae4833c3380ccda9ef7bec",
+      "id": "positive-sensitivity-006"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 68049,
+      "source_prompt_id": "d7491603023e38a82fd7e4a27f80133e68f5ebffeb45c6b778d51c6f73ab3664",
+      "prompt": "How many total athletes participated in the 2008 Beijing Olympics?",
+      "prompt_sha256": "d7491603023e38a82fd7e4a27f80133e68f5ebffeb45c6b778d51c6f73ab3664",
+      "prompt_tokens": 15,
+      "selection_rank": "00032c09c67c3094bd7b44198de28f22b09fda171803cd571263dfdfbc065eff",
+      "id": "positive-sensitivity-007"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 55146,
+      "source_prompt_id": "9091b8749941a8d1889d265ef11cbcd804523df6025a93bfe10d50c4b23142e3",
+      "prompt": "The word \u201ctrue\u201d at the beginning of Edgar Allan Poe\u2019s \u201cThe Tell-Tale Heart,\u201d enlightens the reader at once to the fact that the speaker is admitting something to someone. The reader doesn\u2019t know what yet or to whom the speaker is speaking, but at once you know that someone has been asking a question of the speaker. The speaker then goes on to tell what he is admitting or confessing. He is speaking of how he has been and is nervous. The speaker is admitting to the fact that he is nervous but not mad. He doesn\u2019t believe he is mad and sets out to prove this, albeit unsuccessfully, for as the reader goes on, the speaker starts telling of some things that one should not be thinking or \u201chearing\u201d in the speaker\u2019s case.\nThe disease, which he is speaking of is his nervousness. The nervousness, he tells, has improved his senses. The best sense, according to him, that he now possesses is hearing. He is now able to \u201chear\u201d all things. Not only is he able to hear all things on earth but in heaven and hell as well. This is his evidence for not being mad. He believes that this new found ability of his, to \u201chear,\u201d is more than enough evidence for him not being mad. He then hearkens the recipient of his story to the rest of his evidence of not being mad by telling his story very calmly. His fear of being thought of as mad is evident and is repeated many times with him trying to prove that he is not mad. This is probably because he knows that the person or persons to whom he is speaking believe him to be mad.\nThe speaker then tells of how he got the idea to murder an old man. He at first doesn\u2019t know how he got this idea and tells that he had no prior wish to commit the murder. Then as he starts to think about it, he arrives at the absurd conclusion that it was the old man\u2019s eye that caused him to commit the murder and then becomes sure of it. He then describes how hideous he found the eye to be. He then goes on to describe how fear stricken he became whenever it fell upon him. The eye that the man speaks of is a symbol of the evil eye, which brings bad luck to any who are unfortunate enough to come across it. He then sees that the only way to get rid of the \u201cevil\u201d eye would be to take the life of the old man.\nPoe used syntax very well. Each sentence leads up to the next part of the story. It is a story that goes back in time. This is evident because the speaker says that he wants the one to whom he is speaking to understand how he cannot possibly be mad. When he tells his story of how calmly he committed his murder and with such precision, he constantly reverts to the past. What is also important about the story is that the speaker doesn\u2019t return to the present but becomes immersed in his tale. It is not needed within the story to return to the present because the reader knows that the speaker is in fact mad, despite the speaker\u2019s attempt to eradicate that theory. Please paraphrase the section where the speaker describes the eye of the old man and how it led him to commit murder.",
+      "prompt_sha256": "9091b8749941a8d1889d265ef11cbcd804523df6025a93bfe10d50c4b23142e3",
+      "prompt_tokens": 677,
+      "selection_rank": "0003a712807751847c6c96784654c14787ce16674a9ebeefdcd39035715d1f00",
+      "id": "positive-sensitivity-008"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 63456,
+      "source_prompt_id": "f7f78b8b777cb453dc95a0ffac30150fa287258d5982bf77a523e4b864741f34",
+      "prompt": "Provide at least 10 practical and actionable tips that can help individuals increase and sustain their self-confidence in various settings, such as social interactions, public speaking, professional environments, and personal relationships. Ensure that the tips are easy to follow, concise, and adequately explained, with specific examples where applicable. Additionally, suggest ways to measure progress and celebrate small wins as individuals work towards improving their self-confidence.",
+      "prompt_sha256": "f7f78b8b777cb453dc95a0ffac30150fa287258d5982bf77a523e4b864741f34",
+      "prompt_tokens": 82,
+      "selection_rank": "0003a7e87b1ac4e25d8271f83523f6fcb6bb9ffc3f1c9c6b8d0016fe85a4db7b",
+      "id": "positive-sensitivity-009"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 57798,
+      "source_prompt_id": "00432188bdf8cc9f90b8ee755eb292e098bc9c7bf814f3118cc6d2391eda47ad",
+      "prompt": "What is the status of Danny Rose's potential departure from Tottenham, and how does it impact their search for a new left-back? Answer according to: Tottenham have made contact with AC Milan over the possibility of signing defender Ricardo Rodriguez this summer, according to reports in Italy.\nRodriguez was part of the Switzerland team that lost 1-0 to Sweden in the Round of 16 at the World Cup.\nThe 25-year-old joined Milan from Wolfsburg last summer and scored three goals for the Italian giants during his first season in Serie A.\nAnd according to Italian outlet TuttoMercatoWeb, Spurs are keen on sealing a deal for the left-back, although the report claims Rodriguez is currently happy at Milan.\nThe player\u2019s agent has since responded to the reports, telling Di Marzio: \u201cThe rumours about Tottenham? There\u2019s no truth to them, we haven\u2019t had any contacts with them.\nTottenham could move for a new left-back this summer if Mauricio Pochettino allows Danny Rose to leave the club.\nRose has been heavily linked with a move to Manchester United, but those rumours have gone quiet in recent weeks and it seems there is a good chance he will stay at Spurs.\nThe Londoners have also been linked with Benfica left-back Alex Grimaldo.\nWe\u2019re looking to build long-standing partnerships with bloggers & site owners who accept guest posts or sponsored content. I found tottenhamblog.com and decided to drop you a message \u2013 I think a lot of our clients will be interested in getting a do-follow link from your site.",
+      "prompt_sha256": "00432188bdf8cc9f90b8ee755eb292e098bc9c7bf814f3118cc6d2391eda47ad",
+      "prompt_tokens": 360,
+      "selection_rank": "00048b37457fd72f0861450750e4715b6768fd309b997ff03a353cf818fa4def",
+      "id": "positive-sensitivity-010"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 35256,
+      "source_prompt_id": "b566c0137a70c407678de7773093362382c3945901c1df3ab179f7712fddcc8c",
+      "prompt": "Develop a web-based platform with a user-friendly interface that enables the tracking and monitoring of sales metrics, such as revenue, customer acquisition, and lead conversions. The tool should provide real-time updates for sales data, offer customized sales reports, and allow for integration with popular customer relationship management (CRM) tools. The sales metric tracking tool should be scalable and flexible to accommodate team growth and changing business needs.",
+      "prompt_sha256": "b566c0137a70c407678de7773093362382c3945901c1df3ab179f7712fddcc8c",
+      "prompt_tokens": 84,
+      "selection_rank": "0004c280d30e14b1e096378148558009b2acf0cca7d3076978963afc57640cae",
+      "id": "positive-sensitivity-011"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 164,
+      "source_prompt_id": "3b5714059a1839c586d86f486f439a602693a4aeba99e64b07ea7880b534f3ee",
+      "prompt": "Ideal for the maintenance of waxed or painted wooden floors, also for other solid and smooth substrates (e.g. stone, laminate, linoleum). Care products (waxes) are easily distributed with a lint-free cloth tied to the polisher. Its stem mounting has a ball bearing.\nMatching products for Floor-polisher No. 06600.\nHow do I distribute care products (waxes) evenly onto a floor using Floor-polisher No. 06600?",
+      "prompt_sha256": "3b5714059a1839c586d86f486f439a602693a4aeba99e64b07ea7880b534f3ee",
+      "prompt_tokens": 109,
+      "selection_rank": "0004ddf5a54a071b3d7517bcd29038b1702e6c442503e012dd26713cce389e63",
+      "id": "positive-sensitivity-012"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 17422,
+      "source_prompt_id": "93ef189f8db80d7e77da45fcb710953097ee836feafdbe692ed3fc33d4e5f155",
+      "prompt": "Write a formal letter to the customer service department of a train company suggesting ways in which they can improve their service. Please include specific details about any issues you have experienced, as well as potential solutions and actionable steps the company should take to address these concerns. Your letter should be polite and professional in tone and should provide clear, concise feedback that the company can use to make their service better. Additionally, your letter should be well-structured, organized, and free of errors to ensure your message is conveyed effectively.",
+      "prompt_sha256": "93ef189f8db80d7e77da45fcb710953097ee836feafdbe692ed3fc33d4e5f155",
+      "prompt_tokens": 102,
+      "selection_rank": "00050a869b181bbcf1ba00eb36fdcbe225bc0411d0ab49f784af9ce021b89520",
+      "id": "positive-sensitivity-013"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 50569,
+      "source_prompt_id": "cb0d0de6bbc8e367f9ecd4b4906b1e10ebac4abc892a7c35290474525e480333",
+      "prompt": "Create a comprehensive social media plan for a new restaurant including specific goals, target audience, content themes, posting frequency, engagement tactics, and a schedule for each social media platform. Ensure that the plan reflects the restaurant's unique style, atmosphere, menu offerings, and overall branding. Also, incorporate paid advertising options, influencer marketing partnerships, and analytics tracking to measure the success of the strategy.",
+      "prompt_sha256": "cb0d0de6bbc8e367f9ecd4b4906b1e10ebac4abc892a7c35290474525e480333",
+      "prompt_tokens": 78,
+      "selection_rank": "00051b303e59c6e71fe2253e9d114016cba14e82bdf5d5c2e756acc81a6475e2",
+      "id": "positive-sensitivity-014"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 15183,
+      "source_prompt_id": "b9d6620ee1526dc6e469046c71a46fad445db346bebeac2771bdab256d9cd498",
+      "prompt": "Create a tooltip that displays additional information when the user hovers over a specific element using Bootstrap. Customize the style and positioning of the tooltip as desired.",
+      "prompt_sha256": "b9d6620ee1526dc6e469046c71a46fad445db346bebeac2771bdab256d9cd498",
+      "prompt_tokens": 34,
+      "selection_rank": "000588353ecceb5182afbd47299df8d6338d33ea992c39acc311a675163486a4",
+      "id": "positive-sensitivity-015"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 63537,
+      "source_prompt_id": "2d0b5ede4868375262a236e0813837d598f5feecc7e9f52a971a923e6aa8d3ee",
+      "prompt": "Given the text: A group of 50 executives, innovators, and entrepreneurs joined the nonprofit organization EducationSuperHighway on Jan. 30 to urge the Federal Communications Commission (FCC) to modernize the federal eRate program \u2013 a move that will help advance President Obama\u2019s ConnectED goal to connect 99 percent of America\u2019s K-12 students to high-speed broadband in five years.\nThe group includes CEOs from American Express, Adobe, Airbnb, Bloomberg L.P., Dell, Dropbox, eBay, EMC Corporation, Facebook, Foursquare, Google, HP, Intuit, Microsoft, Netflix, Salesforce.com, Tory Burch, Xerox, and Yahoo and represents approximately $785 billion in annual economic activity and two million workers.\nThe nonprofit got a funding boost in December 2013, when Facebook creator Mark Zuckerberg and Microsoft co-founder Bill Gates offered support for the organization. Zuckerberg\u2019s Startup: Education and Gates\u2019 foundation have contributed a combined $9 million to the nonprofit.\nHow did EducationSuperHighway receive funding support from Mark Zuckerberg and Bill Gates?",
+      "prompt_sha256": "2d0b5ede4868375262a236e0813837d598f5feecc7e9f52a971a923e6aa8d3ee",
+      "prompt_tokens": 247,
+      "selection_rank": "0005897f4e69f3b6d4cfb12c20fa596e279ee5bafbb2ca27dadf28e1c9efcb89",
+      "id": "positive-sensitivity-016"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 24572,
+      "source_prompt_id": "a522a4d71cb3f32ca8806902dfbfc1252cbe6e5391f7e2b275be6f9a3eddd5d3",
+      "prompt": "Generate response to the question/instruction based on a piece of given material\n\nQuestion/Instruction: Can you summarize the conversation between Cold-Flipper and another member who is leaving the site? Given material: I guess you got board too, HA! Can't believe you actually remembered. And, not really... I was just extremely busy with school. Too busy! I'm leaving the site but just to let you know, you've ranked #1 on my favorite members list! You're a very nice and helpful person. See you soon! Btw do you have Steam? I'm leaving the site now but just to let you know you ranked #2 on my favorite members list! Bye buddy! Well, I hope you have a good life, CF. And I hope gaming comes back full force for you. Cold-Flipper and KylieDog are now friends. Cold-Flipper and wick are now friends. Cold-Flipper and Xen are now friends. Cold-Flipper and Lonely_Dolphin are now friends. Cold-Flipper and zorg1000 are now friends. Cold-Flipper and Cheebee are now friends. Cold-Flipper and curl-6 are now friends. Cold-Flipper and Kresnik are now friends. Yeah, it is a pain on mobile devices. Take care! Come back when you have a computer.",
+      "prompt_sha256": "a522a4d71cb3f32ca8806902dfbfc1252cbe6e5391f7e2b275be6f9a3eddd5d3",
+      "prompt_tokens": 295,
+      "selection_rank": "0006237b5ee1df104bbb1d0ac7d891c4a37c72ec2cce6393edca258f0f001e87",
+      "id": "positive-sensitivity-017"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 32545,
+      "source_prompt_id": "619146d0793de21254abf00df3e226a65a901a25565be50a5a7be16a9c04e10d",
+      "prompt": "Write a 500-word blog post on the power of taking small calculated risks, including examples of successful individuals or companies who have done so, and discussing how this approach differs from taking big risks. Use a conversational tone and include practical tips for readers on how to implement this mindset in their own lives. Make sure to include a catchy headline to grab readers' attention and end with a strong call-to-action that encourages readers to take action.",
+      "prompt_sha256": "619146d0793de21254abf00df3e226a65a901a25565be50a5a7be16a9c04e10d",
+      "prompt_tokens": 92,
+      "selection_rank": "0007078290b36db9ea20424adc82e1c76a310af91e63928dd2a9547ee57aa6cd",
+      "id": "positive-sensitivity-018"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 44715,
+      "source_prompt_id": "7153bd49fbb9b01ea2b6b2144065a598c13b66d314fbeba0f185d6fc8bd8693e",
+      "prompt": "How long can the unused soup portion be stored in the refrigerator?\nGenerate according to: This delicious and nutritious \u2018soup\u2019 can be made with almost any fresh vegetables and is great for your dog as a stand-alone treat or as a topper to his regular food.\nMakes 6 servings of chilled soup.\nSubstitute seasonal vegetables as they are available. Remember to always source organic fruits and vegetables for your dog. If you cannot find organic, make sure to remove the skin before use. Avoid onions, broccoli and mushrooms as well as garlic. We always like to include parsley in fresh recipes as it is a great herb to fight plaque.\nWash the vegetables and cut into cubes. Place all the vegetables in a blender or food processor until well combined. If desired, add 1-2 cups of water until the preferred consistency is reached. Store unused portions in an airtight container in the refrigerator for up to four days.\nFor overweight dogs, make this recipe in large batches and add to each meal in place of some of the kibble for a low-calorie and vitamin-packed substitute. You\u2019ll keep them satisfied and the pounds will start to fall off!",
+      "prompt_sha256": "7153bd49fbb9b01ea2b6b2144065a598c13b66d314fbeba0f185d6fc8bd8693e",
+      "prompt_tokens": 240,
+      "selection_rank": "00070aa0df125b924c17151fc22882e0e434945803c35bc2b1b5a5675acd1412",
+      "id": "positive-sensitivity-019"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 33447,
+      "source_prompt_id": "765888b1078a7558ec3e655f09dc84be7b6a25b2e14b87e1a02266e89727f733",
+      "prompt": "Generate response to the question/instruction based on a piece of given material\n\nQuestion/Instruction: Can you describe the different types of trails available at Grapevine Lake for hikers, mountain bikers, and equestrians?\n\nGiven material: Grapevine Lake attracts visitors from all over Texas and beyond with its campgrounds, picnic areas, numerous boat ramps for quick and easy access to the water, fishing spots (everyone has a favorite secret lucky fishing hole), picturesque marinas and easy access to the numerous attractions of Dallas and Fort Worth. If you enjoy trails, Grapevine Lake offers trail experiences for hikers, mountain bikers and equestrians. For hunters, we offer access to public hunting on the northwest end of Grapevine Lake with deer (archery only), feral hog, waterfowl and other small game.",
+      "prompt_sha256": "765888b1078a7558ec3e655f09dc84be7b6a25b2e14b87e1a02266e89727f733",
+      "prompt_tokens": 172,
+      "selection_rank": "00078a16263c6022cf6751b392a84c69a23c6075147f3fe5950f078bb09cab71",
+      "id": "positive-sensitivity-020"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 30233,
+      "source_prompt_id": "71b8d61f0504a499460e2b0f899019b1e392651b529b479644ca3b4c20b764a3",
+      "prompt": "How did the discovery of the predictable pattern of droplets in the funnel lead to insights into solid mechanics?: Scientific discoveries often arise from noticing the unexpected. Such was the case when Stanford researchers, studying a tiny device that has become increasingly important in disease diagnostics and drug discovery, observed the surprising way it funneled thousands of water droplets into an orderly single file, squeezing them drop by drop, out the tip of the device.\nInstead of occurring randomly, the droplets followed a predictable pattern. These observations led graduate student Ya Gai and Sindy K. Y. Tang, an assistant professor of mechanical engineering, to deduce mathematical rules and understand why such rules exist. The work was published in the Proceedings of the National Academy of Sciences. It all started with an effort to design tiny devices called microfluidic chips, designed to automate and expedite biomedical research.\nIn the past, lab experiments involved using a dropper to deposit biological specimens into a test tube for observation. But microfluidic devices work much more efficiently. About the size of a postage stamp, they are made of silicone containing many thin channels through which researchers can pump tiny amounts of fluids. The devices allow researchers to place a specimen into a droplet of water surrounded by a thin film of oil. That droplet becomes the test tube. The oily film keeps each droplet and specimen separate.\nThe microfluidic chips developed in the Tang Lab can create millions of these specimen-bearing droplets quickly. The steadily streaming droplets are ultimately funneled in single file past an instrument that peers at the specimen inside the droplet.\n\u201cWhile studying the flow physics of the droplets in the funnel, we observed that, contrary to our expectations, the droplets juggle past each other in a very orderly manner as they squeeze from the wide end to the narrow end of the funnel, which can fit only one drop at a time,\u201d Tang said.\nThe team saw packs of drops sliding against each other, something that is more typically seen in solid crystals. \u201dThat caused us to consider concepts from solid mechanics,\u201d Tang said. She invited Wei Cai, another mechanical engineer who studies how atoms move in crystals, to join the effort.\n\u201cStanford Mechanical Engineering is a great place to be as the environment promotes collaborative efforts, in this case between microfluidics and solid mechanics,\u201d Tang said.\nWhile water droplets are squishy and metals seem solid, if you zoom past what is visible, tiny droplets coated in oil bear some resemblance to metal atoms wrapped in electron clouds.\n\u201cThey both occupy space,\u201d Cai said. \u201cYou can\u2019t put two atoms or two droplets in the same spot.\u201d The researchers found that when force is applied \u2014 such as when microfluidic pressure is used to force droplets through the funnel \u2014 they squeeze against each other and move according to the laws of mechanics.\nWhen crystals are deformed, defects called dislocations form and move through the lattice to shuttle the atoms around. It turns out that the periodic pattern of droplets is the result of dislocation dynamics that also occur when crystalline solids are deformed.\n\u201cBeyond the immediate relevance to microfluidics, we believe our findings could one day be applied to forming nanocrystals into precise shapes,\u201d Tang said. Researchers do not yet have a way to exert the sort of steady pressure on metal atoms that microfluidic chips can do with oil-separated water droplets.\nThe corresponding process for metal forming is called extrusion \u2014 it\u2019s also what happens when we press the wide end of the toothpaste tube to deposit a dab on our brush. If technologists find a way that could extrude atoms through a nanoscale channel, one could imagine the atoms funneling along as do the water droplets in the microfluidic channel.\nAnd if or when such nanoscale extrusion becomes possible with metallic atoms, this experiment suggests that it may be used to produce nanowires with diameter precision down to a single atom.\n\u201cWe saw something puzzling, we asked the right questions and we learned something useful not just to the problem we are studying, but also to an entirely different field, in this case how one might go about manufacturing nanocrystals,\u201d Tang said.\nAn additional author on the paper is Chia Leong, a visiting scholar in the Tang Lab. Sindy Tang is a member of Stanford Bio-X and Stanford ChEM-H. This work was supported by the National Science Foundation.",
+      "prompt_sha256": "71b8d61f0504a499460e2b0f899019b1e392651b529b479644ca3b4c20b764a3",
+      "prompt_tokens": 887,
+      "selection_rank": "0007d9de203b8c18943220fde4679b7969f51087b0750cb7e102bacdc6534b36",
+      "id": "positive-sensitivity-021"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 22312,
+      "source_prompt_id": "a4ad5765b6f8cf27b5ff03e102540d0d01911d690b81dcd6fc33de7a63148722",
+      "prompt": "How does the Sea Turtle Conservancy collaborate with local governments to establish protected nesting grounds for sea turtles?",
+      "prompt_sha256": "a4ad5765b6f8cf27b5ff03e102540d0d01911d690b81dcd6fc33de7a63148722",
+      "prompt_tokens": 19,
+      "selection_rank": "00084ff64c5bfdc80a831415833e3fa112a262a6fe34fa89c9eccabd751d9f7f",
+      "id": "positive-sensitivity-022"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 33472,
+      "source_prompt_id": "3227ddda844b5a4b482277e76f2f93b9b9c1e2effca0552e1767ea8f6f09253d",
+      "prompt": "One thing that Chelsea has really enjoyed doing since the beginning of her roaming days is pulling out all the cookbooks on my bookshelf in the kitchen. Normally this wouldn't be a big deal, except one of my cookbooks is big, bulky, and the cover is now successfully removed from the rest of the book/spine. Almost. So I decided that something needed to be done. Luckily, I saw a friend who came up with a good idea for organization.\nIt's as easy as cut, paint, mod podge. Literally. So easy, and it looks great!\nI'll let you know how it works out. See you Friday!\nLove this! Such a simple DIY!\nHow has Chelsea been spending her time since she started roaming, and what does she particularly enjoy doing in the kitchen?",
+      "prompt_sha256": "3227ddda844b5a4b482277e76f2f93b9b9c1e2effca0552e1767ea8f6f09253d",
+      "prompt_tokens": 170,
+      "selection_rank": "000878d3db191541b305f32037150be41135d6d3ef33b20e5677b522f0e538d2",
+      "id": "positive-sensitivity-023"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 47536,
+      "source_prompt_id": "95e1e3103408168381b11764ccc61e1f65ea3d683cd581ea58c30c0211541952",
+      "prompt": "Write a thrilling and action-packed story, using a third-person point of view, about a dedicated police officer who relentlessly pursues a cunning and elusive bank robber group, faced with unexpected obstacles and dangerous situations along the way. Make sure to include detailed character development for both the police officer and the bank robbers, as well as vivid and descriptive settings to immerse the reader in the story. Build up tension and suspense, while also exploring themes such as justice, trust, and loyalty.",
+      "prompt_sha256": "95e1e3103408168381b11764ccc61e1f65ea3d683cd581ea58c30c0211541952",
+      "prompt_tokens": 100,
+      "selection_rank": "00088aaf5a6ff0c5436aca1be2b6e19d8de367a944aed99c3d44bc0e7e16d91d",
+      "id": "positive-sensitivity-024"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 32232,
+      "source_prompt_id": "03ebc6adadb2ae046e8db01842bb5b1cebd3b81335b2dde573dbae5c4ea7c026",
+      "prompt": "Please plan a ski vacation with specific lodging and itinerary details including the names of the lodging accommodations, the number of days staying at each accommodation, the ski resorts to be visited and the dates of each day spent skiing, transportation arrangements, budget, and any additional activities planned outside of skiing. Please format the itinerary in a clear and concise manner and provide any necessary contact information for the lodging and transportation arrangements.",
+      "prompt_sha256": "03ebc6adadb2ae046e8db01842bb5b1cebd3b81335b2dde573dbae5c4ea7c026",
+      "prompt_tokens": 82,
+      "selection_rank": "0008c65b635d5d30b19809a1e68129c01b7cfe6a089a4e9b78c51592090fadaf",
+      "id": "positive-sensitivity-025"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 57754,
+      "source_prompt_id": "c23c869cd228aedac44ee5fa288f5f880a866c14cfa9d7722811d5551955c40c",
+      "prompt": "Given the text: Book report writing and book review writing remain a daunting task for many students who have limited time to accomplish many tasks. Mostly, students do not have the time required to read and understand and therefore rewrite some part of the book ending with plagiarized work and poor grades. Writing a book review is time consuming for busy students who therefore require assistance for completion of the significant requirement in their respective courses. Writing book reports has proven to be a major challenge for most students in all academic levels including high school, college, university, master's, Ph.D. In combination with lab practical\u2019s, tests and examinations, it becomes hectic for most student to find time to complete book report writing.\nFor successful custom book report writing, a student is expected to read through the text to be reviewed several times so as to have an in-depth understanding of the content. Similar to custom book report, a custom book review requires a student to read, understand the book, and present his or her ideas in a systematic manner as highlighted by the author. For a quality custom book report, a reader has to show or highlight the main ideas present in the text. In other words, the critical analysis of the ideas presented by the author is important if a students want to earn a good grade. The students should also demonstrate good comparison of the text with other similar literature when they are required to write a book report since this shows how well they understand the plot of the book.\nTopics within the text should be carefully written when one wants perfection in a custom book review. Most learning institutions require students to be conversant with book review writing to test on their ability to comprehend the text that they are assigned to read. Our qualified book report / book review writers will assist you in coming up with custom book reports and book reviews. Students who want to purchase book reports of high quality always contact us owing to our good reputation as a first class service provider.\nQuality book reviews and book reports require creativity in order to compose a non-plagiarized final copy of your assignment. The unique way in which you present your work makes you stand out from the rest of the class. We have established an enviable relationship with people around the world as we help them write book reviews at an affordable cost. Samples on book reviews and reports have been provided on our website and students who like our work are encouraged to register online and get the opportunity to buy book reviews online and pay for the service online.\nIn case you have trouble writing a book report or a book review, it is worth taking the effort to find expert help. Our great writers have knowledge on different disciplines including life science, philosophy, business and arts just to mention a few. Post graduate students have no need to worry as we have the Ph.D. and master\u2019s writers who have undergone exclusive training to assist you with getting high scores with your book reviews. Our writers will help you come up with original essays and therefore ensure that your work stands out among others. Additionally, our writers are familiar with the formats required for your essay including APA, MLA, Turabian/Chicago and Harvard. Students seeking to buy book reports online always come to us for assistance which we indeed offer at an affordable fee. In case you are in need of a custom book report/book review, do not hesitate to order it from our service in a few easy steps.\nPlease provide examples of how your qualified writers can assist students in writing custom book reports and reviews, and what sets your service apart from others.",
+      "prompt_sha256": "c23c869cd228aedac44ee5fa288f5f880a866c14cfa9d7722811d5551955c40c",
+      "prompt_tokens": 717,
+      "selection_rank": "0008d94f4cc34ac79f0d58a26cef458697ca128874a11baee9f665617174f946",
+      "id": "positive-sensitivity-026"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 33052,
+      "source_prompt_id": "19bdef351b706ec9c3abe929af5cb109814ecce59f1e7db0515b51a6a5d20e76",
+      "prompt": "Here is a piece of text: LANSING, Mich. (AP) - A movement to quickly forgive more than $600 million in outstanding extra driver \u201cresponsibility\u201d fees assessed by the state has hit a snag in the Legislature.\nThe Senate voted unanimously Thursday to wipe away the debt a year from now, but only if a motorist\u2019s fee is six years or older. That could benefit more than half of the 348,000 drivers with outstanding fees, according to lawmakers.\nThe Michigan Department of Treasury could still seek to collect the rest of the fees, though they would be waived later on - six years after they are deemed as outstanding.\nThe Senate\u2019s shift in approach set the stage for negotiations with Gov. Rick Snyder and the House, which is expected to soon approve legislation that would forgive the entire amount owed in October 2018, which was $634 million less than a month ago. Snyder\u2019s administration has some concerns with the bills.\nGOP House Speaker Tom Leonard of DeWitt said he continues to favor full debt forgiveness.\n\u201cI don\u2019t believe we should ever allow an unjust fee to patch holes in our budget,\u201d he said.\nAs of April 1, debt that was six years or older totaled $304 million, according to the Treasury Department.\nThe responsibility fees were enacted by former Gov. Jennifer Granholm and lawmakers in 2003 to deter drivers who repeatedly violate traffic safety laws. But the fees, which are imposed in addition to regular fines, have come under criticism as a budget-balancing \u201cmoney grab\u201d that disproportionately hurt low-income motorists who cannot afford to pay.\nThe state suspends the driver\u2019s license of those who do not fully pay the fees or who do not have an installment plan.\nIn 2011, the Legislature and Snyder did away with some fees. In 2014, they moved to phase out all of them in the future and gave residents a one-year window in which they could do volunteer work instead of paying the fees for certain offenses.\nThe fees now range from $100 to $2,000 for offenses such as driving without insurance and accumulating too many points from traffic infractions. Bipartisan bills approved Thursday would speed up the elimination of newly assessed fees, possibly as soon as they are signed into law. Other measures would allow motorists to do community service to clear their debt and let those whose driving privileges have been suspended for unpaid responsibility fees immediately reinstate their license.\n\u201cIt\u2019s a hurdle to get to work, get to school - quality of life issues,\u201d Hildenbrand said. The fees are \u201cexorbitant and unnecessary,\u201d he said.\nSnyder\u2019s office said he has concerns about the budgetary impact of forgiving the debt, but is working with lawmakers and monitoring the various versions of the bills and associated costs. \u201cThe governor is always concerned when legislators seek to eliminate revenue that they have already planned on spending,\u201d spokesman Ari Adler said.\n\nBased on the text material above, generate the response to the following quesion or instruction: What are the potential consequences for drivers who do not pay off their fees or have an installment plan?",
+      "prompt_sha256": "19bdef351b706ec9c3abe929af5cb109814ecce59f1e7db0515b51a6a5d20e76",
+      "prompt_tokens": 676,
+      "selection_rank": "00095044e73396592374c3d1845a65cc4cb88aaaf54d3f408e5e662da51cb51f",
+      "id": "positive-sensitivity-027"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 27304,
+      "source_prompt_id": "ffd209e43365994f99be6ce49d6e73e41656aef8b4213b435067c04cf86d95cf",
+      "prompt": "Write a research paper that is 10-12 pages long (not including the cover page and reference list) and double-spaced, with 12-point font and 1-inch margins, that examines the effects of social media on political engagement. The paper should include an introduction that provides background information on the topic and a thesis statement that clearly states the main argument of the paper. The body of the paper should include a comprehensive review of related literature, including studies that support and refute different arguments. The paper should also include a discussion and analysis of the findings, as well as any limitations or gaps in the research. Finally, the conclusion should summarize the key findings and implications of the research, as well as provide recommendations for future research in this area. The paper should be supported by at least 10 scholarly sources, which should be properly cited using APA style.",
+      "prompt_sha256": "ffd209e43365994f99be6ce49d6e73e41656aef8b4213b435067c04cf86d95cf",
+      "prompt_tokens": 179,
+      "selection_rank": "000989a8859122b59ad57730781de34279c13422b55a87c53eaeb8a1e7ebdfdf",
+      "id": "positive-sensitivity-028"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 12870,
+      "source_prompt_id": "816a1af33ae6170b3efe2ac57fb1c989c3e638c6aa255e57127204a335fc0767",
+      "prompt": "Bates Technical College is located in Tacoma, Washington. They offer several boatbuilding and repair programs designed to prepare students for apprentice-level employment in the boat building industry and ultimately fill positions in shipyards, marinas, and private boat building companies.\nInstructor Chuck Graydon tells us the finest looking recently completed project using WEST SYSTEM epoxies must be the 9\u2032 hollow, strip-built surfboard that student James Hibray crafted. He did a first-class job on the glassing and finishing.\nChuck Graydon holds up his surfboard.\nTheir students obtain experience through extensive hands-on training in the construction of wood and fiberglass boats and are prepared for employment as aluminum fabricators, fiberglass laminators, wood and fiberglass tool makers, joiners, and marine carpenters. The program also provides extended learning opportunities for persons previously or currently employed in the industry.\nAaron Gnirk shows off the stitch-and-glue kayaks he\u2019s built. It\u2019s the student\u2019s own design, using 3mm and 6mm plywood encapsulated with WEST SYSTEM epoxy and 6oz fiberglass cloth.\nOne of the students is building a plywood-hulled hydrofoil, with high-density foam and WEST SYSTEM epoxy. It has fiberglass composite struts and wings.\nThey offer an Associate of Technology Degree and Certificates of Competency that cover basic boat building design and construction, and either fiberglass boat building and repair or wood/composite boat building.\nShorter programs are available that target the specific training areas of basic boat building design and construction, fiberglass boat building and repair or wood/composite boat building. And, they offer continuing education classes, providing individual evening courses to cover specific topics related to boat building.\nTheir vacuum infusion project is still in the tooling stages. Shawn Hanna fairs the hull plug\u2014a labor-intensive job and a tough one to get the students to focus on.\nVisit the Bates Technical College web site for more details.\nWhat degree and certificate options are available for students interested in pursuing boat building and repair at Bates Technical College?",
+      "prompt_sha256": "816a1af33ae6170b3efe2ac57fb1c989c3e638c6aa255e57127204a335fc0767",
+      "prompt_tokens": 437,
+      "selection_rank": "000a05e386466601f312f8c4e94baa5f511be0e6c3af5f704c1fa5161010195b",
+      "id": "positive-sensitivity-029"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 11498,
+      "source_prompt_id": "140647d62d95e29221ede59657bf988da9533cd7ad69769c664536876ee15872",
+      "prompt": "Develop a comprehensive plan for restructuring and organizing a business for maximum efficiency, incorporating strategies such as redefining roles and responsibilities, streamlining processes, implementing new technologies, and optimizing resources. Consider factors such as organizational culture, budget constraints, and employee buy-in, and include specific timelines and performance metrics to track the success of the restructuring effort.",
+      "prompt_sha256": "140647d62d95e29221ede59657bf988da9533cd7ad69769c664536876ee15872",
+      "prompt_tokens": 67,
+      "selection_rank": "000a77408148e1b1402b7d88a6210ef63d84b7c438e544aadd5267edf209e1fd",
+      "id": "positive-sensitivity-030"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 60397,
+      "source_prompt_id": "0525fa9d3e8832e7a74e9efee42c0b19deb75efcca02443cdf33ed140fa77bdd",
+      "prompt": "How do Eritrean women's access to education and healthcare compare to other African countries?",
+      "prompt_sha256": "0525fa9d3e8832e7a74e9efee42c0b19deb75efcca02443cdf33ed140fa77bdd",
+      "prompt_tokens": 18,
+      "selection_rank": "000af197b83a4bf4426ce708e591e59d0a27de381d3ac58a5ab2858166a8e444",
+      "id": "positive-sensitivity-031"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 16297,
+      "source_prompt_id": "7dd9e0f6e6f24964442a3485e9fd72ee6806674f427de7411d869385e5d2f27b",
+      "prompt": "Can you provide more details on the Victorinox Fibrox Pro Chef's Knife and the Pyrex Glass Mixing Bowl Set?\nGenerate according to: You might be looking to revamp your kitchen or equipping new kitchen tools for your next cooking adventure, but endless hours of searching and you still can\u2019t zero down on something. Sounds familiar, right? We know. Getting the right kitchen essentials is tough, especially when you have plenty of options to choose from.\nHere\u2019s our quintessential shopping guide to setting up your kitchen. You might be starting off from scratch or maybe you\u2019re just looking to upgrade items from your kitchen, this guide can help you get your kitchen right.\nKnives are an indispensable part of the kitchen, you just can\u2019t do without it. We recommend the Victorinox Fibrox Pro Chef's Knife for its great functionality without compromising on quality. The long sloping curve of the blade makes the Victorinox knife a delight to use for anyone looking to upgrade to a Chef\u2019s knife.\nWhat we like: Ergonomic handle and extra wide blade.\nCutting boards go hand in hand with knives. Our pick is the Organic Bamboo Cutting Board by Royal Craft Wood. Made of bamboo, this cutting board is a blessing for your kitchen. The large size and added functionalities make it a nifty buy. Plus, bamboo is gentle on knives and does not dull the knife sharpness.\nWhat we like: Extra large size and nifty grooves for juices to slide off.\nAsk a baker or a foodie and they\u2019ll stress on how important it is to get the right measuring set for your kitchen needs. We approve of Vinger\u2019s Set of 13 Measuring Cups and Spoons for its variety of comprehensive measuring scales. Stainless steel, precise and dishwasher friendly, we couldn\u2019t have asked for more!\nWhat we like: High quality construction and additional measurements on the scales.\nWe absolutely recommend the Pyrex Glass Mixing Bowl Set without a second thought! An absolute must-have for every kitchen, use it for mixing everything from ingredients to marinating meat or just preparing sauces. Made of durable glass, the Pyrex mixing bowl makes for a great buy.\nWhat we like: Comes in a set of 3 great sizes. Microwave, dishwasher and freezer friendly.\nA classic staple in every Chef\u2019s kitchen, wooden spoons are a lot more versatile than you know. Consider Artmeer\u2019s Organic Bamboo Utensil Set that comes in a set of 6. From a spatula to a rounded fork, this set has you covered for all your cooking and baking needs. You can\u2019t have one too many wooden spoons!\nWhat we like: Durable, does not stain easily. Can be used on nonstick cookware.\nSetting up a kitchen doesn\u2019t have to be tough and frustrating, opting for good high quality kitchen items can go a long way in setting up an efficient kitchen. Stay tuned for more!\nDrop in a comment to let us know what kitchen items you use in your kitchen!\nNewer PostNational Rum Day 2018!",
+      "prompt_sha256": "7dd9e0f6e6f24964442a3485e9fd72ee6806674f427de7411d869385e5d2f27b",
+      "prompt_tokens": 647,
+      "selection_rank": "000bb7bd8f08744ab5a11c4cc87d31fdbe12d41a197627a3e116b70f22cd828a",
+      "id": "positive-sensitivity-032"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 2112,
+      "source_prompt_id": "b53f5dcfeec99a524a04456a1881565b6023d47a590b7a60d1ec6770df8c32bd",
+      "prompt": "Provide a list of realistic goals which you aim to achieve within the upcoming year. Ensure that the goals set are achievable, and preferably measurable. These could be personal or professional objectives, but should be clearly defined and specific. Aim to create a comprehensive and ambitious list, outlining the steps you will take to achieve each goal, and the deadline for completion.",
+      "prompt_sha256": "b53f5dcfeec99a524a04456a1881565b6023d47a590b7a60d1ec6770df8c32bd",
+      "prompt_tokens": 70,
+      "selection_rank": "000be06972214908404ff78ad342558a1674dfa9003d0a401e154fd6b13413fd",
+      "id": "positive-sensitivity-033"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 39060,
+      "source_prompt_id": "06bd2a8d10cd8cf1af9e4fd75c42666151802b3c291e488bb2066d1ca1eb7218",
+      "prompt": "Develop a suspenseful and terrifying plot for a horror story about a group of teenagers who inadvertently awaken a long-dormant malevolent force, describing the consequences of their actions and the methods they use to try to resist or evade the curse. Additionally, write the story in a gory and graphic fashion, emphasizing the gruesome and unsettling details of the curse's manifestations, as well as incorporating unexpected plot twists and disturbing revelations about the origins of the curse.",
+      "prompt_sha256": "06bd2a8d10cd8cf1af9e4fd75c42666151802b3c291e488bb2066d1ca1eb7218",
+      "prompt_tokens": 92,
+      "selection_rank": "000c86513b59a3a69a212ec86e58afd42f2d3d892c192173c41f972f08502318",
+      "id": "positive-sensitivity-034"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 7991,
+      "source_prompt_id": "4ac05c3033c9f81efae56ae4d9b3c9e6a5797bc5da88516f3eebe2fbfc383e38",
+      "prompt": "Using any combination of fruit, yogurt, milk or almond milk, and optionally add-ins such as honey or oats, create a step-by-step recipe for a quick and tasty breakfast smoothie. Please specify the exact measurements and procedures for each ingredient and how to blend all of them together. Optionally, include tips for variation or substitution of ingredients to cater to different dietary needs or preferences.",
+      "prompt_sha256": "4ac05c3033c9f81efae56ae4d9b3c9e6a5797bc5da88516f3eebe2fbfc383e38",
+      "prompt_tokens": 80,
+      "selection_rank": "000d01df36fd948672004fa3239b4cc1edde550ccc895220a23df2765caf1a86",
+      "id": "positive-sensitivity-035"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 26830,
+      "source_prompt_id": "a41e8f4684176fb23cac6753c2ab1fc830cd65a05dfa9774905a09808fbafc8b",
+      "prompt": "Design a visually appealing and user-friendly website for a logistics company that effectively showcases their services, such as warehousing, transportation, and supply chain management. The design should incorporate a modern and professional aesthetic with a color scheme that complements the company's branding. Additionally, the website should include easy-to-use navigation, clear calls-to-action, and informative content to attract and convert potential clients.",
+      "prompt_sha256": "a41e8f4684176fb23cac6753c2ab1fc830cd65a05dfa9774905a09808fbafc8b",
+      "prompt_tokens": 81,
+      "selection_rank": "000d1043e6c6ee949644574a255c75ba7d3dea25e76a26f74ee98b349a148f59",
+      "id": "positive-sensitivity-036"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 7206,
+      "source_prompt_id": "49c5fed1be51e807592d04b339ef4d0c159457b9b7623a76982d4840ea03c5d2",
+      "prompt": "Write instructions for making bagels",
+      "prompt_sha256": "49c5fed1be51e807592d04b339ef4d0c159457b9b7623a76982d4840ea03c5d2",
+      "prompt_tokens": 6,
+      "selection_rank": "000d4a5bbbad64a6a2e5cf67189f56eef2bd90027fcf7a6ae2046d47d1439aeb",
+      "id": "positive-sensitivity-037"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 68896,
+      "source_prompt_id": "96a477c5e7eeb5777dc97608f92e32e495c657aae75f0117f8c31a0992b8c561",
+      "prompt": "Read the passage below and answer the question or follow the instruction: Can you summarize what happened in the latest episode of RHOD and how LeeAnne Locken's bridal shower went?\n\nPassage: Can you believe it\u2019s been 13 years? \u2014 Megan Fox celebrated throwback Thursday a little early on April 24, when she shared an old photo of Shia LaBeouf from the set of their 2007 film, \u2018Transformers\u2019!\nA young star\u2019s life has ended way too soon, as actress Stefanie Sherk, wife of Demian Bichir, has passed away. As the world mourns the loss of this \u2018beautiful, angelical and talented presence,\u2019 here\u2019s what you need to know.\nAn ongoing rumor that Prince William cheated on Kate Middleton with her friend while she was pregnant with their 3rd child continues to pick up speed, and royals fans are not having it! Now, he\u2019s being slammed online with viral memes.\nDJ Martin Garrix enlisted the \u2018Thrift Shop\u2019 rapper & pop rocker his latest song, & this trio may have just created the song of the summer.\nHollywoodLife is EXCLUSIVELY premiering Caroline Grace\u2019s brand new video for \u2018Turn The Light Off\u2019 \u2014 the very first single off of her debut EP!\nIt\u2019s here! The 2019 NFL Draft will see the next generation of football stars join the league, so get the full schedule, info on how to watch online and all the vital details.\nDaniel Craig and the cast of the 25th film in the James Bond franchise revealed exciting news from an iconic 007 location. The full cast was revealed and Oscar winner Rami Malek is confirmed to star.\nThe drama continues for Kailyn Lowry and David Eason! Now, Jenelle Evans\u2019 husband is dissing the fellow \u2018Teen Mom 2\u2019 star for trying to change her body with plastic surgery.\nIn a new interview with Ellen DeGeneres, Bradley Cooper dished on how he plans to keep \u2018A Star Is Born\u2019 alive by reuniting with Lady Gaga during a special event for fans.\nCelebrities like Hailey Baldwin and Kim Kardashian have decided that it\u2019s perfectly acceptable to rock underwear as outerwear \u2013 and we agree! These lingerie looks work so well IRL.\nJoe Biden is in for 2020. The former VP, 76, announced in a video that he\u2019s ready to take on 19 other candidates, and Donald Trump, to become the next president.\nAdele shocked fans when she confirmed she\u2019d split from husband Simon Konecki. However they will continue to make sure that their son Angelo has the full love and support of both of his parents.\nEverything\u2019s bigger in Texas, so it\u2019s no surprise that \u2018RHOD\u2019 star LeeAnne Locken\u2019s bridal shower, which was thrown by her co-star, Kameron Westcott, was no different!\nOffset\u2019s felony firearms possession charge in Georgia could result in some serious jail time for the Migos member. A judge could throw the book at him and send him to prison for up to 12 years.",
+      "prompt_sha256": "96a477c5e7eeb5777dc97608f92e32e495c657aae75f0117f8c31a0992b8c561",
+      "prompt_tokens": 702,
+      "selection_rank": "000d881487eaa1fcd58f9b11ec9603ee465907c9ffa53039a36e218ab8ed5168",
+      "id": "positive-sensitivity-038"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 33306,
+      "source_prompt_id": "19e2b2c957a5ba5517b48c2c8e7455f524cead5d1247d8345162840042517ec7",
+      "prompt": "Compose a classical piece about the beauty of the stars.",
+      "prompt_sha256": "19e2b2c957a5ba5517b48c2c8e7455f524cead5d1247d8345162840042517ec7",
+      "prompt_tokens": 12,
+      "selection_rank": "000e406158262a9b6cb589cd5ec0bd6252d9bee76de93f1dc3cb93f065355d09",
+      "id": "positive-sensitivity-039"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 25457,
+      "source_prompt_id": "cbade6d2fa29872ffe2fd205d6ed9c4bce731dc3d6d3b65368be107fdf9ff9ac",
+      "prompt": "How applicable are the research methods developed in the Mekong river system for other major river systems, and what factors were considered during the testing of different scenarios?\nGenerate according to: (Photo : DGFI-TUM) These are water levels in the river system of the Mekong on August 13, 2008. The measurements (unit: metres) indicate anomalies compared with long-term mean values. The water levels at the points shown were determined using the Kriging approach from altimeter observations at discrete intersection points. The enormously high water levels along the main river, which led to severe flooding, are clearly visible. The floods were caused by extreme rainfall in the northern part of the river system due to tropical storm Kammuri (early August 2008).\nAltimetry instruments transmit radar waves from satellites to Earth. These signals bounce back from the water surface towards the source. \"By measuring the time taken by the radar waves to travel that distance, we can calculate the water levels,\" says Florian Seitz, a professor of Geodetic Geodynamics at TUM. \"However, that is possible only where the satellite's track crosses a body of water. But for purposes of the water supply, hydrological analysis and safety issues such as the potential risk of flooding, it is equally important to know the water levels at other points.\"\nThe researchers of the involved institutes combined the different types of satellite data using a statistical method known as universal kriging. \"Being able to include these additional, highly accurate measurements with a good spatial distribution in our model greatly improved the quality of the results,\" says Claudia Kl\u00fcppelberg.\n\"The seasonal fluctuations in water levels on the Mekong, the diverse topography, and the regular flooding enabled us to test many different scenarios,\" says Florian Seitz. \"The methods we have developed are applicable to all major river systems - even where there are no ground stations to measure water levels.\"",
+      "prompt_sha256": "cbade6d2fa29872ffe2fd205d6ed9c4bce731dc3d6d3b65368be107fdf9ff9ac",
+      "prompt_tokens": 397,
+      "selection_rank": "000ee6676a8930158902f4e8782faba3e60f5a14b01b657b19117caa3b81b01e",
+      "id": "positive-sensitivity-040"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 68552,
+      "source_prompt_id": "0e0fb8cd5aa090b43b616b5c4413de6ae2760f4e0d930780536c7153b4404e6c",
+      "prompt": "Mix in all other ingredients, stir until everything is evenly distributed. Then spoon the mixture evenly back into the empty zucchini shells. Once all the shells have been filled, arrange them in a baking dish. Lastly, sprinkle some extra Parmesan cheese over the top of each zucchini.\nBake at 375 for 20 to 25 minutes or until golden brown. How long should I let the zucchini bake in the oven and at what temperature?",
+      "prompt_sha256": "0e0fb8cd5aa090b43b616b5c4413de6ae2760f4e0d930780536c7153b4404e6c",
+      "prompt_tokens": 97,
+      "selection_rank": "000f27338e0c152b173466f672277ce3431b26dd36b3029d53470082fefa764f",
+      "id": "positive-sensitivity-041"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 59669,
+      "source_prompt_id": "4ca5e5c0357f5d8c1ccd5f4c8b8867c14a7ff394b88dbd82c0c84f1960f2e6a5",
+      "prompt": "Create a comprehensive sales strategy plan (including content and style guidelines) for a sales expert who wants to maximize online sales revenue for their product line.",
+      "prompt_sha256": "4ca5e5c0357f5d8c1ccd5f4c8b8867c14a7ff394b88dbd82c0c84f1960f2e6a5",
+      "prompt_tokens": 29,
+      "selection_rank": "000f41ffadac1d6ae8c9d5dd83e3720667b58642c39d7ce0ee81e021c2fe3189",
+      "id": "positive-sensitivity-042"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 63639,
+      "source_prompt_id": "5a521f2a01f8b0391a6d69a346dec55f8f75bbadbe742243394fe17a4eba822a",
+      "prompt": "This research service on the global pharmaceutical stability testing market addresses market sizing, emerging trends, and technologies, and provides a snapshot of the key participants in the market. The base year is 2015 and forecasts are provided from 2016 to 2020. The market is expected to grow at a CAGR of 9.4% till 2020, driven by an explosion of new approval applications, consolidation, and globalization of both small and large molecule industries. Also, with the continuous growth of biologics, the global pharmaceutical stability testing market is expected to witness robust growth.\nBiologics stability testing, being more complicated than that of small molecules, is expected to contribute significantly to overall revenue. Biopharmaceutical companies are consolidating stability storage and limiting testing to one facility whereas pharmaceutical companies are moving toward decentralized stability testing, and centralized management and reporting. These companies are opting for single stability storage deals and building strategic relationships with CROs. Also, they are looking for end-to-end services to outsource the entire development project to a single CRO.\nEarly-stage biotech is identified as the largest growth segment for stability services, and has posted the highest increase during the past few years. For new-generation therapies and new trends in formulations such as non-aqueous and liposomal, many original study strategies apply but new strategies need to be adopted to deal with some of the nuances. Asia-Pacific, especially India and China, is emerging as a big growth opportunity area for this market. Several large CROs are exploring acquisitions here. Many local participants in these markets provide specialized services for global participants. There is also high demand for stability testing for such products in the local markets. Based on the passage above, Can you explain the difference between stability testing for biologics and small molecules? How is the testing being managed in biopharmaceutical and pharmaceutical companies?",
+      "prompt_sha256": "5a521f2a01f8b0391a6d69a346dec55f8f75bbadbe742243394fe17a4eba822a",
+      "prompt_tokens": 390,
+      "selection_rank": "000f6b20e37455c824eb5ff4a0de09f629930041f50e0473d914c9a15e40ca1f",
+      "id": "positive-sensitivity-043"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 39009,
+      "source_prompt_id": "71acc035bceaca2d10f7d60183a01c50164fb35c4f0defd1524e54adc454c6b7",
+      "prompt": "Write a fairy tale in third person limited point of view about a young woman named Ada who must solve a riddle to break a curse that was cast upon her kingdom by an evil sorcerer. The story should include magical creatures such as unicorns and dragons, and Ada should journey through enchanted forests and encounter a wise old wizard who offers guidance. The riddle should be difficult to solve but not impossible, and the curse should be broken through Ada's clever thinking rather than brute force or luck. The fairy tale should have a happy ending with Ada finding love and becoming queen of her kingdom.",
+      "prompt_sha256": "71acc035bceaca2d10f7d60183a01c50164fb35c4f0defd1524e54adc454c6b7",
+      "prompt_tokens": 119,
+      "selection_rank": "000fe360d549ffd2459337ae49248409fb16681d2ebdef5e85180c0466481468",
+      "id": "positive-sensitivity-044"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 35168,
+      "source_prompt_id": "dfed77040b64c73ac562eb9ce4a4da26ad15537b56320c584702e41718a2e1e4",
+      "prompt": "Write a guide on how to plan and host a successful dessert party.",
+      "prompt_sha256": "dfed77040b64c73ac562eb9ce4a4da26ad15537b56320c584702e41718a2e1e4",
+      "prompt_tokens": 14,
+      "selection_rank": "0010534dd63b70e0491edd119f01202cddc3db2f67dc7a30a3cede1f272246e5",
+      "id": "positive-sensitivity-045"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 58143,
+      "source_prompt_id": "c5e2955f3eb6fd5988fc79647dd79e4aef14e8266af97fd35758da8bd30079ff",
+      "prompt": "What are some effective ways to manage stress in the workplace and maintain a healthy work-life balance?",
+      "prompt_sha256": "c5e2955f3eb6fd5988fc79647dd79e4aef14e8266af97fd35758da8bd30079ff",
+      "prompt_tokens": 20,
+      "selection_rank": "00108188b62e54691edf0dddbebb9329ad14d02c16529edbe410d6f512c57eac",
+      "id": "positive-sensitivity-046"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 19484,
+      "source_prompt_id": "9563e6ab64b4a3c206c4dc3ae3531c9ed179a2d0e1dc9734d9c59161a1d3c7f3",
+      "prompt": "Create a comprehensive budget plan outlining the estimated costs for transportation, lodging, and entertainment for a 7-day vacation to Miami Beach, FL in July for a family of four. The plan should include specific details such as estimated round-trip airfare, ground transportation costs, hotel expenses, daily food allowance, admission fees for attractions, and any other relevant expenses. The plan should also include a breakdown of how much should be allocated towards each category and should aim to stay within a total budget of $5,000. Use Excel or Google Sheets to create easy-to-read tables or graphs to visually represent the information.",
+      "prompt_sha256": "9563e6ab64b4a3c206c4dc3ae3531c9ed179a2d0e1dc9734d9c59161a1d3c7f3",
+      "prompt_tokens": 127,
+      "selection_rank": "00114ecdcab96de47d76196e94f922b4d06a8f755053f6fe52d87d3bca26f9cd",
+      "id": "positive-sensitivity-047"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 49359,
+      "source_prompt_id": "24ee593fda603f50cac16b9e6cd3e035ae96a43eaabdaf1a4ce1ae032af560e6",
+      "prompt": "Essays Writing Service Is all You Need!\nHave you ever dreamt about the day when you do not have to burn the midnight oil as your essay papers can be easily done by real professionals? Well, your prayers have been heard as you found an online bona fide organization the name of which is PrimeEssays.co.uk!\nHigh Quality Is Guaranteed when You Buy Your Custom Essay from PrimeEssays.co.uk Oonline!\nWhat if you have always thought of buying online essays, however, you were afraid of being fooled around? Throw your worries behind as we assure you that once the order has been verified, only top-notch writers start working on the online essays ordered. Thus, high quality is guaranteed. Neither grammatical nor formatting mistake will be found. PrimeEssays.co.uk is here to serve you in the best possible manner!\nConfidentiality Is Our Top Priority!\nDo not be afraid that your personal information will be aired all around the Internet! We know all the risks that you put yourself through. For this very reason, we would never put your academic life and future career at stake. Buy your written essay from our reliable company and be sure that your private data is not going to be shared with any other third party without your agreement. Only our essay service can give you all of that!\nPlagiarism-Free Written Essay Papers at a Cheap Price Are Right around the Corner!\nThis is the most common concern among our customers. Indeed, it does not take a lot of effort to google information and copy paste it. The chances are high that you will be accused of plagiarizing your online essays and that will be true. Our writers are skilled employees in this very sphere. They are well aware of how to cite information in the paper properly. Every single page will contain accurate and truthful sources, so you do not have to worry that it might be impossible to find a source online or at least a copy of it. Upon request, all the references used might be sent to your email to prove your professor that you have done a profound job. If for some reason, you are still suspicious of plagiarism, we can assure you that the paper produced is 100% authentic. How? The answer is simple. You will receive a plagiarism report with the paper absolutely free of charge! We do take care of all our clients! You are up next! Purchase essay at a cheap price from PrimeEssays.co.uk and let your professor enjoy the most unique assignment he or she has ever seen. Essays buy option at PrimeEssays.co.uk is waiting right around the around for you.\nTimely Delivery of a Top-nNtch Product due to Essays Buy Service Offered by PrimeEssays.co.uk!\nWhat if you are running out of time and the deadline is viciously approaching? Is there any way out? Sure there is! PrimeEssays.co.uk will provide you with a custom written essay within the time frame indicated. Be it day or night we are capable of keeping to our word even if you need your essay to be handed in an hour. We said that PrimeEssays.co.uk writers will send you the premium writing assignment right on the button.\nHave you got any other questions about our services, price rates or time frames? Visit our website and get the answers wanted!\nThere is no room for perfection at PrimeEssays.co.uk because every single paper is already perfect!\nPurchase essay and free yourself from the burden. With PrimeEssays.co.uk, you have got an excellent opportunity to have a good time! Only we offer profound essay service which you will never find anywhere else! Use our essays buy option now! Can you summarize the benefits of using PrimeEssays.co.uk for custom essay writing, such as confidentiality, high quality, and plagiarism-free papers at a cheap price?",
+      "prompt_sha256": "24ee593fda603f50cac16b9e6cd3e035ae96a43eaabdaf1a4ce1ae032af560e6",
+      "prompt_tokens": 807,
+      "selection_rank": "001157b3cf9fa434d00348a30b961ba86a8002ac9c1be198c5766eb3d26bcb43",
+      "id": "positive-sensitivity-048"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 996,
+      "source_prompt_id": "3ca2bb0413c6c3246eb100e4d3a44d9136e85315e234d9e4cddbd5b2c5aa7f15",
+      "prompt": "Write a Kotlin program, adhering to a clean coding style, that reads a well-formed JSON file and converts its contents to a list of objects with appropriate data types. Ensure that any errors that occur during the process are handled gracefully and that the resulting list is sorted in a meaningful way.",
+      "prompt_sha256": "3ca2bb0413c6c3246eb100e4d3a44d9136e85315e234d9e4cddbd5b2c5aa7f15",
+      "prompt_tokens": 59,
+      "selection_rank": "00115b5872f470394b01498ec6a1ae080a9ab3771bebd9b04f615d73ba5bca02",
+      "id": "positive-sensitivity-049"
+    }
+  ]
+}

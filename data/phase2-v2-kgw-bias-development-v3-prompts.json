@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "status": "kgw_bias_development_prompt_manifest_frozen",
+  "experiment_id": "phase2-v2-kgw-bias-development-v3-final-bracket",
+  "scope": "Fresh development-only UltraChat prompts; not calibration or confirmation data",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "config": "default",
+    "split": "train_sft",
+    "license": "MIT",
+    "language": "en",
+    "attribution": "Hugging Face H4 (UltraChat 200k)",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "extraction_rule": "ParquetLens SQL SELECT row_number() OVER () - 1 AS shard_row, prompt_id, prompt FROM data; JSON output"
+  },
+  "model_tokenizer": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "seed": "phase2-v2-kgw-bias-development-v3-final-bracket",
+    "count": 50,
+    "max_prompt_tokens": 1024,
+    "exclude_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json",
+      "data/phase2-v2-kgw-bias-development-prompts.json",
+      "data/phase2-v2-kgw-bias-development-v2-prompts.json"
+    ],
+    "method": "lowest SHA-256 ranks after frozen exclusions, normalized deduplication, and tokenizer-length filtering",
+    "exclusion_manifest_sha256": {
+      "data/phase2-null-calibration-prompts.json": "fa8f52bb0203548d22ad5f761b2a18470cb04e88eee634b077918a47b055b60a",
+      "data/phase2-variance-replication-prompts.json": "15caa4969e8ae3081d7a88dbef9145f85140c179a3b6c53bbf4d7b7b4beace59",
+      "data/phase2-smoke-prompts.json": "981bacff4ed9ac6196f8bfb6a6da27308cc81191a1c417850c523f6621be8d4f",
+      "data/phase2-confirmatory-calibration-prompts.json": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+      "data/phase2-confirmatory-confirmation-prompts.json": "d053da15c9897ea2e9232471aeee86aca21fdb5e093398019f53148143725b32",
+      "data/phase2-v2-positive-sensitivity-prompts.json": "964c30c583a076587ac539a89ece384cac8c43e4b3c8ebea36b64be7db40fdb6",
+      "data/phase2-v2-kgw-bias-development-prompts.json": "bdf5680ac20ff3a368bc100d29353d2c6233dc7e0140776a587945c248e48201",
+      "data/phase2-v2-kgw-bias-development-v2-prompts.json": "cc498e5e503c89fdbf8fccfebb4c5cfb8b219aa44ad6cb99f8ffb54b64c3121e"
+    },
+    "generator_sha256": "43d8b71c9ed2acd52f14e6e8a295e03ab87385a85fed1a7bd4353ab7f0458ca3"
+  },
+  "records": [
+    {
+      "source_shard": 2,
+      "source_row": 27942,
+      "source_prompt_id": "936da0034b3f0253be230dc5bbfc91774de475a74b0848cc2fcc454886bba22b",
+      "prompt": "Write a comprehensive analysis comparing and contrasting the various advantages and disadvantages of different popular dietary regimens, such as low-carb ketogenic and ancestral paleo diets, taking into account factors such as sustainability, nutritional balance, and potential health risks. Consider the effects on weight loss, cholesterol levels, blood sugar management, and gut health, among other relevant metrics. Use scholarly sources to support your arguments and include specific recommendations for individuals looking to adopt a healthy and effective diet plan.",
+      "prompt_sha256": "936da0034b3f0253be230dc5bbfc91774de475a74b0848cc2fcc454886bba22b",
+      "prompt_tokens": 93,
+      "selection_rank": "0000107395bc13b5ba651040a0b7a0f5d07e0b7daaf92721294dc2a9161ed792",
+      "id": "kgw-bias-development-000"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 16106,
+      "source_prompt_id": "907be7a886fd33b2a1120c76b0836fbb971882448d1b9213244e6a1a0220e108",
+      "prompt": "Write a three-page essay, double-spaced, 12-point font, Times New Roman, on how your spirituality has influenced your personal beliefs, values, and actions throughout your life. Use specific examples to illustrate your points and consider the impact that spirituality has had on your relationships, career choices, and overall sense of purpose. In your conclusion, reflect on any changes or growth you hope to pursue in your spiritual journey moving forward.",
+      "prompt_sha256": "907be7a886fd33b2a1120c76b0836fbb971882448d1b9213244e6a1a0220e108",
+      "prompt_tokens": 90,
+      "selection_rank": "0000c8a6a3c91e13ea3afe7ccd2edbcd34339114958c366dd5816598d724a845",
+      "id": "kgw-bias-development-001"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 9734,
+      "source_prompt_id": "69ca0cec89e25aab2f71a089e2ff11833b32c8d1eb492249f9de853fadef90a3",
+      "prompt": "What steps have the Chinese government taken to address air pollution in major cities?",
+      "prompt_sha256": "69ca0cec89e25aab2f71a089e2ff11833b32c8d1eb492249f9de853fadef90a3",
+      "prompt_tokens": 15,
+      "selection_rank": "000127838dd0fe7d9b79a58d3f36b9047e8b8b80265f37589a6ba91a5e31f0fb",
+      "id": "kgw-bias-development-002"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 67272,
+      "source_prompt_id": "0cb6f1279435d27a2130cfc5197b1ebebd8fcb70da2744abe1ec10eb039a0741",
+      "prompt": "Write step-by-step instructions for making a nutritious green smoothie using a blender. Include the ingredients needed, recommended measurements, and tips on blending for optimal texture and taste. Additionally, provide variations or substitutions for different dietary needs or preferences, such as vegan or gluten-free options. Aim to make the instructions clear and concise, using easy-to-understand language and visuals if necessary.",
+      "prompt_sha256": "0cb6f1279435d27a2130cfc5197b1ebebd8fcb70da2744abe1ec10eb039a0741",
+      "prompt_tokens": 79,
+      "selection_rank": "0001f408191de8523d86c66da89c3e979ff5214647505bad374d4967d15bdbec",
+      "id": "kgw-bias-development-003"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 10517,
+      "source_prompt_id": "e5b1280cf90b366a94997cef97f4297bc8a82d4ec32608d4ef885ff9f4e65a4d",
+      "prompt": "Create a horror story about a group of people who get lost in the woods and stumble upon an abandoned town.",
+      "prompt_sha256": "e5b1280cf90b366a94997cef97f4297bc8a82d4ec32608d4ef885ff9f4e65a4d",
+      "prompt_tokens": 22,
+      "selection_rank": "0002a30440b53c6d0460158ec2507b5f0de53a26fce8a0cdb09559aba534797c",
+      "id": "kgw-bias-development-004"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 36409,
+      "source_prompt_id": "8394013ac10b9afa271a51b7c04cd406c04cbeda3fcdd842d520916bb83d43c5",
+      "prompt": "What are some of the most important plants found in deserts, and how have they been used by humans throughout history?",
+      "prompt_sha256": "8394013ac10b9afa271a51b7c04cd406c04cbeda3fcdd842d520916bb83d43c5",
+      "prompt_tokens": 23,
+      "selection_rank": "0002eb10658348da94e19f9bab8567f983dade5cd3ea60c961ea3ecc077b1c21",
+      "id": "kgw-bias-development-005"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 44742,
+      "source_prompt_id": "a495748fc653766d8aa773365ff35d57e44a8e696c89cc60ad07467bfafdbbbe",
+      "prompt": "Given the text: The L.A Times reports that the Getty Research Institute has announced their acquisition of photographer Robert McElroy\u2019s archive, which contains weird, wild, and wonderful scenes from the heyday of performance art in New York City. The collection contains approximately 700 prints and 10,000 negatives documenting the \u201cHappenings\u201d, performative and collaborative works by Allan Kaprow, Jim Dine, Claes Oldenburg, and others that took place starting in the late 1950s. What began as small gatherings for those in the know quickly morphed into a large-scale cultural phenomenon that predicted the free-wheeling attitudes of the late 60s and early 70s.\nOf course, before there were cell phones or video cameras, the best way to document these events was through photography. Thus, while the photos are filled with energy and chaos, there is the nagging sensation that something even wilder might be occurring just outside the frame. According to Glenn Phillips, acting head of the Research Institute\u2019s Architecture and Contemporary Art department, this is part of what drew them to the collection. \u201cWith McElroy photographs, you never have the feeling that this is the one moment,\u201d he said. \u201cYou always know it\u2019s a fragment of what\u2019s going on.\u201d They epitomize the concept of a candid, while simultaneously serving as a document of a pivotal moment in art history.\n\"Words\" by Allan Kaprow at Smolin Gallery, New York (1962).\n\"Circus: Ironworks/Fotodeath\" by Claes Oldenburg at the Reuben Gallery, New York (1961).\n\"Car Crash\" by Jim Dine, Reuben Gallery, New York (1960).\nPhoto: Robert T. McElroy / The Getty Research Institute.\n\"Newspaper Event\" by Carolee Schneemann (1963).\nPat Oldenburg and Lucas Samaras in \"Voyages I\" by Claes Oldenburg at the Ray Gun Manufacturing Company, New York (1962).\n\"Circus: Ironworks/Fotodeath\" by Claes Oldenburg, Reuben Gallery (1961). Cast photo.\nCan you provide examples of specific \"Happenings\" captured in Robert McElroy's photographs and the artists involved in their creation?",
+      "prompt_sha256": "a495748fc653766d8aa773365ff35d57e44a8e696c89cc60ad07467bfafdbbbe",
+      "prompt_tokens": 509,
+      "selection_rank": "00038b8b84bd5bba8d6aa555230acaa57819851705dac581048895dc696f360d",
+      "id": "kgw-bias-development-006"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 55806,
+      "source_prompt_id": "04ffc65ca794ff3d9631135f814f2a73eda3a81dd96e2f43ea03ea40219e6274",
+      "prompt": "Create a JavaScript program that generates a random color based on the RGB color model, and displays the color on the screen in a visually appealing way, such as as a background color or a color swatch. The program should also allow the user to generate multiple colors in succession by clicking a button or pressing a key. Additionally, the program should be designed to prevent the generation of similar or too bright/dark colors for optimal readability and aesthetics.",
+      "prompt_sha256": "04ffc65ca794ff3d9631135f814f2a73eda3a81dd96e2f43ea03ea40219e6274",
+      "prompt_tokens": 89,
+      "selection_rank": "0003d2515b5f2b43fd61d1079049a25b3ca3df48cbc0d0f9560ab1b345a301a7",
+      "id": "kgw-bias-development-007"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 11573,
+      "source_prompt_id": "2b7e3348e973c8c78148cd483ff4fb6d2ca21c55b2a97448324fc96f2a348668",
+      "prompt": "But this time through, instead of Dell's scattershot approach of \"building \" a team, you would have Griffin. I would like those odds better.\nI don\u2019t recall PG demanding a trade, leaving during a game. Based on the passage above, Can you provide more information on how Griffin's leadership style differs from the approach taken by Dell in building a team?",
+      "prompt_sha256": "2b7e3348e973c8c78148cd483ff4fb6d2ca21c55b2a97448324fc96f2a348668",
+      "prompt_tokens": 77,
+      "selection_rank": "0004483463edb59473226170c709994842ecf6bddaa159321ab31bc717d09dea",
+      "id": "kgw-bias-development-008"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 53058,
+      "source_prompt_id": "d5956bc136e3aaac62a7f02377d8a4b2db93bc1fce2cf01a24c5a8531a3e0200",
+      "prompt": "Can you summarize the three solutions provided for dealing with lower back pain after deadlifts? Answer according to: If you're just getting started doing the heavy weightlifting at the gym, then you are most likely doing deadlifts. These lifts, along with squats and bench presses, are considered vital for muscle growth. However, they also pose a problem for many people. It's not uncommon to have muscle aches in your lower back after a session of deadlifts. That's not a situation that is conductive to further exercise, and it's also not something you should ignore. Here are three solutions to deal with it.\nThe first thing you need to find out is if you are practicing proper form. There are two ways you can do this. If you workout in a gym, you are going to want to speak with a personal trainer. Have them analyze your lift. There are lots of ways you can lift improperly and these can cause injury and pain. For example, a too rounded back or a back that is too arched can both be detrimental. Often, you can't see how you lift, so you need someone else to look for you.\nIf you don't work out out at a gym, and instead work out at home, and don't have lifting partners nearby to come by and check in person, then you can film a video of yourself and upload it to YouTube. Then, you can find weightlifting forums online and post a link to the video and ask for a \"spot check\".\nIf it turns out your lift is correct, then it might be that your muscles are just sore, and you need to massage them a bit. If it's not severe pain, and more of a tightness that is uncomfortable, then you should invest in a foam roller. These can be laid down on the floor, and you lay on them and roll your back over them. Pick one of the foam rollers for bodybuilders that have knobs that extend off the roller and will really dig into your lat muscles.\nIf the pain is severe, then you need to skip the foam roller and head right to a professional who handles sports injuries. It might be a muscle, but it also might be that you are dealing with a herniated disc. You need to immediately cease lifting weight and make sure that you do no further damage to your lower back.\nA physical therapist will be able to assess if it's a spinal issue or a muscle strain. In either case, they will be able to diagnose and treat the problem and get you back into the gym.",
+      "prompt_sha256": "d5956bc136e3aaac62a7f02377d8a4b2db93bc1fce2cf01a24c5a8531a3e0200",
+      "prompt_tokens": 520,
+      "selection_rank": "00046a4188a3c1cc4641a91d4d16e4d1a6a373c834927139b310189cafac08bd",
+      "id": "kgw-bias-development-009"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 62810,
+      "source_prompt_id": "36598b2920a207a1fca8b85585ad13fa1b30b02ee8dd7a4193ae63f2e6d43cfe",
+      "prompt": "Write a comprehensive essay explaining the underlying significance of regular physical exercise in mitigating the chances of developing heart-related complications and substantiate your arguments with empirical evidence, statistics, and relevant case studies.",
+      "prompt_sha256": "36598b2920a207a1fca8b85585ad13fa1b30b02ee8dd7a4193ae63f2e6d43cfe",
+      "prompt_tokens": 38,
+      "selection_rank": "0004821f0ff05f7093476ac5c07a80885abd76e14de8dc0a3e2b36387c00ff70",
+      "id": "kgw-bias-development-010"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 5288,
+      "source_prompt_id": "db748b726f2848242092e5ff58a96253a04274ce2f5ec7aa015c804a60c05d9f",
+      "prompt": "Explore the evolution of technology and the impact it has had on society.",
+      "prompt_sha256": "db748b726f2848242092e5ff58a96253a04274ce2f5ec7aa015c804a60c05d9f",
+      "prompt_tokens": 14,
+      "selection_rank": "0004e420bc00b89e1390458d11061513aee2a2120f95b054805d9b412d9d7f4f",
+      "id": "kgw-bias-development-011"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 65142,
+      "source_prompt_id": "c36b0dc594219bfa73c462be6fe116504705ce525a4e22d65e4e0b9eb552e5cd",
+      "prompt": "Please visit the official website of the bank and fill out the online credit card application form to apply for a credit card. Provide all necessary information accurately and attach any required documents for verification. Read and understand the terms and conditions carefully before submitting your application. Once submitted, wait for the bank's response on your application status.",
+      "prompt_sha256": "c36b0dc594219bfa73c462be6fe116504705ce525a4e22d65e4e0b9eb552e5cd",
+      "prompt_tokens": 64,
+      "selection_rank": "0004fcbdcac173c5204c247d406f17c281a7d262c7afef8a9a7ddaf6295cc32c",
+      "id": "kgw-bias-development-012"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 57217,
+      "source_prompt_id": "b78e6c03a9f655589183def478f9639558eb8fbdae806a7cd4439f9e15195d69",
+      "prompt": "MERRILL \u2013 A $4 million private donation will help the city build a new aquatic center that will offer kids their best chance to cool off and have fun this summer since the city closed its old pool two and a half years ago.\nThe new center is expected to open in the Merrill Area Recreation Complex in June 2016 and will include a climbing wall over the water, six lap lanes, a deep section with diving boards and six different water slides.\n\"It has been kind of a long and tedious road,\" said Merrill Parks and Recreation Director Dan Wendorf. \"At the same time it has allowed us \u2014 the two-plus years \u2014 it has allowed us to slow down and make the right decisions.\"\nThe Merrill Parks and Recreation Commission unanimously approved this month a $3.6 million bid from Miron Construction Co. to build the pool. Including site work and parking, the project will cost around $4.5 million, said City Administrator David Johnson.\n\"People are very excited at the idea of an aquatic center as opposed to just a plain pool as we had before,\" Johnson said.\nThe city's old pool opened in 1968 and closed after the 2012 season. It was a simple L-shape with a straight slide that required someone to dump a bucket of water down it before a swimmer could ride it.\n\"It was old and in disrepair, non-ADA compliant,\" Wendorf said, referencing the Americans with Disabilities Act. \"It would have cost us more than what it was worth to renovate it to bring it back up to standards.\"\nCity officials held hearings to determine the location of new pool. The majority opinion wanted the aquatic center on the site of the old pool in Stange's Park. But because that park has potential flooding and other issues, it would have cost an additional $1 million to build there, Johnson said.\n\"(The location) was the most debated topic that we had in relation to the pool,\" Wendorf said.\nThe new pool will be built on the grounds of the MARC northwest of downtown. Officials are seeking additional donations to cover the remainder of the cost. The donor who contributed $4 million to the project eventually will be revealed but remains behind the scenes for now.\n\"Without that anonymous $4 million this project wouldn't happen for 10 years, 10-plus years. We are extremely grateful for that,\" Wendorf said.\nThe city expects the new pool to be more efficient than the old and cost about the same \u2014 roughly $45,000 a year \u2014 to operate. It continued budgeting annually for the pool even after it closed, and those dollars went to cover engineering and exploratory costs for the new one, Wendorf said.\nA $6.9 million bid from Altman Construction Co. and a $3.9 million bid from Howard Immel didn't make the cut.\nThe city specified all the different components it wanted in the bidders' plans, seeking to appeal to a wide range of people and children.\n\"I'm going to use it,\" Wendorf said with a laugh.\nHe hopes the project will serve the immediate community and draw in others.\nOfficials will soon work out entry fees and whether or not they want to have different rates for residents and non-residents. What was the reason for the city deciding to build the new pool at the Merrill Area Recreation Complex instead of at Stange's Park where the old pool was located?",
+      "prompt_sha256": "b78e6c03a9f655589183def478f9639558eb8fbdae806a7cd4439f9e15195d69",
+      "prompt_tokens": 726,
+      "selection_rank": "0005013960eab85f259a79511a032abba9877367874d2a5d80ed31db89f6e99b",
+      "id": "kgw-bias-development-013"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 15978,
+      "source_prompt_id": "edb265267df829d01765b12c365e29c4fc75d7f30a1c58f0ecad2c85d25bd978",
+      "prompt": "Read the passage below and answer the question or follow the instruction: Could you provide more information on the contract that Russia intends to sign with Iran this year for the supply of its Sukhoi Su-30SM multi-role fighter jets?\n\nPassage: Iranian Defense Minister Hossein Dehghan is visiting Moscow this week.\nRussia will send the first S-300 air defense missile system to Iran on Thursday, Russia's RIA state news agency reported on Wednesday quoting an unidentified source.\nThe missile system will be delivered under the terms of an earlier contract.\nRIA reported earlier on Wednesday that Russia will sign this year a contract with Iran to supply a batch of its Sukhoi Su-30SM multi-role fighter jets to the Islamic Republic. The report quoted a senior official at Russia's arms export agency as saying.\nIranian Defense Minister Hossein Dehghan is visiting Moscow this week. He met the Russian President Vladimir Putin on Tuesday, the Kremlin said, giving no further detail.\nRussia canceled a contract to deliver the S-300 advanced anti-missile rocket system to Iran in 2010 under pressure from the West following UN sanctions imposed on Iran over its nuclear program.",
+      "prompt_sha256": "edb265267df829d01765b12c365e29c4fc75d7f30a1c58f0ecad2c85d25bd978",
+      "prompt_tokens": 254,
+      "selection_rank": "00052f71820a1eac636a31c2ff1d17b435c1680d963e2940678365e551aefc06",
+      "id": "kgw-bias-development-014"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 4911,
+      "source_prompt_id": "cf423bdea9bdd3fde4ce5c06b067ea526a5507e4f2cf8b6a1705965c02d228b9",
+      "prompt": "Write a Bash script that finds all files in a directory that are executable.",
+      "prompt_sha256": "cf423bdea9bdd3fde4ce5c06b067ea526a5507e4f2cf8b6a1705965c02d228b9",
+      "prompt_tokens": 15,
+      "selection_rank": "000554c3aeb9133a39ac7b87adecc9062b0fb6283a2f50ec3ba777554f93f83d",
+      "id": "kgw-bias-development-015"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 23818,
+      "source_prompt_id": "0ae48a0c608d3b8d2d48d4f9b819076e93d4e443bf7b1a93cadc0cee465fb971",
+      "prompt": "3. Allow users to choose from a variety of languages to learn",
+      "prompt_sha256": "0ae48a0c608d3b8d2d48d4f9b819076e93d4e443bf7b1a93cadc0cee465fb971",
+      "prompt_tokens": 13,
+      "selection_rank": "0005b5e8b01653448a44961d50245a5f15a14ab1de211f424f1da875d05b9c7d",
+      "id": "kgw-bias-development-016"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 43874,
+      "source_prompt_id": "0514c0684e299bd8869f8ff09076dfe55c400b5c0f8752501cbe88d542037320",
+      "prompt": "Read the passage below and answer the question or follow the instruction: How did the AIT integrate Taiwanese traditions into the dedication ceremony?\n\nPassage: TAIPEI (Taiwan News) \u2014 Even though the world kept a close eye on the Trump-Kim summit Tuesday morning in Singapore, a low-profile but perhaps more celebratory event was taking place at the same time \u2014 the dedication ceremony of the new office complex of the American Institute in Taiwan (AIT), located in a now still primarily residential area slightly remote from central Taipei City.\nAfter the de-facto U.S. embassy in Taiwan has operated on its current site in Da'an District for almost four decades, the AIT\u2019s new office complex, which cost US$255 million and took almost a decade to construct, was finally near completion and opening. The 6.5-hectare complex is seen as a milestone for the relationship between Taiwan and the U.S., which have maintained unofficial relations since the termination of diplomatic ties in 1979.\nThrough a press statement issued last weekend, the AIT, two days ahead of the ceremony, announced that Marie Royce Secretary of State for educational and cultural affairs, would represent the U.S. government to unveil the new AIT complex with President Tsai Ing-wen (\u8521\u82f1\u6587) and other top officials from her administration.\nAIT Chairman James Moriarty, Republican Congressman Gregg Harper, as well as a number of former AIT chairmen and directors also participated in the ceremony on Tuesday morning.\nSpeaking with reporters before the ceremony commenced, both Moriarty and AIT Director Kin Moy defended the decision of the U.S. government to send Royce to Taiwan for the dedication ceremony.\n\u201cThere\u2019s actually a lot going on in the region today, and we need to respect that truth,\u201d said Moriarty, hinting that the Trump Administration did not wish to have any other events overshadowing the Singapore summit.\nAsked about whether there would be higher levels of American officials coming to Taiwan for the official start of operations at the AIT\u2019s new office complex expected in September, a move that will likely face protest from China, Moriarty said as of now, the institute has not had any specific plans.\nSpeaking of Royce, Moy said the assistant secretary was a \u201cperfect candidate\u201d for the dedication ceremony as she \u201creflects about 40 years of educational and cultural cooperation\u201d between Taiwan and the U.S.\nDespite the Western-styled decoration, with American flags flying around, the dedication ceremony was actually infused with Taiwanese and American traditions.\nApart from keeping to a schedule suggested by fengshui experts hired by the AIT, its employees and staff, led by Moy and his wife, were holding incense and praying for good luck behind a table placed with fruit and flowers as offerings to the gods before the ceremony \u2014 a common practice for businesses in Taiwan on special occasions.\nFollowing the beginning performances, including a passionate percussion show and the solemn singing of America\u2019s national anthem, the officials on the main stage, one after another, gave their remarks that were heavily centered around promoting the relationship between Taiwan and the U.S.\n\u201cBy treating one another with dignity, sincerity, and respect, we would accomplish great things,\u201d said the president.\n\u201cThe new office complex is a symbol of the strength and vibrancy of the U.S.-Taiwan partnership in the 21st century,\u201d said Royce, emphasizing that Taiwan was her first overseas visit since she took office in March. Staying in Taiwan until Thursday, Royce will then continue her Asia trip to Japan, Vietnam, and South Korea.\nAfter the drape covering the fa\u00e7ade of the new building was pulled off, the ceremony was left with one last activity. Together American and Taiwanese representatives, this time including former Taiwan President Ma Ying-jeou (\u99ac\u82f1\u4e5d) and Foreign Minister Joseph Wu (\u5433\u91d7\u71ee), put their chosen objects into a \u2018time capsule\u2019 box prepared by the AIT. The box will be sealed and buried somewhere in the new complex, according to the AIT.",
+      "prompt_sha256": "0514c0684e299bd8869f8ff09076dfe55c400b5c0f8752501cbe88d542037320",
+      "prompt_tokens": 874,
+      "selection_rank": "000602e7448716c303c7409f278ccd41e303992cedc9db3170000a56e3deb5e7",
+      "id": "kgw-bias-development-017"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 15528,
+      "source_prompt_id": "bb9bf0ea8292bb12ed267952c0f6137e8a082347e0759dfbd1f6ff558ebf3b96",
+      "prompt": "These super chewy Oatmeal Jammys from The Treats Truck can be filled with any jam you'd like; feel free to choose a few fruit flavors to mix up the batch.\nIn a large bowl, cream the butter and sugars together until light and fluffy. Add the eggs, one at a time, and mix well. Stir in the vanilla.\nIn a separate bowl, combine the flour, baking soda, cinnamon, and salt.\nGradually add the flour mixture to the butter mixture, mixing until fully incorporated.\nMix in the oats and any add-ins you fancy. See Note.\nPlace scoops of oatmeal cookie dough 2 inches apart on a greased or parchment paper-lined cookie sheet. Use your thumb to make a hollow in the dough.\nUse a piping bag or a spoon to put a dollop of jam in the center of each cookie.\nBake for 12 to 14 minutes, or until the cookies look fully baked and the edges are golden.\nNote: 1 to 1\u00bd cups raisins, chocolate chips, chopped pecans, walnuts, dried cranberries, minced dried cherries, currants\u2014whatever you like! How do you make a hollow in the dough before adding jam to the Oatmeal Jammys?",
+      "prompt_sha256": "bb9bf0ea8292bb12ed267952c0f6137e8a082347e0759dfbd1f6ff558ebf3b96",
+      "prompt_tokens": 269,
+      "selection_rank": "000657114e65377c821c6380e90ade8897d9290873327a9a67fc6711b34a4653",
+      "id": "kgw-bias-development-018"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 61464,
+      "source_prompt_id": "f80a0071aa26ac10afc20f4c23109fa51f7525112127460a4e14cf00075b43e9",
+      "prompt": "Thermal bangers work off the same functionality as bubble bowls. Two layers of glass insulate the heat and keep it where you want it. These bangers are deeper than traditional ones and have a rounded edge. Feel free to load up as much as you want with this style of banger, it can handle it.\nCan you suggest some tips for loading up a thermal banger with cannabis concentrate and getting the most out of it?",
+      "prompt_sha256": "f80a0071aa26ac10afc20f4c23109fa51f7525112127460a4e14cf00075b43e9",
+      "prompt_tokens": 89,
+      "selection_rank": "00065de7765fbcb78beb6ac85321742a22b1c32ba1fb537f50a93e58b8f7a7a6",
+      "id": "kgw-bias-development-019"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 8357,
+      "source_prompt_id": "bafa0605e36194f09deef529e10ab34bd33c0f3f6e70614bdcf331a1e94f0e1f",
+      "prompt": "Design and develop a responsive website for a wedding planner that emphasizes elegant and modern style to attract a younger clientele. The website should include clear and concise information on wedding planning services offered by the planner, as well as pricing and package details. Additionally, the website must have a gallery or portfolio section to showcase the planner's previous work and a blog section to publish articles related to wedding planning tips, trends, and other useful information. The website should utilize a user-friendly interface, social media integration, and a contact form to allow interested clients to get in touch easily.",
+      "prompt_sha256": "bafa0605e36194f09deef529e10ab34bd33c0f3f6e70614bdcf331a1e94f0e1f",
+      "prompt_tokens": 114,
+      "selection_rank": "0006a220ae8c8a3fb46087dffe27b494906096e749b413250fc3647ba6a5b5b1",
+      "id": "kgw-bias-development-020"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 4932,
+      "source_prompt_id": "a8d511d0baffc1c68cd3c8007971583d9320e1a7cb44d66c6ca9d15a700b3be1",
+      "prompt": "We applaud President Obama for addressing the need for more focused cancer research efforts through a new moonshot approach during his final State of the Union address yesterday, Jan. 12, 2016.\nThe moonshot approach was explained as an American-led effort to cure cancer, spearheaded by Vice President Joe Biden, who lost his son to a brain tumor in 2015. Brain cancer, along with pancreatic cancer and several others, are among the deadliest cancers in the U.S.\n\u201cFor the loved ones we\u2019ve all lost, for the family we can still save, let\u2019s make America the country that cures cancer once and for all. Medical research is critical,\u201d said President Obama.\nIncreasing resources\u200a\u2014\u200aboth private and public\u200a\u2014\u200ato fight cancer.\nBreaking down silos and bringing all the cancer fighters together\u200a\u2014\u200ato combine their efforts, share information, and end cancer as we know it.\nThis initiative aligns with our Deadliest Cancers Coalition, established in 2008 with 21 other national patient advocacy organizations and professional societies. The goal of this group is to encourage Congress and federal government leaders to address policy and funding issues related to our nation\u2019s most lethal cancers, defined as those that have a five-year relative survival rates below 50 percent.\nThe initiative also aligns with our work to double pancreatic cancer survival by 2020.\nWe are proud of the work our organization, our advocates and our volunteers did to advocate for this increase, as well as their support of the Deadliest Cancers Coalition. But, we, together with the national government, have much more to do.\nAccording to statistics released this month, pancreatic cancer surpassed breast cancer to become the third leading cause of cancer-related deaths in the United States. Though the five-year survival rate increased slightly, it remains in the single digits at only 8 percent*.\nWe are committed to improving patient outcomes and doubling survival by 2020.\nTo do so, we will continue our research investment and support of other novel initiatives like Clinical Trial Finder, Know Your TumorSM and the newly launched Patient Registry.\nTo join our efforts, please visit www.pancan.org. Based on the passage above, What novel initiatives is the Pancreatic Cancer Action Network supporting to improve patient outcomes and double survival by 2020?",
+      "prompt_sha256": "a8d511d0baffc1c68cd3c8007971583d9320e1a7cb44d66c6ca9d15a700b3be1",
+      "prompt_tokens": 505,
+      "selection_rank": "000762cfff811146eada490ba9508c85ee4fac671a59d1f98db3fbe929895b9a",
+      "id": "kgw-bias-development-021"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 40139,
+      "source_prompt_id": "7d7d84d4e3e18aa6a8e89be8aa4f2004601e0c8f518199f9339cc0309c127d6a",
+      "prompt": "Using any materials of your choice, design and construct an artwork that symbolizes a major global issue, such as the unequal distribution of wealth or strained international relations. Your piece should convey a strong message about the significance of this issue, as well as spark conversation and inspire viewers to take action. Additionally, consider incorporating interactive elements or multimedia components to enhance the audience's engagement with your installation or sculpture.",
+      "prompt_sha256": "7d7d84d4e3e18aa6a8e89be8aa4f2004601e0c8f518199f9339cc0309c127d6a",
+      "prompt_tokens": 78,
+      "selection_rank": "0007930753ffa1caadbd896bca4660ecaf7b1c06c1a33a1c2285148eaf298649",
+      "id": "kgw-bias-development-022"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 18602,
+      "source_prompt_id": "c6bd1472612868d7852307cb28caa1239385a55d7004a84f99bc8085cb924136",
+      "prompt": "Can you provide instructions on how to knit a scarf for beginners?",
+      "prompt_sha256": "c6bd1472612868d7852307cb28caa1239385a55d7004a84f99bc8085cb924136",
+      "prompt_tokens": 14,
+      "selection_rank": "0007f7342c3f3be2371312b688bbd968814d9cdeed1c5aa1bb248075cd3ace89",
+      "id": "kgw-bias-development-023"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 48688,
+      "source_prompt_id": "ad57e38746e75ba1f6db485015517e51300141c69b8a89fc190e091449742c12",
+      "prompt": "assignment, which contains a specific response of the writer to the main essay prompts question(s) or an analysis of the specific argument. There are more things to explore to answer, What is a thematic essay? In this article, the student can find all answers to the questions regarding this type of academic essay writing along with the helpful hints and great topic ideas. It gets complicated as a good thesis statement must be concise (a single-sentence statement and thematic essay requires a plenty of points. How to make essay writing easy drawings research paper intro paragraph journal wade edwards essay writing cognitive psychology memory language and thought essay harvard llm application essay jan 2010 global regents thematic essay how to write a short essay for college board 4 paragraph essay. Ancient Rome - Part 4 - Mr Ott&apos;s Classroom Wiki Ancient Rome - Part.\nExplain their fate in details Discuss several historical leaders who led to positive changes Focus pride prejudice jane austen essays on explaining the consequences and outcomes of some famous wars Revolutions of students choice: development, ending, and results US History Thematic Essay Identify the causes and outcomes of the Great. Ancient Rome ; Feudalism Breakdown. June 08 Thematic Essay. It goes beyond recall of facts; the essay enhances critical thinking analytical skills; this essay makes students provide logical links. (1) Egyptian (3) Roman (2). Essay on if i am doctor? Can you summarize the main points of the article about thematic essays?",
+      "prompt_sha256": "ad57e38746e75ba1f6db485015517e51300141c69b8a89fc190e091449742c12",
+      "prompt_tokens": 305,
+      "selection_rank": "000829156aecbd5c0cea62e6065e89c8554a9bafd7fcf1d1067a51815ad8a21a",
+      "id": "kgw-bias-development-024"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 38785,
+      "source_prompt_id": "af39836ba03f561a87d61d1739ef1f66a6696e98157ed1ee42c021bb68c514ab",
+      "prompt": "Write a heartfelt letter to a friend expressing your gratitude for their love and support during a difficult time in your life. Consider how their actions impacted you and be sure to include specific examples of things they did that helped you get through a challenging situation. Use a warm, sincere tone throughout the letter and be sure to close with an expression of your continued friendship and appreciation.",
+      "prompt_sha256": "af39836ba03f561a87d61d1739ef1f66a6696e98157ed1ee42c021bb68c514ab",
+      "prompt_tokens": 73,
+      "selection_rank": "00085028b2e6f9c8482438f21a484da864a92d95285477f24f16e7b00b62364a",
+      "id": "kgw-bias-development-025"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 44870,
+      "source_prompt_id": "0da61e3409bbf0735c50f71906181d22ee2e440caf2dd2dae90027f3aa6307d4",
+      "prompt": "What is the expected growth rate of the global propylene oxide market from 2017 to 2021, and how is the market landscape expected to evolve in this period? Answer according to: Propylene oxide is an organic, colorless, and volatile liquid at normal temperature and pressure. It is manufactured from raw materials, such as propene, isobutene, propanol, and butanol. The compound is highly flammable and reactive. It reacts violently with ammonia, chlorine, and strong oxides and acids causing fire and explosion hazards. It is generally used as an intermediate to produce numerous commercial materials. The largest application of propylene oxide is for deriving polyether polyols and propylene glycols. Polyether polyols are one of the main components used in the manufacture of polyurethanes that are widely used in apparel, building and construction, composite wood, and automotive applications.\nTechnavio\u2019s analysts forecast the global propylene oxide market to grow at a CAGR of 3.71% during the period 2017-2021.\nThe report covers the present scenario and the growth prospects of the global propylene oxide market for 2017-2021. To calculate the market size, the report considers the revenue generated from the sales of propylene oxide.\nTechnavio's report, Global Propylene Oxide Market 2017-2021, has been prepared based on an in-depth market analysis with inputs from industry experts. The report covers the market landscape and its growth prospects over the coming years. The report also includes a discussion of the key vendors operating in this market.",
+      "prompt_sha256": "0da61e3409bbf0735c50f71906181d22ee2e440caf2dd2dae90027f3aa6307d4",
+      "prompt_tokens": 344,
+      "selection_rank": "0008f03b8c1fa85cf2e9018efcda9e2163d7a0955360e12aa8eda9e85b9e8abe",
+      "id": "kgw-bias-development-026"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 22605,
+      "source_prompt_id": "5871ef6dfbc7e58b4d9465b3c169b8e5c6cc3fcfc11373435f99e3f3f1bd138d",
+      "prompt": "Could you paraphrase the sentence \"At end of this 'Muhurtam' fixed\" to make it easier to understand for someone who is unfamiliar with Indian wedding traditions?: No more vacant chairs to pull.\nAs mantras the Pundit read.\nMade it noisy, we all found.\nShook the hall up and down.\nAll were asked to assemble.\nAll gave their prying attention.\nThen showered flowers like rain.\nAt end of this \u201cMuhurtam\u201d fixed.\nThe hall became empty soon.\nThe couple left for honey moon.\nMinus gifts received how much?\nAha! A delight this one! I like the gentle irony, and the way the ambience of the wedding is so tangible in the lucid description :) Most especially, the close! A very entertaining read!",
+      "prompt_sha256": "5871ef6dfbc7e58b4d9465b3c169b8e5c6cc3fcfc11373435f99e3f3f1bd138d",
+      "prompt_tokens": 172,
+      "selection_rank": "0008f0d35ae033cfe3787de29951e8e128f04e8f81cd9614930a46da70e57ce4",
+      "id": "kgw-bias-development-027"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 33439,
+      "source_prompt_id": "02139cebdf84670cb4089869905798cbd23d69719f2165c2453b1a736b9b8f4e",
+      "prompt": "Write a descriptive free verse poem about the subtle nuances and unpredictability of human emotions. Include metaphors and sensory imagery to paint a vivid picture of the ebbs and flows of happiness, sadness, love, anger, fear, and every emotion in between. Use enjambment to create a flow and rhythm that reflect the pulsing energy of human emotions. Additionally, explore the contradictory nature of emotions - how happiness can also hold sadness, how love can also hold hate, how anger can also hold fear. The poem should communicate the exquisite beauty and depth of human emotions, while acknowledging their intricate and often perplexing nature.",
+      "prompt_sha256": "02139cebdf84670cb4089869905798cbd23d69719f2165c2453b1a736b9b8f4e",
+      "prompt_tokens": 124,
+      "selection_rank": "0009ce0c1b533a1b66abd3954e746a3f7a8574c300a72a9c398f72d509f048c2",
+      "id": "kgw-bias-development-028"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 51971,
+      "source_prompt_id": "8c95be4fba6f7fdc6a1f9d96d78805d9ba948c86888902037e9e1a4129a7403f",
+      "prompt": "In your discussion, provide examples of bacterial diseases and their modes of transmission. Additionally, examine how bacteria play a role in ecosystems and biogeochemical cycles. Consider the differences between gram-positive and gram-negative bacteria and their distinct structural features. Analyze the benefits and drawbacks of using antibiotics to combat bacterial infections and the emergence of antibiotic resistance. Lastly, reflect on the future of bacterial research and its potential implications for healthcare and environmental sustainability.",
+      "prompt_sha256": "8c95be4fba6f7fdc6a1f9d96d78805d9ba948c86888902037e9e1a4129a7403f",
+      "prompt_tokens": 86,
+      "selection_rank": "000a22f3681db90d04a38eaa6ed3bab2979574a59d520aa828dbd588d982240f",
+      "id": "kgw-bias-development-029"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 1547,
+      "source_prompt_id": "01bac2ced31f11baf25513ab13913d69d46b0fb561dce35c3d85ccd5b1d6eb2c",
+      "prompt": "Develop a comprehensive proposal for a new neighborhood revitalization initiative that includes a clear outline of proposed activities, timelines and measures of success, as well as a detailed budget and plans for engaging community stakeholders in the process. The proposal should demonstrate a deep understanding of the specific needs and challenges facing the targeted neighborhood, and offer innovative solutions that draw on best practices from other successful revitalization efforts. It should be well-organized, easy to read and visually engaging, with supporting data and examples to back up all claims and recommendations. Consider including case studies, testimonials, and relevant statistics to highlight the potential impact of the initiative on the community.",
+      "prompt_sha256": "01bac2ced31f11baf25513ab13913d69d46b0fb561dce35c3d85ccd5b1d6eb2c",
+      "prompt_tokens": 125,
+      "selection_rank": "000a312177f22807a55b73bbe3830a49b28b20241a05ea8f94c99a87fa0731f0",
+      "id": "kgw-bias-development-030"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 62081,
+      "source_prompt_id": "9e94ebed28b0c9f3c3f1a6edbcb59123ede8d13e2964aae4ca10d4b609a5b15f",
+      "prompt": "The following was originally delivered to students, faculty and staff at the opening of Stoneleigh-Burnham School's fall Honor Roll Assembly.\nThink about that. 10,000 hours. It may seem like a life time, but it's not. Since finishing the book I have begun to look at my own life in terms of 10,000 hours. For those of you who know me well, you know that I am successful in a lot of things. I am a competent, knowledgeable career historian, I am a professional cook, an elite nationally recognized athlete, a fairly competent photographer and I speak a second language, Spanish, more or less fluently. I know that none of these things were a gift. I had to dedicate years of time to all of my skills and interests in order to get to achieve the success that I have today. Based on the passage above, Can you summarize the main message of the speaker's remarks on 10,000 hours and success?",
+      "prompt_sha256": "9e94ebed28b0c9f3c3f1a6edbcb59123ede8d13e2964aae4ca10d4b609a5b15f",
+      "prompt_tokens": 206,
+      "selection_rank": "000a72a8538aa7a214db62e329c91cc70458699cc77edac097ed36f98ca26ac2",
+      "id": "kgw-bias-development-031"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 30736,
+      "source_prompt_id": "192b396f32337e90bb7e2db567c2c3f631ade71c82cbe3ede609c74d8b013cdf",
+      "prompt": "Build a fitness tracking app in Kotlin that allows users to track their progress and set fitness goals.",
+      "prompt_sha256": "192b396f32337e90bb7e2db567c2c3f631ade71c82cbe3ede609c74d8b013cdf",
+      "prompt_tokens": 20,
+      "selection_rank": "000ac9b3200b4e1539c8a62545f6c8b8ef479f594a405d1479da70eb8080fb1e",
+      "id": "kgw-bias-development-032"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 38427,
+      "source_prompt_id": "4fbbfe39fca1c5e3c6e4676b5e2e7b20052c24e126713645b696d5ea046e98ea",
+      "prompt": "Could you provide further details on the freelance work that Dr. Naegele has been doing since January 2017 as an independent researcher and policy advisor? Answer according to: Dr. Gerhard Naegele received professional training as an industrial manager in Berlin. He has a background in business studies and education, and he earned his PhD from the University of Cologne in 1976.\nNaegele served as Scientific Assistant to the Chair for Welfare Policies at the Faculty of Economics and Social Sciences (1973\u20131976) and as Managing Director of the Institute of Social Policies and Societal Policies (1976\u20131981) at the University of Cologne, Germany. He was Professor for Local Social Policy at the Faculty for Social Work at Dortmund University of Applied Sciences from 1982 to 1992. Following this, he was University Professor (Chair) for Social Gerontology (1992\u20132013) and Director of the Institute of Gerontology (1992-2016) at the TU/Technical University of Dortmund, Germany. Since January 2017, Gerhard Naegele has been doing freelance work as an independent researcher and policy advisor.",
+      "prompt_sha256": "4fbbfe39fca1c5e3c6e4676b5e2e7b20052c24e126713645b696d5ea046e98ea",
+      "prompt_tokens": 270,
+      "selection_rank": "000ad3e8d88f53f0eb74ec2af8d04cb0b4e00d0cd5dcae3c134f117d7f443d6c",
+      "id": "kgw-bias-development-033"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 53953,
+      "source_prompt_id": "c55cd3c542023450a896e5bee39309ee159308e4e20d794a63245ade45598c67",
+      "prompt": "Are there any eco-friendly aspects to the Eldvarm blowpoker, such as where the raw materials are sourced from?: From the Emma series named for its designer Emma Olbers, this exclusive Eldvarm blowpoker is probably the most useful tool when starting and managing a fire. Use it as a blower instead of a bellows to start a fire more easily and then poke and prod the wood for continuous burning. Crafted in beechwood from sustainable forests in France, solid brass and powder-coated metal.",
+      "prompt_sha256": "c55cd3c542023450a896e5bee39309ee159308e4e20d794a63245ade45598c67",
+      "prompt_tokens": 107,
+      "selection_rank": "000b7572d73727900faeae2bfc69468a81378745342e1c75799b8975996725e9",
+      "id": "kgw-bias-development-034"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 20348,
+      "source_prompt_id": "19d48636e2e99df2d446d264bedaa080ca6ae9571f371e97c55bf2cafd1027e5",
+      "prompt": "First off, apologies for such a late post on such an amazing initiative. Louis Vuitton is honoring the 40th Anniversary of Earth Day, giving 10% of all sales purchased on their website today to Global Green USA. This 10% donation to Global Green will help support their Green Schools initiative, which will help turn K-12 schools in select cities across the United States turn more green.\nAlong with this Louis Vuitton is sharing messages on both their website and twitter page on how to they try to help protect the environment.\nWhy does this matter? A large corporation like Louis Vuitton is in the spotlight with consumers and other industry people following what it is the company is doing. To see a focus on bringing awareness to protecting the environment and planet is not only refreshing but also responsible.\nCan you summarize Louis Vuitton's Earth Day initiative, including the charity they're donating to and their green schools initiative?",
+      "prompt_sha256": "19d48636e2e99df2d446d264bedaa080ca6ae9571f371e97c55bf2cafd1027e5",
+      "prompt_tokens": 196,
+      "selection_rank": "000c6299a9201de8d5cdaadcba67e9238ae77eaa7345bda2c95f99583d48fe7a",
+      "id": "kgw-bias-development-035"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 4756,
+      "source_prompt_id": "c43a0f234f5d38954f1b0ce736c15e199b268e688e5c8e9fd29cf848b8185fb6",
+      "prompt": "Please draft a proposal for a new company logo that reflects a modern and sleek design, incorporating the colors navy blue and white. The logo should be easily recognizable and scalable for various marketing and branding materials. Additionally, the logo should communicate the company's dedication to innovation and professionalism. Please provide multiple variations and iterations of the logo for consideration.",
+      "prompt_sha256": "c43a0f234f5d38954f1b0ce736c15e199b268e688e5c8e9fd29cf848b8185fb6",
+      "prompt_tokens": 67,
+      "selection_rank": "000c9133275b69cf5e13d2f295eb0884332030a48cb221bd67269f155c725682",
+      "id": "kgw-bias-development-036"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 25441,
+      "source_prompt_id": "91d3cbe85edde66685b23a69d18a34bbdb19044919ea5dd7372d060b8368a9a3",
+      "prompt": "Write step-by-step instructions with accompanying photos or diagrams on how to make a bohemian-style DIY flower crown using fresh or artificial flowers and a basic wire frame. Include tips on choosing the right flowers, securing the blooms to the wire, and adding embellishments like ribbons or beads.",
+      "prompt_sha256": "91d3cbe85edde66685b23a69d18a34bbdb19044919ea5dd7372d060b8368a9a3",
+      "prompt_tokens": 60,
+      "selection_rank": "000c95d26d3d1e3324f2983bc6b76b9d98e37ca6383dbe6be7ed441f2b2a3828",
+      "id": "kgw-bias-development-037"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 23122,
+      "source_prompt_id": "bd2247bb49a8a393a87ce77342418abdd07bf0a9f9c7ba1ab2b6b62f01cf251d",
+      "prompt": "Develop a virtual sports coaching platform with Flutter that offers customized sports coaching services primarily for football, basketball, and tennis enthusiasts. The platform should include features such as individualized training regimens, personalized goal-setting, game analysis, and a feedback system. The design should be sleek and modern, with a user-friendly interface that prioritizes ease of navigation. Additionally, it should have a personalized profile with a user dashboard that allows users to track their progress, access their training programs, and receive real-time feedback from coaches.",
+      "prompt_sha256": "bd2247bb49a8a393a87ce77342418abdd07bf0a9f9c7ba1ab2b6b62f01cf251d",
+      "prompt_tokens": 104,
+      "selection_rank": "000cbdbd30b1044ec1d6758bae883c0677e7cce09e75cf8cbdddcefc78d327bb",
+      "id": "kgw-bias-development-038"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 9038,
+      "source_prompt_id": "ba24448409ac627c2c6027f35efe8f8b1e2425522fad66f11a6e558cdd13a05e",
+      "prompt": "Draft a press release announcing a new book release.",
+      "prompt_sha256": "ba24448409ac627c2c6027f35efe8f8b1e2425522fad66f11a6e558cdd13a05e",
+      "prompt_tokens": 11,
+      "selection_rank": "000cce711b06d31965fa3cc1f660683734c1c39744e76ae6cf083f4b54d5750c",
+      "id": "kgw-bias-development-039"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 55347,
+      "source_prompt_id": "e2b0531622c910c7c0499ab457cc35959aa0c240eae6656e9ccf261aaaa0b129",
+      "prompt": "What are some extracurricular activities and clubs available at junior colleges, and how can students get involved?",
+      "prompt_sha256": "e2b0531622c910c7c0499ab457cc35959aa0c240eae6656e9ccf261aaaa0b129",
+      "prompt_tokens": 19,
+      "selection_rank": "000ce55892f790a9568ee0e58c10950fa2b6e9dce6e9f5ff12bbe82699f1f99a",
+      "id": "kgw-bias-development-040"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 37150,
+      "source_prompt_id": "7f2473197dc11f37db9d0127bed8095d5cf799a4c5f53f860b0e20e91d896f11",
+      "prompt": "What are the implications of the study's results regarding the amount of mass in stars and their energy output in comparison to previous estimates, and how do these findings impact the observation of nearby and faraway galaxies? Answer according to: The universe, it seems, has been operating with a dimmer switch.\nThe galaxies are actually twice as luminous as they appear to us in the sky, according to a new study by an international team of astronomers led by Simon Driver, of the University of St. Andrews in Scotland. Dust, however, blocks half the light from getting out.\nThe results, which have just been published in The Astrophysical Journal Letters, resolve a longstanding problem with the energy budget of the cosmos.\nInterstellar dust absorbs the visible light emitted by stars and then re-radiates it as infrared, or heat, radiation. But when astronomers measured this heat glow from distant galaxies, the dust appeared to be putting out more energy than the stars.\n\u201cYou can\u2019t get more energy out than you put in, so we knew something was very wrong,\u201d said Dr. Driver, in a press release issued by the Science and Facilities Council in the United Kingdom.\nHe and his colleagues embarked on a program of comparing a model of galactic dust with measurements of the light from 10,000 nearby galaxies using the Isaac Newton Telescope in the Canary Islands and other instruments. That allowed them to calculate by color what percentage of starlight was escaping the galaxies and getting to telescopes: 20 percent of short-wavelength ultraviolet light, 45 percent of green light, 75 percent of the red light, and so on.\nThe end result, that the stars in galaxies are actually pumping out twice as much energy as previously thought, was still a shock, Dr. Driver said. For the universe as a whole, they calculated, that amounts to 5 quadrillion watts per cubic light-year from thermonuclear fusion, a nice new number for those concerned about their cosmic carbon footprints.\nThe results also mean that there is about 20 percent more mass in stars than previously thought. But since stars make up such a small percentage of the universe to begin with \u2014 dark matter and dark energy account for 95 percent or so \u2014 it is a small adjustment over all.\n\u201cBasically increasing the stellar mass in the nearby universe by 20 percent has little impact,\u201d Dr. Driver said in an e-mail message from Scotland.\nThe results will have more impact, he said, on comparative observations of nearby and faraway galaxies, where, he said, dust has not previously been taken into account.",
+      "prompt_sha256": "7f2473197dc11f37db9d0127bed8095d5cf799a4c5f53f860b0e20e91d896f11",
+      "prompt_tokens": 535,
+      "selection_rank": "000d2c394260ba3356aff9176cbd138f3de882917a375db6aa5e584938135222",
+      "id": "kgw-bias-development-041"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 6544,
+      "source_prompt_id": "4eb7fb1e0040caab4b98f3f1d5176f8939e4f65fd8712b0cd2adbac586812a9f",
+      "prompt": "Write a guidebook for a tourist destination, including top sights and local tips.",
+      "prompt_sha256": "4eb7fb1e0040caab4b98f3f1d5176f8939e4f65fd8712b0cd2adbac586812a9f",
+      "prompt_tokens": 16,
+      "selection_rank": "000d860daf6aa2b0407e8044cdcb5657c79398e086afb996bb6e3baf2357f64e",
+      "id": "kgw-bias-development-042"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 17684,
+      "source_prompt_id": "e143d5f92e6c2262108d464bab44b08c48b7cf585e7b7cd21ae886d8a17e7209",
+      "prompt": "In what ways have familial relationships shaped the focus of Jake's art?",
+      "prompt_sha256": "e143d5f92e6c2262108d464bab44b08c48b7cf585e7b7cd21ae886d8a17e7209",
+      "prompt_tokens": 14,
+      "selection_rank": "000da5923f98274eac64e956f3b7c5a761b95e452aa9556414a3f93e68acdd6e",
+      "id": "kgw-bias-development-043"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 60534,
+      "source_prompt_id": "7ce7d598df810495ef4ff64f064dc10c18734dc841cf1ae0934e1ae5d8f5dd89",
+      "prompt": "Develop a comprehensive and data-driven research report that analyzes the effectiveness of renewable energy in tackling energy poverty in rural areas. The report should include a detailed overview of the current status of energy poverty in rural areas, the benefits and challenges of renewable energy solutions, and case studies of successful and innovative projects. Additionally, the report should examine the economic, social, and environmental impacts of renewable energy on rural communities and provide recommendations for policymakers and stakeholders. The report should be written in a clear and concise style, with supporting data and visual aids where necessary.",
+      "prompt_sha256": "7ce7d598df810495ef4ff64f064dc10c18734dc841cf1ae0934e1ae5d8f5dd89",
+      "prompt_tokens": 109,
+      "selection_rank": "000dca443740705851617b0a59dd3e8484a4d45816fb23ad544caafe8652125e",
+      "id": "kgw-bias-development-044"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 7925,
+      "source_prompt_id": "47aeec1f34718bc2c6ccb9096fd8bf504c90823ce34fbc035efa4d519cdf2162",
+      "prompt": "Write a research paper on the topic \"Evaluate the impact of renewable energy on the creation of eco-friendly and efficient office equipment.\" The paper should include a detailed analysis of the current state of renewable energy and its impact on the production and design of office equipment. Additionally, discuss the benefits and drawbacks of renewable energy on the environment, economy, and society. Provide examples of companies that are leading the way in eco-friendly and energy-efficient office equipment. Use scholarly sources and credible data to support your arguments. The paper should be well-organized, properly cited, and written in a clear and concise style.",
+      "prompt_sha256": "47aeec1f34718bc2c6ccb9096fd8bf504c90823ce34fbc035efa4d519cdf2162",
+      "prompt_tokens": 123,
+      "selection_rank": "000e20d9273a18773850a6530cf7e9c0a7c8612b6353f16fb0bd28d812df53ee",
+      "id": "kgw-bias-development-045"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 62814,
+      "source_prompt_id": "2e71c08c28370d97e13b47476d3f386a1c2990c0c44dcf63ce7a75cd56814bc1",
+      "prompt": "What flavors and aromas are present in the wine and how do they mix together?: This wine is very Northern Rh\u00f4ne in style, with a blast of white pepper, cherry and blackberry flavors laced with leather and wild herb notes, and the tannins are sizable.\nThis wine has a beautiful dark ruby hue. The aroma is a seductive mixture of sweet fruit and spicy wood. Layers of black cherry, plum and spice mix with a touch of new French oak to create a very enticing nose. On the palate the wine is soft with velvety tannins but maintains enough backbone (acidity) to finish crisp and clean.\nVery plush and lush, offering deep, ripe aromas of blackberries, currents, violets, herbs and smokey cedar. Beautiful floral rose petal notes show through as well. Medium in body with great fruit weight and soft but lingering tannins.\nDeep ruby red in color. The aroma is a complex mixture of dark fruits, wood and spice. Black cherries, blackberries and plum mix with toasty oak and herbs de provence. The 2009 is rich on the palate with more dark fruits as well as coco powder and black licorice. A solid backbone of chalky tannins make for a long, age worthy finish.",
+      "prompt_sha256": "2e71c08c28370d97e13b47476d3f386a1c2990c0c44dcf63ce7a75cd56814bc1",
+      "prompt_tokens": 268,
+      "selection_rank": "000e251f9f2ac36a5511fb315b8f567a313b33cf32a83d22e5da34f2a1804f8b",
+      "id": "kgw-bias-development-046"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 38405,
+      "source_prompt_id": "fb2e3b4a16dc13e102ccca4b8fe265807a1d646dac0189f31f71a2bfd2949da8",
+      "prompt": "Write a one-act play about the aftermath of a tumultuous breakup between two ex-lovers who can't seem to let go of the past. Your play should highlight the emotional turmoil felt by both parties as they struggle to come to terms with the end of their relationship. Consider incorporating elements of drama, comedy, and tragedy to create a well-rounded narrative that resonates with your audience. Additionally, be sure to explore universal themes such as love, loss, and self-discovery to make your story relatable to a wide range of viewers.",
+      "prompt_sha256": "fb2e3b4a16dc13e102ccca4b8fe265807a1d646dac0189f31f71a2bfd2949da8",
+      "prompt_tokens": 109,
+      "selection_rank": "000e9d887d7f14a757d2cb4a162e79c54c31ca66f3be906f11de78ebdecc6fb0",
+      "id": "kgw-bias-development-047"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 62295,
+      "source_prompt_id": "fe796923b182eb43d532cec25b73c92a01a46a20a5ce8334fcbad2e56e1d46b5",
+      "prompt": "How do museums use social media and digital platforms to promote their exhibits and engage with their audience?",
+      "prompt_sha256": "fe796923b182eb43d532cec25b73c92a01a46a20a5ce8334fcbad2e56e1d46b5",
+      "prompt_tokens": 19,
+      "selection_rank": "000ee524e5e6e2a93d310a7d6bd76f6b9106371def60508571bdcf9b79a5ff0c",
+      "id": "kgw-bias-development-048"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 18497,
+      "source_prompt_id": "cac1f59cafc6250cf58dacedfb333219a49c0d32600df7f0d32fbf9ba737a7cc",
+      "prompt": "Write a comprehensive report of no less than 2000 words presenting the results and insights gathered from a user experience study conducted by your team. The report should feature an executive summary, research methodology, data analysis, and key findings, as well as actionable recommendations that UX designers and developers can use to improve the quality of the user experience. Please ensure that the report adheres to a formal and professional writing style and includes all necessary tables, charts, graphics, and references to support your arguments.",
+      "prompt_sha256": "cac1f59cafc6250cf58dacedfb333219a49c0d32600df7f0d32fbf9ba737a7cc",
+      "prompt_tokens": 99,
+      "selection_rank": "000efcbe65511a3881732a3253c00f56d3b6acc519749acf32890f42edac4251",
+      "id": "kgw-bias-development-049"
+    }
+  ]
+}

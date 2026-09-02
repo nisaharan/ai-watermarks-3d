@@ -1,0 +1,980 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Phase 2 Positive Sensitivity: 0.5% Margin Rejected",
+    "description": "Technical report for the completed development-only v2 positive-sensitivity screen.",
+    "generatedAt": "2026-08-31T11:05:45.542658+00:00",
+    "sources": [
+      {
+        "id": "sensitivity-analysis",
+        "label": "Completed positive-sensitivity screen",
+        "path": "results/phase2-v2-positive-sensitivity/analysis.json",
+        "query": {
+          "description": "Load all 60 completed matched-key cells and apply the predeclared threshold and minimum-detection rule.",
+          "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/analysis.json');",
+          "language": "sql",
+          "engine": "DuckDB",
+          "executed_at": "2026-08-31T11:05:45.542658+00:00",
+          "tables_used": [
+            "results/phase2-v2-positive-sensitivity/analysis.json"
+          ],
+          "filters": [
+            "all 60 scheme x key x prefix-length cells",
+            "50 fresh watermarked outputs per cell",
+            "strict score > provisional threshold"
+          ],
+          "metric_definitions": [
+            "Detection rate is strict detections divided by 50 outputs in the named cell.",
+            "The development screen requires at least 40 detections out of 50 in every cell."
+          ]
+        }
+      },
+      {
+        "id": "margin-frontier",
+        "label": "Post-screen margin-sensitivity frontier",
+        "path": "results/phase2-v2-positive-sensitivity/margin-frontier.json",
+        "query": {
+          "description": "Recalculate calibration-only provisional thresholds over a fixed 0.5%-0.8% design-FPR grid and evaluate the completed positive outputs without loading v1 confirmation scores.",
+          "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/margin-frontier.json');",
+          "language": "sql",
+          "engine": "DuckDB",
+          "executed_at": "2026-08-31T11:05:45.542658+00:00",
+          "tables_used": [
+            "results/phase2-confirmatory-null/calibration/batches/*.json",
+            "results/phase2-v2-positive-sensitivity/run/batches/*.json"
+          ],
+          "filters": [
+            "v1 calibration scores only; v1 confirmation prohibited",
+            "design-FPR grid 0.5%-0.8%",
+            "20,000-observation confirmation planning with 156 maximum exceedances"
+          ],
+          "metric_definitions": [
+            "Conservative family pass power uses one minus 60 times the single-cell failure probability, floored at zero.",
+            "A margin meets both development criteria only if no positive cell fails and conservative family pass power is at least 95%."
+          ]
+        }
+      },
+      {
+        "id": "pilot-config",
+        "label": "Predeclared positive-sensitivity protocol",
+        "path": "configs/phase2-v2-positive-sensitivity.json"
+      },
+      {
+        "id": "completed-run",
+        "label": "Completed positive-sensitivity run metadata",
+        "path": "results/phase2-v2-positive-sensitivity/run/run.json",
+        "query": {
+          "description": "Load terminal run metadata and verify complete output, batch, scheme-count and parity-audit totals.",
+          "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/run/run.json');",
+          "language": "sql",
+          "engine": "DuckDB",
+          "executed_at": "2026-08-31T11:05:45.542658+00:00",
+          "tables_used": [
+            "results/phase2-v2-positive-sensitivity/run/run.json",
+            "results/phase2-v2-positive-sensitivity/run/batches/*.json"
+          ],
+          "filters": [
+            "terminal positive_sensitivity_complete run only"
+          ],
+          "metric_definitions": [
+            "Completed outputs are the count of watermarked generations across all atomic batches."
+          ]
+        }
+      },
+      {
+        "id": "analysis-code",
+        "label": "Positive-sensitivity evaluator",
+        "path": "validation/analyse_phase2_v2_positive_sensitivity.py"
+      }
+    ],
+    "cards": [
+      {
+        "id": "passed-cells",
+        "dataset": "headline",
+        "description": "Cells meeting the fixed 40-of-50 development screen.",
+        "sourceId": "sensitivity-analysis",
+        "metrics": [
+          {
+            "label": "Cells passed",
+            "field": "passed_cells",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "failed-cells",
+        "dataset": "headline",
+        "description": "Any failed cell blocks the proposed 0.5% design.",
+        "sourceId": "sensitivity-analysis",
+        "metrics": [
+          {
+            "label": "Cells failed",
+            "field": "failed_cells",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "minimum-rate",
+        "dataset": "headline",
+        "description": "Lowest matched-key detection rate among all 60 cells.",
+        "sourceId": "sensitivity-analysis",
+        "metrics": [
+          {
+            "label": "Minimum cell rate",
+            "field": "minimum_rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "synthid-passed",
+        "dataset": "headline",
+        "description": "SynthID cells passing across ten keys and three lengths.",
+        "sourceId": "sensitivity-analysis",
+        "metrics": [
+          {
+            "label": "SynthID cells passed",
+            "field": "synthid_passed",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "outputs",
+        "dataset": "headline",
+        "description": "Fresh watermarked outputs generated in 200 atomic batches.",
+        "sourceId": "completed-run",
+        "metrics": [
+          {
+            "label": "Watermarked outputs",
+            "field": "outputs",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "kgw-rate-by-key-length",
+        "title": "KGW detection rate by matched key and prefix length",
+        "subtitle": "Fifty fresh outputs per cell; the development screen requires at least 80% detection.",
+        "type": "bar",
+        "dataset": "kgw_rates",
+        "sourceId": "sensitivity-analysis",
+        "encodings": {
+          "x": {
+            "field": "key",
+            "type": "nominal",
+            "label": "Matched KGW key"
+          },
+          "y": {
+            "field": "detection_rate",
+            "type": "quantitative",
+            "format": "percent",
+            "label": "Detection rate"
+          },
+          "color": {
+            "field": "length",
+            "type": "nominal",
+            "label": "Prefix length"
+          }
+        },
+        "referenceLines": [
+          {
+            "value": 0.8,
+            "label": "80% screen"
+          }
+        ],
+        "layout": "full"
+      }
+    ],
+    "tables": [
+      {
+        "id": "failed-detail",
+        "title": "Five cells below the fixed sensitivity screen",
+        "subtitle": "All failures were canonical KGW; four occurred at 128 tokens.",
+        "dataset": "failed_cells",
+        "sourceId": "sensitivity-analysis",
+        "defaultSort": {
+          "field": "detection_rate",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "scheme",
+            "label": "Scheme",
+            "type": "text"
+          },
+          {
+            "field": "key",
+            "label": "Key",
+            "type": "text"
+          },
+          {
+            "field": "length",
+            "label": "Length",
+            "format": "number"
+          },
+          {
+            "field": "detections",
+            "label": "Detections",
+            "format": "number"
+          },
+          {
+            "field": "samples",
+            "label": "Samples",
+            "format": "number"
+          },
+          {
+            "field": "detection_rate",
+            "label": "Detection rate",
+            "format": "percent"
+          },
+          {
+            "field": "required_rate",
+            "label": "Required rate",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "scheme-length-summary",
+        "title": "Detection-rate range by scheme and prefix length",
+        "subtitle": "Minimum, median and maximum across ten explicitly named matched-key cells.",
+        "dataset": "summaries",
+        "sourceId": "sensitivity-analysis",
+        "defaultSort": {
+          "field": "minimum_rate",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "scheme",
+            "label": "Scheme",
+            "type": "text"
+          },
+          {
+            "field": "length",
+            "label": "Length",
+            "format": "number"
+          },
+          {
+            "field": "minimum_rate",
+            "label": "Minimum",
+            "format": "percent"
+          },
+          {
+            "field": "median_rate",
+            "label": "Median",
+            "format": "percent"
+          },
+          {
+            "field": "maximum_rate",
+            "label": "Maximum",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "margin-frontier-table",
+        "title": "False-positive margin versus positive sensitivity",
+        "subtitle": "Post-screen planning grid; none of the tested margins met both criteria.",
+        "dataset": "frontier",
+        "sourceId": "margin-frontier",
+        "defaultSort": {
+          "field": "design_fpr",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "design_fpr",
+            "label": "Design FPR",
+            "format": "percent"
+          },
+          {
+            "field": "calibration_count",
+            "label": "Calibration max count",
+            "format": "number"
+          },
+          {
+            "field": "failed_positive_cells",
+            "label": "Failed positive cells",
+            "format": "number"
+          },
+          {
+            "field": "minimum_positive_rate",
+            "label": "Minimum detection",
+            "format": "percent"
+          },
+          {
+            "field": "median_positive_rate",
+            "label": "Median detection",
+            "format": "percent"
+          },
+          {
+            "field": "conservative_family_power",
+            "label": "Conservative family power",
+            "format": "percent"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "layout": "full",
+        "body": "# Phase 2 Positive Sensitivity: 0.5% Margin Rejected"
+      },
+      {
+        "id": "technical-summary",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "sensitivity-analysis",
+        "body": "## Technical summary\n\n**Decision: do not freeze or launch the proposed v2 null study.** The predeclared 0.5% design-margin sensitivity screen passed 55 of 60 cells and failed five canonical KGW cells. Four failures occurred at 128 tokens, including a 62% minimum detection rate. All 30 SynthID cells and all ten 512-token KGW cells passed. The result shows that the proposed conservative thresholds would leave inadequate short-text KGW baseline sensitivity."
+      },
+      {
+        "id": "headline",
+        "type": "metric-strip",
+        "layout": "full",
+        "cardIds": [
+          "passed-cells",
+          "failed-cells",
+          "minimum-rate",
+          "synthid-passed",
+          "outputs"
+        ]
+      },
+      {
+        "id": "failure-concentration",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "sensitivity-analysis",
+        "body": "## The sensitivity loss is concentrated in short KGW outputs\n\nAll five failures were KGW: keys 03, 05, 07 and 08 at 128 tokens, plus key 08 at 256 tokens. KGW's minimum/median cell rates were 62%/82% at 128 tokens, 76%/92% at 256, and 86%/92% at 512. SynthID's minimum was 86% at 128 tokens and at least 96% at longer prefixes. This concentration makes the 128-token KGW condition\u2014not SynthID or long-output scoring\u2014the controlling design problem."
+      },
+      {
+        "id": "kgw-chart",
+        "type": "chart",
+        "layout": "full",
+        "chartId": "kgw-rate-by-key-length"
+      },
+      {
+        "id": "failed-table",
+        "type": "table",
+        "layout": "full",
+        "tableId": "failed-detail"
+      },
+      {
+        "id": "summary-table",
+        "type": "table",
+        "layout": "full",
+        "tableId": "scheme-length-summary"
+      },
+      {
+        "id": "margin-result",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "margin-frontier",
+        "body": "## Relaxing only the design margin does not solve both requirements\n\nA post-screen planning grid tested calibration design FPRs from 0.5% to 0.8% using v1 calibration and the completed development positives only. At 0.6%, four positive cells still failed while conservative whole-family confirmation power remained about 96%. At 0.65%, three cells failed and family power fell to about 31%. At 0.8%, one cell still failed and the union-bound family-power floor was zero. No tested margin both cleared all positive cells and retained at least 95% conservative 60-cell confirmation power."
+      },
+      {
+        "id": "frontier-table",
+        "type": "table",
+        "layout": "full",
+        "tableId": "margin-frontier-table"
+      },
+      {
+        "id": "scope-definitions",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "pilot-config",
+        "body": "## Scope and metric definitions\n\nThe pilot generated 50 fresh UltraChat outputs for each of 20 matched scheme/key conditions: ten canonical KGW keys and ten canonical SynthID keys. Each 512-token output supplied paired 128-, 256- and 512-token score prefixes, creating 60 cells with 50 observations each. A strict detection required score greater than its provisional threshold. The fixed screen required at least 40 detections out of 50 in every cell."
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "completed-run",
+        "body": "## The development screen preserved separation and implementation parity\n\nProvisional thresholds were fitted from the completed v1 calibration split at a 0.5% design bound; the tool accepted no confirmation path and loaded no v1 confirmation score. The run completed 1,000 outputs in 200 atomic batches, evenly split between KGW and SynthID. Sixty first-output compact/native audits\u2014one per cell\u2014reconstructed exactly. These checks support the screen calculation but do not convert it into a confirmatory detection claim."
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "margin-frontier",
+        "body": "## Limitations and uncertainty\n\nThis was a development screen with 50 observations per cell, not an estimate precise enough for publication-level detection claims. Its thresholds came from the Dolly-based v1 calibration and may differ from future UltraChat calibration thresholds. The margin frontier is post-screen and therefore exploratory; it cannot independently validate a newly selected margin. The pilot did not measure output quality, attack survival or alternative KGW watermark biases."
+      },
+      {
+        "id": "next-steps",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Recommended next steps\n\n1. Keep the 1% false-positive claim, all ten keys, and the 128-token condition unchanged.\n2. Run a targeted development-only KGW generation-strength experiment on fresh prompts, testing stronger predeclared watermark bias values against the failed short-text keys.\n3. Measure both matched-key detection and basic output-quality guardrails; changing generation strength affects positives but does not relax the null false-positive target.\n4. Select a bias only from that development experiment, then validate it on another fresh all-key positive screen.\n5. Freeze the final v2 null protocol and approve the approximately 40-hour run only if the fresh sensitivity validation passes.\n6. Keep attacks closed until a future one-shot null confirmation passes all cells."
+      },
+      {
+        "id": "further-questions",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Further questions\n\n- Which stronger KGW bias restores at least 80% matched-key detection at 128 tokens without unacceptable repetition or quality loss?\n- Should the quality guardrail be based on repetition, perplexity, or blinded human review before final protocol freeze?\n- Does the selected bias generalize across all ten keys on a fresh prompt set?\n- Will final UltraChat null calibration materially move the provisional short-text thresholds?"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-31T11:05:45.542658+00:00",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "passed_cells": 55,
+          "failed_cells": 5,
+          "minimum_rate": 0.62,
+          "synthid_passed": 30,
+          "outputs": 1000
+        }
+      ],
+      "failed_cells": [
+        {
+          "scheme": "KGW",
+          "key": "kgw-03",
+          "length": 128,
+          "detections": 38,
+          "samples": 50,
+          "detection_rate": 0.76,
+          "required_rate": 0.8
+        },
+        {
+          "scheme": "KGW",
+          "key": "kgw-05",
+          "length": 128,
+          "detections": 34,
+          "samples": 50,
+          "detection_rate": 0.68,
+          "required_rate": 0.8
+        },
+        {
+          "scheme": "KGW",
+          "key": "kgw-07",
+          "length": 128,
+          "detections": 35,
+          "samples": 50,
+          "detection_rate": 0.7,
+          "required_rate": 0.8
+        },
+        {
+          "scheme": "KGW",
+          "key": "kgw-08",
+          "length": 128,
+          "detections": 31,
+          "samples": 50,
+          "detection_rate": 0.62,
+          "required_rate": 0.8
+        },
+        {
+          "scheme": "KGW",
+          "key": "kgw-08",
+          "length": 256,
+          "detections": 38,
+          "samples": 50,
+          "detection_rate": 0.76,
+          "required_rate": 0.8
+        }
+      ],
+      "kgw_rates": [
+        {
+          "key": "KGW 00",
+          "key_id": "kgw-00",
+          "length": "128",
+          "detection_rate": 0.82,
+          "detections": 41,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 00",
+          "key_id": "kgw-00",
+          "length": "256",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 00",
+          "key_id": "kgw-00",
+          "length": "512",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 01",
+          "key_id": "kgw-01",
+          "length": "128",
+          "detection_rate": 0.84,
+          "detections": 42,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 01",
+          "key_id": "kgw-01",
+          "length": "256",
+          "detection_rate": 0.94,
+          "detections": 47,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 01",
+          "key_id": "kgw-01",
+          "length": "512",
+          "detection_rate": 1.0,
+          "detections": 50,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 02",
+          "key_id": "kgw-02",
+          "length": "128",
+          "detection_rate": 0.82,
+          "detections": 41,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 02",
+          "key_id": "kgw-02",
+          "length": "256",
+          "detection_rate": 0.94,
+          "detections": 47,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 02",
+          "key_id": "kgw-02",
+          "length": "512",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 03",
+          "key_id": "kgw-03",
+          "length": "128",
+          "detection_rate": 0.76,
+          "detections": 38,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": false
+        },
+        {
+          "key": "KGW 03",
+          "key_id": "kgw-03",
+          "length": "256",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 03",
+          "key_id": "kgw-03",
+          "length": "512",
+          "detection_rate": 0.96,
+          "detections": 48,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 04",
+          "key_id": "kgw-04",
+          "length": "128",
+          "detection_rate": 0.82,
+          "detections": 41,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 04",
+          "key_id": "kgw-04",
+          "length": "256",
+          "detection_rate": 0.86,
+          "detections": 43,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 04",
+          "key_id": "kgw-04",
+          "length": "512",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 05",
+          "key_id": "kgw-05",
+          "length": "128",
+          "detection_rate": 0.68,
+          "detections": 34,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": false
+        },
+        {
+          "key": "KGW 05",
+          "key_id": "kgw-05",
+          "length": "256",
+          "detection_rate": 0.94,
+          "detections": 47,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 05",
+          "key_id": "kgw-05",
+          "length": "512",
+          "detection_rate": 0.96,
+          "detections": 48,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 06",
+          "key_id": "kgw-06",
+          "length": "128",
+          "detection_rate": 0.82,
+          "detections": 41,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 06",
+          "key_id": "kgw-06",
+          "length": "256",
+          "detection_rate": 0.96,
+          "detections": 48,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 06",
+          "key_id": "kgw-06",
+          "length": "512",
+          "detection_rate": 0.98,
+          "detections": 49,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 07",
+          "key_id": "kgw-07",
+          "length": "128",
+          "detection_rate": 0.7,
+          "detections": 35,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": false
+        },
+        {
+          "key": "KGW 07",
+          "key_id": "kgw-07",
+          "length": "256",
+          "detection_rate": 0.9,
+          "detections": 45,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 07",
+          "key_id": "kgw-07",
+          "length": "512",
+          "detection_rate": 0.9,
+          "detections": 45,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 08",
+          "key_id": "kgw-08",
+          "length": "128",
+          "detection_rate": 0.62,
+          "detections": 31,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": false
+        },
+        {
+          "key": "KGW 08",
+          "key_id": "kgw-08",
+          "length": "256",
+          "detection_rate": 0.76,
+          "detections": 38,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": false
+        },
+        {
+          "key": "KGW 08",
+          "key_id": "kgw-08",
+          "length": "512",
+          "detection_rate": 0.86,
+          "detections": 43,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 09",
+          "key_id": "kgw-09",
+          "length": "128",
+          "detection_rate": 0.86,
+          "detections": 43,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 09",
+          "key_id": "kgw-09",
+          "length": "256",
+          "detection_rate": 0.88,
+          "detections": 44,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        },
+        {
+          "key": "KGW 09",
+          "key_id": "kgw-09",
+          "length": "512",
+          "detection_rate": 0.92,
+          "detections": 46,
+          "samples": 50,
+          "required_rate": 0.8,
+          "passed": true
+        }
+      ],
+      "summaries": [
+        {
+          "scheme": "KGW",
+          "length": 128,
+          "minimum_rate": 0.62,
+          "median_rate": 0.82,
+          "maximum_rate": 0.86
+        },
+        {
+          "scheme": "KGW",
+          "length": 256,
+          "minimum_rate": 0.76,
+          "median_rate": 0.92,
+          "maximum_rate": 0.96
+        },
+        {
+          "scheme": "KGW",
+          "length": 512,
+          "minimum_rate": 0.86,
+          "median_rate": 0.92,
+          "maximum_rate": 1.0
+        },
+        {
+          "scheme": "SynthID",
+          "length": 128,
+          "minimum_rate": 0.86,
+          "median_rate": 0.95,
+          "maximum_rate": 0.98
+        },
+        {
+          "scheme": "SynthID",
+          "length": 256,
+          "minimum_rate": 0.96,
+          "median_rate": 0.98,
+          "maximum_rate": 1.0
+        },
+        {
+          "scheme": "SynthID",
+          "length": 512,
+          "minimum_rate": 0.96,
+          "median_rate": 0.99,
+          "maximum_rate": 1.0
+        }
+      ],
+      "frontier": [
+        {
+          "design_fpr": 0.005,
+          "calibration_count": 10,
+          "failed_positive_cells": 5,
+          "minimum_positive_rate": 0.62,
+          "median_positive_rate": 0.95,
+          "conservative_family_power": 0.9999953086233595
+        },
+        {
+          "design_fpr": 0.0055,
+          "calibration_count": 12,
+          "failed_positive_cells": 5,
+          "minimum_positive_rate": 0.62,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.9991775015551276
+        },
+        {
+          "design_fpr": 0.006,
+          "calibration_count": 13,
+          "failed_positive_cells": 4,
+          "minimum_positive_rate": 0.62,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.959673966100433
+        },
+        {
+          "design_fpr": 0.0065,
+          "calibration_count": 15,
+          "failed_positive_cells": 3,
+          "minimum_positive_rate": 0.66,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.3094730440501938
+        },
+        {
+          "design_fpr": 0.007,
+          "calibration_count": 17,
+          "failed_positive_cells": 2,
+          "minimum_positive_rate": 0.66,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.0
+        },
+        {
+          "design_fpr": 0.0075,
+          "calibration_count": 19,
+          "failed_positive_cells": 2,
+          "minimum_positive_rate": 0.68,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.0
+        },
+        {
+          "design_fpr": 0.008,
+          "calibration_count": 21,
+          "failed_positive_cells": 1,
+          "minimum_positive_rate": 0.72,
+          "median_positive_rate": 0.96,
+          "conservative_family_power": 0.0
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "sensitivity-analysis",
+      "label": "Completed positive-sensitivity screen",
+      "path": "results/phase2-v2-positive-sensitivity/analysis.json",
+      "query": {
+        "description": "Load all 60 completed matched-key cells and apply the predeclared threshold and minimum-detection rule.",
+        "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/analysis.json');",
+        "language": "sql",
+        "engine": "DuckDB",
+        "executed_at": "2026-08-31T11:05:45.542658+00:00",
+        "tables_used": [
+          "results/phase2-v2-positive-sensitivity/analysis.json"
+        ],
+        "filters": [
+          "all 60 scheme x key x prefix-length cells",
+          "50 fresh watermarked outputs per cell",
+          "strict score > provisional threshold"
+        ],
+        "metric_definitions": [
+          "Detection rate is strict detections divided by 50 outputs in the named cell.",
+          "The development screen requires at least 40 detections out of 50 in every cell."
+        ]
+      }
+    },
+    {
+      "id": "margin-frontier",
+      "label": "Post-screen margin-sensitivity frontier",
+      "path": "results/phase2-v2-positive-sensitivity/margin-frontier.json",
+      "query": {
+        "description": "Recalculate calibration-only provisional thresholds over a fixed 0.5%-0.8% design-FPR grid and evaluate the completed positive outputs without loading v1 confirmation scores.",
+        "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/margin-frontier.json');",
+        "language": "sql",
+        "engine": "DuckDB",
+        "executed_at": "2026-08-31T11:05:45.542658+00:00",
+        "tables_used": [
+          "results/phase2-confirmatory-null/calibration/batches/*.json",
+          "results/phase2-v2-positive-sensitivity/run/batches/*.json"
+        ],
+        "filters": [
+          "v1 calibration scores only; v1 confirmation prohibited",
+          "design-FPR grid 0.5%-0.8%",
+          "20,000-observation confirmation planning with 156 maximum exceedances"
+        ],
+        "metric_definitions": [
+          "Conservative family pass power uses one minus 60 times the single-cell failure probability, floored at zero.",
+          "A margin meets both development criteria only if no positive cell fails and conservative family pass power is at least 95%."
+        ]
+      }
+    },
+    {
+      "id": "pilot-config",
+      "label": "Predeclared positive-sensitivity protocol",
+      "path": "configs/phase2-v2-positive-sensitivity.json"
+    },
+    {
+      "id": "completed-run",
+      "label": "Completed positive-sensitivity run metadata",
+      "path": "results/phase2-v2-positive-sensitivity/run/run.json",
+      "query": {
+        "description": "Load terminal run metadata and verify complete output, batch, scheme-count and parity-audit totals.",
+        "sql": "SELECT * FROM read_json_auto('results/phase2-v2-positive-sensitivity/run/run.json');",
+        "language": "sql",
+        "engine": "DuckDB",
+        "executed_at": "2026-08-31T11:05:45.542658+00:00",
+        "tables_used": [
+          "results/phase2-v2-positive-sensitivity/run/run.json",
+          "results/phase2-v2-positive-sensitivity/run/batches/*.json"
+        ],
+        "filters": [
+          "terminal positive_sensitivity_complete run only"
+        ],
+        "metric_definitions": [
+          "Completed outputs are the count of watermarked generations across all atomic batches."
+        ]
+      }
+    },
+    {
+      "id": "analysis-code",
+      "label": "Positive-sensitivity evaluator",
+      "path": "validation/analyse_phase2_v2_positive_sensitivity.py"
+    }
+  ]
+}

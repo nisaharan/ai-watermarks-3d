@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "status": "kgw_bias_development_prompt_manifest_frozen",
+  "experiment_id": "phase2-v2-kgw-bias-development-v1",
+  "scope": "Fresh development-only UltraChat prompts; not calibration or confirmation data",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "config": "default",
+    "split": "train_sft",
+    "license": "MIT",
+    "language": "en",
+    "attribution": "Hugging Face H4 (UltraChat 200k)",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "extraction_rule": "ParquetLens SQL SELECT row_number() OVER () - 1 AS shard_row, prompt_id, prompt FROM data; JSON output"
+  },
+  "model_tokenizer": {
+    "id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+    "device": "cpu"
+  },
+  "selection": {
+    "seed": "phase2-v2-kgw-bias-development-v1",
+    "count": 50,
+    "max_prompt_tokens": 1024,
+    "exclude_manifests": [
+      "data/phase2-null-calibration-prompts.json",
+      "data/phase2-variance-replication-prompts.json",
+      "data/phase2-smoke-prompts.json",
+      "data/phase2-confirmatory-calibration-prompts.json",
+      "data/phase2-confirmatory-confirmation-prompts.json",
+      "data/phase2-v2-positive-sensitivity-prompts.json"
+    ],
+    "method": "lowest SHA-256 ranks after frozen exclusions, normalized deduplication, and tokenizer-length filtering",
+    "exclusion_manifest_sha256": {
+      "data/phase2-null-calibration-prompts.json": "fa8f52bb0203548d22ad5f761b2a18470cb04e88eee634b077918a47b055b60a",
+      "data/phase2-variance-replication-prompts.json": "15caa4969e8ae3081d7a88dbef9145f85140c179a3b6c53bbf4d7b7b4beace59",
+      "data/phase2-smoke-prompts.json": "981bacff4ed9ac6196f8bfb6a6da27308cc81191a1c417850c523f6621be8d4f",
+      "data/phase2-confirmatory-calibration-prompts.json": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+      "data/phase2-confirmatory-confirmation-prompts.json": "d053da15c9897ea2e9232471aeee86aca21fdb5e093398019f53148143725b32",
+      "data/phase2-v2-positive-sensitivity-prompts.json": "964c30c583a076587ac539a89ece384cac8c43e4b3c8ebea36b64be7db40fdb6"
+    },
+    "generator_sha256": "43d8b71c9ed2acd52f14e6e8a295e03ab87385a85fed1a7bd4353ab7f0458ca3"
+  },
+  "records": [
+    {
+      "source_shard": 2,
+      "source_row": 22784,
+      "source_prompt_id": "e91139f5a040c43b7270b8382f466d1aa1458103453ac5e1ffae67a5545ad3d8",
+      "prompt": "Here is a piece of text: Tuesday: \"The List\" - Warner; \"The Situation\" - New Video; \"Everything\ufffds Gone Green\" - First Independent; \"Firehouse Dog\" - Fox; \"300\" - Warner; \"Pathfinder\" - Fox; \"Hot Fuzz\" - Universal.\nAug. 7: \"Disturbia\" - Paramount; \"Are We Done Yet?\" - Sony; \"The Dog Problem\" - Velocity/Thinkfilm; \"I Think I Love My Wife\" - Fox; \"Disturbia\" - Paramount; \" Beneath\" - Paramount.\nAug. 14: \"Wild Hogs\" - Buena Vista; \"Millions\" - Fox; \"Fracture\" - New Line/Warner; \"God Grew Tired of Us\" - Sony; \"Vacancy\" - Sony; \"Aqua Teen Hunger Force Colon Movie Film for Theaters for DVD\" - Warner.\nAug. 21: \"The Ex\" - Weinstein; \"The Lives of Others\" - Sony; \"Perfect Stranger\" - Sony.\nAug. 28: \" Blades of Glory\" - Paramount.\nSept. 4: \"DOA: Dead or Alive\" - Dimension/Weinstein; \"Bobby Z\" - Sony; \"The Wind That Shakes the Barley\" - Ifc.\nSept. 11: \"Bury My Heart At Wounded Knee\" - HBO/Warner; \"Even Money\" - Fox.\nSept. 18: \"We Are Marshall\" - Warner; \"Grindhouse Presents: Death Proof\" - Weinstein; \"Beyond the Gates\" - Fox; \"The Boss of it All\" - IFC; \"The Condemned\" - Lionsgate; \"BloodRayne 2\" - Toucan Cove.\nSept 25: \"Reeker\" - Showtime.\nOct. 16: \"Believers\" - Warners.\nOct. 23: \"Meet the Robinsons\" - Buena Vista.\n\nBased on the text material above, generate the response to the following quesion or instruction: Which production companies are releasing movies in September?",
+      "prompt_sha256": "e91139f5a040c43b7270b8382f466d1aa1458103453ac5e1ffae67a5545ad3d8",
+      "prompt_tokens": 483,
+      "selection_rank": "0000105932ace99943ebdcd483591eb54755ee125af8a55f4e084843e13ee025",
+      "id": "kgw-bias-development-000"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 10345,
+      "source_prompt_id": "8ce667a31ee68b001b7c56d5b958c850e145b8c74846ad6480e2e10c4b3c5825",
+      "prompt": "Create a guide for building successful goal-setting skills.",
+      "prompt_sha256": "8ce667a31ee68b001b7c56d5b958c850e145b8c74846ad6480e2e10c4b3c5825",
+      "prompt_tokens": 11,
+      "selection_rank": "000026b552956bc87782d1c02756e48867fbbf1c9cd07275e068481b874b7cbf",
+      "id": "kgw-bias-development-001"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 2997,
+      "source_prompt_id": "3f5d5bd4991ed1381e2f118379d54ee84438d72a49a19429fb11f991be0029ee",
+      "prompt": "We provide online courses on diet, exercise, cross-cultural medicine, awareness practices (like meditation), and manual medicine. These are aimed at providing you the tools for being an active participant in your health. From back pain and other musculoskeletal disorder to issues with mental health, these courses will help you learn the essentials of creating and maintaining your own health path.\nCourses are self-guided and include reading material, video demonstrations, personal expert guidance.\nFollow the path to better health and improved performance of BODY and MIND.\nThis is not just a diet, it\u2019s an EVOLED YOU.\nThe CHI plan is a plant-based diet that combines raw and cooked foods designed to optimize your health. You can increase your energy, lower your stress levels, recover faster from exercise, prevent illness and more by adjusting your diet and nutritional intake. And because everyone is unique, you'll get PERSONAL EXPERT GUIDANCE to help you tailor the plan to your body-type needs and health condition.\nYour journey begins with an easy to follow plan. Learn to prepare nutritious meals from recipes that are carefully designed by a healthcare, medicine and nutritional expert. Our holistic cross-cultural approach to your health combines the wisdom of Eastern health and medical traditions with the scientific rigor of Western medicine. The result is a 10-week online journey through text and video lessons that will get you started on the path toward a better you.\nThere is a \u201cright diet\u201d for everyone, but no single diet is right for everyone! Find yours.\nFood is an indispensable part of day-to-day life and culture, and we all encounter a lot of conflicting messages about what is and is not good to eat. All the different diets and claims on the market can be confusing. With this course, informed by both the latest Western scientific research and Eastern health and medical traditions, the Conscious Health Institute offers a clear plan to help you turn the most healthful ingredients into complete meals every day.\nYou may be here because you have a health condition and believe diet is important to healing. You may want to move from an animal-based to a plant-based diet. Or you might want to adopt a raw food diet. We are here to help you find a diet suited to YOUR BODY and circumstance. If you are looking to heal, seeking to maximize your health and well-being, or searching for factual information about food, this is the ideal course for you.\nAs you proceed through 10 lessons full of text and videos, you will discover the nutritional benefits of a wide variety of foods, including fruits, vegetables, nuts, seeds, grains, and beans. Recipes from around the world will teach you how to combine these foods into delicious dishes, and then you can follow our menu suggestions to combine these dishes into balanced meals. This diet is free from animal products, gluten, processed foods, and refined sugar, and places a special emphasis on raw and organic foods and good digestion. Along the way, you\u2019ll learn how to juice your own fruits and vegetables, grow your own sprouts, soak grains and beans, and more. You\u2019ll also gain access to a private Facebook page where you\u2019ll find additional information and support. If you have any questions, you can ask your instructor, who will be happy to help.\nUnlike many diet plans created by chefs, the CHI course is designed by a trained professional with decades of experience in healthcare, medicine and nutrition. This diet course is not a weight-loss diet or a fad diet intended to be followed for only a few weeks. It is a deliberate, sustainable way of eating to help optimize your health over the long term. This course presents general tips and guidelines, not strict rules that everyone must follow at all times. Each person\u2019s health and nutritional needs are slightly different, and these needs can change with time. A key aspect of physical, emotional, and mental health is learning to pay attention to your own body and to be flexible in how you take care of it. It is a good idea to meet with a healthcare professional with expertise in this nutritional approach, to get personalized guidance both before and throughout the process of changing your diet. This will help you speed up the process and INDIVIDUALIZE the DIET to your current heath condition.\nWe hope you find this course informative and easy to follow, and the foods tasty and satisfying. Eating well should be not just a commitment to yourself, but also a joy and an adventure. In many different ways, it should make you feel great!\nMeets Yoga Alliance standard for their YRT 200 certification.\nThe training will be offered in two forms: two 2 weeks intensives and a weekend training.\nHow can I enroll in the online courses on diet, exercise, cross-cultural medicine, awareness practices, and manual medicine?",
+      "prompt_sha256": "3f5d5bd4991ed1381e2f118379d54ee84438d72a49a19429fb11f991be0029ee",
+      "prompt_tokens": 1000,
+      "selection_rank": "000032646dbc52916f40db99870f49c630f890aa6d49b7bd0e2af8894656c2fd",
+      "id": "kgw-bias-development-002"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 43191,
+      "source_prompt_id": "102e4898ab1610f91256feeb25b84c9fa0e41ffa245fab3dc588c14189c1d724",
+      "prompt": "In your proposal for the new program, provide specific details about the target audience, the types of physical activities to be promoted, any partnerships or collaborations needed to implement the program, potential funding sources, and an evaluation plan to measure the success of the program. Additionally, the proposal should be written in a persuasive and professional style, using research and data to support the need for the program and outlining clear objectives and goals.",
+      "prompt_sha256": "102e4898ab1610f91256feeb25b84c9fa0e41ffa245fab3dc588c14189c1d724",
+      "prompt_tokens": 83,
+      "selection_rank": "000065058f22523f681cfb7b293137cd0caf95a6e386389f6157f416fa30e784",
+      "id": "kgw-bias-development-003"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 27470,
+      "source_prompt_id": "4aa3324d497d5b21cad834106a21639ae0216f3416eacb9f53eea217992ff6db",
+      "prompt": "Write a classic western novel with strong characters and dialogue about a group of rugged cowboys who stumble upon a hidden city of gold in the harsh Wild West. Make the story full of suspense, action, and peril as they try to keep the treasure from falling into the wrong hands while facing off against ruthless bandits and dangerous terrain. The setting should be richly described with a vivid sense of place to transport the reader back to the colorful world of the Old West.",
+      "prompt_sha256": "4aa3324d497d5b21cad834106a21639ae0216f3416eacb9f53eea217992ff6db",
+      "prompt_tokens": 92,
+      "selection_rank": "000077d617940f26fba98d13bd7eea6fd24f7549bea8de1cbbedfb4a6b0042ae",
+      "id": "kgw-bias-development-004"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 30339,
+      "source_prompt_id": "2caec8abf49a5b83bdc556c78ccd10022e87f30b7596fe505d958ab88ec9398d",
+      "prompt": "Great In Wedding Cake Batter Recipes Wedding cake pictures gallery is free HD wallpaper. This wallpaper was upload at December 10, 2018 upload by admin in .\nGreat In Wedding Cake Batter Recipes Wedding cake pictures gallery - We hope that , by posting this Great In Wedding Cake Batter Recipes Wedding cake pictures gallery , we can fulfill your needs of inspiration for designing your home. If you need more ideas to Weddingcakeswallpapers.com, you can check at our collection right below this post.\nHow can I modify a traditional wedding cake recipe to make it vegan-friendly?",
+      "prompt_sha256": "2caec8abf49a5b83bdc556c78ccd10022e87f30b7596fe505d958ab88ec9398d",
+      "prompt_tokens": 132,
+      "selection_rank": "0000c127bdaca5725dc27a021702650eab1ee9e7bbb01b744e08b8af464b9b8d",
+      "id": "kgw-bias-development-005"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 37904,
+      "source_prompt_id": "b7d570ac3a6b513d2c4d3489bf7dd8eca743a87a7056c15123ae435fcdbe7e39",
+      "prompt": "Write a 10-page coming of age story, in first person narrative, about a 16-year-old girl named Mia who discovers a passion for martial arts after being bullied at her high school. The story must include her struggles to balance her martial arts training with her academic and social life, as well as her journey to become a professional martial artist. Make sure to include vivid descriptions of both the physical training and the emotional challenges she faced throughout the process. The story should also showcase the impact that martial arts had on Mia's character development and personal growth. Finally, end the story with an inspiring and unforgettable moment that highlights Mia's triumph as a professional martial artist.",
+      "prompt_sha256": "b7d570ac3a6b513d2c4d3489bf7dd8eca743a87a7056c15123ae435fcdbe7e39",
+      "prompt_tokens": 138,
+      "selection_rank": "0000d882b7e5faf7107af07f39fd08f259f1b4bce5eaf263fcb5600d61f4f01f",
+      "id": "kgw-bias-development-006"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 1833,
+      "source_prompt_id": "d8df4f67ac953230bf7e915a19226d2adbbd156aeffc2e19fa1fa7eb671d1c23",
+      "prompt": "List the steps involved in performing a competitor analysis for your business, including identifying competitors, analyzing their strengths and weaknesses, identifying areas of opportunity, and creating a plan to improve your own business based on your findings. Include examples of tools or resources that can aid in this process, such as SWOT analysis templates or industry reports.",
+      "prompt_sha256": "d8df4f67ac953230bf7e915a19226d2adbbd156aeffc2e19fa1fa7eb671d1c23",
+      "prompt_tokens": 65,
+      "selection_rank": "0000fef01e96f803b6132054d44d3b7496f0407b88f85c6e27981dadcdf8a303",
+      "id": "kgw-bias-development-007"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 4792,
+      "source_prompt_id": "d1ff0687dde55a80108163ea38cd0d3ef9ebd12ebfe2afeb9889ffc09b446d19",
+      "prompt": "Read the passage below and answer the question or follow the instruction: How do the S8 Plus and LG V20 compare in terms of form factor, based on the leaked photos?\n\nPassage: As the tech world holds its breath in anticipation of the official debut of Samsung\u2018s Galaxy S8 smartphone, more details and images continue to make their way to the public. While we\u2019ve known things like the phone\u2019s specs and international release dates for a while now, we\u2019ve now got our first look at the larger Galaxy S8 Plus model, along with details and pricing on a range of accessories from Samsung.\nA user in Mexico has shared photos of an unboxed Galaxy S8 Plus, holding the device in front of their car\u2019s steering wheel, which has recently turned into the standard shot arrangement for upcoming phone leaks. In the photos, published by AndroidMX, we see the S8 Plus\u2019 display powered on, showing several different apps and screens.\nThe images do a great job of showing how the S8 Plus\u2019 6.2-inch edge-to-edge display will fit in the hand. The leaker holds the device alongside a LG V20, which has a 5.7-inch screen, revealing that the two phones are almost the same size when it comes to their form factor.\nAs for information on the S8 and S8 Plus\u2019 upcoming accessories, WinFuture managed to get ahold of details and pricing info for the European market. This includes the recently seen DeX Station dock, which features an active cooling system and the ability to support the Galaxy S8\u2019s new \u201cDesktop eXperience.\u201d The DeX Station is tentatively said to be priced between 100 and 150 euros (about $110 to $160) in Europe.\nAlso seen are Samsung\u2019s case offerings: the Clear View Standing Cover, LED View Cover, and Keyboard Cover, each with 60 euro ($65) prices. An Alcantara Cover will be available in matching colors for 45 euros ($48), along with Silicone and Clear Cover options for 30 euros ($32) and 20 euros ($22), respectively.",
+      "prompt_sha256": "d1ff0687dde55a80108163ea38cd0d3ef9ebd12ebfe2afeb9889ffc09b446d19",
+      "prompt_tokens": 469,
+      "selection_rank": "00011f7da10d09475cac4bf4d4c370a1169e93d6d8cabc610a95c74c43545382",
+      "id": "kgw-bias-development-008"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 26465,
+      "source_prompt_id": "20d005d135a63bf8b17aee9b59a8dc8dee783d4845d36d77457245a41e66346b",
+      "prompt": "How does the author's unintentional use of the Latin palindrome in their text highlight the interconnectedness of literature and the power of language to link different cultures and periods? : A palindromic ode to the famous Latin palindrome? Was this intentional? I\u2019m wondering if you knew it? A woven \u201cO\u201d revered Now. I also have used this couplet in a longer expansion which isn\u2019t as elegant, but it is quite fun\u2026 I may dig it up if you respond to this. Completely unintentional \u2013 what a fine coincidence! I was not aware of the latin riddle so thanks for drawing my attention to it; I\u2019d be happy to hear your thoughts on it.",
+      "prompt_sha256": "20d005d135a63bf8b17aee9b59a8dc8dee783d4845d36d77457245a41e66346b",
+      "prompt_tokens": 144,
+      "selection_rank": "00014b2218331ee5c852f8d7cad510a58d4b3a23aeebe776873f5e7cb6f8d4ec",
+      "id": "kgw-bias-development-009"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 23143,
+      "source_prompt_id": "f73e05a1442201c72c62430ad1f89a5091197c58d59957cf80651b106fa3758c",
+      "prompt": "Create a podcast series consisting of 10 episodes, each featuring a different topic related to holistic approaches to healing and wellness. The episodes should be approximately 30 minutes each and should include interviews with experts in the field, personal stories from people who have benefited from holistic practices, and practical tips and advice for listeners to incorporate into their own wellness routines. The style should be conversational and engaging, with a mix of storytelling and informative segments. Consider covering topics such as mindfulness, meditation, yoga, acupuncture, herbal remedies, nutrition, and energy healing.",
+      "prompt_sha256": "f73e05a1442201c72c62430ad1f89a5091197c58d59957cf80651b106fa3758c",
+      "prompt_tokens": 110,
+      "selection_rank": "00015efae60137e8ae3e251f2755f6d686c1973bed4b2614a12e0eb7ba44bc67",
+      "id": "kgw-bias-development-010"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 26733,
+      "source_prompt_id": "84ccc21f17b61194b566276333032d5a1a8d7270e2d4f9ed6ac27853a163e74b",
+      "prompt": "Create a mock press release for a new book.",
+      "prompt_sha256": "84ccc21f17b61194b566276333032d5a1a8d7270e2d4f9ed6ac27853a163e74b",
+      "prompt_tokens": 10,
+      "selection_rank": "00019b4902df4d469e3e27c16f20a36ffc57f06b51374e78fc46233717add510",
+      "id": "kgw-bias-development-011"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 15215,
+      "source_prompt_id": "6d4b0747090921a5f5f5df2cfd83942c81a1de6746d5bed1d65e9285cf05596c",
+      "prompt": "Summarize the opening scene of the film \"This Is Coffee!\" and explain how it sets the tone for the rest of the film. Answer according to: What on earth could be more luxurious than a sofa, a book, and a cup of coffee?\nBy Brian Lokker. Published May 26, 2013 , last updated March 23, 2019.\n\u201cThis Is Coffee!\u201d This stylish 1961 film by the Coffee Brewing Institute is a guide to brewing the perfect cup of coffee. The key to successful coffee? Care, care, and more care. The opening of the 13-minute film sets a menacing mood. An alarm clock ticks and a kitchen faucet drips, over a jazzy film noir score. When the alarm goes off, a tired woman awakes, trudges downstairs, and goes through the motions of brewing a pot of coffee. Her coffee is weak and unappetizing. But with a little care, she can do so much better!",
+      "prompt_sha256": "6d4b0747090921a5f5f5df2cfd83942c81a1de6746d5bed1d65e9285cf05596c",
+      "prompt_tokens": 219,
+      "selection_rank": "0001e5bd03b25e3e226e1085a84dcb14d06bd69236ef6aec3469b6d67454cab3",
+      "id": "kgw-bias-development-012"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 42447,
+      "source_prompt_id": "fced146b4107130f14c68b40ee46c8a39946b31bfc6a8b916316d22dcb787134",
+      "prompt": "To create motivation that lasts, we focus on 2 important questions. First, we ask a big question to orient our life toward greater purpose - what's my sentence? In one sentence we state what lasting impression we want to leave on the world. Then, we keep asking a small question for day-to-day motivation - was I better today than yesterday?\n\"I want to be remembered as a person who was hard working and reached her goals but was always there when needed\"\n\"I want to be remembered as someone who was always there for anyone\"\n\"I want to be remembered as someone who never gives up\"\n\"I want to be remembered as a person who created something wonderful and did things differently\"\n\"I want to be remembered as someone who tries hard\"\n\"I want to be remembered as a funny, caring person who chases their dream\"\n\"I want to be remembered as someone who tried hard to be successful and was fun and loving\"\n\"I would like to be remembered as someone who inspires people and is determined\"\n\"I want to be remembered for never giving up whatever came my way\"\n\"I want to be remembered as someone who was caring\"\n\"I want to be remembered as a good artist\"\n\"I want to be remembered for my hard work\"\n\"I want to be known for thriving in my dream job, being willing to risk my life to better others\"\n\"I want to be remembered as a positive person\"\n\"I want to be remembered trying my best and never giving up\"\n\"I want to be remembered as a kind, joyful spirit who always kept trying\"\n\"I want to be remembered as someone who cared for others and stood up for what I believed\"\n\"I want to be remembered as a hardworking, passionate person\"\n\"I want to be remembered as good and kind\"\n\"I want to be remembered as someone who really tried my best and fought for the right thing\"\nUsing the given text as a reference, suggest a few guiding questions that individuals can ask themselves to cultivate a sense of purpose and motivation in their lives.",
+      "prompt_sha256": "fced146b4107130f14c68b40ee46c8a39946b31bfc6a8b916316d22dcb787134",
+      "prompt_tokens": 438,
+      "selection_rank": "000239fc225e06875df1da2767e0071a371688ea5ee6d635cfc672fa10cf38aa",
+      "id": "kgw-bias-development-013"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 56852,
+      "source_prompt_id": "7c195d2ff1447fca42d9e9c241e90f5462759b2dcb9f4b0793deeedc4a3954e6",
+      "prompt": "Implement a responsive chat service using React.js and Firebase Realtime Database. The chat service should have a modern, minimalist design, with the ability to send and receive messages in real-time, view the presence status of other users, and enable users to upload and display profile pictures. Additionally, the chat should provide notification sounds whenever a new message arrives and support both desktop and mobile devices.",
+      "prompt_sha256": "7c195d2ff1447fca42d9e9c241e90f5462759b2dcb9f4b0793deeedc4a3954e6",
+      "prompt_tokens": 80,
+      "selection_rank": "0002430422abafeefda15b9ba48db23072c229796182321d13fd3fa99c0e2690",
+      "id": "kgw-bias-development-014"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 57671,
+      "source_prompt_id": "ad672459b64c9246a6361020d4cdf558cfda5bfd489987bdb4e4b35d615b29cf",
+      "prompt": "Can you summarize what content marketing is and its benefits to businesses? Answer according to: Content marketing uses important and valuable information to draw attention of potential customers. The fact is that if it is done in a correct manner then it will appoint the target audience and drive profitable action to the business. Think of content as a way of interacting and communicating with your customers without selling. A well defined article markets the product or service in such a way that the consumer should not be interrupted. We are using that article to educate our consumer and create awareness on information that is important to them. This makes our potential buyer more intelligent. It\u2019s a simple fact that victorious content marketing strategy delivers consistency in valuable information so as to target market. It\u2019s not a secret that consumers are tired of traditional marketing. This is why we find a rush to social media and permission based marketing rather than that of invasive marketing. This will not allow consumers to make the choice of when they want to be marketed to.\nHowever, we should be smarter in our marketing efforts and this will include writing content that is not only interesting but relevant and valuable to the market we have target for. Moreover, we can use content marketing in all areas of marketing which includes media, print, events and online. Thus we have to make sure that our website has content that makes marketplace to the audience. Above all this, also make sure that if we have blog, we also use it for content marketing. In short, content marketing is valuable and it often leaves a longer impression.\nContent marketing uses important and valuable information to draw attention of potential customers. The fact is that if it is done in a correct manner then it will appoint the target audience and drive profitable action to the business.",
+      "prompt_sha256": "ad672459b64c9246a6361020d4cdf558cfda5bfd489987bdb4e4b35d615b29cf",
+      "prompt_tokens": 350,
+      "selection_rank": "00027389e234c53e798278763572544a7a3cf33b9f40daea47ba75c49150eaf2",
+      "id": "kgw-bias-development-015"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 30687,
+      "source_prompt_id": "843641bcb4fc504ec2b880cb8ff523ab99571decc58490c8220b09c7418a231e",
+      "prompt": "\"Getting involved in an internship provides great insights about what a business environment may look like. It is an important experience to realise how our degree can apply in practice for professional purpose.\nIt's definitely a good step to undertake to have a better idea of where your degree can lead you in terms of career.\nThis internship in Social Media Marketing has been very interesting. I have had the chance to work with great managers who taught me a lot during my internship. It has been busy hours and challenging work but it was definitely worth the outcome.\nNow that I have done this internship I have a better idea of what I want to do in the future.\nI find myself much more ready to start a job.\"\nLast Updated: 2012-02-16 16:27:58 by Josephine Avati. Based on the passage above, How can an internship provide insights into the practical application of one's degree in a professional setting, and why is it important to undertake one before starting a job?",
+      "prompt_sha256": "843641bcb4fc504ec2b880cb8ff523ab99571decc58490c8220b09c7418a231e",
+      "prompt_tokens": 212,
+      "selection_rank": "00028e04bb88501412ee527370f64a352aa401956280bd38903b2b06e39de6ed",
+      "id": "kgw-bias-development-016"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 65750,
+      "source_prompt_id": "32c97fed957e46656060c89b02b0a395b506394fcc163b571836c5a685af9f5d",
+      "prompt": "Create a banner for a ski resort.",
+      "prompt_sha256": "32c97fed957e46656060c89b02b0a395b506394fcc163b571836c5a685af9f5d",
+      "prompt_tokens": 8,
+      "selection_rank": "00030a59d07dc6e8874ed61129e46dd7b6d8dbf2654d7395910bb1b9841865eb",
+      "id": "kgw-bias-development-017"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 6793,
+      "source_prompt_id": "f3675855c7fb22ec087b20c1a70cd5b4623737c765288a4983ccf857d2122620",
+      "prompt": "Provide step-by-step instructions, including a list of all necessary ingredients, for how to make a vegan quinoa salad with roasted vegetables that includes flavor tips and suggestions for variations.",
+      "prompt_sha256": "f3675855c7fb22ec087b20c1a70cd5b4623737c765288a4983ccf857d2122620",
+      "prompt_tokens": 36,
+      "selection_rank": "0003295309f7b7d5a2a50e58141f62240bf8233592f66d790273af32e554d197",
+      "id": "kgw-bias-development-018"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 66791,
+      "source_prompt_id": "688443a02e3a822dbeff9189d1f194ee4703f06c64171ef733e66d9575d4b3b6",
+      "prompt": "What distinguishes Mariachi music from other types of Mexican music?",
+      "prompt_sha256": "688443a02e3a822dbeff9189d1f194ee4703f06c64171ef733e66d9575d4b3b6",
+      "prompt_tokens": 12,
+      "selection_rank": "00037c4381f5aa28b74b8c6dd8ee1fd38846b60d2ce00c88394a3a01cebb0d3a",
+      "id": "kgw-bias-development-019"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 47409,
+      "source_prompt_id": "45bb66adc08d54a1f20da2789f09446bf382069e27dbdfdc45511b713ad315c6",
+      "prompt": "Write a social media caption for a hip-hop artist's latest album release that captures the essence of the music and showcases the creativity and artistry of the performer. The caption should be attention-grabbing, engaging, and compelling to potential listeners, and may include hashtags or other social media marketing tactics to increase visibility and reach. Focus on creating a caption that resonates with the target audience for the album, and that effectively communicates the artist's message, themes, and musical style.",
+      "prompt_sha256": "45bb66adc08d54a1f20da2789f09446bf382069e27dbdfdc45511b713ad315c6",
+      "prompt_tokens": 96,
+      "selection_rank": "000396c8f3359a9be6e53b97915ecf87348880a9eaebadaa901e2c39dfdae19b",
+      "id": "kgw-bias-development-020"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 35597,
+      "source_prompt_id": "10035476ab945ec687471d2c6e38d5f79cb9ff747aefbc43596e7cfcab030ace",
+      "prompt": "Write a gripping and suspenseful detective story with vivid descriptions about a highly skilled detective who dives deep into the secrets of a mysterious cult that worships an ancient god, including their rituals, beliefs, and members. The story should be set in a dark, eerie atmosphere, with intense plot twists and turns that keep the reader on the edge of their seat until the very end. Make sure to explore the detective's thoughts, emotions, and inner conflicts as they unravel the case, and create compelling characters that push the story forward.",
+      "prompt_sha256": "10035476ab945ec687471d2c6e38d5f79cb9ff747aefbc43596e7cfcab030ace",
+      "prompt_tokens": 105,
+      "selection_rank": "00039dc002a0862e947ede37ab3b2d775bfa6335d9fc018b70d93688b5e89053",
+      "id": "kgw-bias-development-021"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 14923,
+      "source_prompt_id": "c61f583a7f0ffc42082f9f8f9613492b3a8f26c30983ba530cff9276c798cc30",
+      "prompt": "A top member of the Germany-based Iota Foundation has said the majority of the ~$11 million alleged to have been stolen in a major Iota token heist last year has been found.\nA top member of the Germany-based Iota (IOTA) Foundation has said the majority of the ~$11 million alleged to have been stolen in a major Iota token heist last year has been found, Reuters reported Jan. 30.\nAs reported, the suspected perpetrator of the heist was arrested earlier this month in Oxford, U.K., following a multilateral investigation by Europol, British and German police authorities.\nThe investigation first launched early 2018, after multiple citizens had reported stolen funds to local German police. Over 85 victims of the theft have since been identified, with the total IOTA stolen estimated to be worth ~10 million euros (~$11.4 million).\nThe funds are reportedly now being held by law enforcement authorities to be used as evidence against the suspect. Schiener outlined that while investigators had initially thought the heist to have been perpetrated by an organized group, their trail led to the work of a single man, who reportedly \u201chad a normal job and is well-educated.\u201d His identity has not been disclosed.\nAs previously reported, the hacker is alleged to have used a malicious Iota seed generator \u2014 found to have been hosted on the iotaseed.io domain, among other sites \u2014 to create seeds for users that would lead them to use private keys under his control. He is reported to have thereby secured access to victims\u2019 wallets, and transferred their holdings to wallets he had created using fake IDs.\nGerman prosecutors first identified a man living in the U.K. last July as a possible suspect responsible for the fraud.\nCointelegraph recently reported that cryptocurrency-related crime has caused an estimated $1.7 billion in investor losses in 2018. The report notes that nearly three times as much was stolen in crypto in the first half of the year compared to the entirety of 2017.\nA recent report from crypto analytics firm Chainalysis revealed that two hacker groups have received the majority of the money lost in cryptocurrency scams \u2014 reportedly totalling $1 billion in crypto.\nAs Cointelegraph reported today, Jan. 31, Danish state-owned energy company Energinet has expanded its partnership with Iota to investigate use of its technology in new areas. Can you summarize the details of the Iota token heist and the arrest of the suspected perpetrator?",
+      "prompt_sha256": "c61f583a7f0ffc42082f9f8f9613492b3a8f26c30983ba530cff9276c798cc30",
+      "prompt_tokens": 533,
+      "selection_rank": "000437f8013ef0b94ef8abdaad1786089015cac445263bd7459d8033b2b0dbee",
+      "id": "kgw-bias-development-022"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 50191,
+      "source_prompt_id": "45228d91b8d56afbb7b3537cf15d7e59d73c4d83b6dd837e548f22d33394a55f",
+      "prompt": "Write a 1000-word narrative story in third person point of view, centered around a family of five who just lost their youngest child in a car accident. Focus on the family's varying emotions and coping mechanisms as they try to navigate through daily life, and include at least one flashback to a happy memory with the deceased child. End the story on a hopeful note as the family begins to heal and find closure.",
+      "prompt_sha256": "45228d91b8d56afbb7b3537cf15d7e59d73c4d83b6dd837e548f22d33394a55f",
+      "prompt_tokens": 87,
+      "selection_rank": "00043da26c2dfab64b048198714da9b011ac7b5861f80eb3f39bf775ba2ec058",
+      "id": "kgw-bias-development-023"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 20135,
+      "source_prompt_id": "1c4af38aefa84e272e24ff2c79ec6fc8101e0edd3f6861f1ccdf4ed5b123ddc3",
+      "prompt": "How to implement a website mobile navigation feature?",
+      "prompt_sha256": "1c4af38aefa84e272e24ff2c79ec6fc8101e0edd3f6861f1ccdf4ed5b123ddc3",
+      "prompt_tokens": 9,
+      "selection_rank": "0004b46526588b93a6f6a390ba74e9165a538e479c8c1129ea130925e718f4db",
+      "id": "kgw-bias-development-024"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 52817,
+      "source_prompt_id": "0f5c5771b8eb441e72da9846b290d8f3ce2aea15e6d697db462549fa10a049ef",
+      "prompt": "How did the Royal Field Artillery collaborate with other branches of the military?",
+      "prompt_sha256": "0f5c5771b8eb441e72da9846b290d8f3ce2aea15e6d697db462549fa10a049ef",
+      "prompt_tokens": 14,
+      "selection_rank": "00057eafc463d5a979393f5ebcd50bc7ac55d1253c4a1375cf260a533b37d657",
+      "id": "kgw-bias-development-025"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 36391,
+      "source_prompt_id": "47ec38a67289e25f2245bdbc21a6f59d42170b5e27171730a326cc76bca38cd1",
+      "prompt": "I want to try making traditional Indian chai tea at home. Can you walk me through the process and recommend the best spice blend for a delicious, authentic flavor?",
+      "prompt_sha256": "47ec38a67289e25f2245bdbc21a6f59d42170b5e27171730a326cc76bca38cd1",
+      "prompt_tokens": 33,
+      "selection_rank": "0005a03e997adb6214b0962f184841ca30244908ef6d0c1fedcca8ad6c8d3029",
+      "id": "kgw-bias-development-026"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 2588,
+      "source_prompt_id": "f36f0ac56b199f57a719e57122430ff8e149bc91ee7a00fa43dae5ef1508d46f",
+      "prompt": "Design a modern and visually appealing user interface for a recipe sharing app that allows users to easily browse, search, and contribute to a vast collection of recipes. The interface should prioritize user engagement and encourage users to interact with the app by providing features such as social sharing, commenting, and rating. Additionally, the app should have a simple and intuitive layout that enables users to easily navigate and filter through different recipe categories, ingredients, cooking time, and user ratings. The UI should also incorporate a feature for users to save their favorite recipes, create shopping lists, and track their cooking progress. Finally, the design should reflect the app's branding and convey a sense of community and creativity.",
+      "prompt_sha256": "f36f0ac56b199f57a719e57122430ff8e149bc91ee7a00fa43dae5ef1508d46f",
+      "prompt_tokens": 135,
+      "selection_rank": "0005c84bf41b61147c9c202f22e0c6941971060e933dfd42b8f18fbb7b4f4abc",
+      "id": "kgw-bias-development-027"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 40474,
+      "source_prompt_id": "cc1752071390f5ac72a86f309672416207cb65377697f1db808cffedc61f362b",
+      "prompt": "How does the language and imagery used in the text material contribute to the overall tone and mood of the piece?: or be chained to a contractual victory.\nthe worth of what survived.\nto the volume of control I could contain.\nthey are not mine to travel.\nits potent clarity. Do you see? I am getting older.\nand I have to be able to say I served well.\nMy mouth opens and folds like a fledgling wing.\npanting pitch. Conversations are ash.\ndragging this dead beast behind me.\ndependent each day on mutual obligatory infatuation.\nThe sun is strong. The night is strong. I am not stronger.\nI can\u2019t be bothered to trim. How many rooms, my God?\nHow much waiting and walking, and the fish?\nsmoke in the cupboards, a break in the sky.\nmy flesh like an old shoestring.\nMy hand is thrust into this insect\u2019s nest.\nstench of thirst and cruel senselessness.\nand the gem crushed by a lizard\u2019s curled-up tongue.",
+      "prompt_sha256": "cc1752071390f5ac72a86f309672416207cb65377697f1db808cffedc61f362b",
+      "prompt_tokens": 230,
+      "selection_rank": "00060861cc42584d7166c888ec017ff83609266d5c0cab89a12c69e8c936b4e0",
+      "id": "kgw-bias-development-028"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 42726,
+      "source_prompt_id": "6351765fdd87bb51866abc960f7cee486ff37442faffdd1059dd4ef878b4c410",
+      "prompt": "What are some ways to reduce plastic waste in daily life?",
+      "prompt_sha256": "6351765fdd87bb51866abc960f7cee486ff37442faffdd1059dd4ef878b4c410",
+      "prompt_tokens": 12,
+      "selection_rank": "0006ce2b33189c4b8663a27be04fa0ddecd33748c085ed0555a75c3e93d513d3",
+      "id": "kgw-bias-development-029"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 53035,
+      "source_prompt_id": "bc5437a928705ff8e48c68ea41c1c7a0d8cb8d4ac63c820b77ec255b5ffc6c58",
+      "prompt": "Compose a promotional post for a jewelry store, highlighting the latest collections and special financing deals.",
+      "prompt_sha256": "bc5437a928705ff8e48c68ea41c1c7a0d8cb8d4ac63c820b77ec255b5ffc6c58",
+      "prompt_tokens": 19,
+      "selection_rank": "0006e12dfbfec91417f1ef8d63a77a67b3218e9f776fa79d9e01a95a86aa5441",
+      "id": "kgw-bias-development-030"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 12681,
+      "source_prompt_id": "710b7bc2f34d96de64d03859fb5ee3025741a9e8234938719f30fddb945f1e5a",
+      "prompt": "Read the passage below and answer the question or follow the instruction: Can you summarize the purpose and importance of National Apprenticeship Week according to President Trump's proclamation?\n\nPassage: Under my Administration\u2019s policies, our Nation\u2019s economy is booming and Americans have more opportunities than ever before. Men and women from all walks of life are moving off the sidelines and into the workforce. In this economic context, our country needs workers with world-class skills and abilities to fill vacant positions in the labor force. During National Apprenticeship Week, we recognize the importance of apprenticeships in helping our country\u2019s hardworking people develop the competencies that enable success in today\u2019s dynamic, 21st century economy.\nAs a lifelong businessman who has hired thousands of workers, I am a strong believer in the apprenticeship model, and my Administration is committed to expanding apprenticeship opportunities. Apprenticeship programs, when implemented effectively, provide workers with an opportunity to \u201cearn and learn\u201d on the job, and pair workplace education with classroom instruction, accelerating the learning process for participants and increasing their marketability. Since I took office, American employers have hired over 400,000 apprentices. In 2018 alone, we committed $145 million to diversify and scale apprenticeship programs, and we provided an additional $150 million in grant opportunities to promote apprenticeships in industries where they have not traditionally existed, including advanced manufacturing, banking and finance, information technology, and healthcare. In addition, as a result of our Pledge to America\u2019s Workers, in just 3 months, we have secured commitments from more than 160 companies and associations to provide jobs, education, and workforce development opportunities to 6.4 million American workers.\nIn June of last year, I signed an Executive Order creating the Task Force on Apprenticeship Expansion, which focused on identifying proposals to cultivate apprenticeships across all sectors of the economy and reform ineffective education and workforce development programs. The Task Force was composed of representatives from business, the trades, labor and industry groups, and educational institutions; each participant contributed a unique set of insights and experiences. The Task Force helped my Administration map out a strategy for creating new, industry-recognized apprenticeship programs that will encourage employers and industries to adopt the apprenticeship model.\nIn addition to supporting apprenticeships, I am advancing tax and regulatory policies that are increasing opportunities for all Americans. Last month, the unemployment rate dropped to 3.7 percent, its lowest point in nearly 50 years, and more Americans are working today than ever before in our history. At the same time, right now, there are 7 million unfilled jobs in our country. By successfully deploying the apprenticeship model, the United States can build a workforce strong enough to quickly fill all of those jobs and better compete on the global stage. This week, I encourage all participants in our economy, from business leaders to government officials to educators, to join in our efforts to expand apprenticeship programs. Together, we can build and educate our Nation\u2019s workforce, securing American economic greatness for future generations.\nNOW, THEREFORE, I, DONALD J. TRUMP, President of the United States of America, by virtue of the authority vested in me by the Constitution and the laws of the United States, do hereby proclaim November 12 through November 18, 2018, as National Apprenticeship Week.\nIN WITNESS WHEREOF, I have hereunto set my hand this ninth day of November, in the year of our Lord two thousand eighteen, and of the Independence of the United States of America the two hundred and forty-third.",
+      "prompt_sha256": "710b7bc2f34d96de64d03859fb5ee3025741a9e8234938719f30fddb945f1e5a",
+      "prompt_tokens": 758,
+      "selection_rank": "0006fe92719268deb1d290d4692e529d23ea71144862b4a5614121d4bb2e9193",
+      "id": "kgw-bias-development-031"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 31404,
+      "source_prompt_id": "db53c7e7283c0f0239b615066118360e37469f8f502c61dfc514ad75915661e5",
+      "prompt": "Develop a C# program that simulates a simple calculator, capable of performing basic arithmetic operations such as addition, subtraction, multiplication, and division, with the ability to accept user input and display results on the console. The program should also have appropriate error handling, including validation of user input to prevent division by zero and handling of invalid arithmetic expressions. The code should be well-commented and follow best practices for coding style and structure.",
+      "prompt_sha256": "db53c7e7283c0f0239b615066118360e37469f8f502c61dfc514ad75915661e5",
+      "prompt_tokens": 87,
+      "selection_rank": "00072b8747b75ce04b34643ea8cb5d708d3b52ee0b9a8cfc9e7172c155f48698",
+      "id": "kgw-bias-development-032"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 42145,
+      "source_prompt_id": "6596a834469db31ae00a7d66e9b0ea0013bd43c8c708165562f0b65a5154864f",
+      "prompt": "What is the projected outlook for the Cakes, Pastries & Sweet Pies market in Australia and how can this information be used for business decision making?\nGenerate according to: Cakes, Pastries & Sweet Pies (Bakery & Cereals) Market in Australia-Outlook to 2022: Market Size, Growth and Forecast Analytics is a broad level market review of Cakes, Pastries & Sweet Pies market in Australia.\nCakes, Pastries & Sweet Pies market in Australia registered a positive compound annual growth rate (CAGR) of 3.86% during the period 2012 to 2017 with a sales value of AUD 770.05 Million in 2017, an increase of 3.63% over 2016. The market achieved its strongest performance in 2015, when it grew by 4.41% over its previous year and its weakest performance in 2016, when it increased to 3.54% over 2015.\nThe research handbook acts as an essential tool for companies active or planning to venture in to Australia's Cakes, Pastries & Sweet Pies (Bakery & Cereals) market. The comprehensive statistics within the research handbook provides insight into the operating environment of the market and also ensures right business decision making based on historical trends and industry model based forecasting.",
+      "prompt_sha256": "6596a834469db31ae00a7d66e9b0ea0013bd43c8c708165562f0b65a5154864f",
+      "prompt_tokens": 305,
+      "selection_rank": "000731400485696fe5fac3954663fb1cb62c08b12b628dc08b6ee605e96cedc1",
+      "id": "kgw-bias-development-033"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 37706,
+      "source_prompt_id": "74776e508d2ea09651e2288391583fdc5b09eeac8df18e11139dbec2efdc6658",
+      "prompt": "Create a Java program that implements a binary search tree data structure capable of performing both breadth-first search and depth-first search algorithms. Your program should be able to insert new nodes, search for specific nodes, and delete nodes from the tree. It should also be able to traverse the tree in a breadth-first manner, visiting all nodes at each level before moving on to the next, and in a depth-first manner, visiting all nodes in a branch before backtracking to the previous node and exploring another branch. Additionally, your program should have a clear and readable code structure with appropriate comments and documentation.",
+      "prompt_sha256": "74776e508d2ea09651e2288391583fdc5b09eeac8df18e11139dbec2efdc6658",
+      "prompt_tokens": 122,
+      "selection_rank": "000758161461ac499796149564d365c0b958ea7a05f4aeb5a9a39b8a48f5911f",
+      "id": "kgw-bias-development-034"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 52173,
+      "source_prompt_id": "da3b2469abfe202a40cb8342b449bbcbbf9da38a2693d70ccb6cc0dafda0168f",
+      "prompt": "Can you summarize the contents of the Macmillan Collector's Library edition of Tales and Poems by Edgar Allan Poe?\nGenerate according to: This mesmerising, macabre collection contains Edgar Allan Poe's best-known poetry, including 'The Raven', 'Annabel Lee' and 'Lenore', and a selection of his very best stories, along with his finest tales from the last decade of his tragically short life. Many of these stories and poems explore the... read more familiar Poe themes of murder, obsession and love, but this volume also contains many overlooked tales of the fantastic, black comedies, parodies and hoaxes, such as 'The Unparalleled Adventure of Hans Pfaall', 'Mesmeric Revolution', 'Hop-Frog', and 'The Imp of the Perverse'. This beautiful Macmillan Collector's Library edition of Tales and Poems features an afterword by David Pinching. Designed to appeal to the booklover, the Macmillan Collector's Library is a series of beautiful gift editions of much loved classic titles. Macmillan Collector's Library are books to love and treasure.",
+      "prompt_sha256": "da3b2469abfe202a40cb8342b449bbcbbf9da38a2693d70ccb6cc0dafda0168f",
+      "prompt_tokens": 222,
+      "selection_rank": "00079931782453d1e88570d7d74e3e3fabe0918447c8c5d6a13905a7ad22f1bb",
+      "id": "kgw-bias-development-035"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 18718,
+      "source_prompt_id": "4bdf0a3719664adf635423e51a3f3a8a5eae7bfaf08252ffef164ba056cebac0",
+      "prompt": "Hid its face somewhere in the lap of nature. The darkness made its attempt to fall on earth. With a sound that trembles all souls . Of a heavy waterfall from the sky. But it made a move within me. I felt a little pain somewhere in my heart. The soul of my ever loving partner . 4 Comments on \"Drops Of Life\"\nBeautiful Ammu. Rain brings lots of memories. On God , what kind of job am I into\u2026..commenting on somebody who has got sheer pure love which doesn\u2019t seem to dissolve even a bit with passage of time\u2026.but still I am going to\u2026after all I can be a part and parcel in the life of this beautiful friend of mine through my comments for her beautiful poetries\u2026..\nRamakrishnan Chatakondu, your words have a magical power to awake the inner lying talents . Can you summarize the emotions and themes conveyed in the poem \"Drops of Life\"?",
+      "prompt_sha256": "4bdf0a3719664adf635423e51a3f3a8a5eae7bfaf08252ffef164ba056cebac0",
+      "prompt_tokens": 197,
+      "selection_rank": "000826df0cb01029588f6fbaf93b3588afdd888b091d28e3c432627cbb7ffe8a",
+      "id": "kgw-bias-development-036"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 62994,
+      "source_prompt_id": "a9549e8173167ff8c34c1d581bfbb402c1519f379c622e9d283e8cb4d6751a9b",
+      "prompt": "Please implement an efficient algorithm in C language that can effectively sort an array of up to 10,000 integers in descending order. Your solution should not exceed a time complexity of O(n log n) and should avoid recursive techniques. The program should have the ability to handle duplicate integers and consider them as distinct elements during sorting. Please document your solution appropriately and ensure that your code follows the recommended coding standards, including proper indentation, labeling of variables, and suitable variable names. Provide sufficient comments, so it is clear what each step does in the algorithm.",
+      "prompt_sha256": "a9549e8173167ff8c34c1d581bfbb402c1519f379c622e9d283e8cb4d6751a9b",
+      "prompt_tokens": 115,
+      "selection_rank": "00083908d2f8368184f94f9403e5013841e2bae7e43501257f9523b2e19fb886",
+      "id": "kgw-bias-development-037"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 3725,
+      "source_prompt_id": "0c2f0546d1a826b81304e57607ab140d1f0276f63bdb3c9ad349c2ea809a8c0a",
+      "prompt": "Generate response to the question/instruction based on a piece of given material\n\nQuestion/Instruction: Why was Nurse not wearing his bright blue blazer during the conference?\n\nGiven material: The end result here: a career-high 26 points for Siakam on 10 (!!) shots.\nNurse walks to the podium without the bright blue blazer. Where's his jacket? \"The rental expired.\"\nNurse was asked about Durant's night. \"It's bad coaching,\" he joked. \"We didn't plan to give him 51. He gave us 51. He's unbelievable.\"\nPer @EliasSports , Stephen Curry, Kevin Durant and Klay Thompson join the 1961-62 Lakers trio of Elgin Baylor, Rudy LaRusso and Jerry West as the only sets of three teammates to each record a 50-point game in the same season.\nIn the playoffs... looney and boogie at center... that\u2019s it. I want no parts of this strength in numbers bs with jones.\n@Raptors Real good win tonight.\nWe gave a hundred and ten percent.\nLowry was disappointed in himself for passing up a shot late in regulation. A couple possessions later he hit a big corner-3. What happened in between? Kyle says CJ Miles gave him some advice in a timeout. \"Shoot the ball\".\nThe squad battled \u2018til the end.\nI missed this last week, but I will now hold all coaches to this standard.\nToronto had a 172.7 OffRtg during Damian Jones' 10:47 tonight.\nNothin' but love for @pskills43 .\nThis was the start of Stephen A\u2019s interview with Shaq today. I\u2019m laughing so hard I have no idea what the context to this is.\nStephen A is the greatest orator of our time and I will not hear any other arguments.",
+      "prompt_sha256": "0c2f0546d1a826b81304e57607ab140d1f0276f63bdb3c9ad349c2ea809a8c0a",
+      "prompt_tokens": 433,
+      "selection_rank": "000906d8eb3a13d4daafb54b6cb7efea4ffca02f87bdfffef4483858cb252324",
+      "id": "kgw-bias-development-038"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 43070,
+      "source_prompt_id": "2086fcae31d7d833afdd0db3ef8a4a5832835304d73b6411102315326f66790e",
+      "prompt": "List the step-by-step procedure for correctly assembling and maintaining a treadmill, including any necessary tools and recommended frequency for maintenance tasks. How can users troubleshoot common issues that may arise during use, and what safety precautions should be taken when using a treadmill? Additionally, what are some best practices for extending the lifespan of a treadmill and maximizing its performance? Provide clear and concise guidance for users of varying experience levels.",
+      "prompt_sha256": "2086fcae31d7d833afdd0db3ef8a4a5832835304d73b6411102315326f66790e",
+      "prompt_tokens": 83,
+      "selection_rank": "000962ce8ebb584f23bce84b56b53ce30cb7d3a0bff0a914e7a79224e0b0eee9",
+      "id": "kgw-bias-development-039"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 49286,
+      "source_prompt_id": "0d86d7fa6fd872c77e7b3c0eedecdd627628998e1066dc83ea67535790e4c931",
+      "prompt": "Here is a piece of text: Roaring Fork Outdoor Volunteers is seeking participants to work with the town of Basalt on a downtown-beautification project Saturday.\nThe Midland Park project is part of the town\u2019s plan to expand the riverfront park system, carving out three short trails and creating locations for benches and picnic tables. Park features will include a children-friendly gathering tree, story fort, birdhouse and fire pit. Roaring Fork Outdoor Volunteers participants will construct the three trails and trim out a pathway around the park.\nThe workday lasts from 8:30 a.m. to 5 p.m., with dinner and beverages at the completion of the project.\nProject sponsors for the Midland Park project include the town of Basalt and the Aspen Skiing Co. Environment Foundation.\nLast year, Roaring Fork Outdoor Volunteers helped transform the old Basalt Bridge over the Roaring Fork River into a public space, installing many of the new structures including the benches, decking and planters. Volunteers also planted trees, shrubs and perennials.\nTo sign up to volunteer, go to http://www.rfov.org, email rfov@sopris.net or call 970-927-8241.\n\nBased on the text material above, generate the response to the following quesion or instruction: What are some of the park features that will be included in the Midland Park project?",
+      "prompt_sha256": "0d86d7fa6fd872c77e7b3c0eedecdd627628998e1066dc83ea67535790e4c931",
+      "prompt_tokens": 303,
+      "selection_rank": "0009c33f2e91e0c5cf9b9f94ec3e28449b7800feac3074657f0f27d145d60e43",
+      "id": "kgw-bias-development-040"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 21485,
+      "source_prompt_id": "e2362672bc2dc83b2a82491860a653701f2b8b1b3af4f177c301c4d20d31b9f3",
+      "prompt": "Given the text: In space, no one can see your head swell. Eyes get squashed, bones get weaker \u2014 it sounds like something out of Gravity, but researchers are looking into growing concerns over the long-term health effects space can have on astronauts. The human body isn't made to withstand the final frontier. Astronauts have returned with poorer eyesight, bone and muscle loss, and may be at greater risk for cancer due to radiation exposure.\nSince the first American was launched into space in 1961, there are still many unknowns when it comes to how space affects health, and some problems have only recently been discovered. The adult human body contains about 60 percent water, some of which acts as a shock absorber for the brain and spinal cord. But in outer space, your fluids float into your chest and head, causing increased pressure and swelling.\nSome astronauts have also reported trouble sleeping and eating. In 2009, NASA astronaut and physician Dr. Michael R. Barratt noticed he had difficulty seeing objects close up while he was on the International Space Station. Another doctor and crew member was on board, so they performed eye exams on each other and found their vision shifted towards farsightedness. It turns out their eyes became squeezed, with abnormal bends in their optical nerves and blemishes on their retinas. Yikes.\nMark Kelly, a retired NASA astronaut, will aid in a study that monitors the health of his brother and fellow astronaut Scott Kelly. Scott will spend a year on the space station, marking the longest amount of time an American has been in space, while doctors evaluate his conditions and compare them to his twin, who will be on Earth.\nWeightlessness is also an issue. The body doesn't need to support weight in zero-gravity, resulting in weaker bones. NASA gave astronauts osteoporosis drugs and strapped them to a treadmill, which remedied the problem. Scientists are continuing to evaluate these issues as they prepare for the possibility of sending people to Mars, where health concerns could be catastrophic since astronauts will have to be more self-sufficient.\nLet's just try to avoid anything like this, shall we?\nWhat are some of the unique health concerns that astronauts face during extended space missions, and how are scientists preparing for the possibility of sending people to Mars?",
+      "prompt_sha256": "e2362672bc2dc83b2a82491860a653701f2b8b1b3af4f177c301c4d20d31b9f3",
+      "prompt_tokens": 471,
+      "selection_rank": "000ade99f720bc2a5ada7383afb45d95fe568c31338fe18ba691805e1ff5f5ed",
+      "id": "kgw-bias-development-041"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 26660,
+      "source_prompt_id": "3546aba70418e5657a8cdb5f766503d24edf438cae3df20ad6577121044dce63",
+      "prompt": "Write a dystopian story with a protagonist who actively resists the government's strict control over citizens' movements and behaviors, incorporating themes of corruption and rebellion. Use a third-person omniscient narration style to showcase multiple perspectives and explore the complexities of the society. Employ vivid imagery to capture the oppressive atmosphere and convey the psychological toll that living under such conditions can take on the characters. End with a thought-provoking message about the importance of individual agency and the dangers of blindly following authority.",
+      "prompt_sha256": "3546aba70418e5657a8cdb5f766503d24edf438cae3df20ad6577121044dce63",
+      "prompt_tokens": 96,
+      "selection_rank": "000af8b00f0ce1640e48b4096271c8f2ee15a1229706db49c718e8c87b7b6008",
+      "id": "kgw-bias-development-042"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 22272,
+      "source_prompt_id": "f5c67c815111d61bebf3a11a5c5ad276610bdc92b3f222d480921df6527cb3d3",
+      "prompt": "Given the text: The first game of June was much like the previous excruciating month had been for the Mets.\nThat is, they lost yet another everyday player to injury and another game because of their bullpen to fall under .500 for the first time this season.\nPaul Sewald permitted two inherited runners to score plus the go-ahead run as the Cubs scored three times in the seventh inning \u2013 and then three more one inning later \u2014 to send the ever-tumbling Mets to a 7-4 loss Friday at Citi Field.\nZack Wheeler ended up being charged with two runs on seven hits, despite nursing a 2-0 advantage through six courtesy of Brandon Nimmo\u2019s third-inning homer against Cubs starter Tyler Chatwood.\nWheeler was tagged for consecutive singles to open the seventh and was replaced with runners on the corners by Sewald, who quickly coughed up the lead on a sacrifice fly by Kyle Schwarber and a double by Ben Zobrist.\nKris Bryant, Sewald\u2019s childhood friend from the Las Vegas area and his former college teammate at San Diego State, snapped the 2-2 tie with a two-out single to right. Schwarber added a three-run homer to left against Sewald in the eighth.\nAdrian Gonzalez drew the Mets back within two with a two-run single in the bottom half, but Ian Happ made it 7-4 with an RBI single against Jeurys Familia in the ninth.\nAs if falling to 27-28 on the season \u2013 following an 11-1 start \u2013 wasn\u2019t disheartening enough for the Mets, right fielder Jay Bruce joined an already-overflowing injury list when he departed in the fifth inning with lower back discomfort.\nThe Cubs worked a hit-and-run call by manager Joe Maddon to perfection against Wheeler to open the seventh, with pinch-hitter Tommy La Stella following Addison Russell\u2019s leadoff single with another knock through the vacated left side of the infield to put the tying runs aboard.\nBeginning with those two hits against Wheeler, the game shifted in the Cubs\u2019 favor during that inning, with Sewald unable to preserve the 2-0 lead.\nSchwarber didn\u2019t start the game, but he finished with four RBI from the seventh inning on, including his 11th homer of the season in the eighth.\n.372. The Mets are 16-27 (for a .372 winning percentage) since their 11-1 start, falling to 27-28 overall.\nNimmo reached base three more times with a walk, a two-run homer and a single in five plate appearances to raise his on-base percentage to .436.\nMichael Conforto drew a walk but struck out in all three of his official at-bats on a night the Mets gave away his replica jersey.\nMets vs. Cubs, Saturday at 7:15 p.m.\nWhat is the Mets' current standing in the season, and how has their performance compared to their start?",
+      "prompt_sha256": "f5c67c815111d61bebf3a11a5c5ad276610bdc92b3f222d480921df6527cb3d3",
+      "prompt_tokens": 689,
+      "selection_rank": "000b0fc1da40095aff808124eb82d0300d964248a252fe4625828aed3177f2c8",
+      "id": "kgw-bias-development-043"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 49409,
+      "source_prompt_id": "22734525790898304ee86a5365e82d0131f861a7f97692f2bf3f7f31ac650ad3",
+      "prompt": "Write a persuasive essay on the benefits of regular exercise.",
+      "prompt_sha256": "22734525790898304ee86a5365e82d0131f861a7f97692f2bf3f7f31ac650ad3",
+      "prompt_tokens": 11,
+      "selection_rank": "000c1b0ebc1e81b23a1484a985f61b43240058c2eddeaad8fec93a121f38aa5d",
+      "id": "kgw-bias-development-044"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 9343,
+      "source_prompt_id": "52b48ac24790cd3c8c8b5a6b8371b9efa3b16bc7cebc26407cc830814a4b8818",
+      "prompt": "Write a children's book in third-person perspective about a group of five animals - a lion, giraffe, monkey, zebra, and elephant - who learn to work together to solve a problem caused by a natural disaster in their jungle habitat. The story should have engaging dialogue and vivid descriptions of the animals' personalities and physical traits. The book should aim to teach children about the value of teamwork, friendship, and mutual respect. The illustrations should be colorful, imaginative, and appealing to young readers. The book should have 20 pages and an appropriate reading level for children ages 4-8.",
+      "prompt_sha256": "52b48ac24790cd3c8c8b5a6b8371b9efa3b16bc7cebc26407cc830814a4b8818",
+      "prompt_tokens": 120,
+      "selection_rank": "000db6664a0aaff987c3103efb0379a811045bd3ede06e33009486476325825e",
+      "id": "kgw-bias-development-045"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 51976,
+      "source_prompt_id": "ad65af5cebe819b9847396d2294dcd9322196940d8e1a79f4614eae68138dbcb",
+      "prompt": "Examine the ways in which hotels are implementing augmented reality and holograms in their entertainment offerings, including the types of content being displayed and the stylistic techniques used to create immersive experiences for guests.",
+      "prompt_sha256": "ad65af5cebe819b9847396d2294dcd9322196940d8e1a79f4614eae68138dbcb",
+      "prompt_tokens": 38,
+      "selection_rank": "000dfc0d450a4e007062ea5ab32cc6cca58b03d1934e3e5440b16571f373ca06",
+      "id": "kgw-bias-development-046"
+    },
+    {
+      "source_shard": 1,
+      "source_row": 46346,
+      "source_prompt_id": "62ae30b903960305b98e48d3d1a4b2f0d798663e81367c5513586ebbcfea49ca",
+      "prompt": "How do you format a USB drive for use with Windows 10?",
+      "prompt_sha256": "62ae30b903960305b98e48d3d1a4b2f0d798663e81367c5513586ebbcfea49ca",
+      "prompt_tokens": 15,
+      "selection_rank": "000e0b3d72ac69ef5a99e4da631d3eb356b552b080e3a54efe32a8c7b121c6f4",
+      "id": "kgw-bias-development-047"
+    },
+    {
+      "source_shard": 0,
+      "source_row": 62122,
+      "source_prompt_id": "0819e0d15000afd49627b300d9bc006e61c95d2c0f36875922bff781a87c3eba",
+      "prompt": "What are some of the emerging trends and innovations in the global transportation and logistics industry, and how will they impact the way goods are transported in the future?",
+      "prompt_sha256": "0819e0d15000afd49627b300d9bc006e61c95d2c0f36875922bff781a87c3eba",
+      "prompt_tokens": 31,
+      "selection_rank": "000e16cf62d59aed2f84998ddb7267e3c0fea89170659621a887a6478546b657",
+      "id": "kgw-bias-development-048"
+    },
+    {
+      "source_shard": 2,
+      "source_row": 50567,
+      "source_prompt_id": "ac5b0270df67142957b7ebd57caa3e552583dd0814c492c6ea0ca400c5ec3d40",
+      "prompt": "Provide step-by-step instructions for preparing a savory and spicy beef and vegetable curry with basmati rice, including a list of ingredients needed, the necessary equipment for cooking, recommended cooking times and temperatures, and any tips or variations for adding extra flavor or texture. Be sure to include specific measurements and cooking methods for each ingredient, as well as guidance for adjusting the heat level and seasoning to individual taste preferences. Additionally, describe the ideal texture and aroma of the finished dish, and suggest garnishes or beverage pairings that complement its flavors.",
+      "prompt_sha256": "ac5b0270df67142957b7ebd57caa3e552583dd0814c492c6ea0ca400c5ec3d40",
+      "prompt_tokens": 109,
+      "selection_rank": "000e5f38732c0c70cc35f93b4dc9e4e86d2c8804bcdc65500aebc280b6681d0d",
+      "id": "kgw-bias-development-049"
+    }
+  ]
+}

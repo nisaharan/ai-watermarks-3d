@@ -1,0 +1,637 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Phase 2 Watermark Null Calibration: Gate Decision",
+    "description": "Technical validation report for canonical KGW SelfHash and SynthID-Text null calibration.",
+    "generatedAt": "2026-08-30T11:02:46.332963+00:00",
+    "sources": [
+      {
+        "id": "combined-analysis",
+        "label": "Validated Phase 2 primary and replication analyses",
+        "path": "validation/analyse_phase2_variance.py",
+        "query": {
+          "description": "DuckDB loads both validated JSON analyses; build_report_artifact.py deterministically selects and reshapes their validated cell_summaries, key_effects and theoretical_kgw_tails into the bounded report datasets.",
+          "sql": "SELECT 'primary' AS run, * FROM read_json_auto('results/phase2-variance-pilot/analysis.json')\nUNION ALL BY NAME\nSELECT 'replication' AS run, * FROM read_json_auto('results/phase2-variance-replication/analysis.json');",
+          "language": "sql",
+          "engine": "DuckDB",
+          "executed_at": "2026-08-30T11:02:46.332963+00:00",
+          "tables_used": [
+            "results/phase2-variance-pilot/run.json",
+            "results/phase2-variance-replication/run.json"
+          ],
+          "filters": [
+            "unwatermarked condition only",
+            "paired generated-token prefixes at 128, 256 and 512",
+            "ten frozen detector keys per watermark family"
+          ],
+          "metric_definitions": [
+            "KGW score is the canonical SelfHash green-token z statistic.",
+            "SynthID score is the mean canonical g-value over eligible positions and depth.",
+            "Empirical FPR is the share of null scores strictly above the declared cutoff."
+          ]
+        }
+      },
+      {
+        "id": "executed-notebook",
+        "label": "Executed analysis notebook",
+        "path": "notebooks/phase2-variance-pilot.ipynb"
+      },
+      {
+        "id": "qwen-model-card",
+        "label": "Qwen2.5-0.5B-Instruct model card",
+        "href": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/tree/7ae557604adf67be50417f59c2c2f167def9a775"
+      }
+    ],
+    "cards": [
+      {
+        "id": "primary-prompts",
+        "dataset": "headline",
+        "description": "Independent unwatermarked outputs in the primary SmolLM2 variance pilot.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Primary null prompts",
+            "field": "primary_null_prompts",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "replication-prompts",
+        "dataset": "headline",
+        "description": "Balanced unwatermarked outputs in the independent Qwen2.5 replication.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Replication null prompts",
+            "field": "replication_null_prompts",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "validated-rows",
+        "dataset": "headline",
+        "description": "All scheme \u00d7 key \u00d7 length score rows passing the locked validation checks.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Validated score rows",
+            "field": "validated_score_rows",
+            "format": "compact"
+          }
+        ]
+      },
+      {
+        "id": "primary-max-fpr",
+        "dataset": "headline",
+        "description": "Largest key-specific false-positive rate under the nominal one-sided 1% KGW threshold at 512 tokens.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Primary max nominal 1% FPR",
+            "field": "primary_max_nominal_1pct_fpr",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "replication-max-fpr",
+        "dataset": "headline",
+        "description": "Independent-model replication of the largest key-specific nominal 1% KGW false-positive rate at 512 tokens.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Replication max nominal 1% FPR",
+            "field": "replication_max_nominal_1pct_fpr",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "confirmatory-n",
+        "dataset": "headline",
+        "description": "Planned independent null texts in each of two disjoint primary 1% FPR splits: calibration and confirmation.",
+        "sourceId": "combined-analysis",
+        "metrics": [
+          {
+            "label": "Planned nulls per 1% cell",
+            "field": "planned_nulls_per_1pct_cell",
+            "format": "compact"
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "kgw-key-means",
+        "title": "KGW null means by frozen detector key at 512 tokens",
+        "subtitle": "Both model families show material key-dependent offsets from the zero reference.",
+        "type": "line",
+        "dataset": "kgw_key_means",
+        "sourceId": "combined-analysis",
+        "encodings": {
+          "x": {
+            "field": "key",
+            "type": "ordinal",
+            "label": "Frozen key index"
+          },
+          "y": {
+            "fields": [
+              "SmolLM2_n500",
+              "Qwen2_5_n104"
+            ],
+            "type": "quantitative",
+            "label": "Mean KGW z-score"
+          }
+        },
+        "referenceLines": [
+          {
+            "value": 0,
+            "label": "Theoretical null mean"
+          }
+        ],
+        "layout": "full"
+      },
+      {
+        "id": "kgw-nominal-fpr",
+        "title": "Realised KGW FPR under the nominal 1% threshold at 512 tokens",
+        "subtitle": "A shared standard-normal cutoff fails to control false positives for individual keys.",
+        "type": "line",
+        "dataset": "kgw_nominal_fpr",
+        "sourceId": "combined-analysis",
+        "encodings": {
+          "x": {
+            "field": "key",
+            "type": "ordinal",
+            "label": "Frozen key index"
+          },
+          "y": {
+            "fields": [
+              "SmolLM2_n500",
+              "Qwen2_5_n104",
+              "target"
+            ],
+            "type": "quantitative",
+            "format": "percent",
+            "label": "Empirical FPR"
+          }
+        },
+        "layout": "full"
+      }
+    ],
+    "tables": [
+      {
+        "id": "key-effects-table",
+        "title": "Key-effect summary by model, scheme and length",
+        "subtitle": "Exact aggregate values from the validated primary and replication analyses.",
+        "dataset": "key_effects",
+        "sourceId": "combined-analysis",
+        "defaultSort": {
+          "field": "key_mean_range",
+          "direction": "desc"
+        },
+        "density": "dense",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "model",
+            "label": "Model",
+            "type": "text"
+          },
+          {
+            "field": "scheme",
+            "label": "Scheme",
+            "type": "text"
+          },
+          {
+            "field": "length",
+            "label": "Length",
+            "format": "number"
+          },
+          {
+            "field": "mean_across_keys",
+            "label": "Mean across keys",
+            "format": "number"
+          },
+          {
+            "field": "between_key_sd",
+            "label": "Between-key SD",
+            "format": "number"
+          },
+          {
+            "field": "minimum_key_mean",
+            "label": "Minimum key mean",
+            "format": "number"
+          },
+          {
+            "field": "maximum_key_mean",
+            "label": "Maximum key mean",
+            "format": "number"
+          },
+          {
+            "field": "key_mean_range",
+            "label": "Key-mean range",
+            "format": "number"
+          },
+          {
+            "field": "keys_beyond_3se",
+            "label": "Keys beyond 3 SE",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "layout": "full",
+        "body": "# Phase 2 Watermark Null Calibration: Gate Decision"
+      },
+      {
+        "id": "technical-summary",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "combined-analysis",
+        "body": "## Technical summary\n\n**Decision: no-go for the full attack corpus.** Canonical implementation parity passes, but KGW's nominal and pooled multi-key thresholds do not control key-specific false-positive risk. Keep the canonical code unchanged and require detector-key \u00d7 model \u00d7 length-bin empirical calibration with held-out confirmation. SynthID remains materially more key-stable across both tested model families."
+      },
+      {
+        "id": "headline-metrics",
+        "type": "metric-strip",
+        "layout": "full",
+        "cardIds": [
+          "primary-prompts",
+          "replication-prompts",
+          "validated-rows",
+          "primary-max-fpr",
+          "replication-max-fpr",
+          "confirmatory-n"
+        ]
+      },
+      {
+        "id": "key-finding-heading",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Key findings\n\nThe same frozen ten-key schedule was applied to paired 128-, 256- and 512-token prefixes. The two charts below show the decisive 512-token result."
+      },
+      {
+        "id": "means-chart",
+        "type": "chart",
+        "layout": "full",
+        "chartId": "kgw-key-means"
+      },
+      {
+        "id": "fpr-chart",
+        "type": "chart",
+        "layout": "full",
+        "chartId": "kgw-nominal-fpr"
+      },
+      {
+        "id": "scope-data-definitions",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "combined-analysis",
+        "body": "## Scope, data and definitions\n\nThe primary pilot contains 500 unwatermarked SmolLM2 outputs. The independent replication contains 104 Qwen2.5 outputs balanced at 13 prompts in each of eight Dolly task categories. One 512-token continuation per prompt supplied paired 128/256/512-token prefixes. Each prefix was scored under ten KGW keys and ten SynthID key vectors. KGW's statistic is the canonical SelfHash green-token z-score; SynthID's statistic is the mean canonical g-value over eligible positions and watermark depth."
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "combined-analysis",
+        "body": "## Methodology\n\nInputs and key schedules were frozen before scoring. Generation was seeded and checkpointed atomically. Validation required complete planned records, exact category allocation, exact prefix shape, unique scheme \u00d7 key \u00d7 length cells, finite positive-position scores, exact aggregate reconstruction and compact/native trace agreement. The Qwen replication ran in a fresh lockfile-derived isolated environment. Empirical cutoffs estimated and evaluated on the same samples are reported only as development diagnostics; they are not confirmatory thresholds."
+      },
+      {
+        "id": "effects-table",
+        "type": "table",
+        "layout": "full",
+        "tableId": "key-effects-table"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "combined-analysis",
+        "body": "## Limitations and robustness\n\nThe ten key scores for a text are paired, not 10 independent null texts. The 500-prompt primary cell provides only five expected exceedances at 1% FPR, with a Wilson 95% interval of approximately 0.43%\u20132.32%; the 104-prompt replication tests the mean/key pattern but is not sized for tail calibration. Results cover two small open model families and three length bins. Attack-condition variance is not yet measured, so attack power remains provisional. The documented SynthID top-k boundary-tie difference remains a decoder-policy difference and is outside this calibration defect."
+      },
+      {
+        "id": "recommended-next",
+        "type": "markdown",
+        "layout": "full",
+        "sourceId": "combined-analysis",
+        "body": "## Recommended next steps\n\n1. Freeze disjoint 5,000-prompt calibration and 5,000-prompt confirmation manifests.\n2. Generate the 10,000 primary-model null outputs and score all frozen keys at every length.\n3. Freeze KGW thresholds by detector key \u00d7 model \u00d7 length bin on calibration data; evaluate once on untouched confirmation data.\n4. If false-positive calibration passes, run a small repeated watermarked-positive/attacked-positive variance pilot and finalise attack sample sizes.\n5. Only then open the full attack corpus.\n\nDo not prioritise 0.1% FPR yet: approximately 43,000 nulls per split and cell would be required for the same relative precision goal."
+      },
+      {
+        "id": "further-questions",
+        "type": "markdown",
+        "layout": "full",
+        "body": "## Further questions\n\n- How transferable are key-conditional KGW thresholds across larger model families and decoding policies?\n- Can a hierarchical calibration model reduce sample cost without losing per-key FPR control?\n- Does category-conditioned language structure explain part of the residual key shift?\n- After calibration, how much repeated-positive variance is needed for each attack family?"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-30T11:02:46.332963+00:00",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "primary_null_prompts": 500,
+          "replication_null_prompts": 104,
+          "validated_score_rows": 36240,
+          "primary_max_nominal_1pct_fpr": 0.47,
+          "replication_max_nominal_1pct_fpr": 0.41346153846153844,
+          "planned_nulls_per_1pct_cell": 5000
+        }
+      ],
+      "kgw_key_means": [
+        {
+          "key": "00",
+          "SmolLM2_n500": 0.5932627549534489,
+          "Qwen2_5_n104": 0.9192008230130571
+        },
+        {
+          "key": "01",
+          "SmolLM2_n500": -0.987390588683128,
+          "Qwen2_5_n104": -0.19832294669902298
+        },
+        {
+          "key": "02",
+          "SmolLM2_n500": -0.9195375852396539,
+          "Qwen2_5_n104": 0.5194966689501921
+        },
+        {
+          "key": "03",
+          "SmolLM2_n500": -1.9780775296241062,
+          "Qwen2_5_n104": -0.03842037947993714
+        },
+        {
+          "key": "04",
+          "SmolLM2_n500": -1.3982486979302056,
+          "Qwen2_5_n104": 2.0802869837642515
+        },
+        {
+          "key": "05",
+          "SmolLM2_n500": 0.4322484385670171,
+          "Qwen2_5_n104": 2.1460713389023613
+        },
+        {
+          "key": "06",
+          "SmolLM2_n500": -0.08345135903308203,
+          "Qwen2_5_n104": 1.0999074020902415
+        },
+        {
+          "key": "07",
+          "SmolLM2_n500": 2.2728369425763337,
+          "Qwen2_5_n104": 0.2601162742347643
+        },
+        {
+          "key": "08",
+          "SmolLM2_n500": 0.7659818659093994,
+          "Qwen2_5_n104": -0.6897011498443258
+        },
+        {
+          "key": "09",
+          "SmolLM2_n500": 0.9017040718091072,
+          "Qwen2_5_n104": -0.32293762532827625
+        }
+      ],
+      "kgw_nominal_fpr": [
+        {
+          "key": "00",
+          "SmolLM2_n500": 0.114,
+          "Qwen2_5_n104": 0.10576923076923077,
+          "target": 0.01
+        },
+        {
+          "key": "01",
+          "SmolLM2_n500": 0.01,
+          "Qwen2_5_n104": 0.04807692307692308,
+          "target": 0.01
+        },
+        {
+          "key": "02",
+          "SmolLM2_n500": 0.02,
+          "Qwen2_5_n104": 0.09615384615384616,
+          "target": 0.01
+        },
+        {
+          "key": "03",
+          "SmolLM2_n500": 0.002,
+          "Qwen2_5_n104": 0.019230769230769232,
+          "target": 0.01
+        },
+        {
+          "key": "04",
+          "SmolLM2_n500": 0.012,
+          "Qwen2_5_n104": 0.41346153846153844,
+          "target": 0.01
+        },
+        {
+          "key": "05",
+          "SmolLM2_n500": 0.08,
+          "Qwen2_5_n104": 0.41346153846153844,
+          "target": 0.01
+        },
+        {
+          "key": "06",
+          "SmolLM2_n500": 0.04,
+          "Qwen2_5_n104": 0.16346153846153846,
+          "target": 0.01
+        },
+        {
+          "key": "07",
+          "SmolLM2_n500": 0.47,
+          "Qwen2_5_n104": 0.057692307692307696,
+          "target": 0.01
+        },
+        {
+          "key": "08",
+          "SmolLM2_n500": 0.118,
+          "Qwen2_5_n104": 0.009615384615384616,
+          "target": 0.01
+        },
+        {
+          "key": "09",
+          "SmolLM2_n500": 0.142,
+          "Qwen2_5_n104": 0.019230769230769232,
+          "target": 0.01
+        }
+      ],
+      "key_effects": [
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "kgw",
+          "length": 128,
+          "mean_across_keys": -0.0037691051108072167,
+          "between_key_sd": 0.6964582187103706,
+          "minimum_key_mean": -1.0363202633552608,
+          "maximum_key_mean": 1.234308297143906,
+          "key_mean_range": 2.270628560499167,
+          "keys_beyond_3se": 9
+        },
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "kgw",
+          "length": 256,
+          "mean_across_keys": -0.025845553399704492,
+          "between_key_sd": 0.9689798269545242,
+          "minimum_key_mean": -1.4610736671334128,
+          "maximum_key_mean": 1.7402561510295547,
+          "key_mean_range": 3.2013298181629675,
+          "keys_beyond_3se": 9
+        },
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "kgw",
+          "length": 512,
+          "mean_across_keys": -0.04006716866948694,
+          "between_key_sd": 1.2816515238657145,
+          "minimum_key_mean": -1.9780775296241062,
+          "maximum_key_mean": 2.2728369425763337,
+          "key_mean_range": 4.25091447220044,
+          "keys_beyond_3se": 9
+        },
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "synthid",
+          "length": 128,
+          "mean_across_keys": 0.4995772934217607,
+          "between_key_sd": 0.0008090079092377747,
+          "minimum_key_mean": 0.49859938560963685,
+          "maximum_key_mean": 0.5009108812447808,
+          "key_mean_range": 0.002311495635143934,
+          "keys_beyond_3se": 0
+        },
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "synthid",
+          "length": 256,
+          "mean_across_keys": 0.49953673932215603,
+          "between_key_sd": 0.000704261569841169,
+          "minimum_key_mean": 0.4986951694428283,
+          "maximum_key_mean": 0.500766308725649,
+          "key_mean_range": 0.0020711392828206554,
+          "keys_beyond_3se": 0
+        },
+        {
+          "model": "SmolLM2-135M-Instruct",
+          "scheme": "synthid",
+          "length": 512,
+          "mean_across_keys": 0.49958485273092484,
+          "between_key_sd": 0.0006880291911907662,
+          "minimum_key_mean": 0.49861914869728924,
+          "maximum_key_mean": 0.5006746798868448,
+          "key_mean_range": 0.0020555311895555373,
+          "keys_beyond_3se": 2
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "kgw",
+          "length": 128,
+          "mean_across_keys": 0.3504675486068017,
+          "between_key_sd": 0.6042188465567055,
+          "minimum_key_mean": -0.45221723472846403,
+          "maximum_key_mean": 1.3216942486007808,
+          "key_mean_range": 1.7739114833292449,
+          "keys_beyond_3se": 7
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "kgw",
+          "length": 256,
+          "mean_across_keys": 0.4407281345666839,
+          "between_key_sd": 0.7092072341698048,
+          "minimum_key_mean": -0.45672153047658076,
+          "maximum_key_mean": 1.6359998772761855,
+          "key_mean_range": 2.0927214077527663,
+          "keys_beyond_3se": 5
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "kgw",
+          "length": 512,
+          "mean_across_keys": 0.5775697389603305,
+          "between_key_sd": 0.9781158933218395,
+          "minimum_key_mean": -0.6897011498443258,
+          "maximum_key_mean": 2.1460713389023613,
+          "key_mean_range": 2.835772488746687,
+          "keys_beyond_3se": 6
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "synthid",
+          "length": 128,
+          "mean_across_keys": 0.499538235511422,
+          "between_key_sd": 0.001686579128139603,
+          "minimum_key_mean": 0.4974115453616983,
+          "maximum_key_mean": 0.5022382207018204,
+          "key_mean_range": 0.004826675340122155,
+          "keys_beyond_3se": 0
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "synthid",
+          "length": 256,
+          "mean_across_keys": 0.4998280349278195,
+          "between_key_sd": 0.0011616747652814085,
+          "minimum_key_mean": 0.49798981280840143,
+          "maximum_key_mean": 0.5014748477793798,
+          "key_mean_range": 0.0034850349709783512,
+          "keys_beyond_3se": 0
+        },
+        {
+          "model": "Qwen2.5-0.5B-Instruct",
+          "scheme": "synthid",
+          "length": 512,
+          "mean_across_keys": 0.49955230955640484,
+          "between_key_sd": 0.000631458412007451,
+          "minimum_key_mean": 0.498749638758503,
+          "maximum_key_mean": 0.50053894725963,
+          "key_mean_range": 0.0017893085011270182,
+          "keys_beyond_3se": 0
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "combined-analysis",
+      "label": "Validated Phase 2 primary and replication analyses",
+      "path": "validation/analyse_phase2_variance.py",
+      "query": {
+        "description": "DuckDB loads both validated JSON analyses; build_report_artifact.py deterministically selects and reshapes their validated cell_summaries, key_effects and theoretical_kgw_tails into the bounded report datasets.",
+        "sql": "SELECT 'primary' AS run, * FROM read_json_auto('results/phase2-variance-pilot/analysis.json')\nUNION ALL BY NAME\nSELECT 'replication' AS run, * FROM read_json_auto('results/phase2-variance-replication/analysis.json');",
+        "language": "sql",
+        "engine": "DuckDB",
+        "executed_at": "2026-08-30T11:02:46.332963+00:00",
+        "tables_used": [
+          "results/phase2-variance-pilot/run.json",
+          "results/phase2-variance-replication/run.json"
+        ],
+        "filters": [
+          "unwatermarked condition only",
+          "paired generated-token prefixes at 128, 256 and 512",
+          "ten frozen detector keys per watermark family"
+        ],
+        "metric_definitions": [
+          "KGW score is the canonical SelfHash green-token z statistic.",
+          "SynthID score is the mean canonical g-value over eligible positions and depth.",
+          "Empirical FPR is the share of null scores strictly above the declared cutoff."
+        ]
+      }
+    },
+    {
+      "id": "executed-notebook",
+      "label": "Executed analysis notebook",
+      "path": "notebooks/phase2-variance-pilot.ipynb"
+    },
+    {
+      "id": "qwen-model-card",
+      "label": "Qwen2.5-0.5B-Instruct model card",
+      "href": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/tree/7ae557604adf67be50417f59c2c2f167def9a775"
+    }
+  ]
+}

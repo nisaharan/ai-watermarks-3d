@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "status": "capacity_valid",
+  "config": "configs/phase2-confirmatory-null-v2-draft.json",
+  "config_sha256": "2ae2cedf86180369f0f8b5d053e63ffba6853b1fdd56ac2bb42cf11f40692453",
+  "source": {
+    "dataset": "HuggingFaceH4/ultrachat_200k",
+    "revision": "8049631c405ae6576f93f445c6b8166f76f5505a",
+    "split": "train_sft",
+    "dataset_card": {
+      "path": ".cache/phase2-ultrachat-v2/README.md",
+      "sha256": "d2b3bf76702b85b28172f4dd971ae80c03348cd3fee518c7e6e6f4d43dd33431"
+    },
+    "files": [
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00000-of-00003-a3ecf92756993583.parquet",
+        "sha256": "afa8fa7426081b2a0e732fb50dbb5cd402a28ad5f0dbe66c0d996d63e7220727",
+        "rows": 69289,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00000.jsonl",
+        "prompt_extract_sha256": "9ab02db218fe308041c4140f0cd1e622db8a3e754f647eac99bfd503cba048e6"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00001-of-00003-0a1804bcb6ae68c6.parquet",
+        "sha256": "c8230190bc8b29084c974ff32f05589b458fad1908fc4b2fb2b9e1e9f7921f03",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00001.jsonl",
+        "prompt_extract_sha256": "97f48aff2766480a3076d5fbde0ba370c71c07a42b00a2e6bd415bbb64863950"
+      },
+      {
+        "path": ".cache/phase2-ultrachat-v2/train_sft-00002-of-00003-ee46ed25cfae92c6.parquet",
+        "sha256": "6fe7d2a5e95cf660f972ecaf304aa5632d7f53384e4b0e0d0f44d9c96733c03e",
+        "rows": 69288,
+        "prompt_extract": ".cache/phase2-ultrachat-v2/prompts-00002.jsonl",
+        "prompt_extract_sha256": "7db86f2f7936f1abd998138d4503c403bb3863fffb1ee532e88faf9b575f6bbe"
+      }
+    ],
+    "rows": 207865,
+    "unique_prompt_ids": 207865,
+    "unique_normalized_prompts": 207860
+  },
+  "selection": {
+    "required_records": 40000,
+    "eligible_records": 203109,
+    "capacity_surplus": 163109,
+    "max_prompt_tokens": 1024,
+    "rejected": {
+      "duplicate_normalized_prompt": 4,
+      "empty_prompt": 1,
+      "prior_study_overlap": 204,
+      "too_long": 4547
+    },
+    "prompt_tokens_before_length_rejection": {
+      "minimum": 1,
+      "median": 89,
+      "p95": 767,
+      "p99": 1025,
+      "maximum_censored_at": 1025
+    },
+    "exclusion_manifest_sha256": {
+      "data/phase2-null-calibration-prompts.json": "fa8f52bb0203548d22ad5f761b2a18470cb04e88eee634b077918a47b055b60a",
+      "data/phase2-variance-replication-prompts.json": "15caa4969e8ae3081d7a88dbef9145f85140c179a3b6c53bbf4d7b7b4beace59",
+      "data/phase2-smoke-prompts.json": "981bacff4ed9ac6196f8bfb6a6da27308cc81191a1c417850c523f6621be8d4f",
+      "data/phase2-confirmatory-calibration-prompts.json": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+      "data/phase2-confirmatory-confirmation-prompts.json": "d053da15c9897ea2e9232471aeee86aca21fdb5e093398019f53148143725b32",
+      "data/phase2-v2-positive-sensitivity-prompts.json": "964c30c583a076587ac539a89ece384cac8c43e4b3c8ebea36b64be7db40fdb6",
+      "data/phase2-v2-kgw-bias-development-prompts.json": "bdf5680ac20ff3a368bc100d29353d2c6233dc7e0140776a587945c248e48201",
+      "data/phase2-v2-kgw-bias-development-v2-prompts.json": "cc498e5e503c89fdbf8fccfebb4c5cfb8b219aa44ad6cb99f8ffb54b64c3121e",
+      "data/phase2-v2-kgw-bias-development-v3-prompts.json": "974a239068af02f041a613e9b82ed3f3bdce02a29f69d4a1b60d0d8793cad7a2"
+    }
+  },
+  "authorization": "source audit only; no manifests, thresholds, or generations produced"
+}

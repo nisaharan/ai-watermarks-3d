@@ -1,0 +1,863 @@
+{
+  "schema_version": 1,
+  "status": "thresholds_frozen",
+  "protocol_id": "phase2-confirmatory-null-v1",
+  "generated_at": "2026-08-31T02:11:34.873947+00:00",
+  "protocol_sha256": "de4ceb230973885e57faeffb81a1ff8c4325f428dc9dba1efbda1cb9a476b741",
+  "calibration_run_digest": "3ac0312a7e95349c90b103287c95418b85b41268481aab12fb712d3ecfdf7d8c",
+  "calibration_prompt_manifest": "data/phase2-confirmatory-calibration-prompts.json",
+  "calibration_prompt_manifest_sha256": "ede88872cbc4575dd97c156a9848e28a2b82438847455e3f12449f8369b0d23d",
+  "acceptance": {
+    "target_fpr": 0.01,
+    "familywise_confidence": 0.95,
+    "primary_cells": 60,
+    "cell_definition": "2 schemes x 10 detector keys x 3 generated-token lengths",
+    "multiplicity_control": "Bonferroni",
+    "per_cell_alpha": 0.0008333333333333334,
+    "interval": "exact one-sided Clopper-Pearson upper confidence bound",
+    "maximum_exceedances_per_5000": 28,
+    "minimum_order_statistic_index_one_based": 4972,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "global_gate": "pass only if every one of the 60 confirmation cells has an exact upper bound <= 0.01",
+    "kgw_threshold_policy": "detector-key x model x length",
+    "synthid_threshold_policy": "one shared threshold per model x length, set to the maximum of the ten key-specific calibration candidates; confirmation is still checked separately for every key",
+    "category_analysis": "diagnostic only; no category-specific threshold tuning or confirmatory claim"
+  },
+  "per_cell_alpha": 0.000833333333333334,
+  "maximum_passing_exceedances": 28,
+  "candidate_cells": [
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 3.863569705382231,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 4.358471705221241,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 5.020809057521032,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 2.4270695636233146,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 2.646896410149178,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 2.710687382741972,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 2.7406406388125952,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 3.064523510731495,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 3.0631648214557856,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 1.9261430632928083,
+      "strict_exceedances": 26,
+      "empirical_rate": 0.0052,
+      "exact_upper_bound": 0.009247634268124083
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 1.7457431218879391,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 1.4927035850663304,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 2.4444444444444446,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 2.5404051914183623,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 3.2515115014443907,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 3.6977208059257327,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 4.143466764882176,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 4.865804798594798,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 2.9673014758835152,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 3.0995189213585466,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 3.315802571615686,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 4.8488257455915145,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 5.661385170722979,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 6.396731643659333,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 4.314554973040049,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 4.933262475450236,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 5.615927500082481,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 3.7777777777777777,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 4.2699324622671995,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 4.796192573642472,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5419501133786848,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5341880341880342,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5277777777777778,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5402298850574713,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5309224318658281,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5271739130434783,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.540360873694207,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.532235939643347,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.528158295281583,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5456187895212286,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.533068783068783,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5293276108726752,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.543010752688172,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5343915343915344,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5286324786324786,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5404040404040404,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5305555555555556,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5263888888888889,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5381944444444444,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5297728667894414,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5247236765561373,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5404040404040404,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5321637426900585,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5277777777777778,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5406162464985994,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5333333333333333,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5255102040816326,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 128,
+      "samples": 5000,
+      "candidate_threshold": 0.5383141762452107,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 256,
+      "samples": 5000,
+      "candidate_threshold": 0.5290562529056253,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 512,
+      "samples": 5000,
+      "candidate_threshold": 0.5258838383838383,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927
+    }
+  ],
+  "operational_thresholds": [
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 128,
+      "threshold": 3.863569705382231,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 128,
+      "threshold": 2.4270695636233146,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 128,
+      "threshold": 2.7406406388125952,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 128,
+      "threshold": 1.9261430632928083,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 128,
+      "threshold": 2.4444444444444446,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 128,
+      "threshold": 3.6977208059257327,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 128,
+      "threshold": 2.9673014758835152,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 128,
+      "threshold": 4.8488257455915145,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 128,
+      "threshold": 4.314554973040049,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 128,
+      "threshold": 3.7777777777777777,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "shared",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "policy": "maximum_of_key_specific_candidates"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 256,
+      "threshold": 4.358471705221241,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 256,
+      "threshold": 2.646896410149178,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 256,
+      "threshold": 3.064523510731495,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 256,
+      "threshold": 1.7457431218879391,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 256,
+      "threshold": 2.5404051914183623,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 256,
+      "threshold": 4.143466764882176,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 256,
+      "threshold": 3.0995189213585466,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 256,
+      "threshold": 5.661385170722979,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 256,
+      "threshold": 4.933262475450236,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 256,
+      "threshold": 4.2699324622671995,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "shared",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "policy": "maximum_of_key_specific_candidates"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 512,
+      "threshold": 5.020809057521032,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 512,
+      "threshold": 2.710687382741972,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 512,
+      "threshold": 3.0631648214557856,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 512,
+      "threshold": 1.4927035850663304,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 512,
+      "threshold": 3.2515115014443907,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 512,
+      "threshold": 4.865804798594798,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 512,
+      "threshold": 3.315802571615686,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 512,
+      "threshold": 6.396731643659333,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 512,
+      "threshold": 5.615927500082481,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 512,
+      "threshold": 4.796192573642472,
+      "policy": "key_conditional"
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "shared",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "policy": "maximum_of_key_specific_candidates"
+    }
+  ]
+}

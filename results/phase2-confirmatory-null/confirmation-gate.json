@@ -1,0 +1,1418 @@
+{
+  "schema_version": 1,
+  "status": "confirmation_gate_failed",
+  "protocol_id": "phase2-confirmatory-null-v1",
+  "generated_at": "2026-08-31T07:15:19.708631+00:00",
+  "protocol_sha256": "de4ceb230973885e57faeffb81a1ff8c4325f428dc9dba1efbda1cb9a476b741",
+  "thresholds_sha256": "d3b7800e5e2ffe5d93668c71c440e224c1cdd5cf3dd086f96c5c7fce0eb1bed0",
+  "confirmation_run_digest": "a2e90684a4b5b60bb7fbfbf89b1c8123bcda5c32a61a5f8a1b6e621a23a2561c",
+  "acceptance": {
+    "target_fpr": 0.01,
+    "familywise_confidence": 0.95,
+    "primary_cells": 60,
+    "cell_definition": "2 schemes x 10 detector keys x 3 generated-token lengths",
+    "multiplicity_control": "Bonferroni",
+    "per_cell_alpha": 0.0008333333333333334,
+    "interval": "exact one-sided Clopper-Pearson upper confidence bound",
+    "maximum_exceedances_per_5000": 28,
+    "minimum_order_statistic_index_one_based": 4972,
+    "decision_rule": "score_strictly_greater_than_threshold",
+    "global_gate": "pass only if every one of the 60 confirmation cells has an exact upper bound <= 0.01",
+    "kgw_threshold_policy": "detector-key x model x length",
+    "synthid_threshold_policy": "one shared threshold per model x length, set to the maximum of the ten key-specific calibration candidates; confirmation is still checked separately for every key",
+    "category_analysis": "diagnostic only; no category-specific threshold tuning or confirmatory claim"
+  },
+  "per_cell_alpha": 0.000833333333333334,
+  "cells": [
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 128,
+      "threshold": 3.863569705382231,
+      "samples": 5000,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.009602194787379973,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0,
+        "open_qa": 0.008620689655172414,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 256,
+      "threshold": 4.358471705221241,
+      "samples": 5000,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.010033444816053512,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0,
+        "open_qa": 0.007836990595611285,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-00",
+      "length": 512,
+      "threshold": 5.020809057521032,
+      "samples": 5000,
+      "strict_exceedances": 26,
+      "empirical_rate": 0.0052,
+      "exact_upper_bound": 0.009247634268124083,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.013452914798206279,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0,
+        "open_qa": 0.007836990595611285,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 128,
+      "threshold": 2.4270695636233146,
+      "samples": 5000,
+      "strict_exceedances": 28,
+      "empirical_rate": 0.0056,
+      "exact_upper_bound": 0.009764694867078927,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.008561643835616438,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.008379888268156424,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 256,
+      "threshold": 2.646896410149178,
+      "samples": 5000,
+      "strict_exceedances": 17,
+      "empirical_rate": 0.0034,
+      "exact_upper_bound": 0.006855854741360468,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.006097560975609756,
+        "open_qa": 0.0023510971786833857,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-01",
+      "length": 512,
+      "threshold": 2.710687382741972,
+      "samples": 5000,
+      "strict_exceedances": 19,
+      "empirical_rate": 0.0038,
+      "exact_upper_bound": 0.0073984677783162645,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 128,
+      "threshold": 2.7406406388125952,
+      "samples": 5000,
+      "strict_exceedances": 14,
+      "empirical_rate": 0.0028,
+      "exact_upper_bound": 0.00602591410941794,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.010973936899862825,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0,
+        "open_qa": 0.001567398119122257,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 256,
+      "threshold": 3.064523510731495,
+      "samples": 5000,
+      "strict_exceedances": 17,
+      "empirical_rate": 0.0034,
+      "exact_upper_bound": 0.006855854741360468,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-02",
+      "length": 512,
+      "threshold": 3.0631648214557856,
+      "samples": 5000,
+      "strict_exceedances": 24,
+      "empirical_rate": 0.0048,
+      "exact_upper_bound": 0.00872606201926257,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.009602194787379973,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 128,
+      "threshold": 1.9261430632928083,
+      "samples": 5000,
+      "strict_exceedances": 32,
+      "empirical_rate": 0.0064,
+      "exact_upper_bound": 0.010787036621659973,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.019204389574759947,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 256,
+      "threshold": 1.7457431218879391,
+      "samples": 5000,
+      "strict_exceedances": 34,
+      "empirical_rate": 0.0068,
+      "exact_upper_bound": 0.011293029109457786,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.0205761316872428,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.008130081300813009,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.010471204188481676
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 512,
+      "threshold": 1.4927035850663304,
+      "samples": 5000,
+      "strict_exceedances": 48,
+      "empirical_rate": 0.0096,
+      "exact_upper_bound": 0.014760966585005197,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.0205761316872428,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.014227642276422764,
+        "open_qa": 0.008620689655172414,
+        "summarization": 0.015706806282722512
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 128,
+      "threshold": 2.4444444444444446,
+      "samples": 5000,
+      "strict_exceedances": 24,
+      "empirical_rate": 0.0048,
+      "exact_upper_bound": 0.00872606201926257,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.013377926421404682,
+        "classification": 0.012345679012345678,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.0023510971786833857,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 256,
+      "threshold": 2.5404051914183623,
+      "samples": 5000,
+      "strict_exceedances": 35,
+      "empirical_rate": 0.007,
+      "exact_upper_bound": 0.011544860946103686,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.016722408026755852,
+        "classification": 0.012345679012345678,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0,
+        "open_qa": 0.007053291536050157,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 512,
+      "threshold": 3.2515115014443907,
+      "samples": 5000,
+      "strict_exceedances": 12,
+      "empirical_rate": 0.0024,
+      "exact_upper_bound": 0.005459389388940028,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.0013717421124828531,
+        "closed_qa": 0.0,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 128,
+      "threshold": 3.6977208059257327,
+      "samples": 5000,
+      "strict_exceedances": 34,
+      "empirical_rate": 0.0068,
+      "exact_upper_bound": 0.011293029109457786,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.019204389574759947,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.008379888268156424,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.0023510971786833857,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 256,
+      "threshold": 4.143466764882176,
+      "samples": 5000,
+      "strict_exceedances": 34,
+      "empirical_rate": 0.0068,
+      "exact_upper_bound": 0.011293029109457786,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.0205761316872428,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 512,
+      "threshold": 4.865804798594798,
+      "samples": 5000,
+      "strict_exceedances": 34,
+      "empirical_rate": 0.0068,
+      "exact_upper_bound": 0.011293029109457786,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.01783264746227709,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.013452914798206279,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 128,
+      "threshold": 2.9673014758835152,
+      "samples": 5000,
+      "strict_exceedances": 32,
+      "empirical_rate": 0.0064,
+      "exact_upper_bound": 0.010787036621659973,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.010273972602739725,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.008379888268156424,
+        "information_extraction": 0.0,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 256,
+      "threshold": 3.0995189213585466,
+      "samples": 5000,
+      "strict_exceedances": 37,
+      "empirical_rate": 0.0074,
+      "exact_upper_bound": 0.012046353166182133,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.010973936899862825,
+        "closed_qa": 0.010273972602739725,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.01018808777429467,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 512,
+      "threshold": 3.315802571615686,
+      "samples": 5000,
+      "strict_exceedances": 39,
+      "empirical_rate": 0.0078,
+      "exact_upper_bound": 0.012545136186721428,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.010973936899862825,
+        "closed_qa": 0.008561643835616438,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.008379888268156424,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.01018808777429467,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 128,
+      "threshold": 4.8488257455915145,
+      "samples": 5000,
+      "strict_exceedances": 23,
+      "empirical_rate": 0.0046,
+      "exact_upper_bound": 0.008463416356487452,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.0054869684499314125,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 256,
+      "threshold": 5.661385170722979,
+      "samples": 5000,
+      "strict_exceedances": 16,
+      "empirical_rate": 0.0032,
+      "exact_upper_bound": 0.006581529918789852,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0,
+        "open_qa": 0.0054858934169279,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-07",
+      "length": 512,
+      "threshold": 6.396731643659333,
+      "samples": 5000,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.008379888268156424,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 128,
+      "threshold": 4.314554973040049,
+      "samples": 5000,
+      "strict_exceedances": 27,
+      "empirical_rate": 0.0054,
+      "exact_upper_bound": 0.009506698044277673,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.015089163237311385,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.006269592476489028,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 256,
+      "threshold": 4.933262475450236,
+      "samples": 5000,
+      "strict_exceedances": 30,
+      "empirical_rate": 0.006,
+      "exact_upper_bound": 0.010277700857550254,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.015089163237311385,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.006097560975609756,
+        "open_qa": 0.007053291536050157,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 512,
+      "threshold": 5.615927500082481,
+      "samples": 5000,
+      "strict_exceedances": 24,
+      "empirical_rate": 0.0048,
+      "exact_upper_bound": 0.00872606201926257,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.015089163237311385,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 128,
+      "threshold": 3.7777777777777777,
+      "samples": 5000,
+      "strict_exceedances": 29,
+      "empirical_rate": 0.0058,
+      "exact_upper_bound": 0.010021679162366015,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.0027434842249657062,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.009404388714733543,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 256,
+      "threshold": 4.2699324622671995,
+      "samples": 5000,
+      "strict_exceedances": 31,
+      "empirical_rate": 0.0062,
+      "exact_upper_bound": 0.010532805886129648,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.008561643835616438,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.007836990595611285,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 512,
+      "threshold": 4.796192573642472,
+      "samples": 5000,
+      "strict_exceedances": 30,
+      "empirical_rate": 0.006,
+      "exact_upper_bound": 0.010277700857550254,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.007853403141361256
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 12,
+      "empirical_rate": 0.0024,
+      "exact_upper_bound": 0.005459389388940028,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 21,
+      "empirical_rate": 0.0042,
+      "exact_upper_bound": 0.007934007432134182,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-00",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 16,
+      "empirical_rate": 0.0032,
+      "exact_upper_bound": 0.006581529918789852,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.001567398119122257,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 14,
+      "empirical_rate": 0.0028,
+      "exact_upper_bound": 0.00602591410941794,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.0054869684499314125,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0,
+        "open_qa": 0.0007836990595611285,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 20,
+      "empirical_rate": 0.004,
+      "exact_upper_bound": 0.0076670575849102085,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-01",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 21,
+      "empirical_rate": 0.0042,
+      "exact_upper_bound": 0.007934007432134182,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.009602194787379973,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 15,
+      "empirical_rate": 0.003,
+      "exact_upper_bound": 0.006304954477277802,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.0023510971786833857,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 14,
+      "empirical_rate": 0.0028,
+      "exact_upper_bound": 0.00602591410941794,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.0054869684499314125,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-02",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 16,
+      "empirical_rate": 0.0032,
+      "exact_upper_bound": 0.006581529918789852,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.0054869684499314125,
+        "closed_qa": 0.0,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0,
+        "open_qa": 0.0054858934169279,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 30,
+      "empirical_rate": 0.006,
+      "exact_upper_bound": 0.010277700857550254,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.005016722408026756,
+        "classification": 0.009602194787379973,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.006097560975609756,
+        "open_qa": 0.0054858934169279,
+        "summarization": 0.015706806282722512
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 32,
+      "empirical_rate": 0.0064,
+      "exact_upper_bound": 0.010787036621659973,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.013717421124828532,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.0054858934169279,
+        "summarization": 0.007853403141361256
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 31,
+      "empirical_rate": 0.0062,
+      "exact_upper_bound": 0.010532805886129648,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.01646090534979424,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.013089005235602094
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 17,
+      "empirical_rate": 0.0034,
+      "exact_upper_bound": 0.006855854741360468,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 22,
+      "empirical_rate": 0.0044,
+      "exact_upper_bound": 0.00819942756574571,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.010973936899862825,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-04",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 25,
+      "empirical_rate": 0.005,
+      "exact_upper_bound": 0.00898744402474122,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.012345679012345678,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.006097560975609756,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 9,
+      "empirical_rate": 0.0018,
+      "exact_upper_bound": 0.004583048711528648,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.0,
+        "creative_writing": 0.008968609865470852,
+        "general_qa": 0.0,
+        "information_extraction": 0.0,
+        "open_qa": 0.001567398119122257,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 20,
+      "empirical_rate": 0.004,
+      "exact_upper_bound": 0.0076670575849102085,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.006688963210702341,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0040650406504065045,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-05",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 22,
+      "empirical_rate": 0.0044,
+      "exact_upper_bound": 0.00819942756574571,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.0054869684499314125,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 8,
+      "empirical_rate": 0.0016,
+      "exact_upper_bound": 0.004281776254782599,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.0027434842249657062,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 14,
+      "empirical_rate": 0.0028,
+      "exact_upper_bound": 0.00602591410941794,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.007853403141361256
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-06",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 16,
+      "empirical_rate": 0.0032,
+      "exact_upper_bound": 0.006581529918789852,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.007853403141361256
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 12,
+      "empirical_rate": 0.0024,
+      "exact_upper_bound": 0.005459389388940028,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.0027434842249657062,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 17,
+      "empirical_rate": 0.0034,
+      "exact_upper_bound": 0.006855854741360468,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0016722408026755853,
+        "classification": 0.006858710562414266,
+        "closed_qa": 0.003424657534246575,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.005235602094240838
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-07",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 21,
+      "empirical_rate": 0.0042,
+      "exact_upper_bound": 0.007934007432134182,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.0,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.006097560975609756,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.007853403141361256
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 13,
+      "empirical_rate": 0.0026,
+      "exact_upper_bound": 0.005744157987783882,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.00823045267489712,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.004189944134078212,
+        "information_extraction": 0.0,
+        "open_qa": 0.0023510971786833857,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 25,
+      "empirical_rate": 0.005,
+      "exact_upper_bound": 0.00898744402474122,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0,
+        "classification": 0.013717421124828532,
+        "closed_qa": 0.010273972602739725,
+        "creative_writing": 0.0,
+        "general_qa": 0.006983240223463687,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 33,
+      "empirical_rate": 0.0066,
+      "exact_upper_bound": 0.011040432252878707,
+      "passed": false,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.008361204013377926,
+        "classification": 0.019204389574759947,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.004484304932735426,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0,
+        "open_qa": 0.003918495297805642,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 128,
+      "threshold": 0.5456187895212286,
+      "samples": 5000,
+      "strict_exceedances": 12,
+      "empirical_rate": 0.0024,
+      "exact_upper_bound": 0.005459389388940028,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.0013717421124828531,
+        "closed_qa": 0.005136986301369863,
+        "creative_writing": 0.0,
+        "general_qa": 0.002793296089385475,
+        "information_extraction": 0.0,
+        "open_qa": 0.003134796238244514,
+        "summarization": 0.0
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 256,
+      "threshold": 0.5343915343915344,
+      "samples": 5000,
+      "strict_exceedances": 19,
+      "empirical_rate": 0.0038,
+      "exact_upper_bound": 0.0073984677783162645,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.0027434842249657062,
+        "closed_qa": 0.00684931506849315,
+        "creative_writing": 0.0,
+        "general_qa": 0.00558659217877095,
+        "information_extraction": 0.0,
+        "open_qa": 0.004702194357366771,
+        "summarization": 0.002617801047120419
+      }
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-09",
+      "length": 512,
+      "threshold": 0.5293276108726752,
+      "samples": 5000,
+      "strict_exceedances": 20,
+      "empirical_rate": 0.004,
+      "exact_upper_bound": 0.0076670575849102085,
+      "passed": true,
+      "category_rates_diagnostic": {
+        "brainstorming": 0.0033444816053511705,
+        "classification": 0.00411522633744856,
+        "closed_qa": 0.0017123287671232876,
+        "creative_writing": 0.0,
+        "general_qa": 0.0013966480446927375,
+        "information_extraction": 0.0020325203252032522,
+        "open_qa": 0.007053291536050157,
+        "summarization": 0.007853403141361256
+      }
+    }
+  ],
+  "failed_cells": [
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 128,
+      "strict_exceedances": 32,
+      "exact_upper_bound": 0.010787036621659973
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 256,
+      "strict_exceedances": 34,
+      "exact_upper_bound": 0.011293029109457786
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-03",
+      "length": 512,
+      "strict_exceedances": 48,
+      "exact_upper_bound": 0.014760966585005197
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-04",
+      "length": 256,
+      "strict_exceedances": 35,
+      "exact_upper_bound": 0.011544860946103686
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 128,
+      "strict_exceedances": 34,
+      "exact_upper_bound": 0.011293029109457786
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 256,
+      "strict_exceedances": 34,
+      "exact_upper_bound": 0.011293029109457786
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-05",
+      "length": 512,
+      "strict_exceedances": 34,
+      "exact_upper_bound": 0.011293029109457786
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 128,
+      "strict_exceedances": 32,
+      "exact_upper_bound": 0.010787036621659973
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 256,
+      "strict_exceedances": 37,
+      "exact_upper_bound": 0.012046353166182133
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-06",
+      "length": 512,
+      "strict_exceedances": 39,
+      "exact_upper_bound": 0.012545136186721428
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-08",
+      "length": 256,
+      "strict_exceedances": 30,
+      "exact_upper_bound": 0.010277700857550254
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 128,
+      "strict_exceedances": 29,
+      "exact_upper_bound": 0.010021679162366015
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 256,
+      "strict_exceedances": 31,
+      "exact_upper_bound": 0.010532805886129648
+    },
+    {
+      "scheme": "kgw",
+      "key_id": "kgw-09",
+      "length": 512,
+      "strict_exceedances": 30,
+      "exact_upper_bound": 0.010277700857550254
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 128,
+      "strict_exceedances": 30,
+      "exact_upper_bound": 0.010277700857550254
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 256,
+      "strict_exceedances": 32,
+      "exact_upper_bound": 0.010787036621659973
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-03",
+      "length": 512,
+      "strict_exceedances": 31,
+      "exact_upper_bound": 0.010532805886129648
+    },
+    {
+      "scheme": "synthid",
+      "key_id": "synthid-08",
+      "length": 512,
+      "strict_exceedances": 33,
+      "exact_upper_bound": 0.011040432252878707
+    }
+  ],
+  "one_shot": true,
+  "post_confirmation_retuning_authorized": false
+}

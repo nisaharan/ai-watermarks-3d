@@ -1,0 +1,31 @@
+{
+  "comparison_length": 512,
+  "human_n_by_length": {
+    "128": 5000,
+    "256": 1951,
+    "512": 554
+  },
+  "spearman_p_k_human_vs_model": 0.9393939393939393,
+  "spearman_p": 5.48405299851367e-05,
+  "pearson_p_k_human_vs_model": 0.9590171630334935,
+  "human_p_k_range": [
+    0.2157037937797287,
+    0.28040529268048536
+  ],
+  "model_p_k_range": [
+    0.20495321661929156,
+    0.30199069183832333
+  ],
+  "human_fpr_range": [
+    0.005415162454873646,
+    0.2545126353790614
+  ],
+  "model_fpr_range": [
+    0.0027,
+    0.4836
+  ],
+  "human_cells_above_1pct": 19,
+  "human_cells_total": 30,
+  "worst_key_human": "kgw-07",
+  "worst_key_model": "kgw-07"
+}
