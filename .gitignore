@@ -98,3 +98,5 @@ requirements.txt
 
 !results/phase2-detection-tradeoff/detection-cells.csv
 !results/phase2-detection-tradeoff/detection-summary.json
+
+!results/phase2-detection-tradeoff/watermarked-scores.csv

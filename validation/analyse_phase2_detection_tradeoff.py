@@ -16,11 +16,14 @@ This is a development-scale answer: 50 watermarked outputs per key and length,
 so the intervals are wide. It is not a confirmatory detection claim.
 
 Inputs:
-    results/phase2-v2-positive-sensitivity/run/batches/*.json  watermarked scores
+    results/phase2-v2-positive-sensitivity/run/batches/*.json  watermarked scores,
+        or results/phase2-detection-tradeoff/watermarked-scores.csv, the compact
+        export of them that ships with the release
     results/phase2-confirmatory-null/thresholds.json           frozen thresholds
     results/phase2-nominal-fpr/nominal-fpr-cells.csv           nominal FPR, n = 10,000
     results/phase2-confirmatory-null/failure-diagnosis.json    held-out FPR, n = 5,000
 Outputs:
+    results/phase2-detection-tradeoff/watermarked-scores.csv
     results/phase2-detection-tradeoff/detection-cells.csv
     results/phase2-detection-tradeoff/detection-summary.json
     paper/figures/fig7-detection-tradeoff.pdf
@@ -63,12 +66,25 @@ def cp(x: int, n: int, conf: float = 0.95) -> tuple[float, float]:
     return float(lo), float(hi)
 
 
+SCORE_CACHE = os.path.join(OUT, "watermarked-scores.csv")
+
+
 def watermarked_scores() -> dict[tuple[str, int], list[float]]:
-    """Per-output KGW z, scored under the key the output was generated with."""
+    """Per-output KGW z, scored under the key the output was generated with.
+
+    Read from the raw batches when they are present, and exported to a compact
+    CSV so the analysis also runs from a release, where the batches are not
+    published: they contain generated text that has not been reviewed.
+    """
     hits: dict[tuple[str, int], list[float]] = defaultdict(list)
     files = sorted(glob.glob(os.path.join(POS, "*.json")))
     if not files:
-        raise SystemExit(f"no watermarked batches under {POS}")
+        if os.path.exists(SCORE_CACHE):
+            cached = pd.read_csv(SCORE_CACHE)
+            for r in cached.itertuples():
+                hits[(r.key_id, int(r.length))].append(float(r.value))
+            return hits
+        raise SystemExit(f"no watermarked batches under {POS} and no {SCORE_CACHE}")
     for path in files:
         batch = json.load(open(path))
         if batch["scheme"] != "kgw":
@@ -81,6 +97,10 @@ def watermarked_scores() -> dict[tuple[str, int], list[float]]:
                 score = item["score"]
                 if score["key_id"] == record["key_id"]:
                     hits[(record["key_id"], int(item["length"]))].append(float(score["value"]))
+    os.makedirs(OUT, exist_ok=True)
+    pd.DataFrame([{"key_id": k, "length": L, "value": v}
+                  for (k, L), vals in sorted(hits.items()) for v in vals]).to_csv(
+        SCORE_CACHE, index=False)
     return hits
 
 
