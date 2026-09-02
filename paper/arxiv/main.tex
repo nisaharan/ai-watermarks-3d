@@ -65,7 +65,9 @@ keys scored on 5,000 human-written passages reproduce the key ranking
 token statistics, not of the generating model, which only amplifies it. Which key
 inflates is model-specific: a Qwen2.5 replication fails different keys. Per-key,
 per-length empirical calibration on 5,000 outputs brings every held-out cell to
-0.16\% to 0.96\%. A prospective familywise acceptance rule fitted at its own
+0.16\% to 0.96\%, and on watermarked text it costs a median two points of
+detection at 512 tokens while gaining detection for the keys whose threshold it
+lowers. A prospective familywise acceptance rule fitted at its own
 boundary nevertheless failed 18 of 60 cells, which we report as a design lesson on
 validation margin. SynthID-Text's naive-independence reference stays near 1\%
 throughout. All rates are reported with exact 95\% intervals.
@@ -116,10 +118,12 @@ The findings, in order of evidential strength, are as follows.
   $\rho=+0.94$) and the same worst key, with smaller inflation. The bias belongs to
   the key against ordinary token statistics; the model amplifies it
   (Section~\ref{sec:c3}).
-  \item \textbf{Per-key, per-length empirical calibration works.} Thresholds fitted
-  once on 5,000 outputs and evaluated once on 5,000 disjoint outputs give held-out
-  rates of 0.16\% to 0.96\% in all 60 scheme-by-key-by-length cells
-  (Section~\ref{sec:c4}).
+  \item \textbf{Per-key, per-length empirical calibration works, and it is
+  affordable.} Thresholds fitted once on 5,000 outputs and evaluated once on
+  5,000 disjoint outputs give held-out rates of 0.16\% to 0.96\% in all 60
+  scheme-by-key-by-length cells (Section~\ref{sec:c4}). On watermarked text it
+  costs a median two points of detection at 512 tokens, and for the three keys
+  whose threshold it lowers it gains detection (Section~\ref{sec:c4b}).
   \item \textbf{Fitting at an acceptance boundary leaves no familywise margin.} A
   prospective rule that required all 60 calibrated cells to pass an exact
   Bonferroni-controlled bound failed 18 cells, although no failed cell's point
@@ -454,6 +458,58 @@ SynthID cells 0.16\% to 0.66\%. Empirical calibration at $n=5{,}000$ per cell th
 delivers the operating point the nominal threshold promised, provided the
 threshold is indexed by key and length.
 
+\subsection{What Calibration Costs in Detection}
+\label{sec:c4b}
+
+A per-key threshold that is far above the nominal one invites an obvious
+objection: for key 07 at 512 tokens it sits at $z>6.40$ against a nominal
+2.326, and a threshold that high might detect nothing. We can answer this from
+stored scores. A 1{,}000-output development screen generated watermarked text
+under the same model, the same watermark configuration and the same ten-key
+schedule, so the thresholds frozen on the null's calibration split apply to it
+unchanged. Those thresholds were fitted on unwatermarked text alone, so using
+them on watermarked text is not circular. Detection rate here is the fraction of
+watermarked outputs scoring above the threshold under their own key, on 50
+outputs per cell.
+
+Calibration does not disarm the detector (Figure~\ref{fig:detection}a). The
+median detection rate across the ten keys falls from 99\% to 97\% at 512 tokens,
+from 98\% to 95\% at 256, and from 96\% to 88\% at 128. For key 07 at 512 tokens
+the false-positive rate falls from 48.4\% to 0.54\% while detection falls from
+98\% to 96\%: an almost ninetyfold reduction in false positives for two points of
+detection. The worst cell in the whole set is key 08 at 128 tokens, where
+detection is 76\% [62, 87].
+
+The correction also runs in both directions (Figure~\ref{fig:detection}b).
+Calibration raised the threshold in 27 of 30 cells and lowered it in three, and
+where it lowered the threshold, detection improved. Key 03 is the clearest case:
+its null sits well below the assumed one, its calibrated threshold at 512 tokens
+is $z>1.49$ rather than 2.326, and its detection rate rises from 96\% to 98\%; at
+128 tokens it rises from 78\% to 86\%. Averaged over cells, calibration costs 4.2
+points of detection where it raises the threshold and gains 5.3 points where it
+lowers it. A conservative key is not harmless. It gives away detection power for
+a false-positive rate below the one it was asked for, and only a key-conditional
+threshold recovers that.
+
+These are development-scale numbers on 50 outputs per cell, so the intervals are
+wide, and they are not a confirmatory detection claim. They are sufficient to
+answer the objection they were computed for: on this model and this watermark
+configuration, the price of a correctly calibrated false-positive rate is a few
+points of detection, not the loss of the watermark.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig7-detection-tradeoff.pdf}
+  \caption{(a) Operating point of each detector key at 512 tokens before and
+  after per-key calibration, on a log false-positive axis. Arrows run from the
+  nominal threshold to the calibrated one; labels sit at the nominal end. Colour
+  marks whether calibration raised or lowered that key's threshold. (b) Change in
+  detection rate from calibration, by key and prefix length. The three cells
+  where the threshold fell are the three where detection improved. Detection
+  rates are development-scale, 50 watermarked outputs per cell.}
+  \label{fig:detection}
+\end{figure*}
+
 \subsection{Fitting at the Acceptance Boundary Leaves No Familywise Margin}
 \label{sec:c5}
 
@@ -476,7 +532,7 @@ planning scenarios, not replacement thresholds.
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{../figures/fig7-design-margin.pdf}
+  \includegraphics[width=\textwidth]{../figures/fig8-design-margin.pdf}
   \caption{(a) Mean strict exceedances across the 30 key-by-length cells of each
   scheme, on the calibration split and on the disjoint confirmation split, against
   the largest count a cell could carry and still pass. KGW's pair sits on the
@@ -519,6 +575,9 @@ the scheme.
 Per-key, per-length thresholds fitted once on 5,000 outputs delivered held-out
 rates below 1\% in every cell. That is the practical remedy, and it needs nothing
 beyond an unwatermarked corpus from the relevant population and a key schedule.
+It is also cheap in the currency practitioners care about: a few points of
+detection where the threshold rises, and more detection than the nominal
+threshold gave where it falls.
 The prospective familywise rule we also imposed failed, and the failure is
 instructive. Selecting the least conservative threshold that satisfies a
 calibration bound places every cell at the acceptance boundary, where a fresh
@@ -549,8 +608,10 @@ and establishes only that the failing keys differ. The human-text null has 554
 passages at 512 tokens, and its longer passages are largely reference text rather
 than answers. SynthID-Text was evaluated against a naive-independence reference
 because its mean-$g$ detector has no nominal $z$; its calibrated behaviour is in
-Appendix~\ref{app:a1}. Detection-rate tuning was attempted in development and is
-out of scope here; no robustness conclusion is available.
+Appendix~\ref{app:a1}. The detection rates in Section~\ref{sec:c4b} come from a
+50-output-per-cell development screen, so they price the remedy at development
+scale rather than confirming a detection claim. No robustness, attack or
+paraphrase conclusion is available.
 
 \section{Ethics and Responsible Use}
 
@@ -651,7 +712,9 @@ Development detection-rate screens & 2,400 & Out of scope; support no claim here
   \item The SynthID-Text figures are a naive-independence reference, not a
   nominal claim by that scheme.
   \item Canonical and Transformers variant scores are never pooled.
-  \item Detection rates and robustness were not evaluated.
+  \item The detection rates are a development screen of 50 outputs per cell,
+  reported to price calibration; they are not a confirmatory detection claim.
+  \item Robustness to editing, paraphrase or attack was not evaluated.
 \end{itemize}
 
 \end{document}

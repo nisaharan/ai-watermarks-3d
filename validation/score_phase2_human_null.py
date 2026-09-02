@@ -5,6 +5,11 @@ tokenizes human-written Databricks Dolly text with the pinned SmolLM2 tokenizer
 and scores it with the same ten canonical KGW keys and ten SynthID key vectors
 used for the model null (`configs/phase2-variance-pilot.json` key schedule).
 
+Pass ``--tokenizer-id``/``--tokenizer-revision`` to score the same passages under
+a second vocabulary. The ten KGW hashing keys are identical across the pinned
+SmolLM2 and Qwen2.5 schedules, so that run holds the keys, the watermark
+parameters and the text fixed and varies only the tokenizer.
+
 Human text pool (both fields are human-written; prompts are never used):
     * ``response``  the human answer to each Dolly instruction
     * ``context``   the human-written reference passage, where present
@@ -94,6 +99,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--max-texts", type=int, default=5000)
     ap.add_argument("--output", type=Path, default=ROOT / "results" / "phase2-human-null")
     ap.add_argument("--device", default="cpu")
+    # Scoring the same human text under a second vocabulary isolates the
+    # tokenizer from the model: same keys, same watermark parameters, same
+    # passages, different green lists.
+    ap.add_argument("--tokenizer-id", default=None,
+                    help="override the protocol tokenizer, e.g. Qwen/Qwen2.5-0.5B-Instruct")
+    ap.add_argument("--tokenizer-revision", default=None)
     args = ap.parse_args(argv)
 
     protocol = load_json(args.protocol)
@@ -110,7 +121,12 @@ def main(argv: list[str] | None = None) -> int:
     rows = [json.loads(line) for line in source_bytes.splitlines() if line.strip()]
 
     torch, transformers = require_ml_dependencies()
-    model = protocol["model"]
+    model = dict(protocol["model"])
+    if args.tokenizer_id:
+        if not args.tokenizer_revision:
+            raise SystemExit("--tokenizer-id requires --tokenizer-revision: pins are not optional")
+        model = {"id": args.tokenizer_id, "revision": args.tokenizer_revision,
+                 "device": args.device}
     tokenizer = transformers.AutoTokenizer.from_pretrained(model["id"], revision=model["revision"])
     model_cfg = transformers.AutoConfig.from_pretrained(model["id"], revision=model["revision"])
     # build_scorers only needs vocab size, device and eos id: no weights are loaded

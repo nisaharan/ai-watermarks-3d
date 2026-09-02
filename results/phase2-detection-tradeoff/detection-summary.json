@@ -1,0 +1,38 @@
+{
+  "scope": "development-scale detection rates at the frozen per-key thresholds; not a confirmatory detection claim",
+  "n_watermarked_per_cell": 50,
+  "cells": 30,
+  "cells_threshold_raised": 27,
+  "cells_threshold_lowered": 3,
+  "tpr_nominal_median_by_length": {
+    "128": 0.96,
+    "256": 0.98,
+    "512": 0.99
+  },
+  "tpr_calibrated_median_by_length": {
+    "128": 0.88,
+    "256": 0.95,
+    "512": 0.97
+  },
+  "tpr_calibrated_min_by_length": {
+    "128": 0.76,
+    "256": 0.9,
+    "512": 0.92
+  },
+  "worst_cell": {
+    "key_id": "kgw-08",
+    "length": 128,
+    "tpr_calibrated": 0.76,
+    "tpr_calibrated_lo": 0.6183092518959619,
+    "tpr_calibrated_hi": 0.8693900838025427
+  },
+  "mean_tpr_change_where_threshold_raised": -0.042222222222222223,
+  "mean_tpr_change_where_threshold_lowered": 0.05333333333333334,
+  "worst_key_512": {
+    "threshold_calibrated": 6.396731643659333,
+    "fpr_nominal": 0.4836,
+    "fpr_calibrated": 0.0054,
+    "tpr_nominal": 0.98,
+    "tpr_calibrated": 0.96
+  }
+}

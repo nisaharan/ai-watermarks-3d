@@ -95,3 +95,6 @@ docs/research-transformation/v2-ideas.md
 
 # Legacy dependency list for the unpublished visualisation scripts.
 requirements.txt
+
+!results/phase2-detection-tradeoff/detection-cells.csv
+!results/phase2-detection-tradeoff/detection-summary.json

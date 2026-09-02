@@ -42,9 +42,13 @@ concentrating its output on the frequent context-token pairs the key already
 favours, but it does not create it. Which key fails is model-specific: a
 Qwen2.5 replication fails different keys.
 
-**Per-key, per-length calibration fixes it.** Thresholds fitted once on 5,000
-outputs and evaluated once on 5,000 disjoint outputs hold every one of sixty
-cells between 0.16% and 0.96%.
+**Per-key, per-length calibration fixes it, and it is affordable.** Thresholds
+fitted once on 5,000 outputs and evaluated once on 5,000 disjoint outputs hold
+every one of sixty cells between 0.16% and 0.96%. On watermarked text that costs
+a median two points of detection at 512 tokens. For key 07 the false-positive
+rate falls from 48.4% to 0.54% while detection falls from 98% to 96%. The
+correction runs both ways: for the three cells where calibration lowers the
+threshold, detection improves.
 
 SynthID-Text, measured against a naive-independence reference because its
 mean-$g$ detector has no nominal $z$, stays between 0.74% and 1.58% with no
@@ -56,8 +60,9 @@ scheme.
 Findings apply to the named variants and settings, not to everything called KGW
 or SynthID. The primary corpus is one small model on English prompts; the size
 of the effect will differ elsewhere, though the mechanism does not depend on
-model size. No robustness, attack, or paraphrase result is claimed. Detection
-rates were explored in development only and are out of scope.
+model size. No robustness, attack, or paraphrase result is claimed. The detection rates are
+a development screen of 50 outputs per cell, reported to price calibration
+rather than to claim a detection result.
 
 A watermark detector score is evidence of compatibility with a specified
 embedding and detection process. It is not proof of authorship, and should not
@@ -75,7 +80,8 @@ uv sync --extra ml --group dev
 
 python validation/analyse_phase2_nominal_fpr.py         # Figures 1-5, Table 1
 python validation/analyse_phase2_human_null.py          # Figure 6, Table 2
-python validation/build_phase2_publication_figures.py   # Figure 7
+python validation/analyse_phase2_detection_tradeoff.py  # Figure 7
+python validation/build_phase2_publication_figures.py   # Figure 8
 python validation/build_phase2_v1_latex_tables.py       # LaTeX tables 1, 2, A1
 python -m pytest -q
 

@@ -31,7 +31,8 @@ From the repository root:
 ```bash
 python validation/analyse_phase2_nominal_fpr.py         # Figures 1-5, Table 1
 python validation/analyse_phase2_human_null.py          # Figure 6, Table 2
-python validation/build_phase2_publication_figures.py   # Figure 7
+python validation/analyse_phase2_detection_tradeoff.py  # Figure 7
+python validation/build_phase2_publication_figures.py   # Figure 8
 python validation/build_phase2_v1_latex_tables.py       # LaTeX tables
 cd paper/arxiv && tectonic main.tex                     # or latexmk -pdf
 ```
