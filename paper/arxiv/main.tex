@@ -1,0 +1,644 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{natbib}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\definecolor{linkblue}{HTML}{245A83}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkblue,
+  citecolor=linkblue,
+  urlcolor=linkblue,
+  pdftitle={When Nominal False-Positive Rates Fail},
+  pdfauthor={Nisaharan Genhatharan}
+}
+
+\newcommand{\kgw}{\textsc{KGW}}
+\newcommand{\synthid}{\textsc{SynthID-Text}}
+\newcommand{\fpr}{\mathrm{FPR}}
+\newcommand{\variant}[1]{\texttt{#1}}
+\renewcommand{\arraystretch}{1.14}
+\setlength{\emergencystretch}{2em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\bfseries When Nominal False-Positive Rates Fail:\\
+Key- and Length-Dependent Null Behavior of Canonical LLM Text Watermarks}
+\author{Nisaharan Genhatharan\\
+UNSW Sydney}
+\date{2 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Keyed text-watermark detectors are usually described by a nominal false-positive
+rate that follows from an idealized null: under the KGW green-list scheme, each
+scored token is green with probability $\gamma$ independently of the others, so
+the detector's $z$-statistic is standard normal and $z>2.326$ is a 1\% test. We
+measure how far that null is from real text. Using exact reproductions of the
+maintained KGW SelfHash and SynthID-Text references, ten frozen detector keys, and
+10,000 unwatermarked SmolLM2-135M outputs scored at 128, 256, and 512 tokens, we
+find that the nominal 1\% KGW threshold has an empirical false-positive rate that
+depends on the key by two orders of magnitude: from 0.27\% to 48.4\% [47.4, 49.3]
+at 512 tokens, growing with length for the inflated keys. The mechanism is simple.
+Each key induces its own null green rate $p_k$ on real text (0.205 to 0.302 against
+$\gamma=0.25$), the resulting shift in mean $z$ grows as $\sqrt{T}$ and predicts
+the observed shift with $r=0.9999$, and over-dispersion adds the rest. The same
+keys scored on 5,000 human-written passages reproduce the key ranking
+(Spearman $\rho=+0.94$), so the bias is a property of the key against ordinary
+token statistics, not of the generating model, which only amplifies it. Which key
+inflates is model-specific: a Qwen2.5 replication fails different keys. Per-key,
+per-length empirical calibration on 5,000 outputs brings every held-out cell to
+0.16\% to 0.96\%. A prospective familywise acceptance rule fitted at its own
+boundary nevertheless failed 18 of 60 cells, which we report as a design lesson on
+validation margin. SynthID-Text's naive-independence reference stays near 1\%
+throughout. All rates are reported with exact 95\% intervals.
+\end{abstract}
+
+\noindent\textbf{Keywords:} language-model watermarking; false-positive control;
+empirical calibration; KGW SelfHash; SynthID-Text; detector keys
+
+\section{Introduction}
+
+A keyed text watermark lets a detector with the key test whether a text was
+produced by a compatible generation process. In the green-list family introduced
+by \citet{kirchenbauer2023watermark}, a secret key and the preceding context
+partition the vocabulary at each step into a green list of fraction $\gamma$ and a
+red list; generation favours green tokens, and the detector counts how many of the
+$T$ scored tokens are green. The detector's operating point is stated through a
+$z$-score whose null distribution is derived under one assumption: that in
+unwatermarked text each scored token is green with probability exactly $\gamma$,
+independently of every other. Under that assumption $z$ is standard normal and
+$z>2.326$ is a one-sided 1\% test. Papers, toolkits, and deployment discussions
+routinely quote this nominal rate as if it were a property of the scheme.
+
+This paper measures how far that null is from the behaviour of a real detector on
+real text, and explains the gap. We fix the implementation first: the canonical
+KGW SelfHash and SynthID-Text adapters used here reproduce the maintained
+reference implementations exactly, so nothing below can be attributed to a
+mismatch. We then score 10,000 unwatermarked SmolLM2-135M-Instruct outputs at
+three prefix lengths with ten frozen detector keys per scheme, report every rate
+with an exact 95\% interval, and fit nothing.
+
+The findings, in order of evidential strength, are as follows.
+\begin{enumerate}
+  \item \textbf{The nominal 1\% KGW threshold is key- and length-dependent.}
+  Across ten keys at 512 tokens the empirical false-positive rate spans 0.27\% to
+  48.4\% [47.4, 49.3], $n=10{,}000$ per cell; 20 of 30 key-by-length cells exceed
+  1\% and the inflated keys get worse with length (Section~\ref{sec:c1}). Which
+  key inflates depends on the model: a Qwen2.5 replication fails different keys.
+  \item \textbf{The mechanism is a key-specific null green rate.} Each key colours
+  a different fraction $p_k$ of real text green, 0.205 to 0.302 against the assumed
+  0.25. Substituting $p_k$ for $\gamma$ in the detector's own formula predicts the
+  mean null $z$ of all 30 cells with $r=0.9999$, and the shift grows as $\sqrt{T}$.
+  Over-dispersion adds a second, smaller effect. Repetition is not the driver
+  (Section~\ref{sec:c2}).
+  \item \textbf{Human-written text reproduces the key ranking.} The same keys on
+  5,000 human-written passages give the same ordering of $p_k$ (Spearman
+  $\rho=+0.94$) and the same worst key, with smaller inflation. The bias belongs to
+  the key against ordinary token statistics; the model amplifies it
+  (Section~\ref{sec:c3}).
+  \item \textbf{Per-key, per-length empirical calibration works.} Thresholds fitted
+  once on 5,000 outputs and evaluated once on 5,000 disjoint outputs give held-out
+  rates of 0.16\% to 0.96\% in all 60 scheme-by-key-by-length cells
+  (Section~\ref{sec:c4}).
+  \item \textbf{Fitting at an acceptance boundary leaves no familywise margin.} A
+  prospective rule that required all 60 calibrated cells to pass an exact
+  Bonferroni-controlled bound failed 18 cells, although no failed cell's point
+  estimate exceeded 0.96\%. Twenty-eight of 30 KGW thresholds had been fitted at
+  the maximum passing count, where a fresh cell passes with probability about
+  55\% (Section~\ref{sec:c5}).
+\end{enumerate}
+
+The contribution is deliberately bounded. We do not claim that every
+implementation called KGW or SynthID behaves alike, that the numbers transfer to
+other models or languages, or anything about robustness to editing or
+paraphrase; the detection-rate side of the operating point was explored only in
+development and is out of scope. What we claim is narrower and, we think, more
+useful: for the named primitives, the nominal false-positive rate is not a
+property of the scheme, and the evaluation that replaces it must be indexed by
+key and by length.
+
+\section{Related Work}
+
+\paragraph{Keyed green-list watermarks.}
+\citet{kirchenbauer2023watermark} introduced the green-list scheme and its
+$z$-test detector. The follow-up reliability study formalized context-dependent
+hashing, the SelfHash variant, repeated-context handling, and the dependence of
+detection on observed length \citep{kirchenbauer2024reliability}. Both derive the
+detector's null from the i.i.d.\ Bernoulli($\gamma$) assumption examined here.
+\citet{zhao2023unigram} fix the green list independently of context (Unigram) and
+prove robustness guarantees under the same style of null; \citet{fernandez2023bricks}
+observed that the assumption fails on real text, proposed corrected statistics,
+and showed the resulting empirical false-positive inflation. Our contribution
+relative to that work is quantification: ten keys, three lengths, $n=10{,}000$ per
+cell, exact intervals, an explicit per-key mechanism, and the human-text control.
+
+\paragraph{Distortion-free and cryptographic constructions.}
+\citet{kuditipudi2023robust} and \citet{christ2023undetectable} construct
+watermarks whose output distribution matches the unwatermarked model and whose
+detectors have exact or provable null behaviour by design. SynthID-Text
+\citep{dathathri2024synthid} uses context-dependent seeding and tournament
+sampling; its production evaluation covers quality, detection, edits, and
+paraphrasing. These families do not share KGW's $z$-test null, which is why our
+SynthID measurements are a reference rather than a failure and why the key effect
+is a KGW-specific finding.
+
+\paragraph{Benchmarks and toolkits.}
+MarkMyWords \citep{piet2023markmywords}, WaterBench \citep{tu2024waterbench},
+WaterPark \citep{liang2025waterpark}, and WaterJudge \citep{liu2024waterjudge}
+compare schemes on quality, detection, and tamper resistance; MarkLLM
+\citep{pan2024markllm} packages many of them behind one interface. These
+evaluations typically report detection at a scheme's nominal threshold with one
+key. The present results show why that convention can misstate the operating
+point by an order of magnitude and why the key schedule belongs in the reported
+condition.
+
+\paragraph{False-positive control.}
+\citet{li2024statistical} develop pivotal statistics with explicit type-I error
+control for watermark detection, and forensic-readiness work argues that error
+rates must be established before watermark evidence is used in consequential
+settings \citep{tamim2026forensic}. We supply the empirical side: how large the
+error is for the most widely used detector, where it comes from, and what
+calibration removes it.
+
+\section{Methods}
+
+\subsection{Implementation Identity}
+
+Before any null measurement, the validation suite pinned maintained reference
+revisions for KGW and SynthID-Text, checked keyed token assignments, reproduced
+aggregate detector scores from per-position traces, and compared generation step by
+step. The canonical adapters used throughout this paper are
+\path{kgw_author_selfhash_v1} (KGW SelfHash: $\gamma=0.25$, $\delta=2.0$, context
+width 4, repeated contexts ignored) and \path{synthid_deepmind_hash_v1}. The stock
+Transformers implementations were retained as separately named secondary variants
+and are never pooled with canonical scores. The remaining SynthID top-$k$
+boundary-tie difference was recorded as a decoder-policy difference.
+
+\subsection{Null Corpus and Detector Statistics}
+
+The primary null corpus is 10,000 unwatermarked continuations generated by the
+pinned SmolLM2-135M-Instruct checkpoint (temperature 0.8, top-$k$ 40, 512 new
+tokens) from 10,000 distinct Databricks Dolly prompts balanced by task category.
+The corpus was produced as two disjoint 5,000-prompt splits for the calibration
+study of Section~\ref{sec:calib}; because nothing in the nominal-threshold analysis
+is fitted, both splits are pooled there. Every output was scored at its paired
+128-, 256-, and 512-token prefixes by ten frozen detector keys per scheme. Keys
+within a run therefore score the same texts and are paired, not independent.
+
+For KGW, the detector statistic at a prefix is
+\begin{equation}
+  z = \frac{g - \gamma T}{\sqrt{T\gamma(1-\gamma)}},
+  \label{eq:kgwz}
+\end{equation}
+where $g$ is the number of green tokens among the $T$ eligible scored positions
+(SelfHash skips positions whose context has already been scored, so $T$ is below
+the prefix length). The nominal one-sided 1\% threshold is $z>2.326$, which is
+exact only if green membership is i.i.d.\ Bernoulli($\gamma$) under the null.
+SynthID-Text's mean-$g$ detector has no nominal $z$; as a reference we report the
+naive-independence normal approximation
+$z=(\bar g-0.5)\sqrt{4\,d\,T}$ with $d$ watermarking depth, at the same 2.326
+cutoff, labelled as such.
+
+All rates are reported with exact two-sided 95\% Clopper--Pearson intervals. No
+threshold in Sections~\ref{sec:c1}--\ref{sec:c3} was chosen from the data.
+
+\subsection{Secondary Null Runs}
+
+Two earlier runs with the same ten keys are reported alongside the primary corpus:
+a 500-output SmolLM2 development pilot, and an independent balanced 104-output run
+with Qwen2.5-0.5B-Instruct in a clean environment. Both are development
+diagnostics; their role here is to show that the primary result reproduces and
+that which key inflates is a property of the model.
+
+\subsection{Mechanism Analyses}
+\label{sec:mech-methods}
+
+Three detector-only analyses of the stored token ids ask why the nominal
+threshold fails. First, for each key $k$ and length we pool green counts over
+eligible positions to estimate the null green rate $p_k$ and compare the observed
+mean $z$ with the value Eq.~\eqref{eq:kgwz} implies when $\gamma$ is replaced by
+$p_k$. Second, we relate each output's $z$ to its repeated-4-gram fraction to test
+whether low-entropy repetition drives the inflation. Third, we score 5,000
+de-duplicated human-written Dolly passages (\texttt{response} and \texttt{context}
+fields, at least 128 tokens, selected by a hashed seed) with the same ten keys at
+every prefix length each passage supports. No text is generated in any of these
+analyses.
+
+\subsection{Empirical Calibration and One-Shot Confirmation}
+\label{sec:calib}
+
+The remedy we test is per-key, per-length empirical calibration. Thresholds were
+fitted once on the 5,000-output calibration split for 60 cells (two schemes, ten
+keys, three lengths) and then evaluated once on the disjoint 5,000-output
+confirmation split. Comparisons were strictly $s>t$. KGW thresholds were indexed
+by key and length; SynthID used one threshold per length equal to the maximum of
+the ten key-specific calibration candidates, with every key still tested
+separately at confirmation. The prospective acceptance rule was familywise: a cell
+passed if its exact one-sided Clopper--Pearson upper bound at $\alpha=0.05/60$ was
+at most 1\%, which allows at most 28 exceedances per cell, and the family passed
+only if all 60 cells passed. Thresholds were frozen and hashed before the
+confirmation split was generated, and no threshold was revised afterwards.
+
+\section{Results}
+
+\subsection{Canonical Parity Passed}
+
+The canonical adapters reproduced both pinned maintained references exactly on the
+tested detection fixtures and step-by-step generation checks, and aggregate scores
+reconstructed exactly from exported per-position rows. Every result below is
+therefore a property of the named primitives rather than of an implementation
+mismatch.
+
+\subsection{The Nominal 1\% KGW Threshold Is Key- and Length-Conditional}
+\label{sec:c1}
+
+Table~\ref{tab:nominal} and Figure~\ref{fig:nominal} give the empirical
+false-positive rate of canonical KGW SelfHash at $z>2.326$ for all 30 key-by-length
+cells, $n=10{,}000$ each. Point estimates exceed 1\% in 20 of 30 cells; the exact
+95\% interval lies entirely above 1\% in 19 cells and entirely below 1\% in 8. The
+spread across keys is two orders of magnitude at every length. Key 07 gives
+19.1\%, 33.0\%, and 48.4\% [47.4, 49.3] at 128, 256, and 512 tokens; key 03 gives
+0.32\%, 0.26\%, and 0.27\%. The median across keys rises from 3.5\% at 128 tokens
+to 6.9\% at 512. Inflated keys therefore get worse with length while conservative
+keys stay conservative, so no single length policy repairs the threshold. The
+500-output pilot value of 47.0\% for key 07 at 512 tokens reproduces as 48.4\% at
+$n=10{,}000$.
+
+\begin{table}[t]
+  \centering
+  \caption{Empirical false-positive rate (\%) of canonical KGW SelfHash at the
+  nominal one-sided 1\% threshold ($z>2.326$) on 10,000 unwatermarked
+  SmolLM2-135M-Instruct outputs per cell, with exact two-sided 95\%
+  Clopper--Pearson intervals. Nothing is fitted.}
+  \label{tab:nominal}
+  \small
+  \input{tables/table1-nominal-fpr}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig1-nominal-fpr-by-key.pdf}
+  \caption{Canonical KGW SelfHash false-positive rate by frozen detector key and
+  prefix length at the nominal $z>2.326$ threshold, $n=10{,}000$ unwatermarked
+  SmolLM2 outputs per cell, exact 95\% intervals, log scale. Prefix length is
+  shaded light to dark. Keys are categorical and are paired within texts, so the
+  points are not independent across keys.}
+  \label{fig:nominal}
+\end{figure}
+
+Which key inflates is model-specific (Figure~\ref{fig:threeruns}). On Qwen2.5-0.5B
+the worst keys are 04 and 05 at 41.3\% each, while key 07, the worst key on
+SmolLM2, gives 5.8\%. The ten keys are the same bit strings in both runs; the
+model's output distribution decides which of them fail.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig2-nominal-fpr-three-runs.pdf}
+  \caption{The same ten keys at 512 tokens in three null runs: the primary
+  SmolLM2 corpus ($n=10{,}000$), the SmolLM2 pilot ($n=500$), and the Qwen2.5-0.5B
+  replication ($n=104$). The two SmolLM2 runs agree; the Qwen run inflates
+  different keys.}
+  \label{fig:threeruns}
+\end{figure}
+
+SynthID-Text's naive-independence reference behaves differently: per-cell rates
+range from 0.74\% to 1.58\%, 11 of 30 cells sit above 1\% by point estimate, and
+seven have intervals entirely above 1\%. This is mild over-dispersion with no
+key-specific bias, and we report it as a reference rather than as a SynthID
+failure.
+
+\subsection{Mechanism: Each Key Has Its Own Null Green Rate}
+\label{sec:c2}
+
+The per-key null $z$ distributions at 512 tokens (Figure~\ref{fig:zdist}) are
+approximately normal but shifted and widened relative to the assumed $N(0,1)$:
+mean $z$ runs from $-1.96$ (key 03) to $+2.24$ (key 07), and the standard
+deviation from 1.26 to 1.58.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig3-z-distributions.pdf}
+  \caption{Null distribution of the KGW $z$ statistic at 512 tokens for each of the
+  ten keys, $n=10{,}000$, against the assumed standard normal (solid) and the
+  nominal cutoff (dashed). The shaded area past the cutoff is the mass this key
+  puts beyond the nominal 1\% threshold; the percentage at each panel's top right
+  is that cell's false-positive rate. Under the assumed null every panel would
+  show the same 1\%.}
+  \label{fig:zdist}
+\end{figure}
+
+The shift has a simple source (Figure~\ref{fig:mechanism}). Each key induces its
+own null green-token rate $p_k$ on this model's text, stable across lengths and
+ranging from 0.205 to 0.302 at 512 tokens against the assumed $\gamma=0.25$.
+Substituting $p_k$ for $\gamma$ in Eq.~\eqref{eq:kgwz} predicts a mean null $z$ of
+$(p_k-\gamma)\sqrt{T}/\sqrt{\gamma(1-\gamma)}$, which grows as $\sqrt{T}$. The
+observed mean $z$ across all 30 cells matches this prediction with $r=0.9999$. A
+second, smaller effect is over-dispersion: the standard deviation of $z$ rises from
+1.07--1.27 at 128 tokens to 1.26--1.58 at 512, which is why key 06
+($p_k=0.249$) still shows 3.7\% at 512 tokens. A normal with each cell's observed
+mean and standard deviation reproduces every cell's rate within 1.5 percentage
+points.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig4-key-green-rate-mechanism.pdf}
+  \caption{(a) Null green-token rate $p_k$ for each key at 512 tokens, drawn from
+  the assumed $\gamma=0.25$; colour marks which side of $\gamma$ the key falls on
+  and the vertical bars are exact 95\% intervals. (b) Observed mean null $z$ for
+  all 30 key-by-length cells against the value predicted from $p_k$ alone, with
+  the identity line.}
+  \label{fig:mechanism}
+\end{figure}
+
+The failure is thus the standard $z$-test's i.i.d.\ Bernoulli($\gamma$) null being
+wrong for real text, with the sign and size of the error set by which frequent
+(context, token) pairs each key colours green. This is the phenomenon
+\citet{fernandez2023bricks} documented for KGW-style detectors; here it is
+quantified per key and per length on one pinned implementation.
+
+Repetition is not the driver (Figure~\ref{fig:repetition}). The outputs are
+repetitive (median repeated-4-gram fraction 0.23), but for the worst key the
+correlation between $z$ and repetition is negative (Spearman $\rho=-0.29$): key 07
+gives 63\% in the least repetitive quartile and 32\% in the most repetitive.
+SelfHash already skips repeated contexts, which is why eligible positions average
+363 of 512.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig5-z-vs-repetition.pdf}
+  \caption{(a) Mean null $z$ per key against prefix length on a log scale; the
+  offsets grow as $\sqrt{T}$, away from zero in both directions, and only the
+  keys ending beyond $|z|=1$ are coloured. (b) Density of per-output $z$ for key
+  07 at 512 tokens against the output's repeated-4-gram fraction, $n=10{,}000$,
+  with the median per decile; more repetition goes with lower $z$, not higher.}
+  \label{fig:repetition}
+\end{figure}
+
+\subsection{Human-Written Text Reproduces the Key Ranking}
+\label{sec:c3}
+
+If $p_k$ were a property of the generating model, human-written text under the
+same keys would show a different ranking. It does not (Table~\ref{tab:human},
+Figure~\ref{fig:human}). On 5,000 human-written Dolly passages, $p_k$ ranges from
+0.216 to 0.280 at 512 tokens and tracks the model's $p_k$ key for key (Spearman
+$\rho=+0.94$, $p=5\times10^{-5}$; Pearson $r=+0.96$ over ten keys). Key 07 is the
+worst key in both populations and keys 03 and 04 the best in both. Human-text
+rates at the nominal threshold are inflated in the same direction but by less:
+key 07 gives 9.4\%, 16.4\%, and 25.5\% at 128, 256, and 512 tokens on human text
+against 19.1\%, 33.0\%, and 48.4\% on model output, and 19 of 30 human cells lie
+above 1\% by point estimate. Human text is also far less repetitive (median
+repeated-4-gram fraction 0.016), and the inflation persists.
+
+\begin{table}[t]
+  \centering
+  \caption{Empirical false-positive rate (\%) at the nominal $z>2.326$ threshold
+  on human-written Dolly passages (Human) and on unwatermarked SmolLM2 output
+  (Model) for the same ten frozen KGW keys. Each human passage is scored at every
+  prefix length it supports, so $n$ falls with length. The last rows give the
+  range of the null green rate $p_k$ across keys and the cell sizes.}
+  \label{tab:human}
+  \small
+  \input{tables/table2-human-null}
+\end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig6-human-vs-model-null.pdf}
+  \caption{(a) False-positive rate at the nominal threshold and 512 tokens for the
+  same ten keys on SmolLM2 output ($n=10{,}000$) and on human-written Dolly
+  passages ($n=554$), exact 95\% intervals, log scale. The human intervals are
+  wide because the 512-token human cell is small. (b) Per-key null green rate on
+  human text against the same quantity on model output, with exact intervals on
+  both axes; the diagonal is equality and the rules mark $\gamma=0.25$. Colour is
+  the same side-of-$\gamma$ encoding as Figure~\ref{fig:mechanism}a.}
+  \label{fig:human}
+\end{figure}
+
+The key-specific bias is therefore a property of each key's green list against
+ordinary English token statistics, not of SmolLM2's output distribution. The model
+amplifies it, presumably because its low-entropy output concentrates mass on the
+same frequent (context, token) pairs. A practical corollary is that a deployment
+cannot repair the nominal threshold by calibrating on model text alone: human text
+under the same key inflates too.
+
+\subsection{Per-Key, Per-Length Calibration Brings Held-Out Rates Below 1\%}
+\label{sec:c4}
+
+Appendix Table~\ref{tab:a1-kgw} and Table~\ref{tab:a1-synthid} list all 60
+calibrated cells. Fitted KGW thresholds at 512 tokens range from $z=1.49$ (key 03)
+to $z=6.40$ (key 07) against the nominal 2.326. On the disjoint confirmation split
+the held-out false-positive rate of the once-fitted thresholds lies between 0.16\%
+and 0.96\% in every cell, with no cell above 1\% by point estimate; the worst cell
+is key 03 at 512 tokens, 0.96\% [0.71, 1.27]. KGW cells range 0.24\% to 0.96\% and
+SynthID cells 0.16\% to 0.66\%. Empirical calibration at $n=5{,}000$ per cell thus
+delivers the operating point the nominal threshold promised, provided the
+threshold is indexed by key and length.
+
+\subsection{Fitting at the Acceptance Boundary Leaves No Familywise Margin}
+\label{sec:c5}
+
+The same 60 cells were also subject to the prospective familywise rule of
+Section~\ref{sec:calib}, and that rule failed: 42 cells passed and 18 did not
+(14 KGW, 4 SynthID), even though every failed cell's point estimate lay between
+0.58\% and 0.96\% and the largest Bonferroni-controlled upper bound was 1.48\%.
+The reason is a design flaw rather than a held-out shift. Twenty-eight of 30 KGW
+calibration cells were fitted at exactly the maximum passing count of 28
+exceedances, and KGW averaged 27.9 exceedances in calibration against 27.7 in
+confirmation (Figure~\ref{fig:margin}a). At a true rate equal to the boundary value
+$28/5{,}000=0.56\%$, a fresh 5,000-output cell has only about a 55\% probability of
+staying at or below the passing count, so a rule that requires all 60 cells to
+pass was designed to fail. Prospective exact-binomial planning shows that more
+observations narrow the penalty but do not remove the need for a true operating
+rate below the target: under a conservative union bound, the largest true per-cell
+rate compatible with 95\% whole-family pass probability rises from about 0.30\% at
+5,000 observations to 0.74\% at 50,000 (Figure~\ref{fig:margin}b). These are
+planning scenarios, not replacement thresholds.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures/fig7-design-margin.pdf}
+  \caption{(a) Mean strict exceedances across the 30 key-by-length cells of each
+  scheme, on the calibration split and on the disjoint confirmation split, against
+  the largest count a cell could carry and still pass. KGW's pair sits on the
+  boundary and barely moves, so the gate failure is not a held-out shift.
+  (b) Prospective union-bound planning: the largest true per-cell rate compatible
+  with at least 95\% probability that all 60 cells pass, by fresh sample size.
+  These are design scenarios, not replacement thresholds.}
+  \label{fig:margin}
+\end{figure}
+
+\section{Discussion}
+
+\subsection{The Nominal Rate Is Not a Property of the Scheme}
+
+The i.i.d.\ Bernoulli($\gamma$) null treats the green list as a random partition
+of the vocabulary that ordinary text does not prefer. It is not. Each key's partition
+lands differently on the frequent (context, token) pairs of English, so each key
+has its own $p_k$, and the $z$-test amplifies the difference by $\sqrt{T}$. Two
+consequences follow. A scheme-level false-positive rate is meaningless without
+the key: for the same model and threshold, one key gives 0.27\% and another
+48.4\%. And longer texts do not help: for an inflated key the nominal test gets
+worse with length, because the bias grows with $T$ while the assumed standard
+deviation does not.
+
+\subsection{The Bias Belongs to the Key, the Amplification to the Model}
+
+Human-written text under the same keys reproduces the ranking of $p_k$ and the
+worst key, with smaller deviations from $\gamma$. This separates two explanations
+that the model-only data could not: the key effect is not an artefact of a tiny,
+repetitive model, and the model's contribution is to concentrate its output on
+the pairs the key already favours. The Qwen2.5 replication shows the other side of
+the same mechanism: a different model has a different frequent-pair distribution,
+and different keys fail. Both facts argue for the same practice. A deployment
+should measure $p_k$, or equivalently the null rate, for its own key on the text
+population it will score, including human text, rather than inherit a rate from
+the scheme.
+
+\subsection{Calibration Works; Familywise Guarantees Need Margin}
+
+Per-key, per-length thresholds fitted once on 5,000 outputs delivered held-out
+rates below 1\% in every cell. That is the practical remedy, and it needs nothing
+beyond an unwatermarked corpus from the relevant population and a key schedule.
+The prospective familywise rule we also imposed failed, and the failure is
+instructive. Selecting the least conservative threshold that satisfies a
+calibration bound places every cell at the acceptance boundary, where a fresh
+sample passes with probability near one half; requiring all 60 to pass then has
+little chance of success however valid the multiplicity control. Protocols that
+want a simultaneous guarantee should declare both the final error target and a
+lower design rate that gives the family adequate pass probability, and should
+size the calibration corpus to that design rate rather than to the target.
+
+\subsection{Implications for Operational Use}
+
+A keyed detector score is evidence of compatibility with a specified embedding
+and detection process. It is not proof of authorship, misconduct, truth, or
+intent. Operational claims should name the scheme variant, the key policy, the
+length range, the null population on which the threshold was calibrated, the
+uncertainty procedure, and the consequences of a false positive. On the evidence
+here, a claim that rests on the nominal rate alone is unsupported for KGW-style
+detectors.
+
+\section{Limitations}
+
+The primary experiments use small language models and pinned English prompt
+sources; the size of the effect will differ for other models, languages, and
+domains, although the mechanism does not depend on model size. Findings apply to
+the explicitly named variants and parameter settings rather than to every
+implementation called KGW or SynthID. The Qwen2.5 replication is small ($n=104$)
+and establishes only that the failing keys differ. The human-text null has 554
+passages at 512 tokens, and its longer passages are largely reference text rather
+than answers. SynthID-Text was evaluated against a naive-independence reference
+because its mean-$g$ detector has no nominal $z$; its calibrated behaviour is in
+Appendix~\ref{app:a1}. Detection-rate tuning was attempted in development and is
+out of scope here; no robustness conclusion is available.
+
+\section{Ethics and Responsible Use}
+
+False accusations based on automated text detection can cause material harm.
+Accordingly, all claims in this paper remain conditional on named implementations,
+keys, lengths, populations, and decision rules. We discourage use of watermark
+detection as standalone evidence in disciplinary, employment, legal, or authorship
+decisions. Raw generated continuations will be reviewed for memorized personal,
+copyrighted, or unsafe content before any public release.
+
+\section{Reproducibility and Artifact Availability}
+
+The repository records frozen configurations, model and dataset revisions, prompt
+selection manifests, key schedules, implementation fingerprints, per-position
+audit formats, the frozen calibration thresholds, and the confirmation record.
+Every table and figure in this paper is generated deterministically from stored
+scores by a fixed script; no analysis required new generation. Model weights and
+cached datasets are not redistributed; deterministic retrieval instructions and
+immutable revisions are supplied instead.
+
+The release is at \url{https://github.com/nisaharan/ai-watermarks-3d} and
+includes source code, tests, aggregate artifacts, prompt row identifiers and
+hashes, tables, figures, and parity fixtures. It also carries the two compressed
+score files the analyses read, so a clone regenerates every table and figure in
+this paper without generating any text; this was checked by cloning the release
+and rebuilding the paper from it alone. The text-level tables carry token
+statistics and a SHA-256 per text, never the text itself. Raw Dolly text requires
+CC BY-SA 3.0 attribution and share-alike treatment. Raw generated continuations
+and development runs that support no claim in this paper are retained privately
+for audit and excluded from the reported package.
+
+\section{Conclusion}
+
+For canonical KGW SelfHash, the nominal 1\% false-positive threshold is neither
+1\% nor a constant: it is a key- and length-dependent quantity that ranged from
+0.27\% to 48.4\% on 10,000 unwatermarked outputs, because each key induces its
+own null green rate on real text and the detector's $z$-test scales the resulting
+bias by $\sqrt{T}$. Human-written text reproduces the key ranking, so the effect is
+a property of the key rather than the model. Empirical calibration indexed by key
+and length removes it. Evaluations and deployments of green-list watermarks should
+therefore report the key schedule and the calibration population as part of the
+experimental condition, and should treat a nominal rate as a hypothesis to be
+tested rather than a property to be quoted.
+
+\section*{Acknowledgments}
+
+The author acknowledges the maintainers of the KGW and SynthID-Text reference
+implementations and the creators of the openly available model and dataset
+artifacts used in this study.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\clearpage
+\appendix
+\section{Calibrated Per-Cell Held-Out False-Positive Rates}
+\label{app:a1}
+
+\input{tables/tableA1-calibrated-cells}
+
+\section{Data Sources and Evidential Role}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Every corpus used in this paper and the role it plays. All scoring is
+detector-only on stored token ids.}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.26\textwidth}>{\raggedright\arraybackslash}p{0.16\textwidth}Y}
+\toprule
+Corpus & Size & Role \\
+\midrule
+SmolLM2-135M unwatermarked outputs & 10,000 & Primary null (Sections~\ref{sec:c1}--\ref{sec:c2}); also the calibration and confirmation splits of 5,000 each (Sections~\ref{sec:c4}--\ref{sec:c5}). \\
+SmolLM2 development pilot & 500 & Secondary run; reproduces the primary key profile. \\
+Qwen2.5-0.5B replication & 104 & Secondary run; shows that the failing keys are model-specific. \\
+Human-written Dolly passages & 5,000 & Human-text null (Section~\ref{sec:c3}); detector-only, no generation. \\
+Development detection-rate screens & 2,400 & Out of scope; support no claim here. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Interpretation Checklist}
+
+\begin{itemize}
+  \item Every rate is conditional on the named variant, key, prefix length,
+  threshold, and null population; none transfers to another key by default.
+  \item A cell that failed the familywise rule in Section~\ref{sec:c5} is not
+  evidence that its true rate exceeds 1\%; its point estimate is in
+  Appendix~\ref{app:a1}.
+  \item The SynthID-Text figures are a naive-independence reference, not a
+  nominal claim by that scheme.
+  \item Canonical and Transformers variant scores are never pooled.
+  \item Detection rates and robustness were not evaluated.
+\end{itemize}
+
+\end{document}
