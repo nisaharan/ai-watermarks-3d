@@ -100,7 +100,12 @@ mismatch. We then score 10,000 unwatermarked SmolLM2-135M-Instruct outputs at
 three prefix lengths with ten frozen detector keys per scheme, report every rate
 with an exact 95\% interval, and fit nothing.
 
-The findings, in order of evidential strength, are as follows.
+That the i.i.d.\ assumption fails on real text is not new;
+\citet{fernandez2023bricks} showed it and proposed corrected statistics. What has
+not been shown is how large the failure is, that its size and sign are set by the
+key, that it grows with length, that it survives on human-written text, and what
+correcting it costs in detection. Those are this paper's contributions, in order
+of evidential strength.
 \begin{enumerate}
   \item \textbf{The nominal 1\% KGW threshold is key- and length-dependent.}
   Across ten keys at 512 tokens the empirical false-positive rate spans 0.27\% to
@@ -135,8 +140,8 @@ The findings, in order of evidential strength, are as follows.
 The contribution is deliberately bounded. We do not claim that every
 implementation called KGW or SynthID behaves alike, that the numbers transfer to
 other models or languages, or anything about robustness to editing or
-paraphrase; the detection-rate side of the operating point was explored only in
-development and is out of scope. What we claim is narrower and, we think, more
+paraphrase. The detection rates we do report are development-scale and are there
+to price the remedy, not to claim a detection result. What we claim is narrower and, we think, more
 useful: for the named primitives, the nominal false-positive rate is not a
 property of the scheme, and the evaluation that replaces it must be indexed by
 key and by length.
@@ -168,7 +173,7 @@ is a KGW-specific finding.
 
 \paragraph{Benchmarks and toolkits.}
 MarkMyWords \citep{piet2023markmywords}, WaterBench \citep{tu2024waterbench},
-WaterPark \citep{liang2025waterpark}, and WaterJudge \citep{liu2024waterjudge}
+WaterPark \citep{liang2025waterpark}, and WaterJudge \citep{molenda2024waterjudge}
 compare schemes on quality, detection, and tamper resistance; MarkLLM
 \citep{pan2024markllm} packages many of them behind one interface. These
 evaluations typically report detection at a scheme's nominal threshold with one
